@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<div class="wrapper">
+    <header class="page-header">
+        <nav>
+            <ul class="topnav">
+                <li><i class="acasalink"></i>Acasa</li>
+                <li><i class="acasalink"></i>Evenimente</li>
+                <li><i class="acasalink"></i>Inbunatatire</li>
+                <li><i class="acasalink"></i>Contact</li>
+                <li><i class="acasalink"></i>Suport</li>
+                <li><i class="acasalink"></i>Despre</li>
+                <li class="centertop"><i class="fa fa-twitter"></i>Technical Skill Enhancer</li>
+                <li>
+                    <button id="loginButton" onclick="document.getElementById('id1').style.display='block'"
+                            style="width: auto;">Login
+                    </button>
+                </li>
+                <li>
+                    <button id="signButton" onclick="document.getElementById('id2').style.display='block'"
+                            style="width: auto;">Sign in
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main class="page-main">
+
+        <div id="id1" class="modal">
+            <form class="modal-content animate" action="#">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id1').style.display='none'" class="close" title="Close modal">&times;</span>
+                    <img src="./images/user.png" alt="Avatar user" class="avatar">
+                </div>
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Introduceti utilizatorul" name="uname" required>
+                    <label for="pws"><b>Parola</b></label>
+                    <input type="password" placeholder="Introduceti parola" name="pws" required>
+                    <button type="submit" id="logare">Logare</button>
+                    <div class="logincustom">
+                        <button type="submit" id="github">GitHub</button>
+                        <button type="submit" id="linkedln">Linkedln</button>
+                    </div>
+
+                    <label>
+                        <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
+                    </label>
+                </div>
+                <div class="container">
+                    <button type="button" onclick="document.getElementById('id1').style.display='none'" class="cancel_butron">
+                        Anuleaza
+                    </button>
+                    <span class="psw"></span>
+                </div>
+            </form>
+        </div>
+        <div id="id2" class="modal">
+            <form class="modal-content animate" action="#">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close modal">&times;</span>
+                </div>
+                <div class="container">
+                    <label for="uname"><b>Alegeti un nume de utilizator</b></label>
+                    <input type="text" placeholder="Introduceti un nume de utilizator " name="uname" required>
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Introduceti o adresa de email" name="email" required>
+                    <label for="pwsc"><b>Parola</b></label>
+                    <input type="password" placeholder="Introduceti o parola" name="pwsc" required>
+                    <label for="pwscr"><b>Confirma parola</b></label>
+                    <input type="password" placeholder="Introduceti parola din nou" name="pwscr" required>
+                    <label for="nume"><b>Nume</b></label>
+                    <input type="text" name="nameuser" required>
+                    <label for="prenume"><b>Prenume</b></label>
+                    <input type="text" name="prenumeuser" required>
+                    <button type="submit" id="crearecont">Creaza cont</button>
+                </div>
+                <div class="container">
+                    <button type="button" onclick="document.getElementById('id2').style.display='none'" class="cancel_butron">
+                        Anuleaza
+                    </button>
+                    <span class="psw"></span>
+                </div>
+            </form>
+        </div>
+        <h2></h2>
+        <h2></h2>
+        <h1>Cauta un eveniment</h1>
+        <form class="perecheCautare">
+            <input type="search" placeholder="Eveniment" id="cautarebox">
+            <input type="submit" id="submitbutton" value="Cauta">
+        </form>
+    </main>
+    <footer class="page-footer">
+        <!-- content here -->
+    </footer>
+</div>
+</body>
+</html>
