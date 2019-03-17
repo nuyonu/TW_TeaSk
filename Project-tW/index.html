@@ -3,20 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheet/index.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
 </head>
 <body>
 <div class="wrapper">
     <header class="page-header">
         <nav>
             <ul class="topnav">
-                <li><i class="acasalink"></i>Acasa</li>
-                <li><i class="acasalink"></i>Evenimente</li>
-                <li><i class="acasalink"></i>Inbunatatire</li>
-                <li><i class="acasalink"></i>Contact</li>
-                <li><i class="acasalink"></i>Suport</li>
-                <li><i class="acasalink"></i>Despre</li>
-                <li class="centertop"><i class="fa fa-twitter"></i>Technical Skill Enhancer</li>
+                <li><i class="fas fa-home"></i>Acasa</li>
+                <li><i class="fas fa-calendar-week"></i>Evenimente</li>
+                <li><i class="fas fa-user-graduate"></i>Inbunatatire</li>
+                <li><i class="fas fa-mobile-alt"></i>Contact</li>
+                <li><i class="fas fa-question-circle"></i>Suport</li>
+                <li><i class="fas fa-info-circle"></i>Despre</li>
+                <li class="centertop">Skill Enhancer</li>
                 <li>
                     <button id="loginButton" onclick="document.getElementById('id1').style.display='block'"
                             style="width: auto;">Login
@@ -29,20 +31,18 @@
                 </li>
             </ul>
         </nav>
-    </header>
-    <main class="page-main">
-
         <div id="id1" class="modal">
             <form class="modal-content animate" action="#">
                 <div class="imgcontainer">
-                    <span onclick="document.getElementById('id1').style.display='none'" class="close" title="Close modal">&times;</span>
-                    <img src="./images/user.png" alt="Avatar user" class="avatar">
+                    <span onclick="document.getElementById('id1').style.display='none'" class="close"
+                          title="Close modal">&times;</span>
+                    <img src="./imgini/user.png" alt="Avatar user" class="avatar">
                 </div>
                 <div class="container">
-                    <label for="uname"><b>Username</b></label>
-                    <input type="text" placeholder="Introduceti utilizatorul" name="uname" required>
+                    <label for="name"><b>Username</b></label>
+                    <input type="text" placeholder="Introduceti utilizatorul" id="name" required>
                     <label for="pws"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti parola" name="pws" required>
+                    <input type="password" placeholder="Introduceti parola" id="pws" required>
                     <button type="submit" id="logare">Logare</button>
                     <div class="logincustom">
                         <button type="submit" id="github">GitHub</button>
@@ -54,7 +54,8 @@
                     </label>
                 </div>
                 <div class="container">
-                    <button type="button" onclick="document.getElementById('id1').style.display='none'" class="cancel_butron">
+                    <button type="button" onclick="document.getElementById('id1').style.display='none'"
+                            class="cancel_butron">
                         Anuleaza
                     </button>
                     <span class="psw"></span>
@@ -64,31 +65,41 @@
         <div id="id2" class="modal">
             <form class="modal-content animate" action="#">
                 <div class="imgcontainer">
-                    <span onclick="document.getElementById('id2').style.display='none'" class="close" title="Close modal">&times;</span>
+                    <span onclick="document.getElementById('id2').style.display='none'" class="close"
+                          title="Close modal">&times;</span>
                 </div>
                 <div class="container">
-                    <label for="uname"><b>Alegeti un nume de utilizator</b></label>
-                    <input type="text" placeholder="Introduceti un nume de utilizator " name="uname" required>
+                    <label for="namec"><b>Alegeti un nume de utilizator</b></label>
+                    <input type="text" placeholder="Introduceti un nume de utilizator " id="namec" required>
                     <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="Introduceti o adresa de email" name="email" required>
+                    <input type="email" placeholder="Introduceti o adresa de email" id="email" required>
                     <label for="pwsc"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti o parola" name="pwsc" required>
+                    <input type="password" placeholder="Introduceti o parola" id="pwsc" required>
                     <label for="pwscr"><b>Confirma parola</b></label>
-                    <input type="password" placeholder="Introduceti parola din nou" name="pwscr" required>
-                    <label for="nume"><b>Nume</b></label>
-                    <input type="text" name="nameuser" required>
-                    <label for="prenume"><b>Prenume</b></label>
-                    <input type="text" name="prenumeuser" required>
+                    <input type="password" placeholder="Introduceti parola din nou" id="pwscr" required>
+                    <label for="nameuser"><b>Nume</b></label>
+                    <label>
+                        <input type="text" id="nameuser" required>
+                    </label>
+                    <label for="prenumeuser"><b>Prenume</b></label>
+                    <label>
+                        <input type="text" id="prenumeuser" required>
+                    </label>
                     <button type="submit" id="crearecont">Creaza cont</button>
                 </div>
                 <div class="container">
-                    <button type="button" onclick="document.getElementById('id2').style.display='none'" class="cancel_butron">
+                    <button type="button" onclick="document.getElementById('id2').style.display='none'"
+                            class="cancel_butron">
                         Anuleaza
                     </button>
                     <span class="psw"></span>
                 </div>
             </form>
         </div>
+    </header>
+    <main class="page-main">
+
+
         <h2></h2>
         <h2></h2>
         <h1>Cauta un eveniment</h1>
@@ -96,9 +107,40 @@
             <input type="search" placeholder="Eveniment" id="cautarebox">
             <input type="submit" id="submitbutton" value="Cauta">
         </form>
+
     </main>
+
+    <div class="section2">
+        <div class="describegit">
+            <h1>Conecteza-te cu Github</h1>
+            <p>O descriere legata de chestia asta</p>
+        </div>
+    </div>
     <footer class="page-footer">
-        <!-- content here -->
+
+        <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
+        <ul>
+            <li>
+                <a href="" target="_blank">
+                    <i class="fab fa-facebook-f" style="color: #888888"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank" style="color: #888888">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="fab fa-linkedin" style="color: #888888"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="fab fa-github" style="color: #888888"></i>
+                </a>
+            </li>
+        </ul>
     </footer>
 </div>
 </body>
