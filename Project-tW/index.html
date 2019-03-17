@@ -4,99 +4,107 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" type="text/css" href="./stylesheet/index.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
 </head>
 <body>
-<div class="wrapper">
-    <header class="page-header">
-        <nav>
-            <ul class="topnav">
-                <li><i class="fas fa-home"></i>Acasa</li>
-                <li><i class="fas fa-calendar-week"></i>Evenimente</li>
-                <li><i class="fas fa-user-graduate"></i>Inbunatatire</li>
-                <li><i class="fas fa-mobile-alt"></i>Contact</li>
-                <li><i class="fas fa-question-circle"></i>Suport</li>
-                <li><i class="fas fa-info-circle"></i>Despre</li>
-                <li class="centertop">Skill Enhancer</li>
-                <li>
-                    <button id="loginButton" onclick="document.getElementById('id1').style.display='block'"
-                            style="width: auto;">Login
-                    </button>
-                </li>
-                <li>
-                    <button id="signButton" onclick="document.getElementById('id2').style.display='block'"
-                            style="width: auto;">Sign in
-                    </button>
-                </li>
-            </ul>
-        </nav>
-        <div id="id1" class="modal">
-            <form class="modal-content animate" action="#">
-                <div class="imgcontainer">
+<!--<div class="parentNav"></div>-->
+<div class="parentNavbar">
+
+    <div >
+        <header class="page-header">
+            <nav>
+                <ul class="topnav">
+                    <li><i class="fas fa-home"></i>Acasa</li>
+                    <li><i class="fas fa-calendar-week"></i>Evenimente</li>
+                    <li><i class="fas fa-user-graduate"></i>Inbunatatire</li>
+                    <li><i class="fas fa-mobile-alt"></i>Contact</li>
+                    <li><i class="fas fa-question-circle"></i>Suport</li>
+                    <li><i class="fas fa-info-circle"></i>Despre</li>
+                    <li class="centertop">Skill Enhancer</li>
+                    <li>
+                        <button id="loginButton" onclick="document.getElementById('id1').style.display='block'"
+                                style="width: auto;">Login
+                        </button>
+                    </li>
+                    <li>
+                        <button id="signButton" onclick="document.getElementById('id2').style.display='block'"
+                                style="width: auto;">Sign in
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+            <div id="id1" class="modal">
+                <form class="modal-content animate" action="#">
+                    <div class="imgcontainer">
                     <span onclick="document.getElementById('id1').style.display='none'" class="close"
                           title="Close modal">&times;</span>
-                    <img src="./imgini/user.png" alt="Avatar user" class="avatar">
-                </div>
-                <div class="container">
-                    <label for="name"><b>Username</b></label>
-                    <input type="text" placeholder="Introduceti utilizatorul" id="name" required>
-                    <label for="pws"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti parola" id="pws" required>
-                    <button type="submit" id="logare">Logare</button>
-                    <div class="logincustom">
-                        <button type="submit" id="github">GitHub</button>
-                        <button type="submit" id="linkedln">Linkedln</button>
+                        <img src="./imgini/user.png" alt="Avatar user" class="avatar">
                     </div>
+                    <div class="container">
+                        <label for="name"><b>Username</b></label>
+                        <input type="text" placeholder="Introduceti utilizatorul" id="name" required>
+                        <label for="pws"><b>Parola</b></label>
+                        <input type="password" placeholder="Introduceti parola" id="pws" required>
+                        <button type="submit" id="logare">Logare</button>
+                        <div class="logincustom">
+                            <button type="submit" id="github">GitHub</button>
+                            <button type="submit" id="linkedln">Linkedln</button>
+                        </div>
 
-                    <label>
-                        <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
-                    </label>
-                </div>
-                <div class="container">
-                    <button type="button" onclick="document.getElementById('id1').style.display='none'"
-                            class="cancel_butron">
-                        Anuleaza
-                    </button>
-                    <span class="psw"></span>
-                </div>
-            </form>
-        </div>
-        <div id="id2" class="modal">
-            <form class="modal-content animate" action="#">
-                <div class="imgcontainer">
+                        <label>
+                            <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
+                        </label>
+                    </div>
+                    <div class="container">
+                        <button type="button" onclick="document.getElementById('id1').style.display='none'"
+                                class="cancel_butron">
+                            Anuleaza
+                        </button>
+                        <span class="psw"></span>
+                    </div>
+                </form>
+            </div>
+            <div id="id2" class="modal">
+                <form class="modal-content animate" action="#">
+                    <div class="imgcontainer">
                     <span onclick="document.getElementById('id2').style.display='none'" class="close"
                           title="Close modal">&times;</span>
-                </div>
-                <div class="container">
-                    <label for="namec"><b>Alegeti un nume de utilizator</b></label>
-                    <input type="text" placeholder="Introduceti un nume de utilizator " id="namec" required>
-                    <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="Introduceti o adresa de email" id="email" required>
-                    <label for="pwsc"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti o parola" id="pwsc" required>
-                    <label for="pwscr"><b>Confirma parola</b></label>
-                    <input type="password" placeholder="Introduceti parola din nou" id="pwscr" required>
-                    <label for="nameuser"><b>Nume</b></label>
-                    <label>
-                        <input type="text" id="nameuser" required>
-                    </label>
-                    <label for="prenumeuser"><b>Prenume</b></label>
-                    <label>
-                        <input type="text" id="prenumeuser" required>
-                    </label>
-                    <button type="submit" id="crearecont">Creaza cont</button>
-                </div>
-                <div class="container">
-                    <button type="button" onclick="document.getElementById('id2').style.display='none'"
-                            class="cancel_butron">
-                        Anuleaza
-                    </button>
-                    <span class="psw"></span>
-                </div>
-            </form>
-        </div>
-    </header>
+                    </div>
+                    <div class="container">
+                        <label for="namec"><b>Alegeti un nume de utilizator</b></label>
+                        <input type="text" placeholder="Introduceti un nume de utilizator " id="namec" required>
+                        <label for="email"><b>Email</b></label>
+                        <input type="email" placeholder="Introduceti o adresa de email" id="email" required>
+                        <label for="pwsc"><b>Parola</b></label>
+                        <input type="password" placeholder="Introduceti o parola" id="pwsc" required>
+                        <label for="pwscr"><b>Confirma parola</b></label>
+                        <input type="password" placeholder="Introduceti parola din nou" id="pwscr" required>
+                        <label for="nameuser"><b>Nume</b></label>
+                        <label>
+                            <input type="text" id="nameuser" required>
+                        </label>
+                        <label for="prenumeuser"><b>Prenume</b></label>
+                        <label>
+                            <input type="text" id="prenumeuser" required>
+                        </label>
+                        <button type="submit" id="crearecont">Creaza cont</button>
+                    </div>
+                    <div class="container">
+                        <button type="button" onclick="document.getElementById('id2').style.display='none'"
+                                class="cancel_butron">
+                            Anuleaza
+                        </button>
+                        <span class="psw"></span>
+                    </div>
+                </form>
+            </div>
+        </header>
+    </div>
+</div>
+
+<div class="wrapper contain">
     <main class="page-main">
 
 
@@ -109,7 +117,6 @@
         </form>
 
     </main>
-
     <div class="section2">
         <div class="describegit">
             <h1>Conecteza-te cu Github</h1>
