@@ -1,0 +1,75 @@
+/*Strucurare pe baza unei cutii, totul este intr-o cutie*/
+.box-events
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-bottom: 475px;
+    margin-bottom: 0;
+    min-height: 350px;
+    width: auto;
+    height: auto;
+
+}
+
+/*Bara de search + input search*/
+form.top-search input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 5px;
+    float: left;
+    width: auto;
+    background: #f1f1f1;
+}
+
+/* Butoanele din form de langa bara search */
+form.top-search button {
+    float: left;
+    width: auto;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 5px;
+    border-left: none; /* Prevent double borders */
+    cursor: pointer;
+}
+
+form.top-search button:hover {
+    background: lightblue;
+}
+
+form.top-search::after {
+    content: "";
+    clear: both;
+}
+
+/*Caracteristicile pentru tabel*/
+.table-show-content
+{
+    table-layout: auto;
+    border-collapse: collapse;
+    width: auto;
+}
+
+table td {
+    border: 1px solid gray;
+    text-align: left;
+}
+
+table th{
+    text-align: center;
+    background-color: dodgerblue;
+}
+
+table th.last{
+    width: fit-content;
+    white-space: nowrap;
+}
+
+tr:hover{
+    background-color: lightskyblue;
+}
+

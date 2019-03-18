@@ -4,10 +4,6 @@
     --gray-color:#e8eeff;
     --blue-light: rgba(85,172,238 ,1);
 }
-a:link,a:visited,a:hover,a:active {
-    text-decoration: none;
-}
-
 html{
     font-family: Lilita One;
     min-width: 700px;
@@ -406,17 +402,4 @@ ul{
 body{
     min-width:700px;        /* Suppose you want minimum width of 1000px */
           /* As IE6 ignores !important it will set width as 1000px; */
-}
-a{
-    color: gray;
-    text-decoration:inherit;
-}
-a:visited{
-    color:gray;
-}
-a:hover{
-    color: #4286f4;
-}
-a:link{
-    color:gray;
 }

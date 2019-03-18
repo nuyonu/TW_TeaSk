@@ -1,24 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    =
     <meta name="author" content="Filos Gabriel">
     <meta charset="UTF-8">
     <title>Skill Enhancer</title>
     <link rel="stylesheet" type="text/css" href="./styles/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheet/setting.css">
 </head>
 <body>
 <div class="parentNavbar">
 
-    <div >
+    <div>
         <header class="page-header">
             <nav>
                 <ul class="topnav">
                     <li>
-                        <span  id="butonMobil"  style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+                        <span id="butonMobil" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
                     </li>
                     <li class="link"><i class="fas fa-home"></i><a href="index.html">Acasa</a></li>
                     <li class="link"><a href="events.html"><i class="fas fa-calendar-week"></a></i>Evenimente</li>
@@ -108,74 +109,39 @@
         </header>
     </div>
 </div>
-
-<div class="wrapper contain">
-    <main class="page-main">
-
-
-        <h2></h2>
-        <h2></h2>
-        <h1>Cauta un eveniment</h1>
-        <form class="perecheCautare">
-            <input type="search" placeholder="Eveniment" id="cautarebox">
-            <input type="submit" id="submitbutton" value="Cauta">
-        </form>
-
-    </main>
-    <div class="section2">
-        <div class="describegit">
-            <h1>Conecteza-te cu Github</h1>
-            <p>O descriere legata de chestia asta</p>
+<div class="page">
+    <div class="submenu">
+        <table>
+            <tr>
+                <th>Setari</th>
+            </tr>
+            <tr>
+                <td>Date personale </td>
+            </tr>
+            <tr>
+                <td>Conectare</td>
+            </tr>
+            <tr>
+                <td>Preferinte</td>
+            </tr>
+            <tr>
+                <td>Istoric</td>
+            </tr>
+            <tr>
+                <td>Teste de cunostinte</td>
+            </tr>
+            <tr>
+                <td>Statistici</td>
+            </tr>
+        </table>
+        <div class="optionsubmenu" style="height: 200%;">
+           <div class="continut">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus blanditiis consectetur debitis eius eos fuga id inventore magnam maxime odit, provident quae quibusdam quisquam totam voluptates. Eaque odit perspiciatis recusandae!
+           </div>
         </div>
     </div>
-    <div class="section2">
-        <div class="describegit">
-            <h1>Conecteza-te cu Github</h1>
-            <p>O descriere legata de chestia asta</p>
-        </div>
-    </div>
-    <div class="section2">
-        <div class="describegit">
-            <h1>Conecteza-te cu Github</h1>
-            <p>O descriere legata de chestia asta</p>
-        </div>
-    </div>
-
-    <footer class="page-footer">
-
-        <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
-        <ul>
-            <li>
-                <a href="" target="_blank">
-                    <i class="fab fa-facebook-f" style="color: #888888"></i>
-                </a>
-            </li>
-            <li>
-                <a href="" target="_blank" style="color: #888888">
-                    <i class="fab fa-twitter"></i>
-                </a>
-            </li>
-            <li>
-                <a href="" target="_blank">
-                    <i class="fab fa-linkedin" style="color: #888888"></i>
-                </a>
-            </li>
-            <li>
-                <a href="" target="_blank">
-                    <i class="fab fa-github" style="color: #888888"></i>
-                </a>
-            </li>
-        </ul>
-    </footer>
 </div>
-<script>
-    function openNav() {
-        document.getElementById("myNav").style.width = "100%";
-    }
 
-    function closeNav() {
-        document.getElementById("myNav").style.width = "0%";
-    }
-</script>
+
 </body>
 </html>
