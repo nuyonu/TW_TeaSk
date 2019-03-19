@@ -12,134 +12,109 @@
     <link rel="stylesheet" type="text/css" href="stylesheet/setting.css">
 </head>
 <body>
-<div class="parentNavbar">
 
-    <div>
-        <header class="page-header">
-            <nav>
-                <ul class="topnav">
-                    <li>
-                        <span id="butonMobil" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
-                    </li>
-                    <li class="link"><i class="fas fa-home"></i><a href="index.html">Acasa</a></li>
-                    <li class="link"><a href="events.html"><i class="fas fa-calendar-week"></a></i>Evenimente</li>
-                    <li class="link"><i class="fas fa-user-graduate"></i>Inbunatatire</li>
-                    <li class="link"><i class="fas fa-mobile-alt"></i>Contact</li>
-                    <li class="link"><i class="fas fa-question-circle"></i>Suport</li>
-                    <li class="link"><i class="fas fa-info-circle"></i>Despre</li>
-                    <li class="centertop link">Skill Enhancer</li>
-                    <li class="link">
-                        <button id="loginButton" onclick="document.getElementById('id1').style.display='block'"
-                                style="width: auto;">Login
-                        </button>
-                    </li>
-                    <li class="link">
-                        <button id="signButton" onclick="document.getElementById('id2').style.display='block'"
-                                style="width: auto;">Sign in
-                        </button>
-                    </li>
+<header><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Autem laborum modi nulla perspiciatis quis.
+    Adipisci alias aliquid beatae consequatur debitis dignissimos inventore minus nisi, placeat sint velit, vero
+    voluptas voluptate.</p></header>
 
-                </ul>
-            </nav>
-            <div id="id1" class="modal">
-                <form class="modal-content animate" action="#">
-                    <div class="imgcontainer">
-                    <span onclick="document.getElementById('id1').style.display='none'" class="close"
-                          title="Close modal">&times;</span>
-                        <img src="./imgini/user.png" alt="Avatar user" class="avatar">
-                    </div>
-                    <div class="container">
-                        <label for="name"><b>Username</b></label>
-                        <input type="text" placeholder="Introduceti utilizatorul" id="name" required>
-                        <label for="pws"><b>Parola</b></label>
-                        <input type="password" placeholder="Introduceti parola" id="pws" required>
-                        <button type="submit" id="logare">Logare</button>
-                        <div class="logincustom">
-                            <button type="submit" id="github">GitHub</button>
-                            <button type="submit" id="linkedln">Linkedln</button>
-                        </div>
 
-                        <label>
-                            <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
-                        </label>
-                    </div>
-                    <div class="container">
-                        <button type="button" onclick="document.getElementById('id1').style.display='none'"
-                                class="cancel_butron">
-                            Anuleaza
-                        </button>
-                        <span class="psw"></span>
-                    </div>
-                </form>
-            </div>
-            <div id="id2" class="modal">
-                <form class="modal-content animate" action="#">
-                    <div class="imgcontainer">
-                    <span onclick="document.getElementById('id2').style.display='none'" class="close"
-                          title="Close modal">&times;</span>
-                    </div>
-                    <div class="container">
-                        <label for="namec"><b>Alegeti un nume de utilizator</b></label>
-                        <input type="text" placeholder="Introduceti un nume de utilizator " id="namec" required>
-                        <label for="email"><b>Email</b></label>
-                        <input type="email" placeholder="Introduceti o adresa de email" id="email" required>
-                        <label for="pwsc"><b>Parola</b></label>
-                        <input type="password" placeholder="Introduceti o parola" id="pwsc" required>
-                        <label for="pwscr"><b>Confirma parola</b></label>
-                        <input type="password" placeholder="Introduceti parola din nou" id="pwscr" required>
-                        <label for="nameuser"><b>Nume</b></label>
-                        <label>
-                            <input type="text" id="nameuser" required>
-                        </label>
-                        <label for="prenumeuser"><b>Prenume</b></label>
-                        <label>
-                            <input type="text" id="prenumeuser" required>
-                        </label>
-                        <button type="submit" id="crearecont">Creaza cont</button>
-                    </div>
-                    <div class="container">
-                        <button type="button" onclick="document.getElementById('id2').style.display='none'"
-                                class="cancel_butron">
-                            Anuleaza
-                        </button>
-                        <span class="psw"></span>
-                    </div>
-                </form>
-            </div>
-        </header>
-    </div>
-</div>
 <div class="page">
-    <div class="submenu">
-        <table>
-            <tr>
-                <th>Setari</th>
-            </tr>
-            <tr>
-                <td>Date personale </td>
-            </tr>
-            <tr>
-                <td>Conectare</td>
-            </tr>
-            <tr>
-                <td>Preferinte</td>
-            </tr>
-            <tr>
-                <td>Istoric</td>
-            </tr>
-            <tr>
-                <td>Teste de cunostinte</td>
-            </tr>
-            <tr>
-                <td>Statistici</td>
-            </tr>
-        </table>
-        <div class="optionsubmenu" style="height: 200%;">
-           <div class="continut">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus blanditiis consectetur debitis eius eos fuga id inventore magnam maxime odit, provident quae quibusdam quisquam totam voluptates. Eaque odit perspiciatis recusandae!
-           </div>
+    <div class="menu" style="font-family: Karla">
+        <span class="button">Setari Cont</span>
+        <button class="buttonMenu" onclick="document.getElementById('setting1').style.display='block'"> Date personale </button>
+        <button class="buttonMenu" > Conectare</button>
+        <button class="buttonMenu" > Preferinte</button>
+        <button class="buttonMenu" > Istoric</button>
+        <button class="buttonMenu" > Teste</button>
+        <button class="buttonMenu" > Statistici</button>
+    </div>
+    <div class="page1">
+    <div class="setting" id="setting1">
+        <div class="ContulM">
+            <h2>Contul Meu</h2>
+        </div>
+        <div class="line">
+                <span>
+                    <label for="nameinput"><b>Nume</b></label>
+                <input type="text" placeholder="Filos" id="nameinput" required>
+                </span>
+            <span>
+                    <label for="lastnameinput"><b>Prenume</b></label>
+                    <input type="text" placeholder="Gabriel" id="lastnameinput" required>
+                </span>
+
+        </div>
+        <div class="line">
+                <span>
+                    <label for="email"><b>Email</b></label>
+                <input type="email" placeholder="filos@gmmmmmm.com" id="email" required>
+                </span>
+            <span>
+                    <label for="name"><b>Numa afisat</b></label>
+                    <input type="text" placeholder="Gabriel" id="name" required>
+                </span>
+
+        </div>
+
+        <div class="line descriere">
+            <span class="pereche">
+            <label for="descriere"><b>Descriere</b></label>
+                <form>
+                    <textarea>O descrierere...</textarea>
+                </form>
+            </span>
+
+
         </div>
     </div>
+    <div class="image">
+       <img src="imgini/user.png">
+        <p> Filos Gabriel</p>
+    </div>
+        <div class="page2">
+            <div class="setting2" id="setting2">
+                <div class="ContulM">
+                    <h2>Contul Meu</h2>
+                </div>
+                <div class="line">
+                <span>
+                    <label for="newpassword"><b>Parola noua</b></label>
+                <input type="password" placeholder="**************" id="newpassword" required>
+                </span>
+                    <span>
+                    <label for="confirmpasword"><b>Confirma parola</b></label>
+                    <input type="password" placeholder="**************" id="confirmpasword" required>
+                </span>
+
+                </div>
+                <div class="line">
+                <span>
+                    <label for="newemail"><b>Email nou</b></label>
+                <input type="email" placeholder="filos@gmmmmmm.com" id="newemail" required>
+                </span>
+                <span>
+                    <button type="button">Gitbub</button>
+                    <button type="button">Gitbub</button>
+                </span>
+
+                </div>
+
+                <div class="line descriere">
+            <span class="pereche">
+            <label for="descriere"><b>Descriere</b></label>
+                <form>
+                    <textarea>O descrierere...</textarea>
+                </form>
+            </span>
+
+
+                </div>
+            </div>
+            <div class="image">
+                <img src="imgini/user.png">
+                <p> Filos Gabriel</p>
+            </div>
+</div>
 </div>
 
 

@@ -106,3 +106,12 @@ html, body {
 #copyright{
     height: 12px;
 }
+
+.butontrimitere{
+    background-color: #FF0400;
+    border: 2px solid #FF0400;
+}
+.butontrimitere:hover{
+    background-color: #888888;
+    border: 2px solid #888888;
+}
