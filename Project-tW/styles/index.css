@@ -113,7 +113,7 @@ li{margin: 25px;}
     flex-direction: column;
     justify-content: center;
     min-height: 350px;
-    background: var(--main-purple-color) url("../imgini/intro1.jpg") no-repeat center / cover;
+    background: var(--main-purple-color) url("../images/intro1.jpg") no-repeat center / cover;
     background-blend-mode: unset ;
     color: var(--main-white-color);
     padding-bottom: 475px;
@@ -311,7 +311,7 @@ span.psw {
     min-height: 350px;
     padding-bottom: 484px;
     flex-grow: 1;
-    background: var(--main-purple-color) url("../imgini/github.png") no-repeat center / cover;
+    background: var(--main-purple-color) url("../images/github.png") no-repeat center / cover;
     background-blend-mode: unset ;
     color: var(--main-white-color);
 }
