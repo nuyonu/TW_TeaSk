@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link type="text/css" rel="stylesheet" href="styles/navbar.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
+
+</head>
+<body>
+
+<div class="containernav">
+    <header class="page-header">
+        <nav class="nav">
+            <ul class="topnav">
+
+                <li class="centertop" id="titlunav">Skill Enhancer</li>
+                <li class="link"><a href="index.html"> <i class="fas fa-home"></i>Acasa</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-calendar-week"></i>Evenimente</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-user-graduate"></i>Inbunatatire</a></li>
+                <li class="link"><a href="events.html"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-question-circle"></i>Suport</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-info-circle"></i>Despre</a></li>
+
+                <!--<li class="link">-->
+                <button class="butoane" id="login" onclick="document.getElementById('id1').style.display='block'">Logare</button>
+                <button class="butoane" id="sigin" onclick="document.getElementById('id2').style.display='block'">Creare</button>
+            </ul>
+        </nav>
+        <!--logare-->
+        <div id="id1" class="modal">
+            <!--<form class="modal-content animate" action="#">-->
+                <!--<div class="imgcontainer">-->
+                    <!--<span onclick="document.getElementById('id1').style.display='none'" class="close"-->
+                          <!--title="Close modal">&times;</span>-->
+                    <!--<img src="./imgini/user.png" alt="Avatar user" class="avatar">-->
+                <!--</div>-->
+                <!--<div class="container">-->
+                    <!--&lt;!&ndash;<label for="name"><b>Username</b></label>&ndash;&gt;-->
+                    <!--<label for="inp" class="inp">-->
+                        <!--<input type="text" id="inp" placeholder="&nbsp;">-->
+                        <!--<span class="label">Label</span>-->
+                        <!--<span class="border"></span>-->
+                    <!--</label>-->
+                    <!--<input type="text" placeholder="Username" id="name" required>-->
+                    <!--&lt;!&ndash;<label for="pws"><b>Parola</b></label>&ndash;&gt;-->
+                    <!--<input type="password" placeholder="Introduceti parola" id="pws" required>-->
+                    <!--<button type="submit" id="logare" class="buttonmodal">Logare</button>-->
+                    <!--<div class="logincustom">-->
+                        <!--<button type="submit" id="github" class="buttonmodal">GitHub</button>-->
+                        <!--<button type="submit" id="linkedln" class="buttonmodal">Linkedln</button>-->
+                    <!--</div>-->
+
+                    <!--<label>-->
+                        <!--<input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.-->
+                    <!--</label>-->
+                <!--</div>-->
+                <!--<div class="container">-->
+                    <!--<button type="button" onclick="document.getElementById('id1').style.display='none'"-->
+                            <!--class="buttonmodal">-->
+                        <!--Anuleaza-->
+                    <!--</button>-->
+                    <!--<span class="psw"></span>-->
+                <!--</div>-->
+            <!--</form>-->
+            <div class="wrapper">
+                <form>
+
+                    <div class="btn-box"><a class="btn btn-link" href="https://material.google.com/components/text-fields.html" target="_blank">Design Docs</a></div>
+                    <hr class="sep"/>
+                    <div class="group">
+                        <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                        <label>Name</label>
+                    </div>
+                    <div class="group">
+                        <input type="text" required="required"/><span class="highlight"></span><span class="bar"></span>
+                        <label>Email</label>
+                    </div>
+                    <div class="group">
+                        <input type="password" required="required"/><span class="highlight"></span><span class="bar"></span>
+                        <label>Password</label>
+                    </div>
+                    <div class="group">
+                        <input type="number" required="required"/><span class="highlight"></span><span class="bar"></span>
+                        <label>Number</label>
+                    </div>
+                    <div class="group">
+                        <textarea type="textarea" rows="5" required="required"></textarea><span class="highlight"></span><span class="bar"></span>
+                        <label>Message</label>
+                    </div>
+                    <div class="btn-box">
+                        <button class="btn btn-submit" type="submit">submit</button>
+                        <button class="btn btn-cancel" type="button">cancel</button>
+                        <h5>*these buttons do nothing <span class="emoji">&#x1F609;</span></h5>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+        <div id="id2" class="modal">
+            <form class="modal-content animate" action="#">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id2').style.display='none'" class="close"
+                          title="Close modal">&times;</span>
+                </div>
+                <div class="container">
+                    <label for="namec"><b>Alegeti un nume de utilizator</b></label>
+                    <input type="text" placeholder="Introduceti un nume de utilizator " id="namec" required>
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="Introduceti o adresa de email" id="email" required>
+                    <label for="pwsc"><b>Parola</b></label>
+                    <input type="password" placeholder="Introduceti o parola" id="pwsc" required>
+                    <label for="pwscr"><b>Confirma parola</b></label>
+                    <input type="password" placeholder="Introduceti parola din nou" id="pwscr" required>
+                    <label for="nameuser"><b>Nume</b></label>
+                    <label>
+                        <input type="text" id="nameuser" required>
+                    </label>
+                    <label for="prenumeuser"><b>Prenume</b></label>
+                    <label>
+                        <input type="text" id="prenumeuser" required>
+                    </label>
+                    <button type="submit" class="buttonmodal">Creaza cont</button>
+                </div>
+                <div class="container">
+                    <button type="button" onclick="document.getElementById('id2').style.display='none'"
+                            class="buttonmodal">
+                        Anuleaza
+                    </button>
+                    <span class="psw"></span>
+                </div>
+            </form>
+        </div>
+
+
+    </header>
+</div>
+<div class="body">
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam doloribus laudantium optio quibusdam ratione,
+        reprehenderit sint? Blanditiis consequatur cum, cumque, dolorem eveniet fugiat iste iure nobis porro qui quia
+        reprehenderit?</p>
+</div>
+
+
+</body>
+</html>
