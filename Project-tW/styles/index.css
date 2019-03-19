@@ -3,6 +3,7 @@
     --main-purple-color: black;
     --gray-color:#e8eeff;
     --blue-light: rgba(85,172,238 ,1);
+
 }
 a:link,a:visited,a:hover,a:active {
     text-decoration: none;
@@ -12,16 +13,19 @@ html{
     font-family: Lilita One;
     min-width: 700px;
 }
+
 .wrapper {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
+
 .wrapper > * {padding: 20px;}
 .page-main {
     flex-grow: 1;
     margin-bottom: 500px;
     margin-top: 80px;}
+
 body {
     display: flex;
     flex-direction: column;
@@ -29,6 +33,7 @@ body {
 header {
     background-color: var(--gray-color);
     padding: 2%;
+
     text-align: center;
     /*font-size: 1vw ;*/
     color: white;
@@ -36,6 +41,7 @@ header {
     z-index: 4;
     font-family: Lilita One;
 }
+
 li{margin: 25px;}
 @media all and (max-width: 600px) {
     header {flex-wrap: wrap;}
@@ -46,6 +52,7 @@ li{margin: 25px;}
     header > .topnav> li {flex-basis: 100%;}
     .centertop {order: 1;}
 }
+
 .topnav {
     display: flex;
     flex-direction:row;
@@ -57,15 +64,19 @@ li{margin: 25px;}
     box-shadow: 5px 10px 20px -20px rgba(85,172,238 ,1);
     font-size: 26px;
 }
+
 .topnav li {cursor: pointer;}
 .topnav li:hover{color:var(--blue-light)}
+
 .centertop {
     color: rgba(85,172,238 ,1);
     font-size: 1.3em;
     margin-top: 0;
 }
+
 .topnav li:not(:last-child):not(.centertop) {margin-right: 10px;}
 .topnav li  i:not(.fa-twitter):not(.fa-search):not(.fa-user-circle-o) {margin-right: 3px;}
+
 .topnav li > button {
     font-size: 0.8em;
     border: 0;
@@ -73,6 +84,7 @@ li{margin: 25px;}
     color: #fff;
     padding: 15px;
     margin-top: 0   ;
+
 }
 .centertop{
     margin-left: auto;
@@ -80,7 +92,9 @@ li{margin: 25px;}
     font-size: 3em;
 }
 
+
 .page-header {padding-top: 0;}
+
 
 .page-header nav {
     display: flex;
@@ -95,11 +109,13 @@ li{margin: 25px;}
     width: 100%;
     margin-top: 15px;
 }
+
 @media screen and (min-width: 550px) {
     .page-header ul {
         /*width: auto;*/
         margin-top: 0;
     }
+
 }
 
 @media all and (max-width: 600px) {
@@ -107,6 +123,7 @@ li{margin: 25px;}
     .centertop{display: none;}
     .topnav > li {flex-basis: 50%;}
 }
+
 
 .page-main {
     display: flex;
@@ -120,10 +137,12 @@ li{margin: 25px;}
     margin-bottom: 0;
 }
 
+
 .page-main div {max-width: 500px;}
 
 @media screen and (min-width: 768px) {
     .page-main {padding-left: 90px;}
+
 }
 
 .page-main>h1{
@@ -134,7 +153,9 @@ li{margin: 25px;}
     width: 45vw ;
     height: 6vw;
     min-height: 45px;
+
     min-width: 700px;
+
 }
 
 #submitbutton{
@@ -372,6 +393,7 @@ ul{
     width: 100%;
     height: 100px;
 }
+
 @media screen and (min-width: 800px){
 
     #butonMobil{
@@ -419,3 +441,4 @@ a:hover{
 a:link{
     color:gray;
 }
+
