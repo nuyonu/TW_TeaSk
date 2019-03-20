@@ -23,3 +23,18 @@ function openButtonForm(formName)
 
     clicked = !clicked;
 }
+
+var accordion = document.getElementsByClassName("button-more-details");
+var index;
+
+for (index = 0; index < accordion.length; index++) {
+    accordion[index].addEventListener("click", function () {
+        var panel = this.parentElement.parentElement.parentElement.nextElementSibling;
+
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
