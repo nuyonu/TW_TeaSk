@@ -15,8 +15,8 @@
 .container-main
 {
     font-family: 'Didact Gothic', sans-serif;
-    padding: 2%;
-    margin: 5%;
+    padding: 10px;
+    margin: 10px 40px;
 }
 
 .container-main h1
