@@ -4,6 +4,7 @@
     <meta name="author" content="Filos Gabriel">
     <meta charset="UTF-8">
     <title>Skill Enhancer</title>
+    <link rel="stylesheet" type="text/css" href="styles/navbar.css">
     <link rel="stylesheet" type="text/css" href="./styles/index.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -12,169 +13,179 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-<!--<!<div class="parentNavbar">-->
 
-<!--<div>-->
-<!--<header class="page-header">-->
-<!--<nav>-->
-<!--<ul class="topnav">-->
-<!--<li>-->
-<!--<span id="butonMobil" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>-->
-<!--</li>-->
-<!--<li class="link"><i class="fas fa-home"></i><a href="index.html">Acasa</a></li>-->
-<!--<li class="link"><a href="events.html"><i class="fas fa-calendar-week"></a></i>Evenimente</li>-->
-<!--<li class="link"><i class="fas fa-user-graduate"></i>Inbunatatire</li>-->
-<!--<li class="link"><i class="fas fa-mobile-alt"></i>Contact</li>-->
-<!--<li class="link"><i class="fas fa-question-circle"></i>Suport</li>-->
-<!--<li class="link"><i class="fas fa-info-circle"></i>Despre</li>-->
-<!--<li class="centertop link">Skill Enhancer</li>-->
-<!--<li class="link">-->
-<!--<button id="loginButton" onclick="document.getElementById('id1').style.display='block'"-->
-<!--style="width: auto;">Login-->
-<!--</button>-->
-<!--</li>-->
-<!--<li class="link">-->
-<!--<button id="signButton" onclick="document.getElementById('id2').style.display='block'"-->
-<!--style="width: auto;">Sign in-->
-<!--</button>-->
-<!--</li>-->
+<div class="containernav">
+    <header class="page-header">
+        <nav class="nav">
+            <ul class="topnav">
 
-<!--</ul>-->
-<!--</nav>-->
-<!--<div id="id1" class="modal">-->
-<!--<form class="modal-content animate" action="#">-->
-<!--<div class="imgcontainer">-->
-<!--<span onclick="document.getElementById('id1').style.display='none'" class="close"-->
-<!--title="Close modal">&times;</span>-->
-<!--<img src="./imgini/user.png" alt="Avatar user" class="avatar">-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--<label for="name"><b>Username</b></label>-->
-<!--<input type="text" placeholder="Introduceti utilizatorul" id="name" required>-->
-<!--<label for="pws"><b>Parola</b></label>-->
-<!--<input type="password" placeholder="Introduceti parola" id="pws" required>-->
-<!--<button type="submit" id="logare">Logare</button>-->
-<!--<div class="logincustom">-->
-<!--<button type="submit" id="github">GitHub</button>-->
-<!--<button type="submit" id="linkedln">Linkedln</button>-->
-<!--</div>-->
+                <li class="centertop" id="titlunav">Skill Enhancer</li>
+                <li class="link"><a href="index.html"> <i class="fas fa-home"></i>Acasa</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-calendar-week"></i>Evenimente</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-user-graduate"></i>Inbunatatire</a></li>
+                <li class="link"><a href="events.html"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-question-circle"></i>Suport</a></li>
+                <li class="link"><a href="events.html"><i class="fas fa-info-circle"></i>Despre</a></li>
 
-<!--<label>-->
-<!--<input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.-->
-<!--</label>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--<button type="button" onclick="document.getElementById('id1').style.display='none'"-->
-<!--class="cancel_butron">-->
-<!--Anuleaza-->
-<!--</button>-->
-<!--<span class="psw"></span>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--<div id="id2" class="modal">-->
-<!--<form class="modal-content animate" action="#">-->
-<!--<div class="imgcontainer">-->
-<!--<span onclick="document.getElementById('id2').style.display='none'" class="close"-->
-<!--title="Close modal">&times;</span>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--<label for="namec"><b>Alegeti un nume de utilizator</b></label>-->
-<!--<input type="text" placeholder="Introduceti un nume de utilizator " id="namec" required>-->
-<!--<label for="email"><b>Email</b></label>-->
-<!--<input type="email" placeholder="Introduceti o adresa de email" id="email" required>-->
-<!--<label for="pwsc"><b>Parola</b></label>-->
-<!--<input type="password" placeholder="Introduceti o parola" id="pwsc" required>-->
-<!--<label for="pwscr"><b>Confirma parola</b></label>-->
-<!--<input type="password" placeholder="Introduceti parola din nou" id="pwscr" required>-->
-<!--<label for="nameuser"><b>Nume</b></label>-->
-<!--<label>-->
-<!--<input type="text" id="nameuser" required>-->
-<!--</label>-->
-<!--<label for="prenumeuser"><b>Prenume</b></label>-->
-<!--<label>-->
-<!--<input type="text" id="prenumeuser" required>-->
-<!--</label>-->
-<!--<button type="submit" id="crearecont">Creaza cont</button>-->
-<!--</div>-->
-<!--<div class="container">-->
-<!--<button type="button" onclick="document.getElementById('id2').style.display='none'"-->
-<!--class="cancel_butron">-->
-<!--Anuleaza-->
-<!--</button>-->
-<!--<span class="psw"></span>-->
-<!--</div>-->
-<!--</form>-->
-<!--</div>-->
-<!--</header>-->
-<!--</div>-->
-<!--</div>-->
-<div class="linie " style="height:getHeight()">
-    <div class="title">
-        <div class="subtitle">
-            <span class="subtitle1">Don't be a stranger</span>
-            <span class="subtitle2">just say hello.</span>
+                <!--<li class="link">-->
+                <button class="butoane" id="login" onclick="document.getElementById('id1').style.display='block'">
+                    Logare
+                </button>
+                <button class="butoane" id="sigin" onclick="document.getElementById('id2').style.display='block'">
+                    Creare
+                </button>
+            </ul>
+        </nav>
+        <!--logare-->
+        <div id="id1" class="modal">
+            <form class="modal-content animate" action="#">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id1').style.display='none'" class="close"
+                          title="Close modal">&times;</span>
+                    <!--<img src="./images/user.png" alt="Avatar user" class="avatar">-->
+                </div>
+                <div class="container">
+                    <label for="name"><b>Username</b></label>
+                    <input type="text" placeholder="Username" id="name" class="inputcontainer" required>
+                    <label for="pws"><b>Parola</b></label>
+                    <input type="password" placeholder="Introduceti parola" id="pws" class="inputcontainer" required>
+                    <button type="submit" id="logare" class="buttonmodal">Logare</button>
+                    <div class="logincustom">
+                        <button type="submit" id="github" class="buttonmodal">GitHub</button>
+                        <button type="submit" id="linkedln" class="buttonmodal">Linkedln</button>
+                    </div>
+
+                    <label class="conectat">
+                        <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
+                        <div class="pretty p-icon p-smooth">
+                            <input type="checkbox"/>
+                            <div class="state p-success">
+                                <i class="icon fa fa-check"></i>
+                                <label>fa-check</label>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+                <div class="container">
+                    <button type="button" onclick="document.getElementById('id1').style.display='none'"
+                            class="buttonmodal">
+                        Anuleaza
+                    </button>
+                    <span class="psw"></span>
+                </div>
+            </form>
         </div>
-        <div class="descibe">
-            <div class="text">
-                <p>
-                    Feel free to get in touch with me. I am always open to discussing new projects, creative ideas or
-                    opportunities to be part of your visions.
-                </p>
-                <div class="help">
-                    <p>Ai nevoie de ajutor? </p>
-                    <span class="gmail">email@gmail.</span>
-                    <!--<p><email class="email">email@gmail.</email>com</p>-->
+        <div id="id2" class="modal">
+            <form class="modal-content animate" action="#">
+                <div class="imgcontainer">
+                    <span onclick="document.getElementById('id2').style.display='none'" class="close"
+                          title="Close modal">&times;&#215;</span>
                 </div>
-                <div class="help">
-                    <p>Simtete liber sa ne suni </p>
-                    <span class="gmail">072324424223</span>
+                <div class="container">
+                    <label for="namec"><b>Alegeti un nume de utilizator</b></label>
+                    <input type="text" placeholder="Introduceti  numele de utilizator " id="namec"
+                           class="inputcontainer" required>
+                    <label for="email"><b>Email</b></label>
+                    <input type="email" placeholder="username@domain.com" id="email" class="inputcontainer" required>
+                    <label for="pwsc"><b>Parola</b></label>
+                    <input type="password" placeholder="Introduceti o parola" id="pwsc" class="inputcontainer" required>
+                    <label for="pwscr"><b>Confirma parola</b></label>
+                    <input type="password" placeholder="Introduceti parola din nou" id="pwscr" class="inputcontainer"
+                           required>
+                    <label for="nameuser"><b>Nume</b></label>
+                    <label>
+                        <input type="text" id="nameuser" class="inputcontainer" placeholder="Introduceti numele"
+                               required>
+                    </label>
+                    <label for="prenumeuser"><b>Prenume</b></label>
+                    <label>
+                        <input type="text" id="prenumeuser" class="inputcontainer" placeholder="Introduceti prenumele"
+                               required>
+                    </label>
+                    <div class="butoanean">
+                        <button type="submit" class="buttonmodal">Creaza cont</button>
+                        <button type="button" onclick="document.getElementById('id2').style.display='none'"
+                                class="buttonmodal">
+                            Anuleaza
+                        </button>
+                    </div>
                 </div>
-            </div>
-            <div class="input">
-                <input type="text" placeholder="Numele" required>
-                <input type="text" placeholder="E-mail" required>
-                <input type="text" placeholder="Problema" id="namesend" required>
-                <input type="text" placeholder="Descrieti problema  " id="namesend" required>
-                <button type="button" name="Trimite" class="butontrimitere">Trimite</button>
-            </div>
-
+            </form>
         </div>
 
+
+    </header>
+</div>
+<div class="body">
+    <div class="linie " style="height:getHeight()">
+        <div class="title">
+            <div class="subtitle">
+                <span class="subtitle1">Don't be a stranger</span>
+                <span class="subtitle2">just say hello.</span>
+            </div>
+            <div class="descibe">
+                <div class="text">
+                    <p>
+                        Feel free to get in touch with me. I am always open to discussing new projects, creative ideas
+                        or
+                        opportunities to be part of your visions.
+                    </p>
+                    <div class="help">
+                        <p>Ai nevoie de ajutor? </p>
+                        <span class="gmail">email@gmail.</span>
+                        <!--<p><email class="email">email@gmail.</email>com</p>-->
+                    </div>
+                    <div class="help">
+                        <p>Simtete liber sa ne suni </p>
+                        <span class="gmail">072324424223</span>
+                    </div>
+                </div>
+                <div class="input">
+                    <input type="text" placeholder="Numele" class="contact" required>
+                    <input type="text" placeholder="E-mail" class="contact" required>
+                    <input type="text" placeholder="Problema" class="contact" id="namesend" required>
+                    <input type="text" placeholder="Descrieti problema  " class="contact" id="description" required>
+                    <button type="button" name="Trimite" class="butontrimitere"  id="okbutton">Trimite</button>
+                </div>
+
+            </div>
+
+
+        </div>
 
     </div>
+    <footer class="page-footer">
+
+        <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
+        <ul>
+            <li>
+                <a href="" target="_blank">
+                    <i class="fab fa-facebook-f" style="color: #888888"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank" style="color: #888888">
+                    <i class="fab fa-twitter"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="fab fa-linkedin" style="color: #888888"></i>
+                </a>
+            </li>
+            <li>
+                <a href="" target="_blank">
+                    <i class="fab fa-github" style="color: #888888"></i>
+                </a>
+            </li>
+        </ul>
+    </footer>
 </div>
 
-<footer class="page-footer">
-
-    <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
-    <ul>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-facebook-f" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank" style="color: #888888">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-linkedin" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-github" style="color: #888888"></i>
-            </a>
-        </li>
-    </ul>
-</footer>
-<script>
-    function getHeight() {
-        return screen.height;
-    }
-</script>
+<!--<script>-->
+    <!--function getHeight() {-->
+        <!--return window.innerWidth;-->
+    <!--}-->
+<!--</script>-->
 </body>
 </html>

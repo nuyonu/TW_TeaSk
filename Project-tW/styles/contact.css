@@ -4,14 +4,15 @@ html, body, .viewport {
     margin: 0;
 }
 html, body {
-    height: 100%;
+    height: 90%;
     background: #fff;
     font-weight: 400;
     letter-spacing: -0.4px;
     font-size: 17px;
     color: #333;
-    font-family: Karla;
+    font-family: Karla,sans-serif;
     font-size: 17px;
+
 }
 .linie{
     margin-top: 20vh;
@@ -19,8 +20,8 @@ html, body {
     display: flex;
     flex-direction: column;
     min-height: 350px;
-    height: 1000px;
-    /*background: var(--main-purple-color) url("../imgini/night.jpg") no-repeat center / cover;*/
+    height: 800px;
+    /*background: var(--main-purple-color) url("../images/night.jpg") no-repeat center / cover;*/
 }
 
 .subtitle{
@@ -29,9 +30,9 @@ html, body {
 }
 
 .subtitle1{
-    color: #FF0400;
+    color: #4286f4;
     font-size: 2.6em;
-    font-family: 'Karla';
+    font-family: 'Karla',sans-serif;
     font-weight: 700;
     letter-spacing: -1.4px;
     margin: 0;
@@ -46,7 +47,7 @@ html, body {
     letter-spacing: -1.4px;
 }
 .title{
-    ont-weight: 700;
+    font-weight: 700;
     letter-spacing: -1.4px;
     color: #333;
 
@@ -61,7 +62,7 @@ html, body {
     color: #888;
     line-height: 1.7em;
     vertical-align: text-top;
-    font-family: Karla;
+    font-family: Karla,sans-serif;
     /* height: 100%; */
     background: #fff;
     font-weight: 400;
@@ -89,7 +90,7 @@ html, body {
 }
 .help>p{
     font-size: 1em;
-    font-family: Karla;
+    font-family: Karla,sans-serif;
     color: #888;
     line-height: 1.7em;
     font-weight: 400;
@@ -108,10 +109,23 @@ html, body {
 }
 
 .butontrimitere{
-    background-color: #FF0400;
-    border: 2px solid #FF0400;
+    background-color: #4286f4;
+    border: 2px solid #4286f4;
+    font-size: 39px;
 }
 .butontrimitere:hover{
-    background-color: #888888;
-    border: 2px solid #888888;
+    background-color: #4286f4;
+    border: 2px solid #4286f4;
+}
+
+#okbuttonk{
+    width: 109px;
+    font-size: 66px ;
+    background-color: #FF0400;
+    border: 2px solid #FF0400;
+    /*font-size: 39px;*/
+}
+
+.subtitle1{
+    color: #4286f4;
 }

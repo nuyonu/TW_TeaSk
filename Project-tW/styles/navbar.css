@@ -22,7 +22,7 @@ header {
     height: 75px;
     /*border-bottom: 1px solid gray;*/
     -webkit-box-shadow:0 1px 1px gray;
-    -moz-box-shadow:0 1px 1px #gray;
+    /*-moz-box-shadow:0 1px 1px #gray;*/
     box-shadow:0 2px 2px gray;
 }
 
@@ -374,14 +374,102 @@ input[type=text], input[type=password], input[type=email] {
 }
 
 .buttonmodal{
-    background-color: #4286f4;
-    color: white;
+    /*background-color: #4286f4;*/
+    background-color: transparent;
+    border: 2px solid gray;
+    color: gray;
     padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
+    /*margin: 8px 0;*/
+    /*border: none;*/
     cursor: pointer;
-    width: 3cm;
+    width: 4cm;
+    font-size: 23px;
+    margin-right: 23px;
+
 }
+.inputcontainer:focus{
+    border: 2px solid #2196F3;
+    color: #2196F3;
+}
+.inputcontainer:disabled{
+    color: #2759AE;
+}
+.buttonmodal:focus{
+    border: 3px solid #2196F3;
+    color: #2196F3;
+}
+
 .buttonmodal:hover{
     opacity: 0.8;
+    font-size: 23px;
+
+}
+
+.inputcontainer{
+    /*background-color: black;*/
+    background-color: transparent;;
+    /*opacity: 0.5%;*/
+    font-size: 23px;
+    border: none;
+    outline: none;
+    color: white;
+}
+.container>label{
+    color:gray;
+    font-size:23px;
+}
+
+.butoanean{
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+}
+.modal-content{
+    margin-bottom: 90px;
+}
+
+.logincustom{
+    margin-top: 25px;
+}
+#logare{
+    margin-top: 25px;
+}
+.conectat{
+
+}
+
+.page-footer {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 0;
+    border-top:0 ;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.page-footer ul {
+    display: flex;
+    font-size: 1.5rem;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    /*left: 10;*/
+}
+.page-footer>ul>li{
+    margin-right: 30px;
+}
+
+@media screen and (min-width: 550px) {
+    .page-footer {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .page-footer ul {
+        margin-bottom: 0;
+    }
+}
+
+#copyright{
+    font-size: 23px ;
 }
