@@ -1,0 +1,266 @@
+.container-main h1
+{
+    text-align: center;
+    padding: 10px;
+    font-size: 45px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    background-color: #99ccff;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.container-main p
+{
+    font-family: 'Didact Gothic', sans-serif;
+    text-align: center;
+    padding: 2%;
+    font-size: 20px;
+}
+
+.container-trainings
+{
+    align-items: center;
+    align-content: stretch;
+    width: 50%;
+    align-self: flex-end;
+}
+
+.container-trainings h2
+{
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.trainings-recent h2
+{
+    background-color: #5aa8fb;
+}
+
+.trainings-near h2
+{
+    background-color: #003f5e;
+    color: white;
+}
+
+.trainings-near p
+{
+    color: white;
+}
+
+.trainings-ratings h2
+{
+    background-color: #007460;
+}
+
+.trainings-price h2
+{
+    background-color: #10b0ff;
+}
+
+.training p
+{
+    margin: 3px 0px 3px 0px;
+    padding: 2px 0px 2px 0px;
+}
+
+.training
+{
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    border-radius: 0 0 10% 10%;
+    text-align: center;
+    font-family: 'Didact Gothic', sans-serif;
+
+    justify-content: space-around;
+    align-content: stretch;
+
+    margin: 25px;
+}
+
+.training-location
+{
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 22px;
+}
+
+.training-date
+{
+    font-family: 'Inconsolata', monospace;
+    font-size: 22px;
+}
+
+.training-domain
+{
+    font-size: 18px;
+}
+
+.training-specifications
+{
+    font-size: 18px;
+}
+
+.training-ratings-picture
+{
+    width: 50%;
+    margin: 10px auto 10px auto;
+}
+
+.training-difficulty
+{
+    font-size: 18px;
+}
+
+.training-price
+{
+    font-size: 24px;
+}
+
+.training-more-picture
+{
+    box-shadow: 0 0 0 0 rgba(0, 0, 0.5, 0.2), 0 5px 5px 0 rgba(0, 0, 0.3, 0.6);
+    border-radius: 75%;
+    height: 15px;
+    width: 15px;
+    margin: 5px auto 10px auto;
+    padding: 5px;
+}
+
+.trainings-recent .training-location
+{
+    background-color: #5aa8fb;
+}
+
+.trainings-recent .training-date
+{
+    background-color: #6db2fb;
+}
+
+.trainings-recent .training-domain
+{
+    background-color: #80bcfc;
+}
+
+.trainings-recent .training-specifications
+{
+    background-color: #93c6fc;
+}
+
+.trainings-recent .training-difficulty
+{
+    background-color: #a7d0fd;
+}
+
+.trainings-recent .training-price
+{
+    background-color: #badafd;
+}
+
+.trainings-near .training-location
+{
+    background-color: #003f5e;
+}
+
+.trainings-near .training-date
+{
+    background-color: #004c72;
+}
+
+.trainings-near .training-domain
+{
+    background-color: #005985;
+}
+
+.trainings-near .training-specifications
+{
+    background-color: #006699;
+}
+
+.trainings-near .training-difficulty
+{
+    background-color: #0074ac;
+}
+
+.trainings-near .training-price
+{
+    background-color: #0081c0;
+}
+
+.trainings-ratings .training-location
+{
+    background-color: #007460;
+}
+
+.trainings-ratings .training-date
+{
+    background-color: #008870;
+}
+
+.trainings-ratings .training-domain
+{
+    background-color: #009b80;
+}
+
+.trainings-ratings .training-specifications
+{
+    background-color: #00af91;
+}
+
+.trainings-ratings .training-difficulty
+{
+    background-color: #00c2a1;
+}
+
+.trainings-ratings .training-price
+{
+    background-color: #00d6b1;
+}
+
+.trainings-price .training-location
+{
+    background-color: #10b0ff;
+}
+
+.trainings-price .training-date
+{
+    background-color: #24b6ff;
+}
+
+.trainings-price .training-domain
+{
+    background-color: #37bdff;
+}
+
+.trainings-price .training-specifications
+{
+    background-color: #4bc3ff;
+}
+
+.trainings-price .training-difficulty
+{
+    background-color: #5ecaff;
+}
+
+.trainings-price .training-price
+{
+    background-color: #72d0ff;
+}
+
+.container-main
+{
+    margin: 5%;
+}
+
+.container-col-flex
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-row-flex
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}

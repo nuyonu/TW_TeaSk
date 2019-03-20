@@ -3,53 +3,56 @@ html, body, .viewport {
     height: 100%;
     margin: 0;
 }
-.page{
+.body{
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.page {
     display: flex;
     flex-direction: row;
     /*margin-top: 100px;*/
     height: 100%;
 }
 
-header{
-    height: 25px;
-    margin-top: 0;
-    background-color: #8f8686;
-}
-.menu{
+
+.menu {
     display: flex;
     flex-direction: column;
     font-size: 34px;
     margin-left: 0;
     /*padding-left: 4%;*/
     /*padding-right: 14%;*/
-    background-color: #f8f8f8;
+    background-color: #2196F3;
     height: 100%;
 
     /*padding-left: 6%;*/
-    font-family: Karla;
-
-
+    font-family: Karla, sans-serif;
 }
-.button{
+
+
+.button {
     width: 200%;
     margin-top: 40px;
     /*margin: 6%;*/
     margin-left: 30%;
     margin-bottom: 14%;
 
-    font-family: Karla;
+    font-family: Karla, sans-serif;
     /*display: inline;*/
 }
-.setting{
+
+.setting {
     width: 100%;
 }
 
-.ContulM>h2{
-    margin: 6%;
-    margin-left: 12%;
-    font-size: 3vw  ;
+.ContulM > h2 {
+    margin: 6% 6% 6% 12%;
+    font-size: 3vw;
 }
-.line{
+
+.line {
     display: flex;
     flex-direction: row;
     margin-left: 12%;
@@ -67,67 +70,211 @@ textarea {
     font-size: 16px;
     resize: none;
 }
-.line>span{
+
+.line > span {
     /*margin-left: 13%;*/
     width: 45%;
     margin-top: 3%;
 }
-.pereche{
+
+.pereche {
     width: 100%;
 }
-input{
+
+input {
     width: 14%;
 }
 
-.descriere{
+.descriere {
     width: 100%;
-    height: 40% ;
+    height: 40%;
 }
 
 
-.button{
+.button {
     /*width: 100%;*/
 }
 
-.buttonMenu{
-    margin-right: 200px;
-    /*padding-right: 100px;*/
-    margin-top: 0;
-    margin-bottom: 0;
+.buttonMenu {
     width: 100%;
     /*width: 200%;*/
     /*margin-top: 40px;*/
     /*margin: 6%;*/
     /*margin-left: 45%;*/
-    font-family: Karla;
+    font-family: Karla, sans-serif;
     font-size: 30px;
-    background-color: #f8f8f8;
-    color: #8f8686  ;
+    background-color: #2196F3;
+    color: white;
+    padding: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
+    border: 0;
+    margin-right: 100px;
 
 }
-.buttonMenu:hover{
-    background-color: #FF0400;
+
+.buttonMenu:hover {
+    background-color: #288efa;
     color: #cccccc;
 }
-.buttonMenu:active{
-    background-color: #FF0400;
+
+.buttonMenu:active {
+    background-color: #288efa;
 }
-.buttonMenu:target{
-    background-color: #FF0400;
+
+.buttonMenu:target {
+    background-color: #288efa;
 }
-.image{
+
+.image {
     display: flex;
     flex-direction: column;
     margin: 10%;
     font-size: 25px;
     text-align: center;
 }
-.page1{
+
+.page1 {
     display: flex;
     flex-direction: row;
     width: 100%;
 
 }
-#setting1{
 
+
+
+.buttoncontact {
+    /*background-color: #4286f4;*/
+    color: white;
+    margin: 70px;
+    padding: 20px 40px;
+    border: none;
+    background: #2196F3;
+    cursor: pointer;
+    width: 5cm;
+    font-size: 40px;
+    text-align: center;
+
+}
+
+input[type=text], input[type=password], input[type=email] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #cccccc;
+    box-sizing: border-box;
+}
+
+#datecontact,#preferinte{
+    display: none;
+}
+
+.logare,.savebutton {
+    color: white;
+    background-color: #5aa8fb;
+    border: 2px solid #5aa8fb;
+    font-size: 20px;
+    padding: 7px;}
+
+
+
+
+/*checkbox*/
+
+.containercheck {
+     display: block;
+     position: relative;
+     padding-left: 35px;
+     margin-bottom: 12px;
+     cursor: pointer;
+     font-size: 22px;
+     -webkit-user-select: none;
+     -moz-user-select: none;
+     -ms-user-select: none;
+     user-select: none;
+ }
+
+/* Hide the browser's default checkbox */
+.containercheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.containercheck:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.containercheck input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.containercheck input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.containercheck .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.labels{
+    font-size: 29px;
+}
+#teste{
+    display: none;
+}
+
+.imageaccount{
+    border-radius: 100%;
+}
+.descriere{
+    color: #888888;
+    font-size: 23px;
+}
+.descriere:focus{
+    border: 2px solid #2196F3;
+    color: #2196F3;
+}
+.descriere:disabled{
+    color: #2759AE;
+}
+
+.containerinput:disabled{
+    color: #2759AE;
+}
+
+.containerinput{
+    color: #888888;
 }
