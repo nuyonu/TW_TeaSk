@@ -3,7 +3,9 @@
     --main-purple-color: black;
     --gray-color:#e8eeff;
     --blue-light: rgba(85,172,238 ,1);
+
 }
+
 
 .page-main {
     display: flex;
@@ -17,10 +19,12 @@
     margin-bottom: 0;
 }
 
+
 .page-main div {max-width: 500px;}
 
 @media screen and (min-width: 768px) {
     .page-main {padding-left: 90px;}
+
 }
 
 .perecheindex>h1{
@@ -35,6 +39,7 @@
     min-height: 45px;
     margin-top: 0;
     min-width: 700px;
+
 }
 .perecheindex>p{
     color: white;
@@ -105,5 +110,4 @@
 .id2{
     padding-left: 55%;
 }
-
 
