@@ -1,3 +1,24 @@
+.container-col-flex
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-row-flex
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-main
+{
+    font-family: 'Didact Gothic', sans-serif;
+    padding: 2%;
+    margin: 5%;
+}
+
 .container-main h1
 {
     text-align: center;
@@ -8,29 +29,130 @@
     font-family: 'Montserrat Alternates', sans-serif;
 }
 
-.container-main p
-{
-    font-family: 'Didact Gothic', sans-serif;
-    text-align: center;
-    padding: 2%;
-    font-size: 20px;
-}
-
-.container-trainings
-{
-    align-items: center;
-    align-content: stretch;
-    width: 50%;
-    align-self: flex-end;
-}
-
-.container-trainings h2
+.container-main h2
 {
     text-align: center;
     padding: 10px;
     font-size: 25px;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
     font-family: 'Montserrat Alternates', sans-serif;
+    margin: 15px;
+}
+
+.container-details
+{
+    width: 49%;
+}
+
+.container-trainings
+{
+    width: 50%;
+}
+
+.vertical-line
+{
+    width: 1px;
+    background-color: black;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.4), 0 6px 20px 0 rgba(0, 0, 0.5, 0.5);
+    height: 100%;
+}
+
+.filter-form
+{
+    text-align: left;
+    padding: 10px;
+    margin: 40px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    border-radius: 0 0 10% 10%;
+    padding: 20px;
+    background-color: #f7fcff;
+}
+
+.filter-form input[type=text]
+{
+    margin: auto 5px 12px 6px;
+    width: 50%;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 16px;
+}
+
+.filter-form input[type=date]
+{
+    margin: auto 5px 12px 6px;
+    width: 50%;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 16px;
+}
+
+.filter-form input[name="min-price"]
+{
+    width: 15%;
+}
+
+.filter-form input[name="max-price"]
+{
+    width: 15%;
+}
+
+.filter-form input[type="radio"]
+{
+    background-color: blue;
+}
+
+.filter-form input[type=submit]
+{
+    width: 150px;
+    height: 50px;
+    font-size: 24px;
+    background-color: #5aa8fb;
+    border: 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    font-family: 'Didact Gothic', sans-serif;
+    margin: 5px;
+}
+
+.filter-buttons
+{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.trainings-list ul
+{
+    margin: 15px;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+}
+
+.trainings-list img
+{
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border-radius: 50%;
+}
+
+.trainings-list li
+{
+    display: inline;
+    background-image:  url("../images/arrow1.png");
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    padding-left: 1.2em;
+}
+
+.trainings-near
+{
+    color: white;
+}
+
+.training-name
+{
+    color: black;
+    font-size: 25px;
+    font-style: italic;
 }
 
 .trainings-recent h2
@@ -41,11 +163,6 @@
 .trainings-near h2
 {
     background-color: #003f5e;
-    color: white;
-}
-
-.trainings-near p
-{
     color: white;
 }
 
@@ -244,23 +361,4 @@
 .trainings-price .training-price
 {
     background-color: #72d0ff;
-}
-
-.container-main
-{
-    margin: 5%;
-}
-
-.container-col-flex
-{
-    display: flex;
-    flex-direction: column;
-}
-
-.container-row-flex
-{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
 }
