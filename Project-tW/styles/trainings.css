@@ -193,6 +193,14 @@
     align-content: stretch;
 
     margin: 25px;
+    height: 87%;
+
+    transition: all 0.5s;
+}
+
+.training:hover
+{
+    height: 92%;
 }
 
 .training-location
