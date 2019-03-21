@@ -1,0 +1,77 @@
+.container-main
+{
+    font-family: 'Montserrat Alternates', sans-serif;
+    padding: 10px;
+    margin: 10px 40px;
+}
+
+.container-main p
+{
+    font-family: 'Didact Gothic', sans-serif;
+}
+
+.container-main li
+{
+    font-family: 'Patrick Hand', cursive;
+}
+
+.container-main h4
+{
+    font-family: 'Annie Use Your Telescope', cursive;
+    font-size: 50px;
+    text-align: center;
+}
+
+.container-col-flex
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-col-flex h1
+{
+    text-align: center;
+    padding: 10px;
+    font-size: 45px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    background-color: #99ccff;
+}
+
+.container-col-flex h2
+{
+    text-align: left;
+    padding: 1%;
+    font-size: 25px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    background-color: #99ccff;
+}
+
+.container-row-flex
+{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: space-evenly;
+    justify-content: space-evenly;
+}
+
+.container-row-flex p
+{
+    text-align: center;
+    padding: 2%;
+    font-size: 20px;
+}
+
+.container-row-flex li
+{
+    text-align: left;
+    font-size: 24px;
+}
+
+.container-row-flex img
+{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    width: 240px;
+    height: 240px;
+    padding: 2%;
+}
