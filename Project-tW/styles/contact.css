@@ -153,10 +153,6 @@ footer{
     z-index: 666;
 }
 
-.page-footer>ul{
-    list-style-type: none;
-}
-
 input[type=text], input[type=password], input[type=email] {
     width: 100%;
     padding: 12px 20px;

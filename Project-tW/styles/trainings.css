@@ -60,7 +60,6 @@
 .filter-form
 {
     text-align: left;
-    padding: 10px;
     margin: 40px;
     box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
     border-radius: 0 0 10% 10%;
@@ -230,8 +229,8 @@
 
 .training p
 {
-    margin: 3px 0 3px 0px;
-    padding: 2px 0px 2px 0px;
+    margin: 3px 0 3px 0;
+    padding: 2px 0 2px 0;
 }
 
 .training

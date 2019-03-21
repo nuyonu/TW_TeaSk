@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Patrick+Hand|Montserrat+Alternates|Annie+Use+Your+Telescope"
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./styles/suport.css">
+    <link rel="stylesheet" type="text/css" href="./styles/footer.css">
     <script src="scripts/navbar.js"></script>
 </head>
 <body>
@@ -18,7 +19,8 @@
 
     <div id="suport-help">
         <p>
-            În această pagină veți găsi întrebări frecvente primite de la utilizatorii Skill Enhancer! Dacă ai o
+            În această pagină veți găsi întrebări frecvente primite de la utilizatorii <a href="index.html">Skill
+            Enhancer</a>! Dacă ai o
             intrebare căreia nu-i găsești
             răspunsul mai jos, ne poți contacta <a href="contact.html">aici</a> și îți vom răspunde în cel mai scurt
             timp posibil!
@@ -67,17 +69,19 @@
     <button class="button-display-answer">Unde se desfășoară training-urile/evenimentele?</button>
     <div class="question-answer">
         <p>
-            În general aceste informații le puteți afla din descrierea unui training/eveniment, din confirmarea
-            primită pentru viitoarea participare la unul din evenimente/traing-uri sau puteți întreba pe cel care se
-            ocupă cu organizarea respectivului training/eveniment.
+            În general aceste informații le puteți afla din descrierea unui training/eveniment apăsând butonul "Mai
+            multe detalii", din confirmarea primită pentru viitoarea participare la unul din evenimente/training-uri sau
+            puteți întreba pe cel care se ocupă cu organizarea respectivului training/eveniment.
         </p>
     </div>
 
-    <button class="button-display-answer">De unde cât timp durează un training/eveniment?</button>
+    <button class="button-display-answer">De știu unde cât timp durează un training/eveniment?</button>
     <div class="question-answer">
         <p>
             Durata training-ului/evenimentului este oferită atunci când îți alegi la ce doresți să participi.
-            Fiecare eveniment/training are o dată de început și o dată de sfârșit.
+            Fiecare eveniment/training are o dată de început și o dată de sfârșit ce sunt afișate pe pagina de
+            evenimente/training-uri. în cazul în care evenimentul/training-ul nu are o dată de sfârșit atunci este
+            posibil ca aceste informații să vă fie oferite la participare.
         </p>
     </div>
 
@@ -87,7 +91,9 @@
         <p>
             Noi nu ne ocupăm de prețul pentru participare. Pe site-ul nostru pot apărea și training-uri/evenimente
             cu plată și fără plată. Tariful este pus de către cei care organizează evenimentul/training-ul.
-            Organizatorii sunt obligați să anunțe dacă evenimentul are un tarif de paricipare.
+            Organizatorii sunt obligați să anunțe dacă evenimentul are un tarif de paricipare. Acest tarif este afișat
+            în detaliile fiecărui eveniment/training. În cazul în care nu este specificat niciun tarif, puteți să ne
+            contacați <a href="contact.html">aici</a>.
         </p>
     </div>
 
@@ -98,15 +104,17 @@
         <p>
             Da, există posibilitatea ca data desfășurării unui anumit training/eveniment să se amâne! Vei fi
             informat în timp util despre orice modificare care intervine. În [INSERT_HERE_TERMENI_SI_CONDITII] vei
-            gasi mai multe detalii despre acest lucru.
+            găsi mai multe detalii despre acest lucru. În cazul în care apar nelămuriri, suportul nostru este disponibil
+            oricând <a href="contact.html">aici</a>.
         </p>
     </div>
 
     <button class="button-display-answer">Dacă am pierdut parola, cum o pot recupera?</button>
     <div class="question-answer">
         <p>
-            Accesează pagina de resetare parolă[INSERT_HERE_RESET_PASSWORD] și completează adresa de email cu care
-            te-ai înregistrat pe Skill Enhancer. Apasă pe butonul Resetează parola.
+            Accesează pagina de resetare parolă [INSERT_HERE_RESET_PASSWORD] și completează adresa de e-mail cu care
+            te-ai înregistrat pe Skill Enhancer. Apasă pe butonul "Resetează parola". Dacă adresa de e-mail nu mai este
+            validă, staff-ul vă poate ajuta să recuperați parola.
         </p>
     </div>
 
@@ -126,10 +134,10 @@
             avem nevoie de un profil pentru a putea face recomandări.
         </p>
         <p>
-            Pentru evenimente este suficient să accesați <a href="events.html">pagina de evenimente</a>.
+            Pentru evenimente este suficient să accesați <a href="events.html">pagina de evenimente</a> și să cauți un eveniment pe placul tău.
         </p>
         <p>
-            Pentru training-uri este suficient să accesați <a href="trainings.html">pagina de training-uri</a>.
+            Pentru training-uri este suficient să accesați <a href="trainings.html">pagina de training-uri</a> și să cauți un training pe placul tău.
         </p>
     </div>
 
@@ -142,27 +150,37 @@
             sunt luate de pe conturile legate la site-ul nostru sau direct din profilul completat de utilzator.
             Recomandările sunt făcute pe baza acestui profil unic. Există cazuri în care unele recomandări sunt
             făcute cu scopul de a ajuta utilizatorul să se dezvolte, astfel îî sunt sugerate evenimente care l-ar
-            putea ajuta.
+            putea ajuta. În general nu sunt evenimente care sunt total opuse preferințelor utilizatorului.
         </p>
     </div>
     <hr class="customHr"/>
 </div>
+<footer class="page-footer">
 
-<script>
-    var accordion = document.getElementsByClassName("button-display-answer");
-    var index;
-
-    for (index = 0; index < accordion.length; index++) {
-        accordion[index].addEventListener("click", function () {
-            this.classList.toggle("activeButton");
-            var panel = this.nextElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-            } else {
-                panel.style.display = "block";
-            }
-        });
-    }
-</script>
+    <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
+    <ul>
+        <li>
+            <a href="" target="_blank">
+                <i class="fab fa-facebook-f" style="color: #888888"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank" style="color: #888888">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank">
+                <i class="fab fa-linkedin" style="color: #888888"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank">
+                <i class="fab fa-github" style="color: #888888"></i>
+            </a>
+        </li>
+    </ul>
+</footer>
 </body>
+<script type="text/javascript" src="scripts/suport.js" async></script>
 </html>
