@@ -1,0 +1,372 @@
+.container-col-flex
+{
+    display: flex;
+    flex-direction: column;
+}
+
+.container-row-flex
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container-main
+{
+    font-family: 'Didact Gothic', sans-serif;
+    padding: 10px;
+    margin: 10px 40px;
+}
+
+.container-main h1
+{
+    text-align: center;
+    padding: 10px;
+    font-size: 45px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    background-color: #99ccff;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.container-main h2
+{
+    text-align: center;
+    padding: 10px;
+    font-size: 25px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    font-family: 'Montserrat Alternates', sans-serif;
+    margin: 15px;
+}
+
+.container-details
+{
+    width: 49%;
+}
+
+.container-trainings
+{
+    width: 50%;
+}
+
+.vertical-line
+{
+    width: 1px;
+    background-color: black;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.4), 0 6px 20px 0 rgba(0, 0, 0.5, 0.5);
+    height: 100%;
+}
+
+.filter-form
+{
+    text-align: left;
+    padding: 10px;
+    margin: 40px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    border-radius: 0 0 10% 10%;
+    padding: 20px;
+    background-color: #f7fcff;
+}
+
+.filter-form input[type=text]
+{
+    margin: auto 5px 12px 6px;
+    width: 50%;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 16px;
+}
+
+.filter-form input[type=date]
+{
+    margin: auto 5px 12px 6px;
+    width: 50%;
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 16px;
+}
+
+.filter-form input[name="min-price"]
+{
+    width: 15%;
+}
+
+.filter-form input[name="max-price"]
+{
+    width: 15%;
+}
+
+.filter-form input[type="radio"]
+{
+    background-color: blue;
+}
+
+.filter-form input[type=submit]
+{
+    width: 150px;
+    height: 50px;
+    font-size: 24px;
+    background-color: #5aa8fb;
+    border: 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    font-family: 'Didact Gothic', sans-serif;
+    margin: 5px;
+}
+
+.filter-buttons
+{
+    margin-top: 15px;
+    text-align: center;
+}
+
+.trainings-list ul
+{
+    margin: 15px;
+    padding: 0;
+    list-style-type: none;
+    text-align: center;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+}
+
+.trainings-list img
+{
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border-radius: 50%;
+}
+
+.trainings-list li
+{
+    display: inline;
+    background-image:  url("../images/arrow1.png");
+    background-repeat: no-repeat;
+    background-position: 0 bottom;
+    padding-left: 1.2em;
+}
+
+.trainings-near
+{
+    color: white;
+}
+
+.training-name
+{
+    color: black;
+    font-size: 25px;
+    font-style: italic;
+}
+
+.trainings-recent h2
+{
+    background-color: #5aa8fb;
+}
+
+.trainings-near h2
+{
+    background-color: #003f5e;
+    color: white;
+}
+
+.trainings-ratings h2
+{
+    background-color: #007460;
+}
+
+.trainings-price h2
+{
+    background-color: #10b0ff;
+}
+
+.training p
+{
+    margin: 3px 0 3px 0px;
+    padding: 2px 0px 2px 0px;
+}
+
+.training
+{
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    border-radius: 0 0 10% 10%;
+    text-align: center;
+    font-family: 'Didact Gothic', sans-serif;
+
+    justify-content: space-around;
+    align-content: stretch;
+
+    margin: 25px;
+    height: 87%;
+
+    transition: all 0.5s;
+}
+
+.training:hover
+{
+    height: 92%;
+}
+
+.training-location
+{
+    font-family: 'Didact Gothic', sans-serif;
+    font-size: 22px;
+}
+
+.training-date
+{
+    font-family: 'Inconsolata', monospace;
+    font-size: 22px;
+}
+
+.training-domain
+{
+    font-size: 18px;
+}
+
+.training-specifications
+{
+    font-size: 18px;
+}
+
+.training-ratings-picture
+{
+    width: 50%;
+    margin: 10px auto 10px auto;
+}
+
+.training-difficulty
+{
+    font-size: 18px;
+}
+
+.training-price
+{
+    font-size: 24px;
+}
+
+.training-more-picture
+{
+    box-shadow: 0 0 0 0 rgba(0, 0, 0.5, 0.2), 0 5px 5px 0 rgba(0, 0, 0.3, 0.6);
+    border-radius: 75%;
+    height: 15px;
+    width: 15px;
+    margin: 5px auto 10px auto;
+    padding: 5px;
+}
+
+.trainings-recent .training-location
+{
+    background-color: #5aa8fb;
+}
+
+.trainings-recent .training-date
+{
+    background-color: #6db2fb;
+}
+
+.trainings-recent .training-domain
+{
+    background-color: #80bcfc;
+}
+
+.trainings-recent .training-specifications
+{
+    background-color: #93c6fc;
+}
+
+.trainings-recent .training-difficulty
+{
+    background-color: #a7d0fd;
+}
+
+.trainings-recent .training-price
+{
+    background-color: #badafd;
+}
+
+.trainings-near .training-location
+{
+    background-color: #003f5e;
+}
+
+.trainings-near .training-date
+{
+    background-color: #004c72;
+}
+
+.trainings-near .training-domain
+{
+    background-color: #005985;
+}
+
+.trainings-near .training-specifications
+{
+    background-color: #006699;
+}
+
+.trainings-near .training-difficulty
+{
+    background-color: #0074ac;
+}
+
+.trainings-near .training-price
+{
+    background-color: #0081c0;
+}
+
+.trainings-ratings .training-location
+{
+    background-color: #007460;
+}
+
+.trainings-ratings .training-date
+{
+    background-color: #008870;
+}
+
+.trainings-ratings .training-domain
+{
+    background-color: #009b80;
+}
+
+.trainings-ratings .training-specifications
+{
+    background-color: #00af91;
+}
+
+.trainings-ratings .training-difficulty
+{
+    background-color: #00c2a1;
+}
+
+.trainings-ratings .training-price
+{
+    background-color: #00d6b1;
+}
+
+.trainings-price .training-location
+{
+    background-color: #10b0ff;
+}
+
+.trainings-price .training-date
+{
+    background-color: #24b6ff;
+}
+
+.trainings-price .training-domain
+{
+    background-color: #37bdff;
+}
+
+.trainings-price .training-specifications
+{
+    background-color: #4bc3ff;
+}
+
+.trainings-price .training-difficulty
+{
+    background-color: #5ecaff;
+}
+
+.trainings-price .training-price
+{
+    background-color: #72d0ff;
+}
