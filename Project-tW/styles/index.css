@@ -39,22 +39,16 @@ display: flex;
     width: 100%;
 
 }
-:root {
-    --main-white-color: white;
-    --main-purple-color: black;
-    --gray-color:#e8eeff;
-    --blue-light: rgba(85,172,238 ,1);
-}
 
 .page-main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     min-height: 350px;
-    background: var(--main-purple-color) url("../images/desk.jpg") no-repeat center / cover;
+    background:  url("../images/desk.jpg") no-repeat center / cover;
     background-blend-mode: unset ;
     /*background-size: 300px 100px;*/
-    color: var(--main-white-color);
+    color: white;
     padding-bottom: 475px;
     margin-bottom: 0;
 }
@@ -99,9 +93,9 @@ display: flex;
     min-height: 350px;
     padding-bottom: 484px;
     /*flex-grow: 1;*/
-    background: var(--main-purple-color) url("../images/git.jpg") no-repeat center / cover;
+    background:  url("../images/git.jpg") no-repeat center / cover;
     background-blend-mode: unset ;
-    color: var(--main-white-color);
+    color: white;
 }
 
 .section2 div{
@@ -117,9 +111,9 @@ display: flex;
     min-height: 350px;
     padding-bottom: 484px;
     /*flex-grow: 1;*/
-    background: var(--main-purple-color) url("../images/linked.jpg") no-repeat center / cover;
+    background:  url("../images/linked.jpg") no-repeat center / cover;
     background-blend-mode: unset ;
-    color: var(--main-white-color);
+    color: white;
 }
 
 .section3 div{
@@ -134,9 +128,9 @@ display: flex;
     min-height: 350px;
     padding-bottom: 484px;
     /*flex-grow: 1;*/
-    background: var(--main-purple-color) url("../images/quiz.png") no-repeat center / cover;
+    background:  url("../images/quiz.png") no-repeat center / cover;
     background-blend-mode: unset ;
-    color: var(--main-white-color);
+    color: white;
 }
 
 .section4 div{
@@ -147,17 +141,3 @@ display: flex;
 .id2{
     padding-left: 55%;
 }
-
-/*@media screen and (max-height: 1px) {*/
-    /*.page-main{*/
-        /*padding-bottom: 600px;*/
-    /*}*/
-    /*.section2{*/
-        /*padding-bottom: 600px;*/
-    /*}*/
-    /*.section3{*/
-        /*padding-bottom: 600px;*/
-    /*}*/
-/*}*/
-
-

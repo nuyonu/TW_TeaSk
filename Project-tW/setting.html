@@ -27,12 +27,17 @@
                 <li class="link"><a href="events.html"><i class="fas fa-info-circle"></i>Despre</a></li>
 
                 <!--<li class="link">-->
-                <button class="butoane" id="login" onclick="document.getElementById('id1').style.display='block'">
-                    Logare
-                </button>
-                <button class="butoane" id="sigin" onclick="document.getElementById('id2').style.display='block'">
-                    Creare
-                </button>
+                <li>
+                    <button class="butoane" id="login" onclick="document.getElementById('id1').style.display='block'">
+                        Logare
+                    </button>
+                </li>
+
+                <li>
+                    <button class="butoane" id="sigin" onclick="document.getElementById('id2').style.display='block'">
+                        Creare
+                    </button>
+                </li>
             </ul>
         </nav>
         <!--logare-->
@@ -56,13 +61,6 @@
 
                     <label class="conectat">
                         <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
-                        <div class="pretty p-icon p-smooth">
-                            <input type="checkbox"/>
-                            <div class="state p-success">
-                                <i class="icon fa fa-check"></i>
-                                <label>fa-check</label>
-                            </div>
-                        </div>
                     </label>
                 </div>
                 <div class="container">
@@ -159,14 +157,16 @@
             </div>
 
             <div class="line descriere">
-            <span class="pereche">
-            <label for="descriere"><b>Descriere</b></label>
-                <form>
+                <div class="block">
                     <label>
-                        <textarea class="descriere">O descrierere...</textarea>
-                        </label>
-                </form>
-            </span>
+                        <b>Descriere</b>
+                    </label>
+                    <form>
+                        <textarea class="descriere" id="inputdescriere">O descrierere...</textarea>
+                    </form>
+
+                </div>
+
             </div>
         </div>
         <div class="image">
