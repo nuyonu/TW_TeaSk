@@ -8,7 +8,7 @@ function closeCurrentForm(formName)
     document.getElementById(formName).style.display = "none";
 }
 
-var clicked = false;
+let clicked = false;
 
 function openButtonForm(formName)
 {
@@ -24,8 +24,8 @@ function openButtonForm(formName)
     clicked = !clicked;
 }
 
-var accordion = document.getElementsByClassName("button-more-details");
-var index;
+let accordion = document.getElementsByClassName("button-more-details");
+let index;
 
 for (index = 0; index < accordion.length; index++) {
     accordion[index].addEventListener("click", function () {
