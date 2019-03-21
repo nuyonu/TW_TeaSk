@@ -38,13 +38,6 @@ document.write(
                 </div>\
                 <label class="conectat">\
                     <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.\
-                    <div class="pretty p-icon p-smooth">\
-                        <input type="checkbox"/>\
-                        <div class="state p-success">\
-                            <i class="icon fa fa-check"></i>\
-                            <label>fa-check</label>\
-                        </div>\
-                    </div>\
                 </label>\
             </div>\
             <div class="container">\
