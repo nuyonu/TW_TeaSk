@@ -130,6 +130,10 @@ a:hover {
         margin-top: 20px;
         font-size: 40px;
     }
+
+    .gruparecont{
+        font-size: 40px;
+    }
     .body{
         margin-top: 140px;
     }
@@ -165,45 +169,50 @@ a:hover {
     }
 }
 /*full hd*/
-@media screen  and (max-width: 1920px) {
+@media screen  and (max-width: 2000px) {
     header{
-        height: 120px;
+        height: 60px;
     }
     .nav{
-        height: 120px;
+        height: 60px;
+        padding-right: 40px;
     }
     .link {
         /*margin-top: 50%;*/
         color: gray;
-        margin-top: 20px;
-        font-size: 35px;
+        margin-top: 10px;
+        font-size: 25px;
+    }
+
+    .gruparecont{
+        font-size: 25px;
     }
     .body{
-        margin-top: 120px;
+        margin-top: 60px;
     }
 
     .topnav {
         margin-bottom: 0;
-        height: 120px   ;
+        height: 60px   ;
         /*margin-top: 15px;*/
     }
 
     .centertop {
         /*margin-right:5% ;*/
         /*margin-left: 2%;*/
-        font-size: 60px;
-        margin-top: 15px;
+        font-size: 50px;
+        margin-top: 10px;
         margin-left: 0;
         padding-left: 6px;
     }
 
     .butoane {
-        margin-top: 20px;
+        margin-top: 5px;
         color: white;
         background-color: #5aa8fb;
         border: 2px solid #5aa8fb;
-        font-size: 35px;
-        padding: 10px;
+        font-size: 30px;
+        padding: 4px;
     }
 
     .butoane:hover {
@@ -217,64 +226,76 @@ a:hover {
 
 
 /*1440*/
-    @media screen  and (max-width: 1440px) {
-        header,.nav{
-            height: 100px;
+    @media screen  and (max-width: 1287px) {
+        header{
+            height: 60px;
         }
-        .body{
-            margin-top: 100px;
+        .nav{
+            height: 60px;
+            padding-right: 40px;
         }
-
         .link {
             /*margin-top: 50%;*/
             color: gray;
-            margin-top: 5px;
-            font-size: 25px;
+            margin-top: 10px;
+            font-size: 20px;
+        }
+
+        .gruparecont{
+            font-size: 20px;
+        }
+        .body{
+            margin-top: 60px;
         }
 
         .topnav {
             margin-bottom: 0;
+            height: 60px   ;
             /*margin-top: 15px;*/
         }
 
         .centertop {
             /*margin-right:5% ;*/
             /*margin-left: 2%;*/
-            font-size: 45px;
-            margin-top: 0;
+            font-size: 40px;
+            margin-top: 10px;
             margin-left: 0;
             padding-left: 6px;
         }
 
         .butoane {
-            margin-top: 0;
+            margin-top: 5px;
             color: white;
             background-color: #5aa8fb;
             border: 2px solid #5aa8fb;
-            font-size: 17px;
-
+            font-size: 25px;
+            padding: 4px;
         }
 
         .butoane:hover {
             color: white;
-            background-color: #5aa8fb;
-            border: 2px solid #5aa8fb;
+            background-color: #288efa;
+            border: 2px solid #288efa;
         }
     }
 
 @media screen  and (max-width: 1024px) {
     header,.nav{
-        height: 90px;
+        height: 60px;
     }
     .body{
-        margin-top: 90px;
+        margin-top: 60px;
+    }
+
+    .gruparecont{
+        font-size: 15px;
     }
 
     .link {
         /*margin-top: 50%;*/
         color: gray;
         margin-top: 0;
-        font-size: 19px;
+        font-size: 15px;
     }
 
     .topnav {
@@ -285,7 +306,7 @@ a:hover {
     .centertop {
         /*margin-right:5% ;*/
         /*margin-left: 2%;*/
-        font-size: 35px;
+        font-size: 23px;
         margin-top: 0;
         margin-left: 0;
         padding-left: 6px;
@@ -296,8 +317,8 @@ a:hover {
         color: white;
         background-color: #5aa8fb;
         border: 2px solid #5aa8fb;
-        font-size: 19px;
-        padding: 7px;
+        font-size: 15px;
+        padding: 3px;
     }
 
     .butoane:hover {
@@ -463,6 +484,7 @@ input[type=text], input[type=password], input[type=email] {
         flex-direction: row;
         justify-content: space-between;
         align-items: center;
+        margin-bottom: 0;
     }
 
     .page-footer ul {
@@ -473,3 +495,12 @@ input[type=text], input[type=password], input[type=email] {
 #copyright{
     font-size: 23px ;
 }
+
+
+#sigin,#login{
+    display: none;
+}
+
+/*.gruparecont{*/
+    /*display: none;*/
+/*}*/

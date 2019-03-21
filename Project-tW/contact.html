@@ -14,6 +14,7 @@
 </head>
 <body>
 
+
 <div class="containernav">
     <header class="page-header">
         <nav class="nav">
@@ -22,10 +23,10 @@
                 <li class="centertop" id="titlunav">Skill Enhancer</li>
                 <li class="link"><a href="index.html"> <i class="fas fa-home"></i>Acasa</a></li>
                 <li class="link"><a href="events.html"><i class="fas fa-calendar-week"></i>Evenimente</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-user-graduate"></i>Inbunatatire</a></li>
-                <li class="link"><a href="events.html"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-question-circle"></i>Suport</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-info-circle"></i>Despre</a></li>
+                <li class="link"><a href="trainings.html"><i class="fas fa-user-graduate"></i>Inbunatatire</a></li>
+                <li class="link"><a href="suport.html"><i class="fas fa-question-circle"></i>Suport</a></li>
+                <li class="link"><a href="contact.html"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
+                <li class="link"><a href="about.html"><i class="fas fa-info-circle"></i>Despre</a></li>
 
                 <!--<li class="link">-->
                 <button class="butoane" id="login" onclick="document.getElementById('id1').style.display='block'">
@@ -48,7 +49,7 @@
                     <label for="name"><b>Username</b></label>
                     <input type="text" placeholder="Username" id="name" class="inputcontainer" required>
                     <label for="pws"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti parola" id="pws" class="inputcontainer" required>
+                    <input type="password" placeholder="Introduceti parola" id="pws"  class="inputcontainer" required>
                     <button type="submit" id="logare" class="buttonmodal">Logare</button>
                     <div class="logincustom">
                         <button type="submit" id="github" class="buttonmodal">GitHub</button>
@@ -57,13 +58,6 @@
 
                     <label class="conectat">
                         <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
-                        <div class="pretty p-icon p-smooth">
-                            <input type="checkbox"/>
-                            <div class="state p-success">
-                                <i class="icon fa fa-check"></i>
-                                <label>fa-check</label>
-                            </div>
-                        </div>
                     </label>
                 </div>
                 <div class="container">
@@ -94,13 +88,11 @@
                            required>
                     <label for="nameuser"><b>Nume</b></label>
                     <label>
-                        <input type="text" id="nameuser" class="inputcontainer" placeholder="Introduceti numele"
-                               required>
+                        <input type="text" id="nameuser" class="inputcontainer" placeholder="Introduceti numele" required>
                     </label>
                     <label for="prenumeuser"><b>Prenume</b></label>
                     <label>
-                        <input type="text" id="prenumeuser" class="inputcontainer" placeholder="Introduceti prenumele"
-                               required>
+                        <input type="text" id="prenumeuser" class="inputcontainer" placeholder="Introduceti prenumele" required>
                     </label>
                     <div class="butoanean">
                         <button type="submit" class="buttonmodal">Creaza cont</button>
@@ -117,7 +109,7 @@
     </header>
 </div>
 <div class="body">
-    <div class="linie " style="height:getHeight()">
+    <div class="linie">
         <div class="title">
             <div class="subtitle">
                 <span class="subtitle1">Don't be a stranger</span>
@@ -145,7 +137,7 @@
                     <input type="text" placeholder="E-mail" class="contact" required>
                     <input type="text" placeholder="Problema" class="contact" id="namesend" required>
                     <input type="text" placeholder="Descrieti problema  " class="contact" id="description" required>
-                    <button type="button" name="Trimite" class="butontrimitere"  id="okbutton">Trimite</button>
+                    <button type="button" name="Trimite" class="butontrimitere" id="okbutton">Trimite</button>
                 </div>
 
             </div>
@@ -154,6 +146,9 @@
         </div>
 
     </div>
+
+</div>
+<div class="basefooter">
     <footer class="page-footer">
 
         <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
@@ -181,11 +176,5 @@
         </ul>
     </footer>
 </div>
-
-<!--<script>-->
-    <!--function getHeight() {-->
-        <!--return window.innerWidth;-->
-    <!--}-->
-<!--</script>-->
 </body>
 </html>

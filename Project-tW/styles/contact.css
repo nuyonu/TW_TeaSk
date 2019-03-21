@@ -2,37 +2,42 @@ html, body, .viewport {
     width: 100%;
     height: 100%;
     margin: 0;
+    /*overflow-x: hidden;*/
+    /*overflow-y: hidden;*/
+    overflow-y:unset ;
 }
+
 html, body {
-    height: 90%;
+    height: 100%;
     background: #fff;
     font-weight: 400;
     letter-spacing: -0.4px;
     font-size: 17px;
     color: #333;
-    font-family: Karla,sans-serif;
+    font-family: Karla, sans-serif;
     font-size: 17px;
 
 }
-.linie{
+
+.linie {
     margin-top: 20vh;
     margin-left: 22%;
     display: flex;
     flex-direction: column;
     min-height: 350px;
-    height: 800px;
+    height: 700px
     /*background: var(--main-purple-color) url("../images/night.jpg") no-repeat center / cover;*/
 }
 
-.subtitle{
-    display:flex ;
+.subtitle {
+    display: flex;
     flex-direction: column;
 }
 
-.subtitle1{
+.subtitle1 {
     color: #4286f4;
     font-size: 2.6em;
-    font-family: 'Karla',sans-serif;
+    font-family: 'Karla', sans-serif;
     font-weight: 700;
     letter-spacing: -1.4px;
     margin: 0;
@@ -41,28 +46,30 @@ html, body {
 
 }
 
-.subtitle2{
+.subtitle2 {
     font-size: 2.6em;
     font-weight: 700;
     letter-spacing: -1.4px;
 }
-.title{
+
+.title {
     font-weight: 700;
     letter-spacing: -1.4px;
     color: #333;
 
 }
-.descibe{
+
+.descibe {
     display: flex;
     flex-direction: row;
 }
 
-.text >p,p{
+.text > p, p {
     width: 400px;
     color: #888;
     line-height: 1.7em;
     vertical-align: text-top;
-    font-family: Karla,sans-serif;
+    font-family: Karla, sans-serif;
     /* height: 100%; */
     background: #fff;
     font-weight: 400;
@@ -70,27 +77,31 @@ html, body {
     font-size: 17px;
     /*color: #333;*/
 }
-.input{
+
+.input {
     margin-left: 7%;
     margin-right: 7%;
 }
 
-@media screen and (min-width: 1000px){
-    .input{
+@media screen and (min-width: 1000px) {
+    .input {
         margin-right: 40%;
         margin-top: 1.2%;
     }
-    .descibe{
+
+    .descibe {
         /*margin-right: px;*/
     }
 
 }
-.help{
+
+.help {
     margin-top: 15%;
 }
-.help>p{
+
+.help > p {
     font-size: 1em;
-    font-family: Karla,sans-serif;
+    font-family: Karla, sans-serif;
     color: #888;
     line-height: 1.7em;
     font-weight: 400;
@@ -99,33 +110,75 @@ html, body {
     color: #333;
 
 }
-.gmail{
+
+.gmail {
     color: #888;
 }
 
 
-#copyright{
+#copyright {
     height: 12px;
 }
 
-.butontrimitere{
+.butontrimitere {
     background-color: #4286f4;
     border: 2px solid #4286f4;
-    font-size: 39px;
-}
-.butontrimitere:hover{
-    background-color: #4286f4;
-    border: 2px solid #4286f4;
+    font-size: 25px;
+    padding: 0.3em;
+    color: white;
 }
 
-#okbuttonk{
+.butontrimitere:hover {
+    background-color: #288efa;
+    border: 2px solid #288efa;
+}
+
+#okbuttonk {
     width: 109px;
-    font-size: 66px ;
+    font-size: 66px;
     background-color: #FF0400;
     border: 2px solid #FF0400;
     /*font-size: 39px;*/
 }
 
-.subtitle1{
+.subtitle1 {
     color: #4286f4;
 }
+
+.contact:focus {
+    border: 2px solid #2196F3;
+    color: #2196F3;
+}
+
+.contact:disabled {
+    color: #2759AE;
+}
+
+.linie {
+    /*margin-bottom: 3%;*/
+    margin-bottom: 0;
+}
+footer{
+    z-index: 666;
+}
+/*@media screen and (max-width: 700px) {*/
+    /*.descibe {*/
+        /*flex-wrap: wrap;*/
+    /*}*/
+
+    /*.input {*/
+        /*margin-left: 0;*/
+        /*margin-bottom: 100px;*/
+    /*}*/
+
+    /*.page-footer > ul {*/
+        /*margin-top: 0;*/
+        /*margin-bottom: 0;*/
+        /*padding-bottom: 0;*/
+    /*}*/
+    /*.page-footer{*/
+        /*margin-top: 150px;*/
+    /*}*/
+
+/*}*/
+
