@@ -38,6 +38,13 @@ document.write(
                 </div>\
                 <label class="conectat">\
                     <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.\
+                    <div class="pretty p-icon p-smooth">\
+                        <input type="checkbox"/>\
+                        <div class="state p-success">\
+                            <i class="icon fa fa-check"></i>\
+                            <label>fa-check</label>\
+                        </div>\
+                    </div>\
                 </label>\
             </div>\
             <div class="container">\
@@ -77,10 +84,10 @@ document.write(
                            required>\
                 </label>\
                 <div class="butoanean">\
-                    <button type="submit" class="buttonmodal">Creează cont</button>\
+                    <button type="submit" class="buttonmodal">Creaza cont</button>\
                     <button type="button" onclick="document.getElementById(\'id2\').style.display=\'none\'"\
                             class="buttonmodal">\
-                        Anulează\
+                        Anuleaza\
                     </button>\
                 </div>\
             </div>\

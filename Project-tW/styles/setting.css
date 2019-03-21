@@ -323,3 +323,24 @@ input[type=text], input[type=password], input[type=email] {
     margin-left: 20px;
 
 }
+
+
+.page-footer {
+    display: flex;
+    flex-direction: column-reverse;
+    border-bottom: 0;
+    border-top:0 ;
+    padding-bottom: 0;
+    padding-top: 0;
+}
+
+.page-footer ul {
+    display: flex;
+    font-size: 1.5rem;
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    /*left: 10;*/
+}
+.page-footer>ul{
+    list-style-type: none;
+}
