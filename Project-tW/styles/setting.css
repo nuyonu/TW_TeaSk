@@ -1,4 +1,4 @@
-html, body, .viewport {
+html, body {
     width: 100%;
     height: 100%;
     margin: 0;
@@ -31,17 +31,6 @@ html, body, .viewport {
     font-family: Karla, sans-serif;
 }
 
-
-.button {
-    width: 200%;
-    margin-top: 40px;
-    /*margin: 6%;*/
-    margin-left: 30%;
-    margin-bottom: 14%;
-
-    font-family: Karla, sans-serif;
-    /*display: inline;*/
-}
 
 .setting {
     width: 100%;
@@ -88,12 +77,12 @@ input {
 .descriere {
     width: 100%;
     height: 40%;
+    margin-left: 10%;
+    padding: 0;
 }
 
 
-.button {
-    /*width: 100%;*/
-}
+
 
 .buttonMenu {
     width: 100%;
@@ -146,12 +135,14 @@ input {
 .buttoncontact {
     /*background-color: #4286f4;*/
     color: white;
-    margin: 70px;
-    padding: 20px 40px;
+    /*margin: 5%;*/
+    margin-top: 16%;
+    margin-bottom: 16%;
     border: none;
     background: #2196F3;
     cursor: pointer;
-    width: 5cm;
+    width: 50%;
+    padding: 20px 40px 20px 25%;
     font-size: 40px;
     text-align: center;
 
@@ -277,4 +268,58 @@ input[type=text], input[type=password], input[type=email] {
 
 .containerinput{
     color: #888888;
+}
+
+#sigin{
+    margin-right: 30px;
+}
+
+.menu{
+    width: 25%;
+}
+@media screen and (max-width: 1260px) {
+    .buttoncontact{
+        font-size: 35px;
+    }
+    .buttonMenu{
+        font-size: 23px;
+    }
+    .imageaccount{
+        height: 30%;
+        width: 30%;
+        /*width: 10%    ;*/
+    }
+
+    .containerinput{
+        height: 35px;
+        font-size: 15px;
+    }
+    .line2{
+        flex-wrap: wrap;
+    }
+    .butoaneflex{
+        flex-wrap: wrap;
+    }
+    .butoaneflex>button{
+        margin-top: 15px;
+    }
+    .descriere{
+        font-size: 15px;
+    }
+
+
+}
+#inputdescriere{
+    margin-left: 0;
+    height: 190px;
+    padding: 0;
+}
+
+.block{
+
+    width: 411px;
+    height: 450px;
+
+    margin-left: 20px;
+
 }
