@@ -1,8 +1,26 @@
 .events-body
 {
-    margin-left: 5%;
-    margin-right: 5%;
     font-family: 'Didact Gothic', sans-serif;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 50px;
+}
+
+.events-title
+{
+    text-align: center;
+    color: black;
+    padding: 5px;
+    font-size: 25px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    background-color: #99ccff;
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.events-title h1
+{
+    margin: 0;
 }
 
 .search-bar-and-advanced-search
