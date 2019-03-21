@@ -120,10 +120,12 @@
 .trainings-list ul
 {
     margin: 15px;
-    padding: 0;
+    padding: 5px;
     list-style-type: none;
     text-align: center;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border: 3px dotted #5aa8fb;
+    background-color: #fcfdff;
 }
 
 .trainings-list img
@@ -134,6 +136,11 @@
     border-radius: 50%;
 }
 
+.trainings-list li:first-child
+{
+    background-image: none;
+}
+
 .trainings-list li
 {
     display: inline;
@@ -141,6 +148,51 @@
     background-repeat: no-repeat;
     background-position: 0 bottom;
     padding-left: 1.2em;
+}
+
+.trainings-list a
+{
+    font-size: 24px;
+    margin: 0 15px;
+}
+
+.trainings-list a:link
+{
+    text-decoration: none;
+    color: #2b95ff;
+}
+
+.trainings-list a:visited
+{
+    text-decoration: none;
+    color: #0055ff;
+}
+
+.trainings-list a:hover
+{
+    text-decoration: underline;
+    color: #0060c1;
+}
+
+.trainings-list a:active
+{
+    text-decoration: underline;
+    color: red;
+}
+
+.training-header
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    align-items: center;
+}
+
+.training-header input[type="image"]
+{
+    padding-top: 4px;
+    width: 24px;
+    height: 22px;
 }
 
 .trainings-near
