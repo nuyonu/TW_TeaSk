@@ -1,20 +1,7 @@
 
-html,body
-{
-    width: 100%;
-    height: 100%;
-    margin: 0;
+html, body {
+	margin: 0;
     padding: 0;
-    overflow-x: hidden;
-}
-
-html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-}
-
-html, body {
     height: 100%;
     width: 100%;
     background: #fff;
@@ -23,6 +10,7 @@ html, body {
     font-size: 17px;
     color: #333;
     font-family: Karla, sans-serif;
+     overflow-x: hidden;
     /*font-size: 17px;*/
 }
 main{
@@ -33,6 +21,7 @@ main{
 
 .body{
     width: 100%;
+    margin-top:0;
 }
 .wrapper{
 display: flex;
@@ -144,3 +133,6 @@ display: flex;
     padding-left: 55%;
 }
 
+.page-footer>ul{
+    list-style-type: none;
+}

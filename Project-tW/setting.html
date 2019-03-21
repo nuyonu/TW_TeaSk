@@ -5,115 +5,15 @@
     <meta name="author" content="Filos Gabriel">
     <meta charset="UTF-8">
     <title>Skill Enhancer</title>
-    <link href="styles/navbar.css" rel="stylesheet" type="text/css">
+
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/setting.css">
-
+    <script src="./scripts/navbar.js"></script>
 </head>
 <body>
 
-<div class="containernav">
-    <header class="page-header">
-        <nav class="nav">
-            <ul class="topnav">
-
-                <li class="centertop" id="titlunav">Skill Enhancer</li>
-                <li class="link"><a href="index.html"> <i class="fas fa-home"></i>Acasa</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-calendar-week"></i>Evenimente</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-user-graduate"></i>Inbunatatire</a></li>
-                <li class="link"><a href="contact.html"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-question-circle"></i>Suport</a></li>
-                <li class="link"><a href="events.html"><i class="fas fa-info-circle"></i>Despre</a></li>
-
-                <!--<li class="link">-->
-                <li>
-                    <button class="butoane" id="login" onclick="document.getElementById('id1').style.display='block'">
-                        Logare
-                    </button>
-                </li>
-
-                <li>
-                    <button class="butoane" id="sigin" onclick="document.getElementById('id2').style.display='block'">
-                        Creare
-                    </button>
-                </li>
-            </ul>
-        </nav>
-        <!--logare-->
-        <div id="id1" class="modal">
-            <form class="modal-content animate" action="#">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id1').style.display='none'" class="close"
-                          title="Close modal">&times;</span>
-                    <!--<img src="./images/user.png" alt="Avatar user" class="avatar">-->
-                </div>
-                <div class="container">
-                    <label for="name"><b>Username</b></label>
-                    <input type="text" placeholder="Username" id="name" class="inputcontainer" required>
-                    <label for="pws"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti parola" id="pws" class="inputcontainer" required>
-                    <button type="submit" id="logare" class="buttonmodal">Logare</button>
-                    <div class="logincustom">
-                        <button type="submit" id="github" class="buttonmodal">GitHub</button>
-                        <button type="submit" id="linkedln" class="buttonmodal">Linkedln</button>
-                    </div>
-
-                    <label class="conectat">
-                        <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.
-                    </label>
-                </div>
-                <div class="container">
-                    <button type="button" onclick="document.getElementById('id1').style.display='none'"
-                            class="buttonmodal">
-                        Anuleaza
-                    </button>
-                    <span class="psw"></span>
-                </div>
-            </form>
-        </div>
-        <div id="id2" class="modal">
-            <form class="modal-content animate" action="#">
-                <div class="imgcontainer">
-                    <span onclick="document.getElementById('id2').style.display='none'" class="close"
-                          title="Close modal">&times;&#215;</span>
-                </div>
-                <div class="container">
-                    <label for="namec"><b>Alegeti un nume de utilizator</b></label>
-                    <input type="text" placeholder="Introduceti  numele de utilizator " id="namec"
-                           class="inputcontainer" required>
-                    <label for="email"><b>Email</b></label>
-                    <input type="email" placeholder="username@domain.com" id="email" class="inputcontainer" required>
-                    <label for="pwsc"><b>Parola</b></label>
-                    <input type="password" placeholder="Introduceti o parola" id="pwsc" class="inputcontainer" required>
-                    <label for="pwscr"><b>Confirma parola</b></label>
-                    <input type="password" placeholder="Introduceti parola din nou" id="pwscr" class="inputcontainer"
-                           required>
-                    <label for="nameuser"><b>Nume</b></label>
-                    <label>
-                        <input type="text" id="nameuser" class="inputcontainer" placeholder="Introduceti numele"
-                               required>
-                    </label>
-                    <label for="prenumeuser"><b>Prenume</b></label>
-                    <label>
-                        <input type="text" id="prenumeuser" class="inputcontainer" placeholder="Introduceti prenumele"
-                               required>
-                    </label>
-                    <div class="butoanean">
-                        <button type="submit" class="buttonmodal">Creaza cont</button>
-                        <button type="button" onclick="document.getElementById('id2').style.display='none'"
-                                class="buttonmodal">
-                            Anuleaza
-                        </button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-
-    </header>
-</div>
-<div class="body">
+<div class="body" style="margin-top: 0;">
 
     <div class="menu" style="font-family: Karla,sans-serif">
         <span class="buttoncontact">Setari Cont</span>
@@ -279,7 +179,7 @@
 
     </div>
 
-    <div class="page1" id="teste">
+    <div class="page1" id="teste" style="margin-top: 0;">
         <div class="setting">
             <div class="ContulM">
                 <h2>Teste</h2>
@@ -314,6 +214,33 @@
     </div>
 
 
+</div>
+<footer class="page-footer">
+
+    <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
+    <ul>
+        <li>
+            <a href="" target="_blank">
+                <i class="fab fa-facebook-f" style="color: #888888"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank" style="color: #888888">
+                <i class="fab fa-twitter"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank">
+                <i class="fab fa-linkedin" style="color: #888888"></i>
+            </a>
+        </li>
+        <li>
+            <a href="" target="_blank">
+                <i class="fab fa-github" style="color: #888888"></i>
+            </a>
+        </li>
+    </ul>
+</footer>
 </div>
 <script>
     function opentab(evt, idtab) {
