@@ -5,14 +5,14 @@
     <meta charset="UTF-8">
     <title>Skill Enhancer</title>
     <!--<link rel="stylesheet" type="text/css" href="./styles/index.css">-->
-    <link rel="stylesheet" type="text/css" href="./styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/footer.css">
 	<link href="https://fonts.googleapis.com/css?family=Didact+Gothic%7cPatrick+Hand%7cMontserrat+Alternates%7cAnnie+Use+Your+Telescope%7cInconsolata" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="styles/contact.css">
+    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/contact.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./scripts/navbar.js"></script>
+    <script src="../../public/assets/scripts/navbar.js"></script>
 </head>
 <body>
 

@@ -5,9 +5,9 @@
     <title>Suport | Skill Enhancer</title>
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Patrick+Hand|Montserrat+Alternates|Annie+Use+Your+Telescope"
           rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="./styles/suport.css">
-    <link rel="stylesheet" type="text/css" href="./styles/footer.css">
-    <script src="scripts/navbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/suport.css">
+    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/footer.css">
+    <script src="../../public/assets/scripts/navbar.js"></script>
 </head>
 <body>
 
@@ -182,5 +182,5 @@
     </ul>
 </footer>
 </body>
-<script type="text/javascript" src="scripts/suport.js" async></script>
+<script type="text/javascript" src="../../public/assets/scripts/suport.js" async></script>
 </html>

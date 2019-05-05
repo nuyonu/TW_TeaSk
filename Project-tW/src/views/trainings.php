@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Training-uri | Skill Enhancer</title>
-    <link rel="stylesheet" type="text/css" href="./styles/trainings.css"/>
-    <link rel="stylesheet" type="text/css" href="./styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/trainings.css"/>
+    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic%7cPatrick+Hand%7cMontserrat+Alternates%7cAnnie+Use+Your+Telescope%7cInconsolata" rel="stylesheet">
-    <script src="./scripts/navbar.js"></script>
+    <script src="../../public/assets/scripts/navbar.js"></script>
 </head>
 <body>
 <div class="container-main container-col-flex">
@@ -48,9 +48,9 @@
             <div class="trainings-list">
                 <div>
                     <div class="training-header">
-                        <img src="./images/c++.png" alt="Super Training"/>
+                        <img src="../../public/assets/images/c++.png" alt="Super Training"/>
                         <a href="#">Super Training</a>
-                        <input type="image" src="./images/heart2.png" alt="Added to preferences" width="24" height="24"/>
+                        <input type="image" src="../../public/assets/images/heart2.png" alt="Added to preferences" width="24" height="24"/>
                     </div>
                     <ul>
                         <li>Iași</li>
@@ -61,9 +61,9 @@
                 </div>
                 <div>
                     <div class="training-header">
-                        <img src="./images/haskell.png" alt="Mega Training"/>
+                        <img src="../../public/assets/images/haskell.png" alt="Mega Training"/>
                         <a href="#">Mega Training</a>
-                        <input type="image" src="./images/heart3.png" alt="Add to preferences" width="24" height="24"/>
+                        <input type="image" src="../../public/assets/images/heart3.png" alt="Add to preferences" width="24" height="24"/>
                     </div>
                     <ul>
                         <li>Suceava</li>
@@ -74,9 +74,9 @@
                 </div>
                 <div>
                     <div class="training-header">
-                        <img src="./images/hardware.jpg" alt="Hardware Training"/>
+                        <img src="../../public/assets/images/hardware.jpg" alt="Hardware Training"/>
                         <a href="#">Hardware Training</a>
-                        <input type="image" src="./images/heart3.png" alt="Add to preferences" width="24" height="24"/>
+                        <input type="image" src="../../public/assets/images/heart3.png" alt="Add to preferences" width="24" height="24"/>
                     </div>
                     <ul>
                         <li>Botoșani</li>
@@ -87,9 +87,9 @@
                 </div>
                 <div>
                     <div class="training-header">
-                        <img src="./images/excel.png" alt="Tech Lead Training"/>
+                        <img src="../../public/assets/images/excel.png" alt="Tech Lead Training"/>
                         <a href="#">Tech Lead Training</a>
-                        <input type="image" src="./images/heart3.png" alt="Add to preferences" width="24" height="24"/>
+                        <input type="image" src="../../public/assets/images/heart3.png" alt="Add to preferences" width="24" height="24"/>
                     </div>
                     <ul>
                         <li>Timișoara</li>
@@ -100,9 +100,9 @@
                 </div>
                 <div>
                     <div class="training-header">
-                        <img src="./images/javascript.png" alt="BestWeb Training"/>
+                        <img src="../../public/assets/images/javascript.png" alt="BestWeb Training"/>
                         <a href="#">BestWeb Training</a>
-                        <input type="image" src="./images/heart2.png" alt="Add to preferences"/>
+                        <input type="image" src="../../public/assets/images/heart2.png" alt="Add to preferences"/>
                     </div>
                     <ul>
                         <li>București</li>
@@ -113,9 +113,9 @@
                 </div>
                 <div>
                     <div class="training-header">
-                        <img src="./images/c-sharp.png" alt="Mega Dev Training"/>
+                        <img src="../../public/assets/images/c-sharp.png" alt="Mega Dev Training"/>
                         <a href="#">Mega Dev Training</a>
-                        <input type="image" src="./images/heart2.png" alt="Add to preferences"/>
+                        <input type="image" src="../../public/assets/images/heart2.png" alt="Add to preferences"/>
                     </div>
                     <ul>
                         <li>Vaslui</li>
@@ -137,10 +137,10 @@
                         <p class="training-date">16 Aprilie 2019</p>
                         <p class="training-domain">Dezvoltator Web</p>
                         <p class="training-specifications">C++, C#, Java</p>
-                        <img class="training-ratings-picture" src="./images/stars-3.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-3.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Medie</p>
                         <p class="training-price">Preț: 20 de lei</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                     <div class="training container-col-flex">
                         <p class="training-name">Super Training</p>
@@ -148,10 +148,10 @@
                         <p class="training-date">16 Aprilie 2019</p>
                         <p class="training-domain">Dezvoltator Web</p>
                         <p class="training-specifications">C++, C#, Java</p>
-                        <img class="training-ratings-picture" src="./images/stars-3.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-3.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Medie</p>
                         <p class="training-price">Preț: 20 de lei</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                 </div>
             </div>
@@ -164,10 +164,10 @@
                         <p class="training-date">18 Mai 2019</p>
                         <p class="training-domain">Tester</p>
                         <p class="training-specifications">Haskell</p>
-                        <img class="training-ratings-picture" src="./images/stars-4.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-4.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Ușoară</p>
                         <p class="training-price">Preț: 50 de lei</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                     <div class="training container-col-flex">
                         <p class="training-name">Mega Training</p>
@@ -175,10 +175,10 @@
                         <p class="training-date">18 Mai 2019</p>
                         <p class="training-domain">Tester</p>
                         <p class="training-specifications">Haskell</p>
-                        <img class="training-ratings-picture" src="./images/stars-4.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-4.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Ușoară</p>
                         <p class="training-price">Preț: 50 de lei</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                 </div>
             </div>
@@ -191,10 +191,10 @@
                         <p class="training-date">22 Iunie 2019</p>
                         <p class="training-domain">Manager</p>
                         <p class="training-specifications">Team Leader Skills</p>
-                        <img class="training-ratings-picture" src="./images/stars-5.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-5.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Grea</p>
                         <p class="training-price">Preț: 150 de lei</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                     <div class="training container-col-flex">
                         <p class="training-name">Hyper Training</p>
@@ -202,10 +202,10 @@
                         <p class="training-date">22 Iunie 2019</p>
                         <p class="training-domain">Manager</p>
                         <p class="training-specifications">Team Leader Skills</p>
-                        <img class="training-ratings-picture" src="./images/stars-5.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-5.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Grea</p>
                         <p class="training-price">Preț: 150 de lei</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                 </div>
             </div>
@@ -218,10 +218,10 @@
                         <p class="training-date">30 Martie 2019</p>
                         <p class="training-domain">Dezvoltator Desktop</p>
                         <p class="training-specifications">C++, ASM</p>
-                        <img class="training-ratings-picture" src="./images/stars-3.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-3.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Medie</p>
                         <p class="training-price">Preț: Gratuit</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                     <div class="training container-col-flex">
                         <p class="training-name">Extreme Training</p>
@@ -229,10 +229,10 @@
                         <p class="training-date">30 Martie 2019</p>
                         <p class="training-domain">Dezvoltator Desktop</p>
                         <p class="training-specifications">C++, ASM</p>
-                        <img class="training-ratings-picture" src="./images/stars-3.png" alt="5 Stele"/>
+                        <img class="training-ratings-picture" src="../../public/assets/images/stars-3.png" alt="5 Stele"/>
                         <p class="training-difficulty">Dificultate: Medie</p>
                         <p class="training-price">Preț: Gratuit</p>
-                        <img class="training-more-picture" src="./images/click-for-more.png" alt="Mai multe detalii"/>
+                        <img class="training-more-picture" src="../../public/assets/images/click-for-more.png" alt="Mai multe detalii"/>
                     </div>
                 </div>
             </div>
