@@ -5,9 +5,9 @@
     <title>Suport | Skill Enhancer</title>
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Patrick+Hand|Montserrat+Alternates|Annie+Use+Your+Telescope"
           rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/suport.css">
-    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/footer.css">
-    <script src="../../public/assets/scripts/navbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../webroot/styles/suport.css">
+    <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
+    <script src="../webroot/scripts/navbar.js"></script>
 </head>
 <body>
 
@@ -19,10 +19,10 @@
 
     <div id="suport-help">
         <p>
-            În această pagină veți găsi întrebări frecvente primite de la utilizatorii <a href="index.html">Skill
+            În această pagină veți găsi întrebări frecvente primite de la utilizatorii <a href="/home">Skill
             Enhancer</a>! Dacă ai o
             intrebare căreia nu-i găsești
-            răspunsul mai jos, ne poți contacta <a href="contact.html">aici</a> și îți vom răspunde în cel mai scurt
+            răspunsul mai jos, ne poți contacta <a href="/contact">aici</a> și îți vom răspunde în cel mai scurt
             timp posibil!
         </p>
     </div>
@@ -37,7 +37,7 @@
             domeniu/mediu decât acela cu care participantul este familiarizat.
         </p>
         <p>
-            Training-urile sunt afișate <a href="trainings.html">aici</a>. Dacă te decizi să participi, te poți
+            Training-urile sunt afișate <a href="/trainings">aici</a>. Dacă te decizi să participi, te poți
             înscrie chiar acum la unul din
             trainig-urile disponibile.
         </p>
@@ -62,7 +62,7 @@
                 create la aceste evenimente.
             </li>
         </ul>
-        <p>Evenimentele sunt afișate <a href="events.html">aici</a>. Dacă te decizi să participi, te poți înscrie
+        <p>Evenimentele sunt afișate <a href="/events">aici</a>. Dacă te decizi să participi, te poți înscrie
             chiar acum la unul din evenimentele disponibile.</p>
     </div>
 
@@ -93,7 +93,7 @@
             cu plată și fără plată. Tariful este pus de către cei care organizează evenimentul/training-ul.
             Organizatorii sunt obligați să anunțe dacă evenimentul are un tarif de paricipare. Acest tarif este afișat
             în detaliile fiecărui eveniment/training. În cazul în care nu este specificat niciun tarif, puteți să ne
-            contacați <a href="contact.html">aici</a>.
+            contacați <a href="/contact">aici</a>.
         </p>
     </div>
 
@@ -105,7 +105,7 @@
             Da, există posibilitatea ca data desfășurării unui anumit training/eveniment să se amâne! Vei fi
             informat în timp util despre orice modificare care intervine. În [INSERT_HERE_TERMENI_SI_CONDITII] vei
             găsi mai multe detalii despre acest lucru. În cazul în care apar nelămuriri, suportul nostru este disponibil
-            oricând <a href="contact.html">aici</a>.
+            oricând <a href="/contact">aici</a>.
         </p>
     </div>
 
@@ -122,7 +122,7 @@
     <div class="question-answer">
         <p>
             Pentru a adăuga un eveniment este nevoie ca contul dumneavoastră să primească UPDATE la gradul de
-            "Manager". Dacă contul are gradul de manager este suficient să accesați <a href="events.html">pagina de
+            "Manager". Dacă contul are gradul de manager este suficient să accesați <a href="/events">pagina de
             evenimente</a> și să apăsați butonul "Adaugă eveniment".
         </p>
     </div>
@@ -134,10 +134,12 @@
             avem nevoie de un profil pentru a putea face recomandări.
         </p>
         <p>
-            Pentru evenimente este suficient să accesați <a href="events.html">pagina de evenimente</a> și să cauți un eveniment pe placul tău.
+            Pentru evenimente este suficient să accesați <a href="/events">pagina de evenimente</a> și să cauți un
+            eveniment pe placul tău.
         </p>
         <p>
-            Pentru training-uri este suficient să accesați <a href="trainings.html">pagina de training-uri</a> și să cauți un training pe placul tău.
+            Pentru training-uri este suficient să accesați <a href="/trainings">pagina de training-uri</a> și să cauți
+            un training pe placul tău.
         </p>
     </div>
 
@@ -182,5 +184,5 @@
     </ul>
 </footer>
 </body>
-<script type="text/javascript" src="../../public/assets/scripts/suport.js" async></script>
+<script type="text/javascript" src="../webroot/scripts/suport.js" async></script>
 </html>
