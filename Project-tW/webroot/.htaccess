@@ -1,0 +1,11 @@
+#[PT]-Forces the resulting URI to be passed back to the URL mapping engine
+# for processing of other URI-to-filename translators, such as Alias or Redirect
+#https://httpd.apache.org/docs/current/mod/mod_rewrite.html#rewriterule
+
+<IfModule mod_rewrite.c >
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [PT,L]
+
+</IfModule>
