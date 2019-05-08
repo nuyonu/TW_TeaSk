@@ -8,8 +8,8 @@
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/setting.css">
-    <script src="../../public/assets/scripts/navbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="../webroot/styles/setting.css">
+    <script src="../webroot/scripts/navbar.js"></script>
 </head>
 <body>
 
@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="image">
-            <img src="../../public/assets/images/user.png" class="imageaccount" alt="user">
+            <img src="../webroot/images/user.png" class="imageaccount" alt="user">
             <p> Filos Gabriel</p>
         </div>
     </div>
@@ -109,7 +109,7 @@
 
         </div>
         <div class="image">
-            <img src="../../public/assets/images/user.png" class="imageaccount" alt="user">
+            <img src="../webroot/images/user.png" class="imageaccount" alt="user">
             <p> Filos Gabriel</p>
         </div>
     </div>

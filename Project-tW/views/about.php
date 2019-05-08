@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>Despre | Skill Enhancer</title>
-    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/about.css"/>
-    <link rel="stylesheet" type="text/css" href="../../public/assets/styles/footer.css">
+    <link rel="stylesheet" type="text/css" href="../webroot/styles/about.css"/>
+    <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic%7cPatrick+Hand%7cMontserrat+Alternates%7cAnnie+Use+Your+Telescope%7cInconsolata"
           rel="stylesheet">
-    <script src="../../public/assets/scripts/navbar.js"></script>
+    <script src="../webroot/scripts/navbar.js"></script>
 </head>
 <body>
 <div class="container-main container-col-flex">
@@ -15,7 +15,7 @@
     <h4><i>"Tehnologia este natura omului modern"</i> - Octavio Paz</h4>
     <h2>Țelul site-ului</h2>
     <div class="container-row-flex">
-        <img src="../../public/assets/images/about.png" alt="Despre">
+        <img src="../webroot/images/about.png" alt="Despre">
         <p>
             Skill Enhancer este o platformă ce conferă utilizatorilor o listă a celor mai importante evenimente ce țin
             de domeniul IT.
@@ -34,7 +34,7 @@
             <li>Filoș Gabriel</li>
             <li>Maxim Paul</li>
         </ul>
-        <img src="../../public/assets/images/about2.png" alt="Dezvoltatori">
+        <img src="../webroot/images/about2.png" alt="Dezvoltatori">
     </div>
 </div>
 
