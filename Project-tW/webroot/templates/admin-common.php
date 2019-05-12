@@ -19,6 +19,9 @@ echo '
     <div class="menu-item">
         <a href="/adminSupport"><i class="fa fa-wrench"></i> Suport</a>
     </div>
+    <div class="menu-item">
+        <a href="/home"><i class="fa fa-wrench"></i> Back to Home</a>
+    </div>
     <div class="profile-image">
         <img alt="" src="../images/about.png">
     </div>
