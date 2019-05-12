@@ -2,19 +2,11 @@
 
 class Router
 {
-    protected $uri;
-    protected $controller;
-    protected $action;
-    protected $params;
 
-    protected $route;
-    protected $method_prefix;
-    protected $language;
 
     public function __construct($uri)
     {
         $this->uri = urldecode(trim($uri, '/'));
-
 
         $routes = Config::get('routes');
         $this->route = Config::get('default_route');
@@ -164,5 +156,14 @@ class Router
     {
         $this->params = $params;
     }
+
+    protected $uri;
+    protected $controller;
+    protected $action;
+    protected $params;
+
+    protected $route;
+    protected $method_prefix;
+    protected $language;
 
 }

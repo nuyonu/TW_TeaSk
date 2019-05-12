@@ -1,0 +1,18 @@
+{
+  "require": {
+    "respect/validation": "^1.1"
+  },
+  "autoload": {
+    "classmap": [
+      "models/DAO/",
+      "lib/init.php",
+      "lib/app.class.php",
+      "lib/config.class.php",
+      "lib/router.class.php",
+      "controllers/",
+      "models/",
+      "lib/",
+      "config/"
+    ]
+  }
+}

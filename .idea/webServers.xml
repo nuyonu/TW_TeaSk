@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9e0272a3-4e71-44a4-a4ee-f2f350cfdad2" name="Apache" url="http://localhost">
+        <fileTransfer port="0" mountedRoot="C:\github\TW_TeaSk2\Project-tW" accessType="MOUNT" />
+      </webServer>
+    </option>
+  </component>
+</project>

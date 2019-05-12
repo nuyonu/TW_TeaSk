@@ -1,0 +1,7 @@
+
+[	php:S1854":Remove this useless assignment to local variable '$email'.(¨¬àÿÿÿÿÿ8Ã¡Ëáª-
+U	php:S1854"9Remove this useless assignment to local variable '$name'.(¶ÐÙ­8Ã¡Ëáª-
+Y	php:S1854"=Remove this useless assignment to local variable '$username'.(Àâµƒ8Ã¡Ëáª-
+Z	php:S1854">Remove this useless assignment to local variable '$last_name'.(ç”‹§8Ã¡Ëáª-
+^	php:S1854"=Remove this useless assignment to local variable '$password'.(Äó£Êýÿÿÿÿ8Ã¡Ëáª-
+r	php:S2068"X'password' detected in this variable name, review this potentially hardcoded credential.(ÇŠ’úþÿÿÿÿ
