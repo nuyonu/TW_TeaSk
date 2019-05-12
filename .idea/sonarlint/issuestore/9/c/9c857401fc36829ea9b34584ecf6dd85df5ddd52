@@ -1,6 +1,0 @@
-
-w	php:S1117"VRename "$database_connection" which has the same name as the field declared at line 5.(ú×œ üÿÿÿÿ8óíáª-
-C	php:S2115")Add password protection to this database.(ú×œ üÿÿÿÿ
-m	php:S2068"X'password' detected in this variable name, review this potentially hardcoded credential.(«êç­
-Dphp:S121"0Add curly braces around the nested statement(s).(¥ÁŒ
-?php:S125"Remove this commented out code.(÷¯Ì´ûÿÿÿÿ8ÆÙƒäª-

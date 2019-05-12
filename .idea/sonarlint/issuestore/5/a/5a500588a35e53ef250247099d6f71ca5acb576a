@@ -1,9 +1,0 @@
-
-C	php:S1125¥"(Remove the literal "TRUE" boolean value.(ğ¯Ÿşÿÿÿÿ
-r	php:S1192N"XDefine a constant instead of duplicating this literal "Error creating table : " 6 times.(ıÅÑÁùÿÿÿÿ
-Iphp:S121#"0Add curly braces around the nested statement(s).(„¶áìøÿÿÿÿ
-B	php:S1125!"(Remove the literal "TRUE" boolean value.(ú½ìéøÿÿÿÿ
->	php:S2115")Add password protection to this database.(“·Íâ
-b	php:S1192"HDefine a constant instead of duplicating this literal "<br>\n" 10 times.(¹ıŒ¬şÿÿÿÿ
-m	php:S2068"X'password' detected in this variable name, review this potentially hardcoded credential.(«êç­
-Iphp:S121!"0Add curly braces around the nested statement(s).(ú½ìéøÿÿÿÿ
