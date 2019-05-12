@@ -7,10 +7,17 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AboutController' => $baseDir . '/controllers/about.controller.php',
+    'AdminHomeController' => $baseDir . '/controllers/adminHome.controller.php',
+    'AdminSupportController' => $baseDir . '/controllers/adminSupport.controller.php',
+    'AdminTrainingsController' => $baseDir . '/controllers/adminTrainings.controller.php',
+    'AdminUsersController' => $baseDir . '/controllers/adminUsers.controller.php',
+    'AdmineventsController' => $baseDir . '/controllers/AdminEvents.controller.php',
     'App' => $baseDir . '/lib/app.class.php',
     'Config' => $baseDir . '/lib/config.class.php',
     'ConfigurationSettings' => $baseDir . '/config/config.php',
     'ContactController' => $baseDir . '/controllers/contact.controller.php',
+    'ContactDao' => $baseDir . '/models/DAO/Contact.DAO.php',
+    'ContactModel' => $baseDir . '/models/contact.model.php',
     'Controller' => $baseDir . '/lib/controller.class.php',
     'Database' => $baseDir . '/models/database.model.php',
     'EventsController' => $baseDir . '/controllers/events.controller.php',

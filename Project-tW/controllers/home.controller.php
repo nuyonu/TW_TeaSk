@@ -7,7 +7,9 @@ class HomeController extends Controller
 
     public function show()
     {
+        $navbar = '';
         require_once(VIEW . 'index.php');
+
     }
 
     public function login()
@@ -16,9 +18,20 @@ class HomeController extends Controller
         $data = $_POST['data'];
         $username = $data['user'];
         $password = $data['password'];
-        echo $username;
-        echo $password;
-
+        $user = new UserDAO($username, $password);
+        if ($user->valid()) {
+            $database = new UserModel();
+            if ($database->getUser($user)) {
+                $navbar = 'hidden';
+                header("Location: http://localhost/events", true, 301);
+                die();
+            } else {
+                header("Location: http://localhost/home", true, OK);
+                die();
+            }
+        }
+        header("Location: http://localhost/home", true, OK);
+        die();
     }
 
     public function register()
@@ -26,7 +39,6 @@ class HomeController extends Controller
         $params = App::getRouter()->getParams();
 
         $reg = $_POST['reg'];
-
         $register = new Register();
         $register->setUsername($reg['username']);
         $register->setPassword($reg['password']);
@@ -34,13 +46,17 @@ class HomeController extends Controller
         $register->setName($reg['name']);
         $register->setConfirm($reg['confirm']);
         $register->setLastName($reg['lastname']);
-        echo $register->getLastName();
-        $UserRepository = new UserModel();
+        if ($register->validate()) {
+            $UserRepository = new UserModel();
+            $UserRepository->saveUser($register);
+            $navbar = '';
+            header("Location: http://localhost/home", true, 301);
+            die();
+        } else {
+            header("Location: http://localhost/home", true, 301);
+            die();
+        }
 
-//        todo validation user reg
-        $UserRepository->saveUser($register);
-        require_once(VIEW . 'test.php');
-        echo "ok";
     }
 
     public function dies()

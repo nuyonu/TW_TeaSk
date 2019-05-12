@@ -1,5 +1,5 @@
 <?php
-class AdminEventsController extends Controller
+class AdmineventsController extends Controller
 {
     public function show()
     {

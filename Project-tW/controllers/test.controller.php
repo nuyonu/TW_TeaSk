@@ -1,13 +1,20 @@
 <?php
-//require_once "../vendor/autoload.php";
-//  ("../models/DAO/Register.DAO.php");
-class TestController extends Controller
+
+class TestingController extends Controller
 {
 
     public function show()
     {
+
         $user = new Register();
-        echo $user->validate();
+        $user->setEmail('filo@gmail.com');
+        $user->setName('filos');
+        $user->setLastName('filos');
+        $user->setPassword('123dasad');
+        $user->setUsername('adasdadada');
+        if( $user->validate()){
+            echo 'dasd';
+        }
     }
 
 

@@ -123,6 +123,8 @@ $sql_contacting = "CREATE OR REPLACE TABLE contacting(
                     CONSTRAINT fk_id_user_contacting FOREIGN KEY(id_user) REFERENCES  users(id),
                     CONSTRAINT fk_id_contact_message_contacting FOREIGN KEY(id_contact_message) REFERENCES  contact_messages(id)
 )";
+
+
 if ($conn->query($sql_contacting) === TRUE) {
     echo "Table sql_contacting created successfully";
 } else {
@@ -159,6 +161,24 @@ if ($conn->query($sql_Going_To_Events) === TRUE) {
     echo "Error creating table : " . $conn->error;
 }
 echo "<br>\n";
+
+$contact = "CREATE OR REPLACE TABLE contact(
+                    id          INTEGER NOT NULL AUTO_INCREMENT,
+                    name        VARCHAR(40) ,
+                    email       VARCHAR(40) ,
+                    type        VARCHAR(40) ,
+                    problem     VARCHAR(200) ,
+                    PRIMARY KEY (id) 
+)";
+if ($conn->query($contact) === TRUE) {
+    echo "Table contact created successfully";
+} else {
+    echo "Error creating table : " . $conn->error;
+}
+echo "<br>\n";
+
+
+
 
 $sql_invo = "show ENGINE INNODB STATUS";
 

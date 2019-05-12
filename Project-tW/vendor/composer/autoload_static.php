@@ -50,10 +50,17 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
 
     public static $classMap = array (
         'AboutController' => __DIR__ . '/../..' . '/controllers/about.controller.php',
+        'AdminHomeController' => __DIR__ . '/../..' . '/controllers/adminHome.controller.php',
+        'AdminSupportController' => __DIR__ . '/../..' . '/controllers/adminSupport.controller.php',
+        'AdminTrainingsController' => __DIR__ . '/../..' . '/controllers/adminTrainings.controller.php',
+        'AdminUsersController' => __DIR__ . '/../..' . '/controllers/adminUsers.controller.php',
+        'AdmineventsController' => __DIR__ . '/../..' . '/controllers/AdminEvents.controller.php',
         'App' => __DIR__ . '/../..' . '/lib/app.class.php',
         'Config' => __DIR__ . '/../..' . '/lib/config.class.php',
         'ConfigurationSettings' => __DIR__ . '/../..' . '/config/config.php',
         'ContactController' => __DIR__ . '/../..' . '/controllers/contact.controller.php',
+        'ContactDao' => __DIR__ . '/../..' . '/models/DAO/Contact.DAO.php',
+        'ContactModel' => __DIR__ . '/../..' . '/models/contact.model.php',
         'Controller' => __DIR__ . '/../..' . '/lib/controller.class.php',
         'Database' => __DIR__ . '/../..' . '/models/database.model.php',
         'EventsController' => __DIR__ . '/../..' . '/controllers/events.controller.php',

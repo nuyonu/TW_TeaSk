@@ -1,5 +1,6 @@
 <?php
 
+require_once "../vendor/autoload.php";
 class App
 {
     protected static $router;
@@ -21,6 +22,7 @@ class App
 
         $controller_class = ucfirst(self::$router->getController()) . 'Controller';
         $controller_method = strtolower(self::$router->getMethodPrefix() . self::$router->getAction());
+
         if ($controller_class == 'test') {
             $test = new TestController();
             $test->show();

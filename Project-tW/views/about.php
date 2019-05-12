@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="container-main container-col-flex">
-    <h1>Despre</h1>
+    <h1 >Despre</h1>
     <h4><i>"Tehnologia este natura omului modern"</i> - Octavio Paz</h4>
     <h2>Țelul site-ului</h2>
     <div class="container-row-flex">
