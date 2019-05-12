@@ -1,5 +1,5 @@
 <?php
-class adminHomeController extends Controller
+class AdminHomeController extends Controller
 {
     public function show()
     {

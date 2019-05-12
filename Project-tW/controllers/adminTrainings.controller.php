@@ -1,5 +1,5 @@
 <?php
-class adminTrainingsController extends Controller
+class AdminTrainingsController extends Controller
 {
     public function show ()
     {
