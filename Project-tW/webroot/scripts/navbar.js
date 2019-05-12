@@ -20,7 +20,7 @@ document.write(
         </ul>\
     </nav>\
     <div id="id1" class="modal">\
-        <form class="modal-content animate" action="#">\
+        <form class="modal-content animate" action="home/login" method="post" id="login">\
             <div class="imgcontainer">\
                 <span onclick="document.getElementById(\'id1\').style.display=\'none\'" class="close"\
                       title="Close modal">&times;</span>\
@@ -28,16 +28,16 @@ document.write(
             </div>\
             <div class="container">\
                 <label for="name"><b>Username</b></label>\
-                <input type="text" placeholder="Username" id="name" class="inputcontainer" required>\
+                <input type="text"  name="data[user]" placeholder="Username" id="name" class="inputcontainer" required>\
                 <label for="pws"><b>Parola</b></label>\
-                <input type="password" placeholder="Introduceti parola" id="pws" class="inputcontainer" required>\
+                <input type="password"  name="data[password]" placeholder="Introduceti parola" id="pws" class="inputcontainer" required>\
                 <button type="submit" id="logare" class="buttonmodal">Logare</button>\
                 <div class="logincustom">\
                     <button type="submit" id="github" class="buttonmodal">GitHub</button>\
                     <button type="submit" id="linkedln" class="buttonmodal">Linkedln</button>\
                 </div>\
                 <label class="conectat">\
-                    <input type="checkbox" checked="checked" name="remeber">Mentine-ma conectat.\
+                    <input name="data[conn]"  type="checkbox" checked="checked" form="login">Mentine-ma conectat.\
                 </label>\
             </div>\
             <div class="container">\
@@ -50,7 +50,7 @@ document.write(
         </form>\
     </div>\
     <div id="id2" class="modal">\
-        <form class="modal-content animate" action="#">\
+        <form class="modal-content animate" action="home/register" method="post" id="register">\
             <div class="imgcontainer">\
                 <span onclick="document.getElementById(\'id2\').style.display=\'none\'" class="close"\
                       title="Close modal">&times;&#215;</span>\
@@ -58,30 +58,26 @@ document.write(
             <div class="container">\
                 <label for="namec"><b>Alegeti un nume de utilizator</b></label>\
                 <input type="text" placeholder="Introduceti  numele de utilizator " id="namec"\
-                       class="inputcontainer" required>\
+                       class="inputcontainer" name="reg[username]"   form="register"  required>\
                 <label for="email"><b>Email</b></label>\
-                <input type="email" placeholder="username@domain.com" id="email" class="inputcontainer" required>\
+                <input type="email" placeholder="username@domain.com" id="email" name="reg[email]"  class="inputcontainer" required>\
                 <label for="pwsc"><b>Parola</b></label>\
-                <input type="password" placeholder="Introduceti o parola" id="pwsc" class="inputcontainer" required>\
+                <input type="password" placeholder="Introduceti o parola" id="pwsc" name="reg[password]" class="inputcontainer" required>\
                 <label for="pwscr"><b>Confirma parola</b></label>\
-                <input type="password" placeholder="Introduceti parola din nou" id="pwscr" class="inputcontainer"\
+                <input type="password" placeholder="Introduceti parola din nou" name="reg[confirm]" id="pwscr" class="inputcontainer"\
                        required>\
                 <label for="nameuser"><b>Nume</b></label>\
                 <label>\
-                    <input type="text" id="nameuser" class="inputcontainer" placeholder="Introduceti numele"\
+                    <input type="text" id="nameuser" class="inputcontainer" name="reg[name]" placeholder="Introduceti numele"\
                            required>\
                 </label>\
                 <label for="prenumeuser"><b>Prenume</b></label>\
                 <label>\
-                    <input type="text" id="prenumeuser" class="inputcontainer" placeholder="Introduceti prenumele"\
+                    <input type="text" id="prenumeuser" class="inputcontainer" name="reg[lastname]" placeholder="Introduceti prenumele"\
                            required>\
                 </label>\
                 <div class="butoanean">\
                     <button type="submit" class="buttonmodal">Creaza cont</button>\
-                    <button type="button" onclick="document.getElementById(\'id2\').style.display=\'none\'"\
-                            class="buttonmodal">\
-                        Anuleaza\
-                    </button>\
                 </div>\
             </div>\
         </form>\
