@@ -14,10 +14,12 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../webroot/scripts/navbar.js"></script>
+
 </head>
 <body>
-
+<?php
+include TEMPLATES.'navbar.php';
+?>
 <div class="body" style="margin-top: 0;">
     <div class="wrapper ">
         <main class="page-main">

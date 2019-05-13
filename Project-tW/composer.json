@@ -1,11 +1,11 @@
 {
   "require": {
-    "respect/validation": "^1.1"
+    "respect/validation": "^1.1",
+    "duncan3dc/sessions": "^2.0"
   },
   "autoload": {
     "classmap": [
       "models/DAO/",
-      "lib/init.php",
       "lib/app.class.php",
       "lib/config.class.php",
       "lib/router.class.php",

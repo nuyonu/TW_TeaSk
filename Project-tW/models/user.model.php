@@ -23,16 +23,16 @@ class UserModel extends Database
 
     public function saveUser(Register $user)
     {
-        $statement_register = "INSERT INTO users VALUES(?,?,?,?,?,?,?,?)";
-        $this->database_connection = $this->connect();
-        $stmt = $this->database_connection->prepare($statement_register);
-        print_r($this->database_connection->error_list);
-        $stmt->bind_param("dsssssss", $id, $username, $email, $password, $name, $last_name, $token, $token);
         $username = $user->getUsername();
         $email = $user->getEmail();
         $password = $user->getPassword();
         $name = $user->getName();
         $last_name = $user->getLastName();
+        $statement_register = "INSERT INTO users VALUES(?,?,?,?,?,?,?,?)";
+        $this->database_connection = $this->connect();
+        $stmt = $this->database_connection->prepare($statement_register);
+        print_r($this->database_connection->error_list);
+        $stmt->bind_param("dsssssss", $id, $username, $email, $password, $name, $last_name, $token, $token);
         $stmt->execute();
         $stmt->close();
 

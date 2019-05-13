@@ -30,11 +30,11 @@ echo "<br>\n";
 
 $sql_Events = "DROP TABLE going_to_trainings, going_to_events, contacting";
 
-if ($conn->query($sql_Events) == TRUE)
+if ($conn->query($sql_Events)) {
     echo "Table going_to_trainings, going_to_events, contacting deleted";
-else
+} else {
     echo "Error to delete table: " . $conn->error;
-
+}
 echo "<br>\n";
 
 $sql_Events = "CREATE OR REPLACE TABLE  events( 
@@ -170,7 +170,7 @@ $contact = "CREATE OR REPLACE TABLE contact(
                     problem     VARCHAR(200) ,
                     PRIMARY KEY (id) 
 )";
-if ($conn->query($contact) === TRUE) {
+if ($conn->query($contact)) {
     echo "Table contact created successfully";
 } else {
     echo "Error creating table : " . $conn->error;
@@ -178,11 +178,9 @@ if ($conn->query($contact) === TRUE) {
 echo "<br>\n";
 
 
-
-
 $sql_invo = "show ENGINE INNODB STATUS";
 
-if ($conn->query($sql_invo) == TRUE) {
+if ($conn->query($sql_invo)) {
     echo "ok";
 }
 $conn->close();

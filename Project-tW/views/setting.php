@@ -9,10 +9,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/setting.css">
-    <script src="../webroot/scripts/navbar.js"></script>
+
 </head>
 <body>
-
+<?php
+include TEMPLATES . 'navbar_without_login.php';
+?>
 <div class="body" style="margin-top: 0;">
 
     <div class="menu" style="font-family: Karla,sans-serif">
@@ -31,43 +33,39 @@
             <div class="ContulM">
                 <h2>Date personale</h2>
             </div>
-            <div class="line">
+            <form action="/settings/personal" method="post">
+                <div class="line">
                 <span>
                     <label for="nameinput"><b>Nume</b></label>
-                <input type="text" placeholder="Filos" id="nameinput" class="inputcontainer containerinput" required>
+                <input type="text" name="personal[name]" placeholder="Filos" id="nameinput"
+                       class="inputcontainer containerinput" required>
                 </span>
-                <span>
+                    <span>
                     <label for="lastnameinput"><b>Prenume</b></label>
-                    <input type="text" placeholder="Gabriel" id="lastnameinput" class="inputcontainer containerinput"
+                    <input type="text" name="personal[first]" placeholder="Gabriel" id="lastnameinput"
+                           class="inputcontainer containerinput"
                            required>
                 </span>
 
-            </div>
-            <div class="line">
+                </div>
+                <div class="line">
                 <span>
                     <label for="email2"><b>Email</b></label>
-                <input type="email" placeholder="filos@gmmmmmm.com" id="email2" class="inputcontainer containerinput"
+                <input type="email" name="personal['email]" placeholder="filos@gmmmmmm.com" id="email2"
+                       class="inputcontainer containerinput"
                        required>
+                    <button type="submit" class="savebutton">Salvează</button>
                 </span>
-                <span>
-                    <label for="name2"><b>Numa afisat</b></label>
-                    <input type="text" placeholder="Gabriel" id="name2" class="inputcontainer containerinput" required>
-                </span>
+                    <span>
+                    <label for="name2"><b>Numa utilizator</b></label>
+                    <input type="text" placeholder="Gabriel" name="personal[username]" id="name2" class="inputcontainer containerinput" required>
 
-            </div>
-
-            <div class="line descriere">
-                <div class="block">
-                    <label>
-                        <b>Descriere</b>
-                    </label>
-                    <form>
-                        <textarea class="descriere" id="inputdescriere">O descrierere...</textarea>
-                    </form>
+                    </span>
 
                 </div>
+            </form>
 
-            </div>
+
         </div>
         <div class="image">
             <img src="../webroot/images/user.png" class="imageaccount" alt="user">
@@ -79,33 +77,34 @@
             <div class="ContulM">
                 <h2>Conectare</h2>
             </div>
-            <div class="line">
+            <form method="post" action="/settings/contact">
+                <div class="line">
                 <span>
                     <label for="newpassword"><b>Parola noua</b></label>
                 <input type="password" placeholder="**************" id="newpassword"
                        class="inputcontainer containerinput" required>
                 </span>
-                <span>
+                    <span>
                     <label for="confirmpasword"><b>Confirma parola</b></label>
                     <input type="password" placeholder="**************" id="confirmpasword"
                            class="inputcontainer containerinput" required>
                 </span>
 
-            </div>
-            <div class="line">
+                </div>
+                <div class="line">
                 <span>
                     <label for="newemail"><b>Email nou</b></label>
                 <input type="email" placeholder="filos@gmmmmmm.com" id="newemail" class="inputcontainer containerinput"
                        required>
                 </span>
-                <span class="butoaneflex">
+                    <span class="butoaneflex">
                 <button type="button" class="logare" id="logare1">Gitbub</button>
                 <button type="button" class="logare" id="logare2">Linkedin</button>
-                <button type="button" class="savebutton">Salveza</button>
+                <button type="submit" class="savebutton">Salveza</button>
             </span>
 
-            </div>
-
+                </div>
+            </form>
 
         </div>
         <div class="image">

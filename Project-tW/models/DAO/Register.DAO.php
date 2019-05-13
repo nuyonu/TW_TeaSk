@@ -12,14 +12,10 @@ class Register
         $emailValidator = v::email()->noWhitespace();
         $nameValidator = v::alpha()->noWhitespace();
 
-        if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password)) {
-            return false;
-        } elseif (!$emailValidator->validate($this->email)) {
-            return false;
-        } elseif (!$nameValidator->validate($this->name) && !$nameValidator->validate($this->last_name)) {
+        if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password)||!$emailValidator->validate($this->email)) {
             return false;
         }
-        return true;
+        return (!$nameValidator->validate($this->name) && !$nameValidator->validate($this->last_name)) ? true : false;
     }
 
     /**

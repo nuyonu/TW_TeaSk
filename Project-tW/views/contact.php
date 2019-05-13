@@ -13,9 +13,12 @@
     <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/contact.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="../webroot/scripts/navbar.js"></script>
+<!--    <script src="../webroot/scripts/navbar.js"></script>-->
 </head>
 <body>
+<?php
+include TEMPLATES.'navbar.php';
+?>
 
 
 <div class="body" style="margin-top: 0">

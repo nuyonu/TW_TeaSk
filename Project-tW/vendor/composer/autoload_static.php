@@ -11,6 +11,10 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
     );
 
     public static $prefixLengthsPsr4 = array (
+        'd' => 
+        array (
+            'duncan3dc\\Sessions\\' => 19,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -21,15 +25,28 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
         ),
         'P' => 
         array (
+            'Psr\\Http\\Server\\' => 16,
+            'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
+            'PSR7Sessions\\Storageless\\' => 25,
         ),
         'L' => 
         array (
             'League\\Container\\' => 17,
+            'Lcobucci\\JWT\\' => 13,
+            'Lcobucci\\Clock\\' => 15,
+        ),
+        'D' => 
+        array (
+            'Dflydev\\FigCookies\\' => 19,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'duncan3dc\\Sessions\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/duncan3dc/sessions/src',
+        ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
@@ -38,13 +55,38 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
         array (
             0 => __DIR__ . '/..' . '/respect/validation/library',
         ),
+        'Psr\\Http\\Server\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-server-handler/src',
+            1 => __DIR__ . '/..' . '/psr/http-server-middleware/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'Psr\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
+        'PSR7Sessions\\Storageless\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr7-sessions/storageless/src/Storageless',
+        ),
         'League\\Container\\' => 
         array (
             0 => __DIR__ . '/..' . '/league/container/src',
+        ),
+        'Lcobucci\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/jwt/src',
+        ),
+        'Lcobucci\\Clock\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/lcobucci/clock/src',
+        ),
+        'Dflydev\\FigCookies\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies',
         ),
     );
 
@@ -63,8 +105,49 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
         'ContactModel' => __DIR__ . '/../..' . '/models/contact.model.php',
         'Controller' => __DIR__ . '/../..' . '/lib/controller.class.php',
         'Database' => __DIR__ . '/../..' . '/models/database.model.php',
+        'Dflydev\\FigCookies\\Cookie' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/Cookie.php',
+        'Dflydev\\FigCookies\\Cookies' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/Cookies.php',
+        'Dflydev\\FigCookies\\FigRequestCookies' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/FigRequestCookies.php',
+        'Dflydev\\FigCookies\\FigResponseCookies' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/FigResponseCookies.php',
+        'Dflydev\\FigCookies\\SetCookie' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/SetCookie.php',
+        'Dflydev\\FigCookies\\SetCookies' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/SetCookies.php',
+        'Dflydev\\FigCookies\\StringUtil' => __DIR__ . '/..' . '/dflydev/fig-cookies/src/Dflydev/FigCookies/StringUtil.php',
         'EventsController' => __DIR__ . '/../..' . '/controllers/events.controller.php',
         'HomeController' => __DIR__ . '/../..' . '/controllers/home.controller.php',
+        'Lcobucci\\Clock\\Clock' => __DIR__ . '/..' . '/lcobucci/clock/src/Clock.php',
+        'Lcobucci\\Clock\\FrozenClock' => __DIR__ . '/..' . '/lcobucci/clock/src/FrozenClock.php',
+        'Lcobucci\\Clock\\SystemClock' => __DIR__ . '/..' . '/lcobucci/clock/src/SystemClock.php',
+        'Lcobucci\\JWT\\Builder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Builder.php',
+        'Lcobucci\\JWT\\Claim' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim.php',
+        'Lcobucci\\JWT\\Claim\\Basic' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Basic.php',
+        'Lcobucci\\JWT\\Claim\\EqualsTo' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/EqualsTo.php',
+        'Lcobucci\\JWT\\Claim\\Factory' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Factory.php',
+        'Lcobucci\\JWT\\Claim\\GreaterOrEqualsTo' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/GreaterOrEqualsTo.php',
+        'Lcobucci\\JWT\\Claim\\LesserOrEqualsTo' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/LesserOrEqualsTo.php',
+        'Lcobucci\\JWT\\Claim\\Validatable' => __DIR__ . '/..' . '/lcobucci/jwt/src/Claim/Validatable.php',
+        'Lcobucci\\JWT\\Parser' => __DIR__ . '/..' . '/lcobucci/jwt/src/Parser.php',
+        'Lcobucci\\JWT\\Parsing\\Decoder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Parsing/Decoder.php',
+        'Lcobucci\\JWT\\Parsing\\Encoder' => __DIR__ . '/..' . '/lcobucci/jwt/src/Parsing/Encoder.php',
+        'Lcobucci\\JWT\\Signature' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signature.php',
+        'Lcobucci\\JWT\\Signer' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer.php',
+        'Lcobucci\\JWT\\Signer\\BaseSigner' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/BaseSigner.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\KeyParser' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/KeyParser.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\Sha256' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/Sha256.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\Sha384' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/Sha384.php',
+        'Lcobucci\\JWT\\Signer\\Ecdsa\\Sha512' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Ecdsa/Sha512.php',
+        'Lcobucci\\JWT\\Signer\\Hmac' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac.php',
+        'Lcobucci\\JWT\\Signer\\Hmac\\Sha256' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac/Sha256.php',
+        'Lcobucci\\JWT\\Signer\\Hmac\\Sha384' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac/Sha384.php',
+        'Lcobucci\\JWT\\Signer\\Hmac\\Sha512' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Hmac/Sha512.php',
+        'Lcobucci\\JWT\\Signer\\Key' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Key.php',
+        'Lcobucci\\JWT\\Signer\\Keychain' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Keychain.php',
+        'Lcobucci\\JWT\\Signer\\Rsa' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa.php',
+        'Lcobucci\\JWT\\Signer\\Rsa\\Sha256' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa/Sha256.php',
+        'Lcobucci\\JWT\\Signer\\Rsa\\Sha384' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa/Sha384.php',
+        'Lcobucci\\JWT\\Signer\\Rsa\\Sha512' => __DIR__ . '/..' . '/lcobucci/jwt/src/Signer/Rsa/Sha512.php',
+        'Lcobucci\\JWT\\Token' => __DIR__ . '/..' . '/lcobucci/jwt/src/Token.php',
+        'Lcobucci\\JWT\\ValidationData' => __DIR__ . '/..' . '/lcobucci/jwt/src/ValidationData.php',
         'League\\Container\\Argument\\ArgumentResolverInterface' => __DIR__ . '/..' . '/league/container/src/Argument/ArgumentResolverInterface.php',
         'League\\Container\\Argument\\ArgumentResolverTrait' => __DIR__ . '/..' . '/league/container/src/Argument/ArgumentResolverTrait.php',
         'League\\Container\\Argument\\ClassName' => __DIR__ . '/..' . '/league/container/src/Argument/ClassName.php',
@@ -90,9 +173,23 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
         'League\\Container\\ServiceProvider\\ServiceProviderAggregate' => __DIR__ . '/..' . '/league/container/src/ServiceProvider/ServiceProviderAggregate.php',
         'League\\Container\\ServiceProvider\\ServiceProviderAggregateInterface' => __DIR__ . '/..' . '/league/container/src/ServiceProvider/ServiceProviderAggregateInterface.php',
         'League\\Container\\ServiceProvider\\ServiceProviderInterface' => __DIR__ . '/..' . '/league/container/src/ServiceProvider/ServiceProviderInterface.php',
+        'PSR7Sessions\\Storageless\\Http\\SessionMiddleware' => __DIR__ . '/..' . '/psr7-sessions/storageless/src/Storageless/Http/SessionMiddleware.php',
+        'PSR7Sessions\\Storageless\\Session\\DefaultSessionData' => __DIR__ . '/..' . '/psr7-sessions/storageless/src/Storageless/Session/DefaultSessionData.php',
+        'PSR7Sessions\\Storageless\\Session\\LazySession' => __DIR__ . '/..' . '/psr7-sessions/storageless/src/Storageless/Session/LazySession.php',
+        'PSR7Sessions\\Storageless\\Session\\SessionInterface' => __DIR__ . '/..' . '/psr7-sessions/storageless/src/Storageless/Session/SessionInterface.php',
+        'Personal' => __DIR__ . '/../..' . '/models/DAO/PersonalDAO.php',
         'Psr\\Container\\ContainerExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerExceptionInterface.php',
         'Psr\\Container\\ContainerInterface' => __DIR__ . '/..' . '/psr/container/src/ContainerInterface.php',
         'Psr\\Container\\NotFoundExceptionInterface' => __DIR__ . '/..' . '/psr/container/src/NotFoundExceptionInterface.php',
+        'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
+        'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
+        'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
+        'Psr\\Http\\Message\\ServerRequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/ServerRequestInterface.php',
+        'Psr\\Http\\Message\\StreamInterface' => __DIR__ . '/..' . '/psr/http-message/src/StreamInterface.php',
+        'Psr\\Http\\Message\\UploadedFileInterface' => __DIR__ . '/..' . '/psr/http-message/src/UploadedFileInterface.php',
+        'Psr\\Http\\Message\\UriInterface' => __DIR__ . '/..' . '/psr/http-message/src/UriInterface.php',
+        'Psr\\Http\\Server\\MiddlewareInterface' => __DIR__ . '/..' . '/psr/http-server-middleware/src/MiddlewareInterface.php',
+        'Psr\\Http\\Server\\RequestHandlerInterface' => __DIR__ . '/..' . '/psr/http-server-handler/src/RequestHandlerInterface.php',
         'Register' => __DIR__ . '/../..' . '/models/DAO/Register.DAO.php',
         'Respect\\Validation\\Exceptions\\AgeException' => __DIR__ . '/..' . '/respect/validation/library/Exceptions/AgeException.php',
         'Respect\\Validation\\Exceptions\\AllOfException' => __DIR__ . '/..' . '/respect/validation/library/Exceptions/AllOfException.php',
@@ -894,10 +991,20 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
         'SettingsController' => __DIR__ . '/../..' . '/controllers/settings.controller.php',
         'SuportController' => __DIR__ . '/../..' . '/controllers/suport.controller.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
-        'TestController' => __DIR__ . '/../..' . '/controllers/test.controller.php',
+        'TestingController' => __DIR__ . '/../..' . '/controllers/test.controller.php',
         'TrainingsController' => __DIR__ . '/../..' . '/controllers/trainings.controller.php',
         'UserDAO' => __DIR__ . '/../..' . '/models/DAO/Login.DAO.php',
         'UserModel' => __DIR__ . '/../..' . '/models/user.model.php',
+        'duncan3dc\\Sessions\\Cookie' => __DIR__ . '/..' . '/duncan3dc/sessions/src/Cookie.php',
+        'duncan3dc\\Sessions\\CookieInterface' => __DIR__ . '/..' . '/duncan3dc/sessions/src/CookieInterface.php',
+        'duncan3dc\\Sessions\\Session' => __DIR__ . '/..' . '/duncan3dc/sessions/src/Session.php',
+        'duncan3dc\\Sessions\\SessionInstance' => __DIR__ . '/..' . '/duncan3dc/sessions/src/SessionInstance.php',
+        'duncan3dc\\Sessions\\SessionInterface' => __DIR__ . '/..' . '/duncan3dc/sessions/src/SessionInterface.php',
+        'duncan3dc\\Sessions\\SessionNamespace' => __DIR__ . '/..' . '/duncan3dc/sessions/src/SessionNamespace.php',
+        'duncan3dc\\Sessions\\SessionTrait' => __DIR__ . '/..' . '/duncan3dc/sessions/src/SessionTrait.php',
+        'duncan3dc\\Sessions\\Storageless\\Middleware' => __DIR__ . '/..' . '/duncan3dc/sessions/src/Storageless/Middleware.php',
+        'duncan3dc\\Sessions\\Storageless\\RequestHandler' => __DIR__ . '/..' . '/duncan3dc/sessions/src/Storageless/RequestHandler.php',
+        'duncan3dc\\Sessions\\Storageless\\Session' => __DIR__ . '/..' . '/duncan3dc/sessions/src/Storageless/Session.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
