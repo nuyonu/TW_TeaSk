@@ -4,6 +4,6 @@ class ContactController extends Controller
 {
     public function show()
     {
-        require_once(ROOT . DS . 'views' . DS . 'contact.php');
+        require_once(VIEW . 'contact.php');
     }
 }

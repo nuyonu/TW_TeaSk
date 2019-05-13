@@ -2,14 +2,17 @@
 
 class Controller
 {
+    protected $dvb;
     protected $data;
     protected $model;
     protected $params;
+    protected $database;
 
     public function __construct($data = array())
     {
         $this->data = $data;
         $this->params = App::getRouter()->getParams();
+
     }
 
     /**
