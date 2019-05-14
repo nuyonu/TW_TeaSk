@@ -2,13 +2,13 @@
 
 include(ROOT . DS . 'models' . DS . 'training.model.php');
 
-class TrainingsController extends Controller
+class TrainingsfilterController extends Controller
 {
     public function show()
     {
         $this->model = new TrainingModel($this->database);
 
-        $trainings = $this->model->getTrainings();
+        $trainings = $this->model->getTrainingsByFilter($_GET);
 
         require_once(VIEW . 'trainings.php');
     }

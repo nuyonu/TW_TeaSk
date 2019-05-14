@@ -4,7 +4,6 @@ include(ROOT . DS . 'models' . DS . 'user.model.php');
 
 class HomeController extends Controller
 {
-
     public function show()
     {
         require_once(VIEW . 'index.php');

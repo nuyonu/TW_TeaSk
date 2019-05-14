@@ -15,119 +15,106 @@
     <div class="container-row-flex">
         <div class="container-details">
             <h2>Filtrează training-urile</h2>
-            <form class="filter-form">
-                Nume:<br>
-                <input type="text" name="name"><br>
-                Locație:<br>
-                <input type="text" name="location"><br>
-                Dată:<br>
-                <input type="text" name="date"><br>
-                Domeniu:<br>
-                <input type="text" name="domeniu"><br>
-                Specificații:<br>
-                <input type="text" name="specifications"><br>
+            <form action="trainingsfilter" class="filter-form" method="get">
+                Nume:<br><input type="text" name="title"><br>
+                Locație:<br><input type="text" name="location"><br>
+                Are loc după:<br><input type="date" name="dateStart"><br>
+                Are loc înainte de:<br><input type="date" name="dateEnd"><br>
+                Domeniu:<br><input type="text" name="domain"><br>
+                Specificații:<br><input type="text" name="specs"><br>
+                Stele:<br>
+                Minim: <select name="minStars">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                Maxim: <select name="maxStars">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                </select><br>
                 Dificultate:<br>
                 <label>
-                    <input type="radio" name="difficulty" value="easy" checked>Ușoară
+                    <input type="checkbox" name="diffs[]" value="0" checked>Ușoară
                 </label>
                 <label>
-                    <input type="radio" name="difficulty" value="medium">Medie
+                    <input type="checkbox" name="diffs[]" value="1" checked>Medie
                 </label>
                 <label>
-                    <input type="radio" name="difficulty" value="hard">Grea<br>
+                    <input type="checkbox" name="diffs[]" value="2" checked>Grea<br>
                 </label>
                 Preț:<br>
-                <input type="text" name="min-price"> -
-                <input type="text" name="max-price"><br>
+                <input type="text" name="minPrice"> -
+                <input type="text" name="maxPrice"><br>
                 <div class="filter-buttons">
                     <input type="submit" value="Filtrează">
-                    <input type="submit" value="Resetează">
                 </div>
             </form>
 
             <div class="trainings-list">
-                <div>
-                    <div class="training-header">
-                        <img src="../webroot/images/c++.png" alt="Super Training"/>
-                        <a href="#">Super Training</a>
-                        <input type="image" src="../webroot/images/heart2.png" alt="Added to preferences" width="24"
-                               height="24"/>
+                <?php foreach($trainings as $training): ?>
+                    <div>
+                        <div class="training-header">
+                            <img class="training-header-image" src= <?= $training->getImage() ?> alt= <?= $training->getTitle() ?> />
+                            <a class="training-header-title" href="#"> <?= $training->getTitle() ?> </a>
+                            <input type="image" src="../webroot/images/heart2.png" alt="Added to preferences" width="24"
+                                   height="24"/>
+                        </div>
+                        <div class="training-table-container">
+                            <table class="training-table">
+                                <tr>
+                                    <th>Locație</th>
+                                    <th>Dată</th>
+                                    <th>Domeniu</th>
+                                    <th>Specificații</th>
+                                    <th>Recenzie</th>
+                                    <th>Dificultate</th>
+                                    <th>Preț</th>
+                                </tr>
+                                <tr>
+                                    <td><?= $training->getLocation() ?></td>
+                                    <td><?= $training->getDatetime() ?></td>
+                                    <td><?= $training->getDomain() ?></td>
+                                    <td><?= $training->getSpecifications() ?></td>
+                                    <td>
+                                        <?php for ($index = 0; $index < $training->getStars(); $index++) { ?>
+                                            <img class="training-star" src="../webroot/images/star-icon.png" alt="Stele"/>
+                                        <?php } ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            if ($training->getDifficulty() == 0) echo "Ușoară";
+                                            elseif ($training->getDifficulty() == 1) echo "Medie";
+                                            else echo "Grea";
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            if ($training->getPrice() <= 0) echo "Gratuit";
+                                            elseif ($training->getPrice() == 1) echo "1 leu";
+                                            else echo $training->getPrice() . " lei";
+                                        ?>
+                                    </td>
+                                </tr>
+                            </table>
+                            <div class="training-table-show">
+                                <button class="training-table-show-button">&#11167</button>
+                            </div>
+                            <div class="training-table-description">
+                                <p>Descriere</p>
+                                <?=
+                                    mb_substr($training->getDescription(), 0, 300) .
+                                    ((strlen($training->getDescription()) >= 300) ? "..." : "")
+                                ?>
+                                <a href="#" class="training-find-out-more"> ...află mai multe despre '<?= $training->getTitle() ?>' </a>
+                            </div>
+                        </div>
                     </div>
-                    <ul>
-                        <li>Iași</li>
-                        <li>17 Aprilie 2019</li>
-                        <li>Dezvoltator Web</li>
-                        <li>C++, C#, Java</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="training-header">
-                        <img src="../webroot/images/haskell.png" alt="Mega Training"/>
-                        <a href="#">Mega Training</a>
-                        <input type="image" src="../webroot/images/heart3.png" alt="Add to preferences" width="24"
-                               height="24"/>
-                    </div>
-                    <ul>
-                        <li>Suceava</li>
-                        <li>18 Mai 2019</li>
-                        <li>Tester</li>
-                        <li>Haskell</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="training-header">
-                        <img src="../webroot/images/hardware.jpg" alt="Hardware Training"/>
-                        <a href="#">Hardware Training</a>
-                        <input type="image" src="../webroot/images/heart3.png" alt="Add to preferences" width="24"
-                               height="24"/>
-                    </div>
-                    <ul>
-                        <li>Botoșani</li>
-                        <li>20 Iunie 2019</li>
-                        <li>Dezvoltator Desktop</li>
-                        <li>ASM</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="training-header">
-                        <img src="../webroot/images/excel.png" alt="Tech Lead Training"/>
-                        <a href="#">Tech Lead Training</a>
-                        <input type="image" src="../webroot/images/heart3.png" alt="Add to preferences" width="24"
-                               height="24"/>
-                    </div>
-                    <ul>
-                        <li>Timișoara</li>
-                        <li>6 Decembrie 2020</li>
-                        <li>Tech Lead</li>
-                        <li>Excel, Word, Access</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="training-header">
-                        <img src="../webroot/images/javascript.png" alt="BestWeb Training"/>
-                        <a href="#">BestWeb Training</a>
-                        <input type="image" src="../webroot/images/heart2.png" alt="Add to preferences"/>
-                    </div>
-                    <ul>
-                        <li>București</li>
-                        <li>30 Ianuarie 2019</li>
-                        <li>Front-End Developer</li>
-                        <li>Javascript, HTML, CSS</li>
-                    </ul>
-                </div>
-                <div>
-                    <div class="training-header">
-                        <img src="../webroot/images/c-sharp.png" alt="Mega Dev Training"/>
-                        <a href="#">Mega Dev Training</a>
-                        <input type="image" src="../webroot/images/heart2.png" alt="Add to preferences"/>
-                    </div>
-                    <ul>
-                        <li>Vaslui</li>
-                        <li>23 Mai 2019</li>
-                        <li>Dezvoltator Desktop</li>
-                        <li>Java, C#</li>
-                    </ul>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="vertical-line"></div>
@@ -277,5 +264,6 @@
         </li>
     </ul>
 </footer>
+<script src="../webroot/scripts/trainings.js"></script>
 </body>
 </html>

@@ -12,7 +12,7 @@ class Controller
     {
         $this->data = $data;
         $this->params = App::getRouter()->getParams();
-
+        $this->database = App::getDatabase();
     }
 
     /**
