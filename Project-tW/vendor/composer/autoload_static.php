@@ -50,6 +50,11 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
 
     public static $classMap = array (
         'AboutController' => __DIR__ . '/../..' . '/controllers/about.controller.php',
+        'AdminEventsController' => __DIR__ . '/../..' . '/controllers/adminEvents.controller.php',
+        'AdminHomeController' => __DIR__ . '/../..' . '/controllers/adminHome.controller.php',
+        'AdminSupportController' => __DIR__ . '/../..' . '/controllers/adminSupport.controller.php',
+        'AdminTrainingsController' => __DIR__ . '/../..' . '/controllers/adminTrainings.controller.php',
+        'AdminUsersController' => __DIR__ . '/../..' . '/controllers/adminUsers.controller.php',
         'App' => __DIR__ . '/../..' . '/lib/app.class.php',
         'Config' => __DIR__ . '/../..' . '/lib/config.class.php',
         'ConfigurationSettings' => __DIR__ . '/../..' . '/config/config.php',
@@ -888,7 +893,11 @@ class ComposerStaticInited767c94ea5948d72ba6530af87fd861
         'SuportController' => __DIR__ . '/../..' . '/controllers/suport.controller.php',
         'Symfony\\Polyfill\\Mbstring\\Mbstring' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/Mbstring.php',
         'TestController' => __DIR__ . '/../..' . '/controllers/test.controller.php',
+        'Training' => __DIR__ . '/../..' . '/models/Entities/training.entity.php',
+        'TrainingDAO' => __DIR__ . '/../..' . '/models/DAO/Training.DAO.php',
+        'TrainingModel' => __DIR__ . '/../..' . '/models/training.model.php',
         'TrainingsController' => __DIR__ . '/../..' . '/controllers/trainings.controller.php',
+        'TrainingsfilterController' => __DIR__ . '/../..' . '/controllers/trainingsfilter.controller.php',
         'UserDAO' => __DIR__ . '/../..' . '/models/DAO/Login.DAO.php',
         'UserModel' => __DIR__ . '/../..' . '/models/user.model.php',
     );

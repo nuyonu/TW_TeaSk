@@ -7,6 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'AboutController' => $baseDir . '/controllers/about.controller.php',
+    'AdminEventsController' => $baseDir . '/controllers/adminEvents.controller.php',
+    'AdminHomeController' => $baseDir . '/controllers/adminHome.controller.php',
+    'AdminSupportController' => $baseDir . '/controllers/adminSupport.controller.php',
+    'AdminTrainingsController' => $baseDir . '/controllers/adminTrainings.controller.php',
+    'AdminUsersController' => $baseDir . '/controllers/adminUsers.controller.php',
     'App' => $baseDir . '/lib/app.class.php',
     'Config' => $baseDir . '/lib/config.class.php',
     'ConfigurationSettings' => $baseDir . '/config/config.php',
@@ -845,7 +850,11 @@ return array(
     'SuportController' => $baseDir . '/controllers/suport.controller.php',
     'Symfony\\Polyfill\\Mbstring\\Mbstring' => $vendorDir . '/symfony/polyfill-mbstring/Mbstring.php',
     'TestController' => $baseDir . '/controllers/test.controller.php',
+    'Training' => $baseDir . '/models/Entities/training.entity.php',
+    'TrainingDAO' => $baseDir . '/models/DAO/Training.DAO.php',
+    'TrainingModel' => $baseDir . '/models/training.model.php',
     'TrainingsController' => $baseDir . '/controllers/trainings.controller.php',
+    'TrainingsfilterController' => $baseDir . '/controllers/trainingsfilter.controller.php',
     'UserDAO' => $baseDir . '/models/DAO/Login.DAO.php',
     'UserModel' => $baseDir . '/models/user.model.php',
 );
