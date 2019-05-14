@@ -83,13 +83,15 @@ echo "<br>\n";
 $sql_Trainings = "CREATE OR REPLACE TABLE trainings(
                     id              INTEGER NOT NULL AUTO_INCREMENT,
                     title           VARCHAR(100),
-                    date_training   DATE,
+                    location        VARCHAR(100),
+                    datetime        DATETIME,
                     domain          VARCHAR(100),
                     specifications  VARCHAR(100), 
                     stars           INTEGER,
                     difficulty      INTEGER,
                     price           INTEGER,
                     image           VARCHAR(100),
+                    description     VARCHAR(1000),
                     PRIMARY KEY(id) 
                     
 )";

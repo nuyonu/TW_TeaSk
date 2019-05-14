@@ -127,12 +127,65 @@
     background-color: #fcfdff;
 }
 
-.trainings-list img
+.training-header-image
 {
     width: 50px;
     height: 50px;
     box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
     border-radius: 50%;
+}
+
+.training-table
+{
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border: 3px dotted #5aa8fb;
+    background-color: #fcfdff;
+
+    table-layout:fixed
+}
+
+.training-table-container
+{
+    margin: 15px;
+}
+
+.training-table-description
+{
+    display: none;
+    margin: 10px 0 10px 0;
+    padding: 10px;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border: 3px dotted #00af91;
+    background-color: #fcfdff;
+}
+
+.training-table-description p
+{
+    margin: 5px 0 5px 0;
+    font-size: 24px;
+    text-align: center;
+}
+
+.training-table-show
+{
+    text-align: right;
+}
+
+.training-table-show-button
+{
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border: 3px dotted #2652af;
+    background-color: #fcfdff;
+}
+
+.training-find-out-more
+{
+    font-size: 14px;
+
 }
 
 .trainings-list li:first-child
@@ -142,14 +195,14 @@
 
 .trainings-list li
 {
-    display: inline;
+    /*display: inline; */
     background-image:  url("../images/arrow1.png");
     background-repeat: no-repeat;
     background-position: 0 bottom;
     padding-left: 1.2em;
 }
 
-.trainings-list a
+.training-header-title
 {
     font-size: 24px;
     margin: 0 15px;
@@ -280,6 +333,12 @@
 {
     width: 50%;
     margin: 10px auto 10px auto;
+}
+
+.training-star
+{
+    width: 12px;
+    height: 12px;
 }
 
 .training-difficulty
