@@ -17,6 +17,9 @@
 
 </head>
 <body>
+<button onclick="myFunction()">Replace document</button>
+
+
 <?php
 include TEMPLATES.'navbar.php';
 ?>

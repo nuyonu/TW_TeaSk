@@ -6,8 +6,6 @@ use duncan3dc\Sessions\SessionInstance;
 
 class App
 {
-
-
     public static function run($uri)
     {
         $session = new SessionInstance("my-app");
@@ -17,7 +15,7 @@ class App
         $controller_method = strtolower(self::$router->getMethodPrefix() . self::$router->getAction());
         if (empty($user) && !self::accesible()) {
             $home = new HomeController();
-            $home->show();
+            $home->redirect();
         } else {
             if ($controller_class == 'test') {
                 $test = new TestController();
@@ -32,8 +30,6 @@ class App
                 }
             }
         }
-
-
     }
 
     private static function accesible()
@@ -43,10 +39,7 @@ class App
             return true;
         }
         return false;
-
     }
-
-    protected static $router;
 
     /**
      * @return mixed
@@ -55,5 +48,9 @@ class App
     {
         return self::$router;
     }
+
+    protected static $router;
+
+
 
 }

@@ -25,7 +25,9 @@ class HomeController extends Controller
                 $navbar = 'hidden';
                 $session = new SessionInstance("my-app");
                 $session->set('user',$username);
-                header($this->home, true, 301);
+                header($this->home);
+                include VIEW.'index.php';
+                echo 'ok';
                 die();
             } else {
                 header($this->home, true, OK);
@@ -52,6 +54,7 @@ class HomeController extends Controller
             $UserRepository->saveUser($register);
             $navbar = '';
             header($this->home, true, 301);
+
             die();
         } else {
             header($this->home, true, 301);
@@ -59,6 +62,11 @@ class HomeController extends Controller
         }
 
     }
+    public  function redirect(){
+        header($this->home, true, 301);
+        die();
+    }
+
 
     public function dies()
     {
