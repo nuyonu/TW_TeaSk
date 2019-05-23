@@ -1,8 +1,8 @@
 <?php
-class AdminSupportController extends Controller
+class AdminsupportController extends Controller
 {
     public function show()
     {
-        require_once (ROOT . DS . 'views' . DS . 'admin-support.php');
+        require_once (VIEW . 'admin-support.php');
     }
 }

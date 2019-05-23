@@ -1,8 +1,8 @@
 <?php
-class AdminUsersController extends Controller
+class AdminusersController extends Controller
 {
     public function show()
     {
-        require_once (ROOT . DS . 'views' . DS . 'admin-users.php');
+        require_once (VIEW . 'admin-users.php');
     }
 }

@@ -1,0 +1,60 @@
+.modify-event-body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 2% 3% 0 3%;
+    background-color: aliceblue;
+    align-items: center;
+}
+
+.modify-event-body label {
+    font-weight: bold;
+}
+
+.old {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.old p {
+    color: royalblue;
+}
+
+.new {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    width: 50%;
+}
+
+.new label {
+    margin-bottom: 1px;
+}
+
+.new input, select, textarea {
+    border: 1px solid steelblue;
+}
+
+.row-event-modify {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.modify-event-body p {
+    margin: 0;
+}
+
+.new textarea {
+    resize: none;
+}
+
+.button-common {
+    font-size: 21px;
+    background-color: #5AA8FB;
+    border: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    margin: 0 5px 10px 5px;
+}
