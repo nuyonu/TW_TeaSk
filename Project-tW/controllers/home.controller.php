@@ -5,7 +5,6 @@ use duncan3dc\Sessions\SessionInstance;
 
 class HomeController extends Controller
 {
-
     public function show()
     {
         $navbar = '';

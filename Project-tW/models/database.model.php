@@ -6,8 +6,6 @@ class Database
 
     public function connect()
     {
-
-
         $servername = "localhost";
         $username = "root";
         $password = "";
@@ -27,7 +25,5 @@ class Database
             echo "" . $database_connection->error;
         }
         return $database_connection;
-
-
     }
 }
