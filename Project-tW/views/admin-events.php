@@ -20,41 +20,48 @@ include '../webroot/templates/admin-common.php'; ?>
         <div class="utils">
             <div class="search-event">
                 <form action="#">
-                    <input id="search-event-input" type="text" placeholder="Search...">
+                    <input id="search-event-input" type="text" placeholder="Caută după titlu..." name="title">
                 </form>
             </div>
             <div class="buttons">
                 <button class="button-common" id="add-button" type="button">Adaugă un eveniment</button>
                 <button class="button-common show-older-events" type="submit">Evenimente vechi</button>
-                <button class="button-common remove-events" type="submit">Elimină evenimentele</button>
+                <button class="button-common remove-events" type="submit"
+                        onclick="document.getElementById('delete-events').submit()">Elimină evenimentele
+                </button>
             </div>
         </div>
         <div class="data">
-            <table class="data-show">
-                <tr>
-                    <th>Id.</th>
-                    <th>Titlul evenimentului</th>
-                    <th>Organizator</th>
-                    <th>Adaugat de</th>
-                    <th>Mai multe</th>
-                    <th>Șterge</th>
-                    <th>Modifică</th>
-                </tr>
-                <?php if ($events != null) {
-                    foreach ($events as $event) {
-                        ?>
-                        <tr>
-                            <td><?php echo $event->getId()?></td>
-                            <td><?php echo $event->getTitle()?></td>
-                            <td><?php echo $event->getOrganizer()?></td>
-                            <td><?php echo $event->getTitle()?></td>
-                            <td><a href="#"><i class="fa fa-list"></i></a></td>
-                            <td><input type="checkbox"></td>
-                            <td><a href="#"><i class='fa fa-edit'></i></a></td>
-                        </tr>
-                    <?php }
-                } ?>
-            </table>
+            <form action="adminEvents/deleteEvents" id="delete-events">
+                <table class="data-show">
+                    <tr>
+                        <th>Id.</th>
+                        <th>Titlul evenimentului</th>
+                        <th>Organizator</th>
+                        <th>Adaugat de</th>
+                        <th>Mai multe</th>
+                        <th>Șterge</th>
+                        <th>Modifică</th>
+                    </tr>
+                    <?php if ($events != null && strcmp(array_values($events)[0]->getId(), '')) {
+                        foreach ($events as $event) {
+                            ?>
+                            <tr>
+                                <td><?php echo $event->getId() ?></td>
+                                <td><?php echo $event->getTitle() ?></td>
+                                <td><?php echo $event->getOrganizer() ?></td>
+                                <td><?php echo $event->getTitle() ?></td>
+                                <td><a href="<?= '/adminEventsView?eventId=' . $event->getId() ?>"><i
+                                                class="fa fa-list"></i></a></td>
+                                <td><input type="checkbox" name="check_list_for_delete[]"
+                                           value="<?= $event->getId() ?>"></td>
+                                <td><a href="<?= 'adminEventsModify?eventId=' . $event->getId() ?>"><i
+                                                class='fa fa-edit'></i></a></td>
+                            </tr>
+                        <?php }
+                    } ?>
+                </table>
+            </form>
             <div id="Add-Modal" class="modal">
 
                 <!-- Modal content -->
@@ -88,6 +95,8 @@ include '../webroot/templates/admin-common.php'; ?>
                                         <option value="3">Greu</option>
                                     </select>
                                 </div>
+                                <label>Tag-uri</label>
+                                <input type="text" name="eventParams[tags]">
                             </div>
                             <div class="right">
                                 <div class="row">
@@ -106,9 +115,13 @@ include '../webroot/templates/admin-common.php'; ?>
                                     <input name="eventParams[end-time]" id="end-time" type="time">
                                 </div>
                                 <label>Descriere</label>
-                                <textarea name="eventParams[description]" rows="9" form="add-form"></textarea>
+                                <textarea name="eventParams[description]" rows="11" form="add-form"></textarea>
                             </div>
                         </form>
+                        <div class="informations">
+                            <p>ATENȚE! Nu poți schimba tag-urile odată ce au fost setate.</p>
+                            <p>Tag-urile sunt foarte importante deoarece ne ajută pe noi să găsim publicul țintă.</p>
+                        </div>
                         <div class="button-add-event-submit">
                             <button type="submit" onclick="addFormSubmit()">Adaugă evenimentul</button>
                         </div>

@@ -11,7 +11,7 @@ if ($conn->connect_error) {
 }
 
 // Create database
-$sql = "CREATE DATABASE IF NOT EXISTS myDB";
+$sql = "CREATE DATABASE IF NOT EXISTS myDB character set UTF8 collate utf8_bin;";
 if ($conn->query($sql) === TRUE) {
     echo "Database created or updated successfully";
 } else {
@@ -28,10 +28,10 @@ if ($conn->query($sql_set_database) === TRUE) {
 }
 echo "<br>\n";
 
-$sql_Events = "DROP TABLE going_to_trainings, going_to_events, contacting";
+$sql_Events = "DROP TABLE going_to_trainings, going_to_events, contacting, events_tags";
 
 if ($conn->query($sql_Events) == TRUE)
-    echo "Table going_to_trainings, going_to_events, contacting deleted";
+    echo "Table going_to_trainings, going_to_events, contacting, events_tags deleted";
 else
     echo "Error to delete table: " . $conn->error;
 
@@ -39,20 +39,36 @@ echo "<br>\n";
 
 $sql_Events = "CREATE OR REPLACE TABLE  events( 
                     id          INTEGER NOT NULL AUTO_INCREMENT,
-                    title       VARCHAR(100),
-                    type        VARCHAR(100),
+                    title       VARCHAR(50) UNIQUE,
+                    type        VARCHAR(50),
                     location    VARCHAR(100),
-                    description VARCHAR(100),
-                    price       INTEGER,
-                    organizedBy VARCHAR(100),
+                    description VARCHAR(1000),
+                    price       DOUBLE,
+                    seats       INTEGER,
+                    organizer VARCHAR(50),
                     beginDate   DATE ,
+                    beginTime   TIME,
                     endDate     DATE ,
-                    isValid     BOOLEAN,
+                    endTime     TIME,
                     difficulty  INTEGER,
                     PRIMARY KEY(id) 
 )";
 if ($conn->query($sql_Events) === TRUE) {
     echo "Table events created successfully";
+} else {
+    echo "Error creating table: " . $conn->error;
+}
+echo "<br>\n";
+
+$sql_Events = "CREATE OR REPLACE TABLE events_tags( 
+                    id          INTEGER NOT NULL AUTO_INCREMENT,
+                    id_event    INTEGER,
+                    tag VARCHAR(150),
+                    CONSTRAINT fk_id_event_events_tags FOREIGN KEY(id_event) REFERENCES events(id) ON DELETE CASCADE,
+                    PRIMARY KEY(id)
+)";
+if ($conn->query($sql_Events) === TRUE) {
+    echo "Table events_tags created successfully";
 } else {
     echo "Error creating table: " . $conn->error;
 }
@@ -83,15 +99,13 @@ echo "<br>\n";
 $sql_Trainings = "CREATE OR REPLACE TABLE trainings(
                     id              INTEGER NOT NULL AUTO_INCREMENT,
                     title           VARCHAR(100),
-                    location        VARCHAR(100),
-                    datetime        DATETIME,
+                    date_training   DATE,
                     domain          VARCHAR(100),
                     specifications  VARCHAR(100), 
                     stars           INTEGER,
                     difficulty      INTEGER,
                     price           INTEGER,
                     image           VARCHAR(100),
-                    description     VARCHAR(1000),
                     PRIMARY KEY(id) 
                     
 )";

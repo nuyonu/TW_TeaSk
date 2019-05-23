@@ -1,8 +1,8 @@
 <?php
-class AdminHomeController extends Controller
+class AdminhomeController extends Controller
 {
     public function show()
     {
-        require_once (ROOT . DS . 'views' . DS . 'admin-home.php');
+        require_once (VIEW . 'admin-home.php');
     }
 }

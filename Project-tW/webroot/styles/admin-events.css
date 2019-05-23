@@ -49,6 +49,10 @@
     width: 100%;
 }
 
+.data-show td a:visited {
+    color: blue;
+}
+
 .data-show th {
     text-align: center;
 }
@@ -191,4 +195,13 @@
     color: blue;
     text-decoration: none;
     cursor: pointer;
+}
+
+.informations {
+    text-align: center;
+}
+
+.informations p {
+    color: red;
+    margin: 0;
 }

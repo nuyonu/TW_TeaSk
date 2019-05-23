@@ -1,8 +1,8 @@
 <?php
-class AdminTrainingsController extends Controller
+class AdmintrainingsController extends Controller
 {
     public function show ()
     {
-        require_once (ROOT . DS . 'views' . DS . 'admin-trainings.php');
+        require_once (VIEW . 'admin-trainings.php');
     }
 }
