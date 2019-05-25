@@ -8,14 +8,13 @@ class UserDAO
     private $password;
 
 
-    public function valid(){
+    public function valid(): bool
+    {
         $nameValidator = v::alpha()->noWhitespace();
         $passwordValidator = v::alnum()->noWhitespace()->length(5, 20);
-        if($nameValidator->validate($this->username)|| $passwordValidator->validate($this->password)){
-            return true;
-        }
-        return false;
+        return $nameValidator->validate($this->username) && $passwordValidator->validate($this->password);
     }
+
     /**
      * UserDAO constructor.
      * @param $username

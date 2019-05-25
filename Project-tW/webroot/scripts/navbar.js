@@ -11,10 +11,10 @@ document.write(
             <li><a href="/contact"> <i class="fas fa-mobile-alt"></i>Contact</a></li>\
             <li><a href="/suport"><i class="fas fa-question-circle"></i>Suport</a></li>\
             <li><a href="/about"><i class="fas fa-info-circle"></i>Despre</a></li>\
-            <button class="btn" id="signin" onclick="document.getElementById(\'id1\').style.display=\'block\'"  echo  $navbar; >\
+            <button class="btn" id="signin" onclick="document.getElementById(\'id1\').style.display=\'block\'" <?php echo  $navbar; >\
                 Autentificare\
             </button>\
-            <button class="btn" id="signup" onclick="document.getElementById(\'id2\').style.display=\'block\'">\
+            <button class="btn" id="signup" onclick="document.getElementById(\'id2\').style.display=\'block\'" <?php echo  $navbar; >>\
                 Înregistrare\
             </button>\
         </ul>\

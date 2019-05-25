@@ -17,11 +17,16 @@
 
 </head>
 <body>
-<button onclick="myFunction()">Replace document</button>
 
 
 <?php
-include TEMPLATES.'navbar.php';
+
+if (strcmp(Parameters::getData("show"), "hidden") == 0) {
+    require_once(TEMPLATES . 'navbar_without_login.php');
+} else {
+    include TEMPLATES . 'navbar.php';
+}
+
 ?>
 <div class="body" style="margin-top: 0;">
     <div class="wrapper ">

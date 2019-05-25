@@ -60,7 +60,7 @@ class Personal
         $usernameV=v::alnum()->noWhitespace()->length(5,20);
         $nameV = v::alpha()->noWhitespace();
         $emailV=v::email();
-        if(!$nameV->validate($this->name)||$nameV->validate($this->fname) ||!$usernameV->validate($this->username)|| !$emailV->validate($this->email)){
+        if(!$nameV->validate($this->name)||!$nameV->validate($this->fname) ||!$usernameV->validate($this->username)|| !$emailV->validate($this->email)){
             return false;
         }
         return true;

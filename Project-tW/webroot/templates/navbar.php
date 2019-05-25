@@ -9,7 +9,7 @@ echo '<link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
             <li><a href="/events"><i class="fas fa-calendar-week"></i>Evenimente</a></li>
             <li><a href="/trainings"><i class="fas fa-user-graduate"></i>Training-uri</a></li>
             <li><a href="/contact"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
-            <li><a href="/suport"><i class="fas fa-question-circle"></i>Suport</a></li>
+            <li><a href="/support"><i class="fas fa-question-circle"></i>Suport</a></li>
             <li><a href="/about"><i class="fas fa-info-circle"></i>Despre</a></li>
             <button class="btn" id="signin" onclick="document.getElementById(\'id1\').style.display=\'block\'"  echo  $navbar; >
                 Autentificare

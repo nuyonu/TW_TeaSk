@@ -17,9 +17,14 @@
 </head>
 <body>
 <?php
-include TEMPLATES.'navbar.php';
-?>
 
+if (strcmp(Parameters::getData("show"), "hidden") == 0) {
+    require_once(TEMPLATES . 'navbar_without_login.php');
+} else {
+    include TEMPLATES . 'navbar.php';
+}
+
+?>
 
 <div class="body" style="margin-top: 0">
     <div class="linie">
@@ -49,8 +54,8 @@ include TEMPLATES.'navbar.php';
                     <form method="post" action="/contact/send" >
                         <input type="text" placeholder="Numele" class="contact" name="contact[name]" required>
                         <input type="text" placeholder="E-mail" class="contact" name="contact[email]" required>
-                        <input type="text" placeholder="Problema" class="contact" name="contact[problem]" id="namesend" required>
-                        <input type="text" placeholder="Descrieti problema  " name="contact[desc]" class="contact" id="description" required>
+                        <input type="text" placeholder="Problema" class="contact" name="contact[type]" id="namesend" required>
+                        <input type="text" placeholder="Descrieti problema  " name="contact[problem]" class="contact" id="description" required>
                         <button type="submit" name="Trimite" class="butontrimitere" id="okbutton">Trimite</button>
                     </form>
                 </div>

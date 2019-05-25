@@ -2,13 +2,9 @@
 
 use duncan3dc\Sessions\SessionInstance;
 
-class AboutController extends Controller
+class SupportController extends Controller
 {
     private $session;
-
-    /**
-     * AboutController constructor.
-     */
     public function __construct()
     {
         parent::__construct();
@@ -21,8 +17,9 @@ class AboutController extends Controller
         if ($user != NULL) {
             Parameters::setData("show", "hidden");
         } else {
-            Parameters::setData("show", "show");
+            Parameters::setData("show", "");
         }
-        require_once(VIEW . 'about.php');
+        require_once(VIEW . 'support.php');
     }
+
 }

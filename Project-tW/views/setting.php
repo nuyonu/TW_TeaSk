@@ -33,16 +33,18 @@ include TEMPLATES . 'navbar_without_login.php';
             <div class="ContulM">
                 <h2>Date personale</h2>
             </div>
-            <form action="/settings/personal" method="post">
+            <form action="/settings/personal" method="post" id="personal">
                 <div class="line">
                 <span>
                     <label for="nameinput"><b>Nume</b></label>
-                <input type="text" name="personal[name]" placeholder="Filos" id="nameinput"
+                <input type="text" name="personal[name]" placeholder="Filos"
+                       value="<?php echo Parameters::getData("userData")->getFirstName(); ?>" id="nameinput"
                        class="inputcontainer containerinput" required>
                 </span>
                     <span>
                     <label for="lastnameinput"><b>Prenume</b></label>
                     <input type="text" name="personal[first]" placeholder="Gabriel" id="lastnameinput"
+                           value="<?php echo Parameters::getData("userData")->getLastName(); ?>"
                            class="inputcontainer containerinput"
                            required>
                 </span>
@@ -51,14 +53,18 @@ include TEMPLATES . 'navbar_without_login.php';
                 <div class="line">
                 <span>
                     <label for="email2"><b>Email</b></label>
-                <input type="email" name="personal['email]" placeholder="filos@gmmmmmm.com" id="email2"
+                <input form="personal" type="email" name="personal[emailSetting]"
+                       value="<?php echo Parameters::getData("userData")->getEMail(); ?>"
+                       placeholder="filos@gmmmmmm.com" id="email2"
                        class="inputcontainer containerinput"
                        required>
                     <button type="submit" class="savebutton">Salvează</button>
                 </span>
                     <span>
                     <label for="name2"><b>Numa utilizator</b></label>
-                    <input type="text" placeholder="Gabriel" name="personal[username]" id="name2" class="inputcontainer containerinput" required>
+                    <input type="text" placeholder="Gabriel" name="personal[username]" id="name2"
+                           value="<?php echo Parameters::getData("userData")->getUsername(); ?>"
+                           class="inputcontainer containerinput" readonly required>
 
                     </span>
 
@@ -82,21 +88,27 @@ include TEMPLATES . 'navbar_without_login.php';
                 <span>
                     <label for="newpassword"><b>Parola noua</b></label>
                 <input type="password" placeholder="**************" id="newpassword"
-                       class="inputcontainer containerinput" required>
+                       class="inputcontainer containerinput" required name="contact[new]">
                 </span>
                     <span>
                     <label for="confirmpasword"><b>Confirma parola</b></label>
                     <input type="password" placeholder="**************" id="confirmpasword"
-                           class="inputcontainer containerinput" required>
+                           class="inputcontainer containerinput" name="contact[newC]" required>
                 </span>
+
 
                 </div>
                 <div class="line">
-                <span>
-                    <label for="newemail"><b>Email nou</b></label>
-                <input type="email" placeholder="filos@gmmmmmm.com" id="newemail" class="inputcontainer containerinput"
-                       required>
-                </span>
+                         <span>
+                             <label for="confirmpasword"><b>Parola veche</b></label>
+                             <input name="contact[old]" type="password" placeholder="**************" id="confirmpasword"
+                                    class="inputcontainer containerinput" required>
+                         </span>
+
+                </div>
+                <div class="line">
+
+                    </span>
                     <span class="butoaneflex">
                 <button type="button" class="logare" id="logare1">Gitbub</button>
                 <button type="button" class="logare" id="logare2">Linkedin</button>

@@ -7,10 +7,17 @@
           rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/suport.css">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
-    <script src="../webroot/scripts/navbar.js"></script>
 </head>
 <body>
+<?php
 
+if (strcmp(Parameters::getData("show"), "hidden") == 0) {
+    require_once(TEMPLATES . 'navbar_without_login.php');
+} else {
+    include TEMPLATES . 'navbar.php';
+}
+
+?>
 <div class="suport-body">
 
     <div id="suport-title">

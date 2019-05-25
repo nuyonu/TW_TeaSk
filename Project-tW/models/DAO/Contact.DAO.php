@@ -1,90 +1,92 @@
 <?php
 
-class ContactDao{
+class ContactDao
+{
 
 
     private $name;
     private $email;
+    private $type;
     private $problem;
-    private $desc;
 
     /**
      * ContactDao constructor.
-     * @param $name
-     * @param $email
-     * @param $problem
-     * @param $desc
+     * @param string $name
+     * @param string $email
+     * @param string $type
+     * @param string $problem
      */
-    public function __construct($name, $email, $problem, $desc)
+    public function __construct(string $name, string $email, string $type, string $problem)
     {
         $this->name = $name;
         $this->email = $email;
-        $this->problem = $problem;
-        $this->desc = $desc;
+        $this->type = $type;
+        $this->problem=$problem;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
     /**
-     * @param mixed $name
+     * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
     /**
-     * @param mixed $email
+     * @param string $email
      */
-    public function setEmail($email)
+    public function setEmail(string $email): void
     {
         $this->email = $email;
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getProblem()
+    public function getType(): string
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param string $type
+     */
+    public function setType(string $type): void
+    {
+        $this->type = $type;
+    }
+
+    /**
+     * @return string
+     */
+    public function getProblem(): string
     {
         return $this->problem;
     }
 
     /**
-     * @param mixed $problem
+     * @param string $problem
      */
-    public function setProblem($problem)
+    public function setProblem(string $problem): void
     {
         $this->problem = $problem;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getDesc()
-    {
-        return $this->desc;
-    }
-
-    /**
-     * @param mixed $desc
-     */
-    public function setDesc($desc)
-    {
-        $this->desc = $desc;
-    }
 
 }

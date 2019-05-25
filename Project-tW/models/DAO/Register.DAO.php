@@ -5,17 +5,17 @@ use Respect\Validation\Validator as v;
 class Register
 {
 
-    public function validate()
+    public function validate(): bool
     {
         $usernameValidator = v::alnum()->noWhitespace()->length(5, 20);
         $passwordValidator = v::alnum()->noWhitespace()->length(5, 20);
         $emailValidator = v::email()->noWhitespace();
         $nameValidator = v::alpha()->noWhitespace();
-
-        if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password)||!$emailValidator->validate($this->email)) {
-            return false;
+        if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password) || !$emailValidator->validate($this->email)) {
+            return FALSE;
         }
-        return (!$nameValidator->validate($this->name) && !$nameValidator->validate($this->last_name)) ? true : false;
+
+        return $nameValidator->validate($this->name) && $nameValidator->validate($this->last_name);
     }
 
     /**
