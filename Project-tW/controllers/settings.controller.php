@@ -1,6 +1,8 @@
 <?php
 
 use duncan3dc\Sessions\SessionInstance;
+use Respect\Validation\Validator as validator;
+
 
 class SettingsController extends Controller
 {
@@ -16,10 +18,12 @@ class SettingsController extends Controller
     {
         $user = $this->session->get("user");
         if ($user != NULL) {
-            Parameters::setData("show", "hidden");
             $db = new UserModel($this->database);
-            $result = $db->getUserDb($user);
-            Parameters::setData("userData", $result);
+            $dbLocation = new LocationModel($this->database);
+            $place=$dbLocation->getLocationUser($this->session->get("user"))==NULL? 'nesetat':$dbLocation->getLocationUser($this->session->get("user"))->getPlace();
+            Parameters::setData("show", "hidden");
+            Parameters::setData("location", $place);
+            Parameters::setData("userData", $db->getUserDb($user));
         } else {
             Parameters::setData("show", "show");
         }
@@ -34,6 +38,12 @@ class SettingsController extends Controller
         if ($personal->valid()) {
             $db = new UserModel($this->database);
             $db->updatePerson($personal);
+        }
+
+        if(validator::floatVal()->noWhitespace()->validate($personal_data['lat'])&&validator::floatVal()->noWhitespace()->validate($personal_data['long'])){
+        echo $personal_data['place'];
+            $db=new LocationModel($this->database);
+            $db->save($this->session->get("user"),$personal_data['place'],$personal_data['lat'],$personal_data['long']);
         }
         Response::redirect("/settings");
     }
@@ -55,10 +65,16 @@ class SettingsController extends Controller
         require_once VIEW . 'github.php';
     }
 
+    public function linkedln()
+    {
+        header('Location: http://localhost/linkedln',TRUE,303);
+        die();
+    }
+
     public function login1()
     {
         $personal_data = $_POST['data'];
-        $github = new Github();
+        $github = new GithubClient();
         $token = $github->auth($personal_data['user'], $personal_data['password']);
         if (strcmp($token, "BAD_REQUEST") == 0) {
             echo "first";
@@ -71,8 +87,8 @@ class SettingsController extends Controller
         }
         $github_database = new GithubModel($this->database);
 
-        $github_database->save($github->getInfoRepos(),$this->session->get("user"));
-//        Response::redirect('/settings');
+        $github_database->save($github->getInfoRepos(), $this->session->get("user"));
+        Response::redirect('/settings');
     }
 
 

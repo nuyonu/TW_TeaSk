@@ -1,38 +1,38 @@
 <?php
 
+use LinkedIn\Client as ClientLinkedln;
+use LinkedIn\Scope;
+
 class TestingController extends Controller
 {
+    private $id = '77fdnuwkav2mba';
+    private $secret = 'AhO9z1daHL7uy6W8';
+
+
 
     public function show()
     {
-
-        $client = new \Github\Client();
-//        $client->authenticate('d52409ea9bc18b178ec8ef756df9158a1377c642', '', Github\Client::AUTH_URL_TOKEN);
-        $client->authenticate("filosgabriel@gmail.com", "98@gmail.com", Github\Client::AUTH_HTTP_PASSWORD);
-
-
-        $vector = new \Arrayy\Arrayy();
-        $info = new GithubInfo();
-        foreach ($client->currentUser()->repositories() as $repo) {
-            if($repo['language']!=NULL){
-            $info->setLanguage($repo['language']);
-            $info->setCreatedAt($repo['created_at']);
-            $info->setForked($repo['fork']);
-            $info->setPushedAt($repo['pushed_at']);
-            $info->setUpdatedAt($repo['updated_at']);
-            $info->setRepoName($repo['name']);
-//            var_dump($info);
-            $vector->add(clone $info);
-            }
-        }
-        foreach ($vector as $element) {
-            var_dump($element);
-            echo "</br>";
-            echo "</br>";
-
-        }
+        $client = new ClientLinkedln($this->id, $this->secret);
+        $scopes = [
+            Scope::READ_BASIC_PROFILE,
+            Scope::READ_EMAIL_ADDRESS,
+            Scope::MANAGE_COMPANY,
+            Scope::SHARING,
+        ];
+        $client->setRedirectUrl('http://localhost/testing/code');
+        $loginUrl = $client->getLoginUrl($scopes);
+        var_dump($loginUrl);
 
 
+    }
+    public function code(){
+        $client = new ClientLinkedln($this->id, $this->secret);
+        $code=$_GET['code'];
+        $client->setRedirectUrl('http://localhost/testing/code');
+
+        $accessToken = $client->getAccessToken($code);
+        $dv=new UserModel($this->database);
+//        var_dump($accessToken);
     }
 
     public

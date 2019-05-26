@@ -8,9 +8,6 @@ class Response
         include VIEW . $view;
     }
 
-    public function __construct()
-    {
-    }
 
     public static function redirect(string $uri)
     {

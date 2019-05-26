@@ -15,12 +15,11 @@ class GithubUpdate extends AsyncTask
      */
     protected function doInBackground(Collection $collection)
     {
-        $github = new Github();
+        $github = new GithubClient();
         $github->authToken($collection->get('token'));
         $result = $github->getInfoRepos();
         $db = new GithubModel($collection->get("db"));
         $db->save($result, $collection->get("user"));
         return "Done";
-
     }
 }

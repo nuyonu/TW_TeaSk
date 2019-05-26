@@ -51,21 +51,34 @@ include TEMPLATES . 'navbar_without_login.php';
 
                 </div>
                 <div class="line">
-                <span>
-                    <label for="email2"><b>Email</b></label>
-                <input form="personal" type="email" name="personal[emailSetting]"
-                       value="<?php echo Parameters::getData("userData")->getEMail(); ?>"
-                       placeholder="filos@gmmmmmm.com" id="email2"
-                       class="inputcontainer containerinput"
-                       required>
-                    <button type="submit" class="savebutton">Salvează</button>
-                </span>
                     <span>
-                    <label for="name2"><b>Numa utilizator</b></label>
-                    <input type="text" placeholder="Gabriel" name="personal[username]" id="name2"
-                           value="<?php echo Parameters::getData("userData")->getUsername(); ?>"
-                           class="inputcontainer containerinput" readonly required>
+                        <label for="email2"><b>Email</b></label>
+                    <input form="personal" type="email" name="personal[emailSetting]"
+                           value="<?php echo Parameters::getData("userData")->getEMail(); ?>"
+                           placeholder="filos@gmmmmmm.com" id="email2"
+                           class="inputcontainer containerinput"
+                           required>
 
+                    </span>
+                    <span>
+                        <label for="name2"><b>Numa utilizator</b></label>
+                        <input type="text" placeholder="Gabriel" name="personal[username]" id="name2"
+                               value="<?php echo Parameters::getData("userData")->getUsername(); ?>"
+                               class="inputcontainer containerinput" readonly required>
+
+                        </span>
+
+                </div>
+                <div class="line">
+                    <span>
+                        <label for="name2"><b>Locatie actuala</b></label>
+                        <input type="text" name="personal[place]" id="place"
+                               value="<?php echo Parameters::getData("location"); ?>"
+                               class="inputcontainer containerinput" readonly required>
+                        <button type="submit" class="savebutton">Salvează</button>
+                        <button type="button" class="savebutton" onclick="getLocation()">Actualizeaza locatia</button>
+                        <input name="personal[lat]" id="lat" readonly hidden>
+                        <input name="personal[long]" id="long" readonly hidden>
                     </span>
 
                 </div>
@@ -85,35 +98,34 @@ include TEMPLATES . 'navbar_without_login.php';
             </div>
             <form method="post" action="/settings/contact">
                 <div class="line">
-                <span>
-                    <label for="newpassword"><b>Parola noua</b></label>
-                <input type="password" placeholder="**************" id="newpassword"
-                       class="inputcontainer containerinput" required name="contact[new]">
-                </span>
+                     <span>
+                            <label for="newpassword"><b>Parola noua</b></label>
+                            <input type="password" placeholder="**************" id="newpassword"
+                                   class="inputcontainer containerinput" required name="contact[new]">
+                     </span>
                     <span>
-                    <label for="confirmpasword"><b>Confirma parola</b></label>
-                    <input type="password" placeholder="**************" id="confirmpasword"
-                           class="inputcontainer containerinput" name="contact[newC]" required>
-                </span>
+                        <label for="confirmpasword"><b>Confirma parola</b></label>
+                        <input type="password" placeholder="**************" id="confirmpasword"
+                               class="inputcontainer containerinput" name="contact[newC]" required>
+                    </span>
 
 
                 </div>
                 <div class="line">
                          <span>
-                             <label for="confirmpasword"><b>Parola veche</b></label>
-                             <input name="contact[old]" type="password" placeholder="**************" id="confirmpasword"
+                             <label><b>Parola veche</b></label>
+                             <input name="contact[old]" type="password" placeholder="**************" id="oldpasword"
                                     class="inputcontainer containerinput" required>
                          </span>
 
                 </div>
                 <div class="line">
+                    <span>
 
+                       <a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>
+                       <a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>
+                        <button type="submit" class="savebutton">Salveza</button>
                     </span>
-                    <span class="butoaneflex">
-                <button type="button" class="logare" id="logare1">Gitbub</button>
-                <button type="button" class="logare" id="logare2">Linkedin</button>
-                <button type="submit" class="savebutton">Salveza</button>
-            </span>
 
                 </div>
             </form>
@@ -252,6 +264,7 @@ include TEMPLATES . 'navbar_without_login.php';
         </li>
     </ul>
 </footer>
+
 <script>
     function opentab(evt, idtab) {
         // Declare all variables
@@ -272,6 +285,34 @@ include TEMPLATES . 'navbar_without_login.php';
         // Show the current tab, and add an "active" class to the button that opened the tab
         document.getElementById(idtab).style.display = "flex";
         evt.currentTarget.className += " active";
+    }
+</script>
+<script>
+    function getLocation() {
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            window.alert('Browser-ul nu suporta geolocatia');
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById("lat").value = position.coords.latitude;
+        document.getElementById("long").value = position.coords.longitude;
+
+        console.log("ok");
+        fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                answer = JSON.stringify(myJson);
+                obj = JSON.parse(answer);
+                document.getElementById("place").value = obj.display_name;
+                document.getElementById("lat").value = position.coords.latitude;
+                document.getElementById("long").value = position.coords.longitude;
+            });
     }
 </script>
 </body>

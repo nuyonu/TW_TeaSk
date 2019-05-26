@@ -18,7 +18,6 @@ class GithubModel
 
     public function save(Arrayy $data, string $user): void
     {
-        echo $user;
         $stmt = $this->db->prepare("INSERT INTO user_github VALUES(:id,(SELECT ID FROM USERS WHERE username=:user),:language,:forked,:repo_name,:created_at,:updated_at,:pushed_at)");
 
         foreach ($data as $info) {
@@ -32,7 +31,13 @@ class GithubModel
             $stmt->bindValue(":pushed_at", $info->getPushedAt());
             $stmt->execute();
         }
+    }
 
+    public  function update(Arrayy $data,string $user){
+        $stmt = $this->db->prepare("DELETE FROM user_github where id_user=(select  id from users where username=:user)");
+        $stmt->bindValue(":user",$user);
+        $stmt->execute();
+        $this->save($data,$user);
     }
 
 }

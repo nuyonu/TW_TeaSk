@@ -1,20 +1,23 @@
 <?php
 
+use Arrayy\Arrayy as Arrayy;
 use Github\Client;
-use Github\Exception\RuntimeException;
+use Github\Exception\RuntimeException as RuntimeException;
 
-class Github
+
+class GithubClient
 {
-    private $username;
-    private $password;
-    private $token;
-    private $client;
 
     public function __construct()
     {
         $this->client = new Github\Client();
     }
 
+    /**
+     * @param string $username =username of  github account
+     * @param string $password =password of github acconut
+     * @return string =token of github account
+     */
     public function auth(string $username, string $password): string
     {
         try {
@@ -22,8 +25,8 @@ class Github
             $data = array('note' => 'TeaSk', 'scopes' => 'repo', 'name' => 'TeaSk');
             $response = $this->client->authorization()->create($data);
             return $response['token'];
-        } catch (Github\Exception\RuntimeException $ex) {
-            return "BAD_REQUEST";
+        } catch (RuntimeException $ex) {
+            return self::BAD_REQUEST;
         }
     }
 
@@ -38,9 +41,9 @@ class Github
         }
     }
 
-    public function getInfoRepos(): \Arrayy\Arrayy
+    public function getInfoRepos(): Arrayy
     {
-        $vector = new \Arrayy\Arrayy();
+        $vector = new Arrayy();
         $info = new GithubInfo();
         foreach ($this->client->currentUser()->repositories() as $repo) {
             if ($repo['language'] != NULL) {
@@ -56,4 +59,9 @@ class Github
         }
         return $vector;
     }
+
+    private $token;
+    private $client;
+    private const BAD_REQUEST = "BAD_REQUEST";
+
 }

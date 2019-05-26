@@ -2,7 +2,7 @@
 
 class Log
 {
-    public static function log($data): void
+    public static function logg($data): void
     {
         echo '<script>';
         echo 'console.log('. json_encode( $data ) .')';

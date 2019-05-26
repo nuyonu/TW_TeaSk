@@ -89,10 +89,11 @@ class ResetDB
                     first_name      VARCHAR(100),
                     last_name       VARCHAR(100),
                     github_token    VARCHAR(100),
-                    linkedin_token  VARCHAR(100),
+                    linkedln_token  VARCHAR(100),
+                    linkedln_exp    INT,
                     PRIMARY KEY (ID) 
 )";
-
+        echo "fuck";
 
         if ($conn->query($sql_User) === TRUE) {
             echo "Table user created successfully";
@@ -199,6 +200,23 @@ class ResetDB
             echo "Error creating table : " . $conn->error;
         }
         echo "<br>\n";
+
+
+        $sql_user_location = "CREATE OR REPLACE TABLE user_location(
+                        id          INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
+                        id_user     INTEGER,
+                        place       VARCHAR(100),
+                        lat         VARCHAR(30),
+                        lon        VARCHAR(30),
+                        CONSTRAINT fk_id_user_location FOREIGN KEY (id_user)  REFERENCES users(id))";
+
+        if ($conn->query($sql_user_location)) {
+            echo "Table user_location created successfully";
+        } else {
+            echo "Error creating table : " . $conn->error;
+        }
+        echo "<br>\n";
+
 
         $sql_invo = "show ENGINE INNODB STATUS";
 

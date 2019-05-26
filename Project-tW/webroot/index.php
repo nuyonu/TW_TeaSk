@@ -12,4 +12,4 @@ require_once "../vendor/autoload.php";
 new ConfigurationSettings();
 App::init_database();
 App::run($_SERVER['REQUEST_URI']);
-?>
+

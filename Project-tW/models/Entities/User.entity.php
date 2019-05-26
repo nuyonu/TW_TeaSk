@@ -11,6 +11,23 @@ class UserEntity
     private $last_name;
     private $github_token;
     private $linkedin_token;
+    private $linkedln_exp;
+
+    /**
+     * @return mixed
+     */
+    public function getLinkedlnExp(): int
+    {
+        return $this->linkedln_exp;
+    }
+
+    /**
+     * @param mixed $linkedln_exp
+     */
+    public function setLinkedlnExp(int $linkedln_exp): void
+    {
+        $this->linkedln_exp = $linkedln_exp;
+    }
 
 
     /**
@@ -141,7 +158,8 @@ class UserEntity
         $this->linkedin_token = $linkedin_token;
     }
 
-    public static function default():UserEntity{
+    public static function default(): UserEntity
+    {
         return new UserEntity();
     }
 
