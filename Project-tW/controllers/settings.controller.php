@@ -20,7 +20,7 @@ class SettingsController extends Controller
         if ($user != NULL) {
             $db = new UserModel($this->database);
             $dbLocation = new LocationModel($this->database);
-            $place=$dbLocation->getLocationUser($this->session->get("user"))==NULL? 'nesetat':$dbLocation->getLocationUser($this->session->get("user"))->getPlace();
+            $place = $dbLocation->getLocationUser($this->session->get("user")) == NULL ? 'nesetat' : $dbLocation->getLocationUser($this->session->get("user"))->getPlace();
             Parameters::setData("show", "hidden");
             Parameters::setData("location", $place);
             Parameters::setData("userData", $db->getUserDb($user));
@@ -40,10 +40,11 @@ class SettingsController extends Controller
             $db->updatePerson($personal);
         }
 
-        if(validator::floatVal()->noWhitespace()->validate($personal_data['lat'])&&validator::floatVal()->noWhitespace()->validate($personal_data['long'])){
-        echo $personal_data['place'];
-            $db=new LocationModel($this->database);
-            $db->save($this->session->get("user"),$personal_data['place'],$personal_data['lat'],$personal_data['long']);
+        if (validator::floatVal()->noWhitespace()->validate($personal_data['lat']) && validator::floatVal()->noWhitespace()->validate($personal_data['long'])) {
+            echo $personal_data['place'];
+            $db = new LocationModel($this->database);
+            $db->save($this->session->get("user"), $personal_data['place'], $personal_data['lat'],
+                $personal_data['long']);
         }
         Response::redirect("/settings");
     }
@@ -62,12 +63,13 @@ class SettingsController extends Controller
 
     public function github()
     {
-        require_once VIEW . 'github.php';
+        header('Location: http://localhost/github', TRUE, 303);
+        die();
     }
 
     public function linkedln()
     {
-        header('Location: http://localhost/linkedln',TRUE,303);
+        header('Location: http://localhost/linkedln', TRUE, 303);
         die();
     }
 
@@ -86,9 +88,9 @@ class SettingsController extends Controller
             $userDB->addToken($user, $token);
         }
         $github_database = new GithubModel($this->database);
-
         $github_database->save($github->getInfoRepos(), $this->session->get("user"));
         Response::redirect('/settings');
+
     }
 
 

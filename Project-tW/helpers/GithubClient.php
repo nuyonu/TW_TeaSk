@@ -21,6 +21,7 @@ class GithubClient
     public function auth(string $username, string $password): string
     {
         try {
+//            $this->client->
             $this->client->authenticate($username, $password, Github\Client::AUTH_HTTP_PASSWORD);
             $data = array('note' => 'TeaSk', 'scopes' => 'repo', 'name' => 'TeaSk');
             $response = $this->client->authorization()->create($data);
