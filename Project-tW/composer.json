@@ -3,7 +3,7 @@
     "respect/validation": "^1.1",
     "duncan3dc/sessions": "^2.0",
     "ext-pdo": "*",
-    "knplabs/github-api": "^2.11",
+      "knplabs/github-api": "^2.11",
     "php-http/guzzle6-adapter": "^1.1",
     "dmamontov/asynctask-7": "~2.0.13",
     "voku/arrayy": "^5.9",

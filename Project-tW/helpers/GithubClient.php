@@ -30,6 +30,11 @@ class GithubClient
             return self::BAD_REQUEST;
         }
     }
+    public function revoke(string $token){
+//        $this->client->user()->
+
+    }
+
 
     public function authToken(string $token): bool
     {

@@ -32,12 +32,9 @@ echo '<link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
                 <label for="pws"><b>Parola</b></label>
                 <input type="password"  name="data[password]" placeholder="Introduceti parola" id="pws" class="inputcontainer" required>
                 <button type="submit" id="logare" class="buttonmodal">Logare</button>
-                <div class="logincustom">
-                    <button type="submit" id="github" class="buttonmodal">GitHub</button>
-                    <button type="submit" id="linkedln" class="buttonmodal">Linkedln</button>
-                </div>
+              
                 <label class="conectat">
-                    <input name="data[conn]"  type="checkbox" checked="checked" form="login">Mentine-ma conectat.\
+                    <input name="data[conn]"  type="checkbox" checked="checked" form="login">Mentine-ma conectat.
                 </label>
             </div>
             <div class="container">
@@ -53,7 +50,7 @@ echo '<link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
         <form class="modal-content animate" action="home/register" method="post" id="register">
             <div class="imgcontainer">
                 <span onclick="document.getElementById(\'id2\').style.display=\'none\'" class="close"
-                      title="Close modal">&times;&#215;</span>
+                      title="Close modal">&times;</span>
             </div>
             <div class="container">
                 <label for="namec"><b>Alegeti un nume de utilizator</b></label>
@@ -82,3 +79,8 @@ echo '<link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
             </div>
         </form>
     </div>';
+//
+//<div class="logincustom">
+//                    <button type="submit" id="github" class="buttonmodal">GitHub</button>
+//                    <button type="submit" id="linkedln" class="buttonmodal">Linkedln</button>
+//                </div>

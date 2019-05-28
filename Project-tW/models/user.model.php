@@ -49,6 +49,30 @@ class UserModel
         $stmt->execute();
     }
 
+    public function isConnectedWithGithub(string  $user):bool {
+        $stmt=$this->db->prepare("SELECT github_token FROM users where username=:user");
+        $stmt->bindValue(":user",$user);
+        $stmt->setFetchMode(PDO::FETCH_NUM);
+        $stmt->execute();
+        $result=$stmt->fetch();
+        if(!$result){
+            return FALSE;
+        }
+        return TRUE;
+    }
+
+    public function isConnectedWithLinkedln(string $user):bool {
+        $stmt=$this->db->prepare("SELECT linkedln_token FROM users where username=:user");
+        $stmt->bindValue(":user",$user);
+        $stmt->setFetchMode(PDO::FETCH_NUM);
+        $stmt->execute();
+        $result=$stmt->fetch();
+        if(!$result){
+            return FALSE;
+        }
+        return TRUE;
+    }
+
     public function getLinkedlnToken(string  $user):TokenLinkedln{
         $stmt=$this->db->prepare("SELECT * FROM users WHERE username=:user");
         $stmt->bindValue(":user",$user);

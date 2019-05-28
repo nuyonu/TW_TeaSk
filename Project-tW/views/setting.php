@@ -38,13 +38,13 @@ include TEMPLATES . 'navbar_without_login.php';
                 <span>
                     <label for="nameinput"><b>Nume</b></label>
                 <input type="text" name="personal[name]" placeholder="Filos"
-                       value="<?php echo Parameters::getData("userData")->getFirstName(); ?>" id="nameinput"
+                       value="<?php echo Parameters::getData("userData")->getLastName(); ?>" id="nameinput"
                        class="inputcontainer containerinput" required>
                 </span>
                     <span>
                     <label for="lastnameinput"><b>Prenume</b></label>
                     <input type="text" name="personal[first]" placeholder="Gabriel" id="lastnameinput"
-                           value="<?php echo Parameters::getData("userData")->getLastName(); ?>"
+                           value="<?php echo Parameters::getData("userData")->getFirstName(); ?>"
                            class="inputcontainer containerinput"
                            required>
                 </span>
@@ -61,7 +61,7 @@ include TEMPLATES . 'navbar_without_login.php';
 
                     </span>
                     <span>
-                        <label for="name2"><b>Numa utilizator</b></label>
+                        <label for="name2"><b>Nume utilizator</b></label>
                         <input type="text" placeholder="Gabriel" name="personal[username]" id="name2"
                                value="<?php echo Parameters::getData("userData")->getUsername(); ?>"
                                class="inputcontainer containerinput" readonly required>
@@ -81,15 +81,27 @@ include TEMPLATES . 'navbar_without_login.php';
                         <input name="personal[long]" id="long" readonly hidden>
                     </span>
 
+
                 </div>
             </form>
+            <div class="line">
+                <span>
+                     <form action="/settings/upload" method="post" enctype="multipart/form-data">
+                        Select image to upload:
+                        <input type="file" name="fileToUpload" id="fileToUpload">
+                        <input type="submit" value="Upload Image" name="submit">
+                     </form>
+                </span>
+            </div>
 
 
         </div>
         <div class="image">
             <img src="../webroot/images/user.png" class="imageaccount" alt="user">
+
             <p> Filos Gabriel</p>
         </div>
+
     </div>
     <div class="page1" id="datecontact">
         <div class="setting">
@@ -121,9 +133,21 @@ include TEMPLATES . 'navbar_without_login.php';
                 </div>
                 <div class="line">
                     <span>
-
-                       <a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>
-                       <a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>
+                        <?php
+                        //                        if (Parameters::getData('github')) {
+                        //                            echo  '<a href="/settings/dissconect1"> <button type="button" class="logare" id="logare1">Disconnect Github</button></a>';
+                        //                        } else {
+                        echo '<a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>';
+                        //                        }
+                        //                        if (Parameters::getData('linkedln')) {
+                        //                            echo '<a href="/settings/dissconect2"> <button type="button" class="logare" id="logare2">Disconnect Linkedin</button></a>';
+                        //                        } else {
+                        echo '<a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>';
+                        //                        }
+                        ?>
+<!---->
+                        <!--                       <a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>-->
+                        <!--                       <a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>-->
                         <button type="submit" class="savebutton">Salveza</button>
                     </span>
 
