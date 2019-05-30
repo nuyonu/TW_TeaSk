@@ -3,8 +3,9 @@ html, body {
     height: 100%;
     margin: 0;
 }
-.body{
-    height: 100%;
+
+.body {
+    height: 85%;
     display: flex;
     flex-direction: row;
 }
@@ -37,14 +38,17 @@ html, body {
 }
 
 .ContulM > h2 {
-    margin: 6% 6% 6% 12%;
-    font-size: 3vw;
+    /*margin: 6% 6% 6% 12%;*/
+    margin-left: 6%;
+    font-size: 5vh;
 }
 
 .line {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin-left: 12%;
+    margin-right: 12%;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -62,7 +66,8 @@ textarea {
 
 .line > span {
     /*margin-left: 13%;*/
-    width: 45%;
+    width: 100%;
+
     margin-top: 3%;
 }
 
@@ -80,8 +85,6 @@ input {
     margin-left: 10%;
     padding: 0;
 }
-
-
 
 
 .buttonMenu {
@@ -131,7 +134,6 @@ input {
 }
 
 
-
 .buttoncontact {
     /*background-color: #4286f4;*/
     color: white;
@@ -157,34 +159,34 @@ input[type=text], input[type=password], input[type=email] {
     box-sizing: border-box;
 }
 
-#datecontact,#preferinte{
+#datecontact, #preferinte {
     display: none;
 }
 
-.logare,.savebutton {
+.logare, .savebutton {
     color: white;
     background-color: #5aa8fb;
     border: 2px solid #5aa8fb;
     font-size: 20px;
-    padding: 7px;}
-
-
+    padding: 7px;
+    margin-top: 10px;
+}
 
 
 /*checkbox*/
 
 .containercheck {
-     display: block;
-     position: relative;
-     padding-left: 35px;
-     margin-bottom: 12px;
-     cursor: pointer;
-     font-size: 22px;
-     -webkit-user-select: none;
-     -moz-user-select: none;
-     -ms-user-select: none;
-     user-select: none;
- }
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 /* Hide the browser's default checkbox */
 .containercheck input {
@@ -240,82 +242,90 @@ input[type=text], input[type=password], input[type=email] {
     transform: rotate(45deg);
 }
 
-.labels{
+.labels {
     font-size: 29px;
 }
-#teste{
+
+#teste {
     display: none;
 }
 
-.imageaccount{
+.imageaccount {
     border-radius: 100%;
 }
-.descriere{
+
+.descriere {
     color: #888888;
     font-size: 23px;
 }
-.descriere:focus{
+
+.descriere:focus {
     border: 2px solid #2196F3;
     color: #2196F3;
 }
-.descriere:disabled{
+
+.descriere:disabled {
     color: #2759AE;
 }
 
-.containerinput:disabled{
+.containerinput:disabled {
     color: #2759AE;
 }
 
-.containerinput{
+.containerinput {
     color: #888888;
 }
 
-#sigin{
+#sigin {
     margin-right: 30px;
 }
 
-.menu{
+.menu {
     width: 25%;
 }
+
 @media screen and (max-width: 1260px) {
-    .buttoncontact{
+    .buttoncontact {
         font-size: 35px;
     }
-    .buttonMenu{
+
+    .buttonMenu {
         font-size: 23px;
     }
-    .imageaccount{
-        height: 30%;
-        width: 30%;
-        /*width: 10%    ;*/
-    }
 
-    .containerinput{
+
+
+    .containerinput {
         height: 35px;
         font-size: 15px;
     }
-    .line2{
+
+    .line2 {
         flex-wrap: wrap;
     }
-    .butoaneflex{
+
+    .butoaneflex {
         flex-wrap: wrap;
     }
-    .butoaneflex>button{
+
+    .butoaneflex > button {
         margin-top: 15px;
     }
-    .descriere{
+
+    .descriere {
         font-size: 15px;
     }
 
 
 }
-#inputdescriere{
+
+#inputdescriere {
     margin-left: 0;
     height: 190px;
     padding: 0;
 }
 
-.block{
+.block {
 
     width: 411px;
     height: 450px;
@@ -329,7 +339,7 @@ input[type=text], input[type=password], input[type=email] {
     display: flex;
     flex-direction: column-reverse;
     border-bottom: 0;
-    border-top:0 ;
+    border-top: 0;
     padding-bottom: 0;
     padding-top: 0;
 }
@@ -341,6 +351,38 @@ input[type=text], input[type=password], input[type=email] {
     margin-bottom: 25px;
     /*left: 10;*/
 }
-.page-footer>ul{
+
+.page-footer > ul {
     list-style-type: none;
+}
+
+.upload {
+    /*margin-top: 10px;*/
+    width: 300px;
+}
+
+input[type="file"] {
+    display: none;
+}
+
+.labelFile {
+    display: block;
+    color: white;
+    background-color: #5aa8fb;
+    border: 2px solid #5aa8fb;
+    font-size: 20px;
+    padding: 7px 0;
+    width: 300px;
+    text-align: center;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap-reverse;
+}
+.image{
+    height: 300px;
+    width: 300px;
+    margin: 0;
+    margin-bottom: 80px;
 }

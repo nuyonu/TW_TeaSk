@@ -12,16 +12,21 @@ class TestingController extends Controller
 
     public function show()
     {
-        $client = new ClientLinkedln($this->id, $this->secret);
-        $scopes = [
-            Scope::READ_BASIC_PROFILE,
-            Scope::READ_EMAIL_ADDRESS,
-            Scope::MANAGE_COMPANY,
-            Scope::SHARING,
-        ];
-        $client->setRedirectUrl('http://localhost/testing/code');
-        $loginUrl = $client->getLoginUrl($scopes);
-        var_dump($loginUrl);
+
+
+        $user=new UserModel($this->database);
+        var_dump($user->getUsers());
+
+//        $client = new ClientLinkedln($this->id, $this->secret);
+//        $scopes = [
+//            Scope::READ_BASIC_PROFILE,
+//            Scope::READ_EMAIL_ADDRESS,
+//            Scope::MANAGE_COMPANY,
+//            Scope::SHARING,
+//        ];
+//        $client->setRedirectUrl('http://localhost/testing/code');
+//        $loginUrl = $client->getLoginUrl($scopes);
+//        var_dump($loginUrl);
 
 
     }
