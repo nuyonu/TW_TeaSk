@@ -99,8 +99,6 @@ class TrainingModel
 
         $query = "SELECT * FROM trainings WHERE " . $where;
 
-        echo $query;
-
         try
         {
             if (empty($input))
@@ -124,6 +122,30 @@ class TrainingModel
         }
 
         return $result;
+    }
+
+    public function getCheapTrainings($trainings, $total)
+    {
+        usort($trainings, function ($a,  $b) { return ($a->getPrice() <=> $b->getPrice()); });
+        return array_slice($trainings, 0, $total);
+    }
+
+    public function getFavorableTrainings($trainings, $total)
+    {
+        usort($trainings, function ($a,  $b) { return -($a->getStars() <=> $b->getStars()); });
+        return array_slice($trainings, 0, $total);
+    }
+
+    public function getCloseTrainings($trainings, $total)
+    {
+        usort($trainings, function ($a,  $b) { return ($a->getLocation() <=> $b->getLocation()); });
+        return array_slice($trainings, 0, $total);
+    }
+
+    public function getRecentTrainings($trainings, $total)
+    {
+        usort($trainings, function ($a,  $b) { return ($a->getDatetime() <=> $b->getDatetime()); });
+        return array_slice($trainings, 0, $total);
     }
 
     public function save(Training $training)
