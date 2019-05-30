@@ -4,23 +4,19 @@ use Respect\Validation\Validator as v;
 
 class Register
 {
-    private $username = ' ';
-    private $email = '';
-    private $password = ' ';
-    private $name = ' ';
-    private $last_name = ' ';
-    private $confirm = ' ';
 
-    /**
-     * Register.DAO constructor.
-     * @param $username
-     * @param $email
-     * @param $password
-     * @param $confirm
-     * @param $name
-     * @param $laast_name
-     */
+    public function validate(): bool
+    {
+        $usernameValidator = v::alnum()->noWhitespace()->length(5, 20);
+        $passwordValidator = v::alnum()->noWhitespace()->length(5, 20);
+        $emailValidator = v::email()->noWhitespace();
+        $nameValidator = v::alpha()->noWhitespace();
+        if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password) || !$emailValidator->validate($this->email)) {
+            return FALSE;
+        }
 
+        return $nameValidator->validate($this->name) && $nameValidator->validate($this->last_name);
+    }
 
     /**
      * @return mixed
@@ -118,12 +114,13 @@ class Register
         $this->last_name = $last_name;
     }
 
-    public function validate()
-    {
-        $usernameValidator = v::alnum()->noWhitespace()->length(1, 15);
-        return $usernameValidator->validate('alganet');
 
-    }
+    private $username = ' ';
+    private $email = '';
+    private $password = ' ';
+    private $name = ' ';
+    private $last_name = ' ';
+    private $confirm = ' ';
 
 
 }

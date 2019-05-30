@@ -11,19 +11,19 @@ class Database
         $password = "";
 
         // Create connection
-        $database_connection = new mysqli($servername, $username, $password);
+        $this->database_connection=new mysqli($servername, $username, $password);
 
         // Check connection
-        if ($database_connection->connect_error)
-            die("Connection failed: " . $database_connection->connect_error);
+        if ($this->database_connection->connect_error) {
+            die("Connection failed: " . $this->database_connection->connect_error);
+        }
 
         $sql_set_database = "USE myDB";
-        if ($database_connection->query($sql_set_database) === TRUE) {
+        if ($this->database_connection->query($sql_set_database) === TRUE) {
             echo "";
         } else {
-            echo "" . $database_connection->error;
+            echo "" . $this->database_connection->error;
         }
-//        echo "Connected successfully";
-        return $database_connection;
+        return $this->database_connection;
     }
 }

@@ -4,7 +4,7 @@ class EventsModel
 {
     private $db;
 
-    public function __construct($db)
+    public function __construct( $db)
     {
         $this->db = $db;
     }
@@ -45,7 +45,7 @@ class EventsModel
     public function getAllEvents()
     {
         $sql = "SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events "
-                . "ON events_tags.id_event = events.id";
+            . "ON events_tags.id_event = events.id";
         $statement = $this->db->query($sql);
         return $statement->fetchAll(PDO::FETCH_CLASS, "EventEntity");
     }
@@ -54,7 +54,7 @@ class EventsModel
     {
 
         $statement = $this->db->prepare("SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events "
-                . "ON events_tags.id_event = events.id WHERE events.id = :id LIMIT 1");
+            . "ON events_tags.id_event = events.id WHERE events.id = :id LIMIT 1");
         $statement->bindValue(":id", $id);
         $statement->execute();
         return $statement->fetchObject("EventEntity");

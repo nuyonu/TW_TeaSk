@@ -12,6 +12,7 @@
 <body>
 <?php
 include '../webroot/templates/admin-common.php'; ?>
+
 <div class="main-admin">
     <div class="page-title">
         <h1>Admin Evenimente</h1>

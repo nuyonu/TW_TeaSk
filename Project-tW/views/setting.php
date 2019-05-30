@@ -5,73 +5,105 @@
     <meta name="author" content="Filos Gabriel">
     <meta charset="UTF-8">
     <title>Skill Enhancer</title>
+    <!--    <meta http-equiv="refresh" content="2">-->
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/setting.css">
-    <script src="../webroot/scripts/navbar.js"></script>
+
 </head>
 <body>
-
+<?php
+include TEMPLATES . 'navbar_without_login.php';
+?>
 <div class="body" style="margin-top: 0;">
 
     <div class="menu" style="font-family: Karla,sans-serif">
         <span class="buttoncontact">Setari Cont</span>
-        <button class="buttonMenu" onclick="opentab(event, 'datepersonale')"> Date
-            personale
-        </button>
+        <button class="buttonMenu" onclick="opentab(event, 'datepersonale')">Date personale</button>
         <button class="buttonMenu" onclick="opentab(event, 'datecontact')"> Conectare</button>
         <button class="buttonMenu" onclick="opentab(event, 'preferinte')"> Preferinte</button>
-        <!--<button class="buttonMenu" onclick="opentab(event, 'istoric')"> Istoric</button>-->
         <button class="buttonMenu" onclick="opentab(event, 'teste')"> Teste</button>
-        <!--<button class="buttonMenu" onclick="opentab(event, 'statistici')"> Statistici</button>-->
     </div>
     <div class="page1" id="datepersonale">
         <div class="setting">
             <div class="ContulM">
                 <h2>Date personale</h2>
             </div>
-            <div class="line">
-                <span>
-                    <label for="nameinput"><b>Nume</b></label>
-                <input type="text" placeholder="Filos" id="nameinput" class="inputcontainer containerinput" required>
-                </span>
-                <span>
-                    <label for="lastnameinput"><b>Prenume</b></label>
-                    <input type="text" placeholder="Gabriel" id="lastnameinput" class="inputcontainer containerinput"
-                           required>
-                </span>
+            <div class="container">
+                <form action="/settings/personal" method="post" id="personal">
 
-            </div>
-            <div class="line">
-                <span>
-                    <label for="email2"><b>Email</b></label>
-                <input type="email" placeholder="filos@gmmmmmm.com" id="email2" class="inputcontainer containerinput"
-                       required>
-                </span>
-                <span>
-                    <label for="name2"><b>Numa afisat</b></label>
-                    <input type="text" placeholder="Gabriel" id="name2" class="inputcontainer containerinput" required>
-                </span>
+                    <div class="line">
+                        <span>
+                            <label for="nameinput"><b>Nume</b></label>
+                        <input type="text" name="personal[name]" placeholder="Filos"
+                               value="<?php echo Parameters::getData("userData")->getLastName(); ?>" id="nameinput"
+                               class="inputcontainer containerinput" required>
+                        </span>
+                        <span>
+                            <label for="lastnameinput"><b>Prenume</b></label>
+                            <input type="text" name="personal[first]" placeholder="Gabriel" id="lastnameinput"
+                                   value="<?php echo Parameters::getData("userData")->getFirstName(); ?>"
+                                   class="inputcontainer containerinput"
+                                   required>
+                        </span>
 
-            </div>
+                    </div>
+                    <div class="line">
+                        <span>
+                            <label for="email2"><b>Email</b></label>
+                        <input form="personal" type="email" name="personal[emailSetting]"
+                               value="<?php echo Parameters::getData("userData")->getEMail(); ?>"
+                               id="email2"
+                               class="inputcontainer containerinput"
+                               required>
 
-            <div class="line descriere">
-                <div class="block">
-                    <label>
-                        <b>Descriere</b>
-                    </label>
-                    <form>
-                        <textarea class="descriere" id="inputdescriere">O descrierere...</textarea>
-                    </form>
+                        </span>
+                        <span>
+                            <label for="name2"><b>Nume utilizator</b></label>
+                            <input type="text" placeholder="Gabriel" name="personal[username]" id="name2"
+                                   value="<?php echo Parameters::getData("userData")->getUsername(); ?>"
+                                   class="inputcontainer containerinput" readonly required>
+                        </span>
 
+                    </div>
+                    <div class="line">
+                        <span>
+                            <label for="name2"><b>Locatie actuala</b></label>
+                            <input type="text" name="personal[place]" id="place"
+                                   value="<?php echo Parameters::getData("location"); ?>"
+                                   class="inputcontainer containerinput" readonly required>
+                            <button type="submit" class="savebutton">Salvează</button>
+                            <button type="button" class="savebutton"
+                                    onclick="getLocation()">Actualizeaza locatia</button>
+                            <input name="personal[lat]" id="lat" readonly hidden>
+                            <input name="personal[long]" id="long" readonly hidden>
+                        </span>
+
+
+                    </div>
+
+                </form>
+                <div class="line">
+                    <span>
+                        <div class="image">
+                            <img src="../webroot/uploads/<?php echo Parameters::getData("image") ?>"
+                                 class="imageaccount"
+                                 alt="user">
+                            <p>Username: <?php echo Parameters::getData("user") ?></p>
+                         </div>
+                         <form action="/settings/upload" method="post" enctype="multipart/form-data">
+
+                             <label class="labelFile ">Change your image <input type="file" class="savebutton "
+                                                                                name="fileToUpload" id="fileToUpload"
+                                                                                required></label>
+                            <input type="submit" class="savebutton upload" value="Save Image" name="submit">
+                         </form>
+                    </span>
                 </div>
 
+
             </div>
-        </div>
-        <div class="image">
-            <img src="../webroot/images/user.png" class="imageaccount" alt="user">
-            <p> Filos Gabriel</p>
         </div>
     </div>
     <div class="page1" id="datecontact">
@@ -79,41 +111,70 @@
             <div class="ContulM">
                 <h2>Conectare</h2>
             </div>
-            <div class="line">
-                <span>
-                    <label for="newpassword"><b>Parola noua</b></label>
-                <input type="password" placeholder="**************" id="newpassword"
-                       class="inputcontainer containerinput" required>
-                </span>
-                <span>
-                    <label for="confirmpasword"><b>Confirma parola</b></label>
-                    <input type="password" placeholder="**************" id="confirmpasword"
-                           class="inputcontainer containerinput" required>
-                </span>
+            <div class="container">
+
+                <form method="post" action="/settings/contact" class="contact">
+
+                    <div class="line">
+                     <span>
+                            <label for="newpassword"><b>Parola noua</b></label>
+                            <input type="password" placeholder="**************" id="newpassword"
+                                   class="inputcontainer containerinput" onfocusout="verifyNew()" required
+                                   name="contact[new]">
+                     </span>
+                        <span>
+                        <label for="confirmpasword"><b>Confirma parola</b></label>
+                        <input type="password" placeholder="**************" onfocusout="verifyNew()" id="confirmpasword"
+                               class="inputcontainer containerinput" name="contact[newC]" required>
+                    </span>
+
+
+                    </div>
+                    <div class="line">
+                         <span>
+                             <label><b>Parola veche</b></label>
+                             <input name="contact[old]" type="password" placeholder="**************" id="oldpasword"
+                                    class="inputcontainer containerinput" required>
+                         </span>
+
+                    </div>
+                    <div class="line">
+                    <span>
+                        <?php
+                        //                        if (Parameters::getData('github')) {
+                        //                            echo  '<a href="/settings/dissconect1"> <button type="button" class="logare" id="logare1">Disconnect Github</button></a>';
+                        //                        } else {
+                        echo '<a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>';
+                        //                        }
+                        //                        if (Parameters::getData('linkedln')) {
+                        //                            echo '<a href="/settings/dissconect2"> <button type="button" class="logare" id="logare2">Disconnect Linkedin</button></a>';
+                        //                        } else {
+                        echo '<a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>';
+                        //                        }
+                        ?>
+<!---->
+                        <!--                       <a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>-->
+                        <!--                       <a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>-->
+                        <button type="submit" class="savebutton">Salveza</button>
+                    </span>
+
+                    </div>
+                </form>
+
+                <div class="line lineimage">
+                    <span>
+                        <div class="image">
+                            <img src="../webroot/uploads/<?php echo Parameters::getData("image") ?>"
+                                 class="imageaccount"
+                                 alt="user">
+                            <p>Username: <?php echo Parameters::getData("user") ?></p>
+                         </div>
+                    </span>
+                </div>
 
             </div>
-            <div class="line">
-                <span>
-                    <label for="newemail"><b>Email nou</b></label>
-                <input type="email" placeholder="filos@gmmmmmm.com" id="newemail" class="inputcontainer containerinput"
-                       required>
-                </span>
-                <span class="butoaneflex">
-                <button type="button" class="logare" id="logare1">Gitbub</button>
-                <button type="button" class="logare" id="logare2">Linkedin</button>
-                <button type="button" class="savebutton">Salveza</button>
-            </span>
-
-            </div>
-
-
-        </div>
-        <div class="image">
-            <img src="../webroot/images/user.png" class="imageaccount" alt="user">
-            <p> Filos Gabriel</p>
         </div>
     </div>
-
     <div class="page1" id="preferinte">
         <div class="setting">
             <div class="ContulM">
@@ -212,6 +273,10 @@
 
         </div>
     </div>
+</div>
+
+
+</div>
 
 
 </div>
@@ -241,6 +306,7 @@
         </li>
     </ul>
 </footer>
+
 <script>
     function opentab(evt, idtab) {
         // Declare all variables
@@ -262,6 +328,49 @@
         document.getElementById(idtab).style.display = "flex";
         evt.currentTarget.className += " active";
     }
+</script>
+<script>
+    function getLocation() {
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            window.alert('Browser-ul nu suporta geolocatia');
+        }
+    }
+
+    function showPosition(position) {
+        document.getElementById("lat").value = position.coords.latitude;
+        document.getElementById("long").value = position.coords.longitude;
+
+        console.log("ok");
+        fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude)
+            .then(function (response) {
+                return response.json();
+            })
+            .then(function (myJson) {
+                answer = JSON.stringify(myJson);
+                obj = JSON.parse(answer);
+                document.getElementById("place").value = obj.display_name;
+                document.getElementById("lat").value = position.coords.latitude;
+                document.getElementById("long").value = position.coords.longitude;
+            });
+    }
+</script>
+<script>
+    function verifyNew() {
+        var newP = document.getElementById('newpassword').value;
+        var newC = document.getElementById('confirmpasword').value;
+        console.log(' ');
+        console.log(newC);
+        console.log(newP);
+        console.log(newP.localeCompare(newC));
+        if(newP.localeCompare(newC)!=0){
+            // document.getElementById('confirmpasword').
+        }
+
+    }
+
 </script>
 </body>
 </html>

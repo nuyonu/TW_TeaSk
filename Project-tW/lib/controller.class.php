@@ -1,6 +1,6 @@
 <?php
 
-class Controller
+class  Controller
 {
     protected $dvb;
     protected $data;

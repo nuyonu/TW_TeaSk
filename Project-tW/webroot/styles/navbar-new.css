@@ -366,7 +366,7 @@ body
     font-size: 23px;
     border: none;
     outline: none;
-    color: white;
+    /*color: white;*/
 }
 .container>label{
     color:gray;
