@@ -161,7 +161,6 @@ class Router
     protected $controller;
     protected $action;
     protected $params;
-
     protected $route;
     protected $method_prefix;
     protected $language;
