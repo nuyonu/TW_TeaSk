@@ -27,7 +27,7 @@ class GithubController extends Controller
         redirect_uri=http://localhost/github/accept&client_secret=8782e4779be614afebf294d605af3dfce45caad1&code=' . $_GET['code']);
         $token = explode('&', explode('=', $response->getBody()->getContents())[1])[0];
         $userDB = new UserModel($this->database);
-        $userDB->addToken($this->session->get("user"), $token);
+        $userDB->addTokenGithub($this->session->get("user"), $token);
         $github = new GithubClient();
         $github->authToken($token);
         $github_database = new GithubModel($this->database);

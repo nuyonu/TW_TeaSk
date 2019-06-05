@@ -4,13 +4,12 @@ use Respect\Validation\Validator as v;
 
 class Register
 {
-
     public function validate(): bool
     {
         $usernameValidator = v::alnum()->noWhitespace()->length(5, 20);
         $passwordValidator = v::alnum()->noWhitespace()->length(5, 20);
         $emailValidator = v::email()->noWhitespace();
-        $nameValidator = v::alpha()->noWhitespace();
+        $nameValidator = v::alpha('- ');
         if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password) || !$emailValidator->validate($this->email)) {
             return FALSE;
         }

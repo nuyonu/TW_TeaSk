@@ -93,7 +93,7 @@ class ResetDB
                     linkedln_exp    INT,
                     PRIMARY KEY (ID) 
 )";
-        echo "fuck";
+
 
         if ($conn->query($sql_User) === TRUE) {
             echo "Table user created successfully";

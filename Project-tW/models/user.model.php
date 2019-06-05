@@ -1,6 +1,5 @@
 <?php
 
-use Arrayy\Arrayy as Arrayy;
 use LinkedIn\AccessToken;
 
 class UserModel
@@ -23,10 +22,11 @@ class UserModel
         return $result;
     }
 
+//    todo   search users
     public function getUsersSearch(string $search)
     {
         $stmt = $this->db->prepare("SELECT id,username,e_mail,last_name,first_name,linkedln_token ,github_token
-                                                FROM users where username like :usern" );
+                                                FROM users where username like :usern");
         $stmt->bindParam(":usern", $search);
 //        $stmt->bindParam(":email", $search);
 //        $stmt->bindParam(":lastn", $search);
@@ -69,7 +69,7 @@ class UserModel
         $stmt->execute();
     }
 
-    public function addToken(string $user, string $token)
+    public function addTokenGithub(string $user, string $token)
     {
         $stmt = $this->db->prepare("UPDATE users SET github_token=:token where username=:user");
         $stmt->bindValue(":user", $user);
@@ -93,7 +93,7 @@ class UserModel
         $stmt->setFetchMode(PDO::FETCH_NUM);
         $stmt->execute();
         $result = $stmt->fetch();
-        if (!$result) {
+        if ($result != NULL) {
             return FALSE;
         }
         return TRUE;
@@ -106,7 +106,7 @@ class UserModel
         $stmt->setFetchMode(PDO::FETCH_NUM);
         $stmt->execute();
         $result = $stmt->fetch();
-        if (!$result) {
+        if (!$result != NULL) {
             return FALSE;
         }
         return TRUE;
@@ -153,13 +153,15 @@ class UserModel
 
     public function getUser(UserDAO $user): bool
     {
-        $stmt = $this->db->prepare("SELECT id,username,e_mail,password,first_name,last_name,github_token,linkedln_token,linkedln_exp FROM users where username=:user and password=:password");
+        $stmt = $this->db->prepare("SELECT id,username,e_mail,password,first_name,last_name,github_token,linkedln_token,linkedln_exp FROM users where username=:user ");
         $stmt->bindValue(":user", $user->getUsername());
-        $stmt->bindValue(":password", $user->getPassword());
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, "UserEntity");
         $result = $stmt->fetch();
-        return $result == FALSE ? FALSE : TRUE;
+        if ($result == FALSE) {
+            return FALSE;
+        }
+        return password_verify($user->getPassword(), $result->getPassword());
     }
 
     public function getUserDb(string $username): UserEntity
@@ -178,17 +180,21 @@ class UserModel
 
     public function saveUser(Register $user)
     {
-        $stmt = $this->db->prepare("INSERT INTO users VALUES(?,?,?,?,?,?,?,?,?)");
-        $stmt->bindValue(1, 1);
-        $stmt->bindValue(2, $user->getUsername());
-        $stmt->bindValue(3, $user->getEmail());
-        $stmt->bindValue(4, $user->getPassword());
-        $stmt->bindValue(5, $user->getName());
-        $stmt->bindValue(6, $user->getLastName());
-        $stmt->bindValue(7, NULL);
-        $stmt->bindValue(8, NULL);
-        $stmt->bindValue(9, NULL);
+        $stmt = $this->db->prepare("INSERT INTO users(username, e_mail, password, first_name, last_name ) VALUES(?,?,?,?,?)");
+        $stmt->bindValue(1, $user->getUsername());
+        $stmt->bindValue(2, $user->getEmail());
+        $stmt->bindValue(3, password_hash($user->getPassword(),PASSWORD_DEFAULT));
+        $stmt->bindValue(4, $user->getName());
+        $stmt->bindValue(5, $user->getLastName());
         $stmt->execute();
+    }
+
+    public function existUsername(string $username): bool
+    {
+        $stmt = $this->db->prepare("select username from users where username=:username");
+        $stmt->bindParam(":username", $username);
+        $stmt->execute();
+        return $stmt->fetch() != FALSE;
     }
 
 }

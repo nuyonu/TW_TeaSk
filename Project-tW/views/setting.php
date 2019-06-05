@@ -141,16 +141,16 @@ include TEMPLATES . 'navbar_without_login.php';
                     <div class="line">
                     <span>
                         <?php
-                        //                        if (Parameters::getData('github')) {
-                        //                            echo  '<a href="/settings/dissconect1"> <button type="button" class="logare" id="logare1">Disconnect Github</button></a>';
-                        //                        } else {
-                        echo '<a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>';
-                        //                        }
-                        //                        if (Parameters::getData('linkedln')) {
-                        //                            echo '<a href="/settings/dissconect2"> <button type="button" class="logare" id="logare2">Disconnect Linkedin</button></a>';
-                        //                        } else {
-                        echo '<a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>';
-                        //                        }
+                        if (Parameters::getData('github')) {
+                            echo '<a href="/settings/dissconect1"> <button type="button" class="logare" id="logare1">Disconnect Github</button></a>';
+                        } else {
+                            echo '<a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>';
+                        }
+                        if (Parameters::getData('linkedln')) {
+                            echo '<a href="/settings/dissconect2"> <button type="button" class="logare" id="logare2">Disconnect Linkedin</button></a>';
+                        } else {
+                            echo '<a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>';
+                        }
                         ?>
 <!---->
                         <!--                       <a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>-->
@@ -365,7 +365,7 @@ include TEMPLATES . 'navbar_without_login.php';
         console.log(newC);
         console.log(newP);
         console.log(newP.localeCompare(newC));
-        if(newP.localeCompare(newC)!=0){
+        if (newP.localeCompare(newC) != 0) {
             // document.getElementById('confirmpasword').
         }
 

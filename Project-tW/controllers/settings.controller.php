@@ -29,6 +29,7 @@ class SettingsController extends Controller
             Parameters::setData("linkedln", $db->isConnectedWithLinkedln($this->session->get("user")));
             Parameters::setData("user",$this->session->get("user"));
         } else {
+
             Parameters::setData("show", "show");
         }
         require_once(Constants::VIEW_SETTING);

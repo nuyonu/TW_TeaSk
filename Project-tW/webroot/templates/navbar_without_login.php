@@ -10,7 +10,7 @@
         <li><a href="/contact"> <i class="fas fa-mobile-alt"></i>Contact</a></li>
         <li><a href="/support"><i class="fas fa-question-circle"></i>Suport</a></li>
         <li><a href="/about"><i class="fas fa-info-circle"></i>Despre</a></li>
-        <a href="home/disconect">
+        <a href="home/disconnect">
             <button class="btn" id="signin">
                 Disconect
             </button>
