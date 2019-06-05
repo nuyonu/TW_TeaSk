@@ -36,10 +36,10 @@ class HomeController extends Controller
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
                     Response::redirect(Constants::HOME);
                 } else {
-                    Response::redirect(Constants::HOME);
+                    Response::redirect_with_fail(Constants::HOME,"Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
                 }
             } else {
-                Response::redirect(Constants::HOME);
+                Response::redirect_with_fail(Constants::HOME ,"Datele trimise sunt fie goale,fie invalide. Apasati ok pentru a fii trimis pe acasa.");
             }
         }
     }

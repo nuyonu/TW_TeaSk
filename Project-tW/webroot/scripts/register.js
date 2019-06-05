@@ -1,9 +1,11 @@
 $(document).ready(function () {
     $('#register').submit(function (e) {
         e.preventDefault();
+
+
         if (usernameExistReg() && validEmail() &&password_hintReg('pwsc','#error-alert4') && pass_confirmReg()) {
             $("#register").unbind('submit');
-            document.register.submit();
+            // document.register.submit();
         }else {
             window.alert("Va rugăm completati corespunzator campurile care au culoarea roșie.");
         }
@@ -12,10 +14,7 @@ $(document).ready(function () {
 
 function pass_confirmReg() {
     var password = document.getElementById('pwscr').value;
-    if (password.length < 6 || password.length > 20) {
-        return false;
-    }
-    return password.localeCompare(document.getElementById('pwsc').value) == 0;
+    return (password.length > 6 && password.length < 20 && password.localeCompare(document.getElementById('pwsc').value) == 0);
 
 }
 
@@ -28,7 +27,7 @@ function validEmail() {
 
 function password_hintReg(id, alert_id) {
     var password = document.getElementById(id).value;
-    return !(password.length < 6 || password.length > 20);
+    return (password.length > 6 && password.length < 20);
 }
 
 
@@ -37,6 +36,7 @@ function usernameExistReg() {
     if (username.length < 6 || username.length > 20) {
        return false;
     } else {
+        var aa=true;
         $.ajax({
             type: "POST",
             url: 'home/verifyUsername',
@@ -45,11 +45,13 @@ function usernameExistReg() {
             success: function (response) {
                 const jsonData = JSON.parse(response);
                 if (jsonData.success == "1") {
-                    return false;
+                    aa=true;
+
                 } else {
-                    return true;
+                   aa=false;
                 }
             }
         });
+        return aa;
     }
 }
