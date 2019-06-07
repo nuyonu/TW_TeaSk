@@ -7,86 +7,132 @@ use duncan3dc\Sessions\SessionInstance;
 class HomeController extends Controller
 {
 
-    private $session;
-
-    /**
-     * HomeController constructor.
-     */
-    public function __construct()
-    {
-        parent::__construct();
-        $this->session = new SessionInstance("my-app");
-    }
 
     public function show()
     {
-        $user = $this->session->get("user");
+        $user = $this->session->get(Constants::USER);
         if ($user != NULL) {
-            Parameters::setData("show", "hidden");
+            Parameters::setData("show", Constants::HIDDEN);
         } else {
-            Parameters::setData("show", "");
+            Parameters::setData("show", Constants::EMPTY);
         }
 
-        require_once(VIEW . 'index.php');
+        require_once(Constants::VIEW_INDEX);
     }
 
-    public function disconect()
+    public function disconnect()
     {
-        $this->session->set("user", "");
-        Response::redirect(self::HOME);
+        $this->session->set(Constants::USER, Constants::EMPTY);
+        Response::redirect(Constants::HOME);
     }
 
     public function login()
     {
-        $data = $_POST['data'];
-        $username = $data['user'];
-        $password = $data['password'];
-        $user = new UserDAO($username, $password);
-        if ($user->valid()) {
-            $database = new UserModel($this->database);
-            if ($database->getUser($user)) {
-                $this->session->set('user', $username);
-                Response::redirect(self::HOME);
+        if (isset($_POST[Constants::DATA]) && isset($_POST[Constants::DATA][Constants::USER]) && isset($_POST[Constants::DATA][Constants::PASSWORD])) {
+            $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PASSWORD]);
+            if ($user->valid()) {
+                $database = new UserModel($this->database);
+                if ($database->getUser($user)) {
+                    $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
+                    Response::redirect(Constants::HOME);
+                } else {
+                    Response::redirect_with_fail(Constants::HOME,"Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
+                }
             } else {
-                Response::redirect(self::HOME);
+                Response::redirect_with_fail(Constants::HOME ,"Datele trimise sunt fie goale,fie invalide. Apasati ok pentru a fii trimis pe acasa.");
             }
-        } else {
-            Response::redirect(self::HOME);
         }
     }
+
 
     public function register()
     {
-        $reg = $_POST['reg'];
-        $register = new Register();
-        $register->setUsername($reg['username']);
-        $register->setPassword($reg['password']);
-        $register->setEmail($reg['email']);
-        $register->setName($reg['name']);
-        $register->setConfirm($reg['confirm']);
-        $register->setLastName($reg['lastname']);
+        if (isset($_POST['reg']) && $this->validateReg() ) {
+            $reg = $_POST['reg'];
+            $register = new Register();
+            $register->setUsername($reg['username']);
+            $register->setPassword($reg['password']);
+            $register->setEmail($reg['email']);
+            $register->setName($reg['name']);
+            $register->setConfirm($reg['confirm']);
+            $register->setLastName($reg['lastname']);
 
-        if ($register->validate()) {
             $UserRepository = new UserModel($this->database);
-            $UserRepository->saveUser($register);
-            Response::redirect(self::HOME);
+            if ($register->validate() && !$UserRepository->existUsername($register->getUsername())) {
+                $UserRepository->saveUser($register);
+                Response::redirect(Constants::HOME);
+            } else {
+
+                Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt invalide.");
+            }
         } else {
-            Response::redirect(self::HOME);
+            Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt fie goale ,fie invalide.");
         }
     }
 
-    public
-    function redirect()
+    public function redirect()
     {
-        Response::redirect(self::HOME);
+        Response::redirect(Constants::HOME);
+    }
+
+    public function verifyLogin()
+    {
+        if (isset($_POST['data']['user']) && $_POST['data']['user'] && isset($_POST['data']['password']) && $_POST['data']['password']) {
+            $userModel = new UserModel($this->database);
+            $data = $_POST['data'];
+            $username = $data['user'];
+            $password = $data['password'];
+            $user = new UserDAO($username, $password);
+            if ($userModel->getUser($user)) {
+                echo json_encode(array(Constants::SUCCESS_RESULT => Constants::SUCCESS));
+            } else {
+                echo json_encode(array(Constants::SUCCESS_RESULT => Constants::FAIL));
+            }
+        } else {
+            echo json_encode(array(Constants::SUCCESS_RESULT => Constants::FAIL));
+        }
+    }
+
+    public function verifyUsername()
+    {
+        if (isset($_POST[Constants::USER]) && $_POST[Constants::USER]) {
+
+            $user = $_POST["user"];
+            $db = new UserModel($this->database);
+            if ($db->existUsername($user)) {
+                echo json_encode(array(Constants::SUCCESS_RESULT => Constants::SUCCESS));
+            } else {
+                echo json_encode(array(Constants::SUCCESS_RESULT => Constants::FAIL));
+            }
+        } else {
+            echo json_encode(array(Constants::SUCCESS_RESULT => Constants::FAIL));
+        }
     }
 
 
-    public
-    function dies()
+    public function dies()
     {
         die('404 Not Found');
     }
 
-    private const HOME = "/home";
+
+    private function validateReg(): bool
+    {
+        $reg = $_POST['reg'];
+        if (!isset($reg['username']) && !isset($reg['password']) && !isset($reg['email']) && !isset($reg['name']) && !isset($reg['confirm']) && !isset($reg['lastname'])) {
+            return FALSE;
+        }
+        return ($reg['username'] && $reg['password'] && $reg['email'] && $reg['name'] && $reg['confirm'] && $reg['lastname']);
+
+    }
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->session = new SessionInstance(Constants::NAME_APP);
+    }
+
+    private
+        $session;
+
 }

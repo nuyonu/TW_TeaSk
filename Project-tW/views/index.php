@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
 
     <title>Skill Enhancer</title>
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/index.css">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic%7cPatrick+Hand%7cMontserrat+Alternates%7cAnnie+Use+Your+Telescope%7cInconsolata"
@@ -14,6 +17,12 @@
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+    <script type="text/javascript" src="../webroot/scripts/register.js"></script>
+    <script type="text/javascript" src="../webroot/scripts/login.js"></script>
+    <script type="text/javascript" src="../webroot/scripts/messages.js"></script>
+    <script type="text/javascript" src="../webroot/scripts/username.js"></script>
 
 </head>
 <body>
