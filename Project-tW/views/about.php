@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Despre | Skill Enhancer</title>
+    <link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
+
     <link rel="stylesheet" type="text/css" href="../webroot/styles/about.css"/>
     <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic%7cPatrick+Hand%7cMontserrat+Alternates%7cAnnie+Use+Your+Telescope%7cInconsolata"

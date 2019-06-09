@@ -4,10 +4,29 @@
 //https://github.com/Seldaek/monolog
 
 
+use Arrayy\Arrayy;
+
 class ConfigurationSettings
 {
     public function __construct()
     {
+        Config::set("unknown_route",
+            new Arrayy(array('home', 'contact', 'support', 'about','test')));
+        Config::set("user_route",
+            new Arrayy(array(
+                'home',
+                'trainings',
+                'contact',
+                'support',
+                'about',
+                'events',
+                'settings',
+                'trainingsfilter',
+                'github',
+                'linkedln'
+            )));
+        Config::set("admin_pass",'Aa1!asdf');
+        Config::set('user_admin', '_admin');
         Config::set('site_name', 'site');
         Config::set('languages', 'ro');
         Config::set('routes', array('default' => '', 'admin' => 'admin'));

@@ -13,14 +13,32 @@ function password_hint(id, alert_id) {
 }
 
 
+function verifyPass() {
+    var password = document.getElementById("pwsc").value;
+
+    if (password.length < 6 || password.length > 100) {
+        document.getElementById("error-alert4").style.display= "block";
+        console.log("sdad");
+    } else {
+        document.getElementById("error-alert4").style.display= "none";
+        console.log("sd22ad");
+    }
+    if (validetePassword(password)) {
+        document.getElementById("error-alertStr").style.display= "block";
+    }else {
+        document.getElementById("error-alertStr").style.display= "none";
+    }
+
+}
+
 function pass_confirm() {
     var password = document.getElementById('pwscr').value;
-    if (password.length < 6 || password.length > 20) {
-        $('#error-alert5').show();
-    } else {
-        $('#error-alert5').hide();
-
-    }
+    // if (password.length < 6 || password.length > 20) {
+    //     $('#error-alert5').show();
+    // } else {
+    //     $('#error-alert5').hide();
+    //
+    // }
     if (password.localeCompare(document.getElementById('pwsc').value) != 0) {
         $('#error-alert6').show();
     } else {
@@ -53,4 +71,9 @@ function valided() {
     } else {
         $("#error-alert3").show();
     }
+}
+
+function validetePassword(pass) {
+    const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+    return !re.test(pass);
 }

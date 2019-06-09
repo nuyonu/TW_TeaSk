@@ -1,0 +1,26 @@
+.navpage{
+    font-size: 20px;
+    margin-right: 50px;
+}
+
+.linkPage{
+    margin-right: 5px;
+    margin-left: 5px;
+    font-size: 20px;
+}
+
+.currentPage{
+    font-size: 20px;
+    color: red;
+    margin-right: 5px;
+    margin-left: 5px;
+
+}
+.navigator-page-int{
+    align-content: center;
+    text-align: center;
+}
+.navigator-page{
+    text-align: center;
+    margin-bottom: 20px;
+}

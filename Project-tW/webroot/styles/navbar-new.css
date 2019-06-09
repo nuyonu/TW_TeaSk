@@ -425,6 +425,14 @@ body
     /*opacity: 0.5%;*/
     font-size: 23px;
     border: none;
+    color: white;
     outline: none;
     /*color: white;*/
+}
+input
+{
+    background-color: transparent;
+}
+#name{
+    background-color: transparent;
 }

@@ -7,14 +7,13 @@ class Register
     public function validate(): bool
     {
         $usernameValidator = v::alnum()->noWhitespace()->length(5, 20);
-        $passwordValidator = v::alnum()->noWhitespace()->length(5, 20);
         $emailValidator = v::email()->noWhitespace();
         $nameValidator = v::alpha('- ');
-        if (!$usernameValidator->validate($this->username) || !$passwordValidator->validate($this->password) || !$emailValidator->validate($this->email)) {
+        if (!$usernameValidator->validate($this->username) || !$this->validatePassword($this->password) || !$emailValidator->validate($this->email)) {
             return FALSE;
         }
-
-        return $nameValidator->validate($this->name) && $nameValidator->validate($this->last_name);
+        return $nameValidator->validate($this->name) && $nameValidator->validate($this->last_name) && strcmp($this->password,
+                $this->confirm) == 0 && strlen($this->password) < 100;
     }
 
     /**
@@ -111,6 +110,13 @@ class Register
     public function setLastName(string $last_name): void
     {
         $this->last_name = $last_name;
+    }
+
+    private function validatePassword(string $password)
+    {
+        $regex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})^';
+        preg_match($regex, $password, $matches, PREG_OFFSET_CAPTURE);
+        return count($matches) != 0;
     }
 
 

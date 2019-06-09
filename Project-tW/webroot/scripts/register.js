@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $('#register').submit(function (e) {
         e.preventDefault();
@@ -11,6 +12,7 @@ $(document).ready(function () {
         }
     });
 });
+
 
 function pass_confirmReg() {
     var password = document.getElementById('pwscr').value;
@@ -34,9 +36,9 @@ function password_hintReg(id, alert_id) {
 function usernameExistReg() {
     var username = document.getElementById('namec').value;
     if (username.length < 6 || username.length > 20) {
-       return false;
+        return false;
     } else {
-        var aa=true;
+        var aa = true;
         $.ajax({
             type: "POST",
             url: 'home/verifyUsername',
@@ -45,10 +47,10 @@ function usernameExistReg() {
             success: function (response) {
                 const jsonData = JSON.parse(response);
                 if (jsonData.success == "1") {
-                    aa=true;
+                    aa = true;
 
                 } else {
-                   aa=false;
+                    aa = false;
                 }
             }
         });

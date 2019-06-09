@@ -30,24 +30,34 @@ class HomeController extends Controller
     {
         if (isset($_POST[Constants::DATA]) && isset($_POST[Constants::DATA][Constants::USER]) && isset($_POST[Constants::DATA][Constants::PASSWORD])) {
             $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PASSWORD]);
+
             if ($user->valid()) {
                 $database = new UserModel($this->database);
                 if ($database->getUser($user)) {
+
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
+                    $this->session->set(Constants::GRADE, $database->getUserGrade($user->getUsername()));
                     Response::redirect(Constants::HOME);
                 } else {
-                    Response::redirect_with_fail(Constants::HOME,"Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
+                    echo 2;
+                    Response::redirect(Constants::HOME);
                 }
             } else {
-                Response::redirect_with_fail(Constants::HOME ,"Datele trimise sunt fie goale,fie invalide. Apasati ok pentru a fii trimis pe acasa.");
+                Response::redirect_with_fail(Constants::HOME,
+                    "Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
+
+                echo 3;
             }
+        } else {
+            Response::redirect_with_fail(Constants::HOME,
+                "Datele trimise sunt fie goale,fie invalide. Apasati ok pentru a fii trimis pe acasa.");
         }
     }
 
 
     public function register()
     {
-        if (isset($_POST['reg']) && $this->validateReg() ) {
+        if (isset($_POST['reg']) && $this->validateReg()) {
             $reg = $_POST['reg'];
             $register = new Register();
             $register->setUsername($reg['username']);
@@ -62,12 +72,12 @@ class HomeController extends Controller
                 $UserRepository->saveUser($register);
                 Response::redirect(Constants::HOME);
             } else {
-
-                Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt invalide.");
+                Response::redirect_with_fail(Constants::HOME, "Datele trimise sunt invalide.");
             }
         } else {
-            Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt fie goale ,fie invalide.");
+            Response::redirect_with_fail(Constants::HOME, "Datele trimise sunt fie goale ,fie invalide.");
         }
+
     }
 
     public function redirect()
@@ -126,7 +136,8 @@ class HomeController extends Controller
 
     }
 
-    public function __construct()
+    public
+    function __construct()
     {
         parent::__construct();
         $this->session = new SessionInstance(Constants::NAME_APP);

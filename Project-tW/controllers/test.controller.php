@@ -3,7 +3,7 @@
 use LinkedIn\Client as ClientLinkedln;
 use LinkedIn\Scope;
 
-class TestingController extends Controller
+class TestController extends Controller
 {
     private $id = '77fdnuwkav2mba';
     private $secret = 'AhO9z1daHL7uy6W8';

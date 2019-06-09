@@ -47,7 +47,7 @@ echo ' <link rel="stylesheet" href="../webroot/styles/mod.css" type="text/css  "
         </form>
     </div>
     <div id="id2" class="modal">
-        <form class="modal-content animate" action="home/register"  autocomplete="off" method="post" id="register">
+        <form class="modal-content animate" name="myform" action="home/register"  autocomplete="off" method="post" id="register">
             <div class="imgcontainer">
                 <span onclick="document.getElementById(\'id2\').style.display=\'none\'" class="close"
                       title="Close modal">&times;</span>
@@ -74,24 +74,26 @@ echo ' <link rel="stylesheet" href="../webroot/styles/mod.css" type="text/css  "
                         Email-ul nu e valid.
                     </div>
                 <label for="pwsc"><b>Parola</b></label>
-                <input type="password" onfocusout="password_hint(\'pwsc\',\'#error-alert4\')" placeholder="Introduceti o parola" id="pwsc" name="reg[password]" class="inputcontainer" required>
-                <div class="alert alert-error" id="error-alert4" style="color: red" hidden>
+                <input type="password" onfocusout="verifyPass()" placeholder="Introduceti o parola" id="pwsc" name="reg[password]" class="inputcontainer" required>
+                <div class="alert alert-error" id="error-alert4" style="color: red;display: none" >
                         <button type="button" class="close" data-dismiss="alert" hidden>x</button>
                         <strong>Eroare! </strong>
-                        Parola trebuie sa aiba cel putin 6 caractere alfanumerice.
+                        Parola trebuie sa aiba cel putin 8 caractere.
+                        
+                    </div>
+                    <div class="alert alert-error" id="error-alertStr" style="color: red;display: none" >
+                        <button type="button" class="close" data-dismiss="alert" hidden>x</button>
+                        <strong>Eroare! </strong>
+                        
+                        Parola trebuie sa contina cel putin o litera mica, una mare, o cifra si simbol special(!@#$%^&*).
                     </div>
                 <label for="pwscr"><b>Confirma parola</b></label>
                 <input type="password" onfocusout="pass_confirm()" placeholder="Introduceti parola din nou" name="reg[confirm]" id="pwscr" class="inputcontainer"
                        required>
-                         <div class="alert alert-error" id="error-alert5" style="color: red" hidden>
-                            <button type="button" class="close" data-dismiss="alert" hidden>x</button>
-                            <strong>Eroare! </strong>
-                            Parola trebuie sa aiba cel putin 6 caractere alfanumerice.
-                         </div>
                          <div class="alert alert-error" id="error-alert6" style="color: red" hidden>
                             <button type="button" class="close" data-dismiss="alert" hidden>x</button>
                             <strong>Eroare! </strong>
-                            Parolele nu sunt la fel.
+                            Parolele nu corespund.
                          </div>
                 <label for="nameuser"><b>Nume</b></label>
                 <label>
@@ -110,7 +112,7 @@ echo ' <link rel="stylesheet" href="../webroot/styles/mod.css" type="text/css  "
                             <button type="button" class="close" data-dismiss="alert" hidden>x</button>
                             Prenumele poate contine doar litere , spatiu si \'-\'. </div>
                 <div class="butoanean">
-                    <button type="submit" class="buttonmodal">Creaza cont</button>
+                    <button type="submit" onsubmit="" id="reg" class="buttonmodal">Creaza cont</button>
                 </div>
             </div>
         </form>

@@ -18,7 +18,7 @@ class Response
     public static function redirect_with_fail(string $uri, string $message)
     {
         echo "<script type=\"text/javascript\">window.alert('" . $message . "');
-                window.location.href = '/home';</script>";
+                window.location.href = '" . $uri . "';</script>";
         exit;
 
     }

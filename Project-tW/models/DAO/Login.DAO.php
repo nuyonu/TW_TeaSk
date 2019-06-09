@@ -10,9 +10,8 @@ class UserDAO
 
     public function valid(): bool
     {
-        $nameValidator = v::alpha()->noWhitespace();
-        $passwordValidator = v::alnum()->noWhitespace()->length(5, 20);
-        return $nameValidator->validate($this->username) && $passwordValidator->validate($this->password);
+        $usernameValidator = v::alnum('_')->noWhitespace()->length(5, 20);
+        return $usernameValidator->validate($this->username) && $this->validatePassword($this->password);
     }
 
     /**
@@ -57,6 +56,13 @@ class UserDAO
     public function setPassword($password)
     {
         $this->password = $password;
+    }
+
+    public function validatePassword(string $password)
+    {
+        $regex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})^';
+        preg_match($regex, $password, $matches, PREG_OFFSET_CAPTURE);
+        return count($matches)!=0;
     }
 
 }

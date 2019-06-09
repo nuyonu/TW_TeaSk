@@ -13,6 +13,7 @@ class UserEntity
     private $linkedin_token;
     private $linkedln_exp;
 
+
     /**
      * @return mixed
      */
@@ -129,7 +130,7 @@ class UserEntity
     /**
      * @return string
      */
-    public function getGithubToken(): string
+    public function getGithubToken():string
     {
         return $this->github_token;
     }
@@ -145,7 +146,7 @@ class UserEntity
     /**
      * @return string
      */
-    public function getLinkedinToken(): string
+    public function getLinkedlnToken():string
     {
         return $this->linkedin_token;
     }
@@ -162,6 +163,8 @@ class UserEntity
     {
         return new UserEntity();
     }
+
+
 
 
 }

@@ -27,7 +27,7 @@ class SettingsController extends Controller
             Parameters::setData("userData", $db->getUserDb($user));
             Parameters::setData("github", $db->isConnectedWithGithub($this->session->get("user")));
             Parameters::setData("linkedln", $db->isConnectedWithLinkedln($this->session->get("user")));
-            Parameters::setData("user",$this->session->get("user"));
+            Parameters::setData("user", $this->session->get("user"));
         } else {
 
             Parameters::setData("show", "show");
@@ -80,7 +80,7 @@ class SettingsController extends Controller
                 $uploadOk = 0;
             }
         }
-        if ($this->verify() && $uploadOk==1) {
+        if ($this->verify() && $uploadOk == 1) {
             unlink(UPLOADS . $this->imageUser());
         }
         if ($_FILES["fileToUpload"]["size"] > 500000) {
@@ -123,6 +123,20 @@ class SettingsController extends Controller
         }
         return file_exists(UPLOADS . $this->session->get("user") . '.gif');
 
+    }
+
+    public function dissconect1()
+    {
+        $db = new UserModel($this->database);
+        $db->deleteGithub($this->session->get(Constants::USER));
+        Response::redirect("/settings");
+    }
+
+    public function dissconect2()
+    {
+        $db = new UserModel($this->database);
+        $db->deleteLinkedln($this->session->get(Constants::USER));
+        Response::redirect("/settings");
     }
 
     private function imageUser(): string

@@ -5,6 +5,9 @@
     <meta name="author" content="Filos Gabriel">
     <meta charset="UTF-8">
     <title>Skill Enhancer</title>
+    <link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <!--    <meta http-equiv="refresh" content="2">-->
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
@@ -140,21 +143,7 @@ include TEMPLATES . 'navbar_without_login.php';
                     </div>
                     <div class="line">
                     <span>
-                        <?php
-                        if (Parameters::getData('github')) {
-                            echo '<a href="/settings/dissconect1"> <button type="button" class="logare" id="logare1">Disconnect Github</button></a>';
-                        } else {
-                            echo '<a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>';
-                        }
-                        if (Parameters::getData('linkedln')) {
-                            echo '<a href="/settings/dissconect2"> <button type="button" class="logare" id="logare2">Disconnect Linkedin</button></a>';
-                        } else {
-                            echo '<a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>';
-                        }
-                        ?>
-<!---->
-                        <!--                       <a href="/settings/github"> <button type="button" class="logare" id="logare1">Gitbub</button></a>-->
-                        <!--                       <a href="/settings/linkedln"> <button type="button" class="logare" id="logare2">Linkedin</button></a>-->
+                        <?php RenderSettings::buttons(); ?>
                         <button type="submit" class="savebutton">Salveza</button>
                     </span>
 
