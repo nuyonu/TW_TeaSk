@@ -4,7 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Filos Gabriel">
     <meta charset="UTF-8">
-    <title>Skill Enhancer</title>
+    <title>Setari | Skill Enhancer</title>
     <link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
@@ -21,7 +21,7 @@ include TEMPLATES . 'navbar_without_login.php';
 ?>
 <div class="body" style="margin-top: 0;">
 
-    <div class="menu" style="font-family: Karla,sans-serif">
+    <div class="menu" id="menu" style="font-family: Karla,sans-serif">
         <span class="buttoncontact">Setari Cont</span>
         <button class="buttonMenu" onclick="opentab(event, 'datepersonale')">Date personale</button>
         <button class="buttonMenu" onclick="opentab(event, 'datecontact')"> Conectare</button>
@@ -33,38 +33,65 @@ include TEMPLATES . 'navbar_without_login.php';
             <div class="ContulM">
                 <h2>Date personale</h2>
             </div>
-            <div class="container">
+            <div class="container" id="page1">
+
                 <form action="/settings/personal" method="post" id="personal">
 
                     <div class="line">
-                        <span>
-                            <label for="nameinput"><b>Nume</b></label>
-                        <input type="text" name="personal[name]" placeholder="Filos"
-                               value="<?php echo Parameters::getData("userData")->getLastName(); ?>" id="nameinput"
-                               class="inputcontainer containerinput" required>
-                        </span>
-                        <span>
-                            <label for="lastnameinput"><b>Prenume</b></label>
-                            <input type="text" name="personal[first]" placeholder="Gabriel" id="lastnameinput"
-                                   value="<?php echo Parameters::getData("userData")->getFirstName(); ?>"
+                        <div>
+                            <span>
+                                <label for="nameinput"><b>Nume</b></label>
+                            <input type="text" name="personal[name]"
+                                   value="<?php echo Parameters::getData("userData")->getLastName(); ?>" id="nameinput"
                                    class="inputcontainer containerinput"
+                                   onkeyup="nameI()"
                                    required>
-                        </span>
-
+                            </span>
+                            <div class="alert alert-error" id="error-alert4" style="color: red" hidden>
+                                <button type="button" class="close" data-dismiss="alert" hidden>x</button>
+                                <strong>Eroare! </strong>
+                                Numele trebuie sa contina cel putin o literă.
+                            </div>
+                        </div>
+                        <div>
+                                <span>
+                                    <label for="lastnameinput"><b>Prenume</b></label>
+                                    <input type="text" name="personal[first]" id="lastnameinput"
+                                           value="<?php echo Parameters::getData("userData")->getFirstName(); ?>"
+                                           class="inputcontainer containerinput"
+                                           onkeyup="first()"
+                                           required>
+                                </span>
+                            <div class="alert alert-error" id="error-alert5" style="color: red" hidden>
+                                <button type="button" class="close" data-dismiss="alert" hidden>x</button>
+                                <strong>Eroare! </strong>
+                                Prenumele trebuie sa contina cel putin o literă.
+                            </div>
+                        </div>
                     </div>
                     <div class="line">
-                        <span>
-                            <label for="email2"><b>Email</b></label>
-                        <input form="personal" type="email" name="personal[emailSetting]"
-                               value="<?php echo Parameters::getData("userData")->getEMail(); ?>"
-                               id="email2"
-                               class="inputcontainer containerinput"
-                               required>
+                        <div>
+                            <span>
+                                <label for="email2"><b>Email</b></label>
+                                    <input form="personal"
+                                           type="email"
+                                           name="personal[emailSetting]"
+                                           value="<?php echo Parameters::getData("userData")->getEMail(); ?>"
+                                           id="email2"
+                                           class="inputcontainer containerinput"
+                                           onkeyup="email()"
+                                           required>
 
-                        </span>
+                            </span>
+                            <div class="alert alert-error" id="error-alert3" style="color: red" hidden>
+                                <button type="button" class="close" data-dismiss="alert" hidden>x</button>
+                                <strong>Eroare! </strong>
+                                Email-ul nu e valid.
+                            </div>
+                        </div>
                         <span>
                             <label for="name2"><b>Nume utilizator</b></label>
-                            <input type="text" placeholder="Gabriel" name="personal[username]" id="name2"
+                            <input type="text" id="name2"
                                    value="<?php echo Parameters::getData("userData")->getUsername(); ?>"
                                    class="inputcontainer containerinput" readonly required>
                         </span>
@@ -76,35 +103,50 @@ include TEMPLATES . 'navbar_without_login.php';
                             <input type="text" name="personal[place]" id="place"
                                    value="<?php echo Parameters::getData("location"); ?>"
                                    class="inputcontainer containerinput" readonly required>
-                            <button type="submit" class="savebutton">Salvează</button>
-                            <button type="button" class="savebutton"
-                                    onclick="getLocation()">Actualizeaza locatia</button>
+
                             <input name="personal[lat]" id="lat" readonly hidden>
                             <input name="personal[long]" id="long" readonly hidden>
                         </span>
 
+                        <div>
+                            <button type="submit" onsubmit="return notifyM();" class="savebutton">Salvează</button>
+                            <button type="button" class="savebutton"
+                                    onclick="getLocation()">Actualizeaza locatia
+                            </button>
+
+                        </div>
+                        <div>
+                            <h1 style="color: red">Pericol</h1>
+                            <button type="button" class="savebutton" style="background: red; border-color: red;"
+                                    onclick="sterge()">Sterge contul
+                            </button>
+                            <?php Render::moderator(); ?>
+
+                        </div>
 
                     </div>
 
+
                 </form>
-                <div class="line">
+
+                <div class="photoImage">
                     <span>
                         <div class="image">
                             <img src="../webroot/uploads/<?php echo Parameters::getData("image") ?>"
                                  class="imageaccount"
                                  alt="user">
-                            <p>Username: <?php echo Parameters::getData("user") ?></p>
+                            <p>Numde de utilizator: <?php echo Parameters::getData("user") ?></p>
                          </div>
-                         <form action="/settings/upload" method="post" enctype="multipart/form-data">
+                         <form action="/settings/upload" method="post" enctype="multipart/form-data" class="photo">
 
-                             <label class="labelFile ">Change your image <input type="file" class="savebutton "
-                                                                                name="fileToUpload" id="fileToUpload"
-                                                                                required></label>
+                             <label class="labelFile ">Schimba imaginea de profil <input type="file" class="savebutton "
+                                                                                         name="fileToUpload"
+                                                                                         id="fileToUpload"
+                                                                                         required></label>
                             <input type="submit" class="savebutton upload" value="Save Image" name="submit">
                          </form>
                     </span>
                 </div>
-
 
             </div>
         </div>
@@ -116,20 +158,37 @@ include TEMPLATES . 'navbar_without_login.php';
             </div>
             <div class="container">
 
-                <form method="post" action="/settings/contact" class="contact">
+                <form method="post" action="/settings/contact" class="contact" id="contact">
 
                     <div class="line">
                      <span>
                             <label for="newpassword"><b>Parola noua</b></label>
                             <input type="password" placeholder="**************" id="newpassword"
-                                   class="inputcontainer containerinput" onfocusout="verifyNew()" required
+                                   class="inputcontainer containerinput" onkeyup="verifyPass()" required
                                    name="contact[new]">
                      </span>
+                        <div class="alert alert-error" id="error-alertStr" style="color:red;display: none">
+                            <button type="button" class="close" data-dismiss="alert" hidden>x</button>
+                            <strong>Eroare!Parola trebuie sa contina </strong>
+                            <ul>
+                                <li style="display: none" id="i1">sa aiba cel putin 8 caractere</li>
+                                <li style="display: none" id="i2">cel putin o litera mica</li>
+                                <li style="display: none" id="i3">cel putin una mare</li>
+                                <li style="display: none" id="i4">cel putin o cifra</li>
+                                <li style="display: none" id="i5">cel putin un simbol(!@#$%^&*)</li>
+                            </ul>
+                        </div>
                         <span>
                         <label for="confirmpasword"><b>Confirma parola</b></label>
-                        <input type="password" placeholder="**************" onfocusout="verifyNew()" id="confirmpasword"
+                        <input type="password" placeholder="**************" onfocusout="pass_confirm()"
+                               id="confirmpasword"
                                class="inputcontainer containerinput" name="contact[newC]" required>
                     </span>
+                        <div class="alert alert-error" id="error-alert6" style="color: red" hidden>
+                            <button type="button" class="close" data-dismiss="alert" hidden>x</button>
+                            <strong>Eroare! </strong>
+                            Parolele nu corespund.
+                        </div>
 
 
                     </div>
@@ -142,21 +201,24 @@ include TEMPLATES . 'navbar_without_login.php';
 
                     </div>
                     <div class="line">
-                    <span>
-                        <?php RenderSettings::buttons(); ?>
-                        <button type="submit" class="savebutton">Salveza</button>
-                    </span>
+                        <div>
+                            <?php RenderSettings::buttons(); ?>
+                        </div>
+                        <div>
+                            <button type="submit" class="savebutton">Salveza</button>
+
+                        </div>
 
                     </div>
                 </form>
 
-                <div class="line lineimage">
+                <div class="photoImage">
                     <span>
                         <div class="image">
                             <img src="../webroot/uploads/<?php echo Parameters::getData("image") ?>"
                                  class="imageaccount"
                                  alt="user">
-                            <p>Username: <?php echo Parameters::getData("user") ?></p>
+                            <p>Numde de utilizator: <?php echo Parameters::getData("user") ?></p>
                          </div>
                     </span>
                 </div>
@@ -165,39 +227,40 @@ include TEMPLATES . 'navbar_without_login.php';
         </div>
     </div>
     <div class="page1" id="preferinte">
-        <div class="setting">
+        <div class="setting new-setting">
             <div class="ContulM">
                 <h2>Preferinte</h2>
             </div>
-            <div class="line">
-                <label for="newemail" class="labels"><b>Tipuri de evenimente</b></label>
-            </div>
-            <div class="line line2">
+            <div class="container mod">
+                <div class="line">
+                    <label for="newemail" class="labels"><b>Tipuri de evenimente</b></label>
+                </div>
+                <div class="line line2">
                 <span>
                     <label class="containercheck">Conferinte
                         <input type="checkbox" checked="checked">
                         <span class="checkmark"></span>
                     </label>
                 </span>
-                <span>
+                    <span>
                     <label class="containercheck">Seminare
                         <input type="checkbox" checked="checked">
                         <span class="checkmark"></span>
                     </label>
             </span>
-                <span>
+                    <span>
                     <label class="containercheck">Intalniri
                         <input type="checkbox" checked="checked">
                         <span class="checkmark"></span>
                     </label>
             </span>
 
-            </div>
-            <div class="line">
-                <label for="newemail" class="labels"><b>Tipuri de tarining-uri</b></label>
-            </div>
+                </div>
+                <div class="line">
+                    <label for="newemail" class="labels"><b>Tipuri de tarining-uri</b></label>
+                </div>
 
-            <div class="line line2">
+                <div class="line line2">
 
             <span>
                     <label class="containercheck">Technical Skills Development Training
@@ -205,25 +268,26 @@ include TEMPLATES . 'navbar_without_login.php';
                         <span class="checkmark"></span>
                     </label>
             </span>
-                <span>
+                    <span>
                     <label class="containercheck">Onboarding Training
                         <input type="checkbox" checked="checked">
                         <span class="checkmark"></span>
                     </label>
             </span>
-                <span>
+                    <span>
                     <label class="containercheck">Orientation
                         <input type="checkbox" checked="checked">
                         <span class="checkmark"></span>
                     </label>
             </span>
-                <span>
+                    <span>
                     <label class="containercheck">Soft skills development training
                         <input type="checkbox" checked="checked">
                         <span class="checkmark"></span>
                     </label>
             </span>
 
+                </div>
             </div>
         </div>
 
@@ -265,101 +329,11 @@ include TEMPLATES . 'navbar_without_login.php';
 </div>
 
 
-</div>
-
-
-</div>
-<footer class="page-footer">
-
-    <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
-    <ul>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-facebook-f" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank" style="color: #888888">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-linkedin" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-github" style="color: #888888"></i>
-            </a>
-        </li>
-    </ul>
-</footer>
-
-<script>
-    function opentab(evt, idtab) {
-        // Declare all variables
-        let i, tabcontent, tablinks;
-
-        // Get all elements with class="tabcontent" and hide them
-        tabcontent = document.getElementsByClassName("page1");
-        for (i = 0; i < tabcontent.length; i++) {
-            tabcontent[i].style.display = "none";
-        }
-
-        // Get all elements with class="tablinks" and remove the class "active"
-        tablinks = document.getElementsByClassName("buttonMenu");
-        for (i = 0; i < tablinks.length; i++) {
-            tablinks[i].className = tablinks[i].className.replace(" active", "");
-        }
-
-        // Show the current tab, and add an "active" class to the button that opened the tab
-        document.getElementById(idtab).style.display = "flex";
-        evt.currentTarget.className += " active";
-    }
-</script>
-<script>
-    function getLocation() {
-
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(showPosition);
-        } else {
-            window.alert('Browser-ul nu suporta geolocatia');
-        }
-    }
-
-    function showPosition(position) {
-        document.getElementById("lat").value = position.coords.latitude;
-        document.getElementById("long").value = position.coords.longitude;
-
-        console.log("ok");
-        fetch('https://nominatim.openstreetmap.org/reverse?format=json&lat=' + position.coords.latitude + '&lon=' + position.coords.longitude)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                answer = JSON.stringify(myJson);
-                obj = JSON.parse(answer);
-                document.getElementById("place").value = obj.display_name;
-                document.getElementById("lat").value = position.coords.latitude;
-                document.getElementById("long").value = position.coords.longitude;
-            });
-    }
-</script>
-<script>
-    function verifyNew() {
-        var newP = document.getElementById('newpassword').value;
-        var newC = document.getElementById('confirmpasword').value;
-        console.log(' ');
-        console.log(newC);
-        console.log(newP);
-        console.log(newP.localeCompare(newC));
-        if (newP.localeCompare(newC) != 0) {
-            // document.getElementById('confirmpasword').
-        }
-
-    }
-
-</script>
+<?php require_once(TEMPLATES . 'footer.php'); ?>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
+<script type="text/javascript" src="../webroot/scripts/settingp.js"></script>
+<script type="text/javascript" src="../webroot/scripts/location.js"></script>
+<script type="text/javascript" src="../webroot/scripts/newPass.js"></script>
+<script type="text/javascript" src="../webroot/scripts/personal-data.js"></script>
 </body>
 </html>

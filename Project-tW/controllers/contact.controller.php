@@ -14,22 +14,20 @@ class ContactController extends Controller
 
     public function show()
     {
-        $user = $this->session->get("user");
-        if ($user != NULL) {
-            Parameters::setData("show", "hidden");
-        } else {
-            Parameters::setData("show", "show");
-        }
+        Parameters::setData("show", "hidden");
         require_once(VIEW . 'contact.php');
     }
 
     public function send()
     {
-        $data = $_POST['contact'];
-        $contact = new ContactDao($data['name'], $data['email'], $data['type'], $data['problem']);
-        $databaseConn = new ContactModel($this->database);
-        $databaseConn->save($contact);
-        header("Location: http://localhost/contact", TRUE, 301);
-        die();
+        if (ValidatorPost::validateContact()) {
+
+            $data = $_POST['contact'];
+            $contact = new ContactDao($data['name'], $data['email'], $data['type'], $data['problem']);
+            $databaseConn = new ContactModel($this->database);
+            $databaseConn->save($contact);
+            Response::redirect(Constants::CONTACT);
+        }
+
     }
 }

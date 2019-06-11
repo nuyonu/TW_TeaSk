@@ -51,16 +51,16 @@ class Router
 
     private function processQuery($query)
     {
+
         $result = array();
         if (strcmp($query, "") != 0) {
             $values = explode('&', $query);
             foreach ($values as $param) {
                 $pair = explode('=', $param);
                 if (isset($pair[1])) {
-                    array_push($result, [$pair[0] => $pair[1]]);
+                    $result[$pair[0]] = $pair[1];
                 }
             }
-            $result=$result[0];
         }
         return $result;
     }

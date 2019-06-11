@@ -10,7 +10,7 @@ define('UPLOADS',ROOT.DS.'webroot'.DS.'UPLOADS'.DS);
 require_once "../vendor/autoload.php";
 
 
-new ConfigurationSettings();
+ConfigurationSettings::init();
 App::init_database();
 App::run($_SERVER['REQUEST_URI']);
 

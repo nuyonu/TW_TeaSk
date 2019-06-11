@@ -7,7 +7,7 @@ class Constants
     public const EMPTY = "";
     public const HIDDEN = "hidden";
     public const DATA = "data";
-    public const PASSWORD = "password";
+    public const PSW = "password";
     public const GRADE = "grade";
 
     public const SUCCESS_RESULT = "success";
@@ -27,6 +27,11 @@ class Constants
 //    Actions
     public const ALL_DELETE = 'check_list_for_delete';
     public const SEARCH = 'search';
+
     const MAX_PAGE = 30;
+    const NOT_SETTED = 'nesetat';
+    const MAX_SIZE = 500000;
+    const FAUL_MESSAGE = 'Datele trimise fie nu sunt valabile ,fie nu au fost completate corect';
+    const CONTACT = '/contact';
 
 }

@@ -2,6 +2,7 @@
 include(ROOT . DS . 'models' . DS . 'DAO' . DS . 'Register.DAO.php');
 include(ROOT . DS . 'models' . DS . 'user.model.php');
 
+use AsyncTask\Collection;
 use duncan3dc\Sessions\SessionInstance;
 
 class HomeController extends Controller
@@ -28,25 +29,31 @@ class HomeController extends Controller
 
     public function login()
     {
-        if (isset($_POST[Constants::DATA]) && isset($_POST[Constants::DATA][Constants::USER]) && isset($_POST[Constants::DATA][Constants::PASSWORD])) {
-            $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PASSWORD]);
-
+        if (ValidatorPost::validateLogin()) {
+            $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PSW]);
             if ($user->valid()) {
                 $database = new UserModel($this->database);
                 if ($database->getUser($user)) {
-
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
                     $this->session->set(Constants::GRADE, $database->getUserGrade($user->getUsername()));
-                    Response::redirect(Constants::HOME);
+                    $token = $database->getTokenGithub($this->session->get(Constants::USER));
+                    if ($token != NULL) {
+                        $sett = new Collection();
+                        $sett->set("token", $token);
+                        $sett->set("db", $this->database);
+                        $sett->set("user", $this->session->get(Constants::USER));
+                        $task = new GithubUpdate();
+                        $task->setTitle('TestTask')
+                                ->execute($sett);
+                    }
+                    echo 'sS';
+//                    Response::redirect(Constants::HOME);
                 } else {
-                    echo 2;
                     Response::redirect(Constants::HOME);
                 }
             } else {
                 Response::redirect_with_fail(Constants::HOME,
                     "Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
-
-                echo 3;
             }
         } else {
             Response::redirect_with_fail(Constants::HOME,

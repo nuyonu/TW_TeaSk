@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>Training-uri | Skill Enhancer</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+          integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Didact+Gothic|Patrick+Hand|Montserrat+Alternates|Annie+Use+Your+Telescope"
+          rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../styles/navbar-new.css"/>
     <link rel="stylesheet" type="text/css" href="../webroot/styles/trainings.css"/>
     <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
     <link href="https://fonts.googleapis.com/css?family=Didact+Gothic%7cPatrick+Hand%7cMontserrat+Alternates%7cAnnie+Use+Your+Telescope%7cInconsolata" rel="stylesheet">
-    <script src="../webroot/scripts/navbar.js"></script>
 </head>
 <body>
+<?php require_once(TEMPLATES . 'navbar_without_login.php'); ?>
 <div class="container-main container-col-flex">
     <h1>Training-uri</h1>
     <p>Pe această pagină poți găsi totalitatea training-urilor specifice preferințelor tale.</p>
@@ -238,32 +243,8 @@
         </div>
     </div>
 </div>
-<footer class="page-footer">
+<?php require_once(TEMPLATES . 'footer.php'); ?>
 
-    <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
-    <ul>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-facebook-f" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank" style="color: #888888">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-linkedin" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-github" style="color: #888888"></i>
-            </a>
-        </li>
-    </ul>
-</footer>
 <script src="../webroot/scripts/trainings.js"></script>
 </body>
 </html>

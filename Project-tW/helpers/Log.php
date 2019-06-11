@@ -12,7 +12,6 @@ class Log
     public static function debug_ajax($value)
     {
         ob_start();
-
         var_dump($value);
         return ob_get_clean();
 

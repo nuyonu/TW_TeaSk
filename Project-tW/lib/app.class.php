@@ -18,20 +18,8 @@ class App
 
     public static function init_database()
     {
-        $host = '127.0.0.1';
-        $dbname = 'mydb';
-        $user = 'root';
-        $password = '';
-        $charset = 'utf8mb4';
-        $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-
-        $options = [
-            PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-            PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-            PDO::ATTR_EMULATE_PREPARES => FALSE,
-        ];
         try {
-            self::$db = new PDO($dsn, $user, $password, $options);
+            self::$db = new PDO(Config::get('dsn'), Config::get('user'), Config::get("pass"), Config::get("option_db"));
         } catch (PDOException $e) {
             throw new PDOException($e->getMessage(), (int)$e->getCode());
         }
@@ -57,10 +45,8 @@ class App
 
     }
 
-    private static function isAdmin(
-        string $user,
-        $grade
-    ): bool {
+    private static function isAdmin(string $user, $grade): bool
+    {
         if (strcmp(Config::get('user_admin'), $user) == 0 && strcmp($grade['grade'], "1") == 0) {
             if (!self::existActionController()) {
                 self::REDIRECT_HOME();
@@ -71,17 +57,21 @@ class App
     }
 
 
-    private static function isModerator(
-        $user
-    ) {
-        if (FALSE) {
-            self::existActionController();
+    private static function isModerator($user, $grade)
+    {
+        if ($grade['grade'] == 2) {
+            if (self::accessibleModerator()) {
+                self::REDIRECT_HOME();
+            } else {
+                self::existActionController();
+            }
             return TRUE;
         }
         return FALSE;
     }
 
-    private static function isNormal(): bool {
+    private static function isNormal(): bool
+    {
         if (self::accessibleNormalUser()) {
             self::existActionController();
             return TRUE;
@@ -91,9 +81,14 @@ class App
     }
 
 
-    private static function isUnknown($user): bool {
-        if (self::accessibleUnkownUser() && $user == NULL) {
-            self::existActionController();
+    private static function isUnknown($user): bool
+    {
+        if ($user == NULL) {
+            if (self::accessibleUnkownUser()) {
+                self::existActionController();
+            } else {
+                Response::redirect(Constants::HOME);
+            }
             return TRUE;
         }
         return FALSE;
@@ -125,20 +120,28 @@ class App
         $controller = self::$router->getController();
         $controller = strtolower($controller);
         return Config::get("unknown_route")->find(
-                function ($value) use ($controller) {
-                    return $controller == $value;
-                }) != FALSE;
+            function ($value) use ($controller) {
+                return $controller == $value;
+            });
     }
 
     private static function accessibleNormalUser()
     {
         $controller = self::$router->getController();
         return Config::get("user_route")->find(
-                function ($value) use ($controller) {
-                    return $controller == $value;
-                }) != FALSE;
+            function ($value) use ($controller) {
+                return $controller == $value;
+            });
     }
 
+    private static function accessibleModerator()
+    {
+        $controller = self::$router->getController();
+        return Config::get("moderator_route")->find(
+            function ($value) use ($controller) {
+                return $controller == $value;
+            });
+    }
 
     protected static $router;
     private static $db;

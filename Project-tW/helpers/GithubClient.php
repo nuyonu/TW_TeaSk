@@ -30,6 +30,8 @@ class GithubClient
             return self::BAD_REQUEST;
         }
     }
+
+//    todo revoke token
     public function revoke(string $token){
 //        $this->client->user()->
 

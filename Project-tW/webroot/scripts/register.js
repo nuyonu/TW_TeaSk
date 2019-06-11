@@ -1,4 +1,3 @@
-
 $(document).ready(function () {
     $('#register').submit(function (e) {
         e.preventDefault();
@@ -6,7 +5,8 @@ $(document).ready(function () {
 
         if (usernameExistReg() && validEmail() &&password_hintReg('pwsc','#error-alert4') && pass_confirmReg()) {
             $("#register").unbind('submit');
-            // document.register.submit();
+            document.register.submit();
+
         }else {
             window.alert("Va rugăm completati corespunzator campurile care au culoarea roșie.");
         }
@@ -16,7 +16,7 @@ $(document).ready(function () {
 
 function pass_confirmReg() {
     var password = document.getElementById('pwscr').value;
-    return (password.length > 6 && password.length < 20 && password.localeCompare(document.getElementById('pwsc').value) == 0);
+    return (password.length > 8 && password.length < 20 && password.localeCompare(document.getElementById('pwsc').value) == 0);
 
 }
 

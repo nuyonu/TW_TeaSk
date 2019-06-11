@@ -13,8 +13,7 @@
 
 </head>
 <body>
-<?php
-include '../webroot/templates/admin-common.php'; ?>
+<?php Render::adminNavbar(); ?>
 <div class="main-admin">
     <div class="page-title">
         <h1>Admin Utilizatori</h1>
@@ -23,7 +22,7 @@ include '../webroot/templates/admin-common.php'; ?>
         <div class="utils">
             <div class="search-event">
                 <form action="adminUsers" method="post">
-                    <input id="search-event-input" type="text" placeholder="Caută după numele de utilizator..."
+                    <input id="search-event-input" type="text" placeholder="Caută după numele de utilizator"
                            name="search">
                 </form>
             </div>

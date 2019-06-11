@@ -94,18 +94,15 @@ class NavigatorUsers
     public static function isAdmin()
     {
         $session = new SessionInstance(Constants::NAME_APP);
-        if ($session->get(Constants::GRADE)['grade'] == 1) {
-            echo '<a href="/adminHome">
-            <button class="btn" id="signup">
-                Admin Panel
-            </button>
-        </a>';
+        $grade = $session->get(Constants::GRADE)['grade'];
+        if ($grade == 1) {
+            echo '<a href="/adminHome"><button class="btn" id="signup">Admin Panel</button></a>';
+        } elseif ($grade == 2) {
+            echo '<a href="/settings"><button class="btn" id="signup">Settings</button></a>';
+            echo '<a href="/adminHome"><button class="btn" id="signup">Moderator</button></a>';
         } else {
-            echo '<a href="/settings">
-            <button class="btn" id="signup">
-                Settings
-            </button>
-        </a>';
+            echo '<a href="/settings"><button class="btn" id="signup">Settings</button></a>';
+
         }
     }
 }

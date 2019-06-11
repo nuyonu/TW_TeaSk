@@ -13,32 +13,67 @@ function password_hint(id, alert_id) {
 }
 
 
+function val() {
+    var password = document.getElementById("namec").value;
+    if (password.length < 8) {
+        document.getElementById("error-alert2").style.display = "block";
+    } else {
+        document.getElementById("error-alert2").style.display = "none";
+    }
+}
+
 function verifyPass() {
     var password = document.getElementById("pwsc").value;
-
-    if (password.length < 6 || password.length > 100) {
-        document.getElementById("error-alert4").style.display= "block";
-        console.log("sdad");
+    const re = new RegExp("^(?=.*[a-z])");
+    if (re.test(password)) {
+        document.getElementById("i2").style.display = "none";
     } else {
-        document.getElementById("error-alert4").style.display= "none";
-        console.log("sd22ad");
+        document.getElementById("i2").style.display = "block";
     }
+    // const re = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+    const re2 = new RegExp("^(?=.*[A-Z])");
+    if (re2.test(password)) {
+        document.getElementById("i3").style.display = "none";
+    } else {
+        document.getElementById("i3").style.display = "block";
+    }
+
+    const re3 = new RegExp("^(?=.*[0-9])");
+    if (re3.test(password)) {
+        document.getElementById("i4").style.display = "none";
+    } else {
+        document.getElementById("i4").style.display = "block";
+    }
+    const re4 = new RegExp("^(?=.*[!@#\\$%\\^&\\*])");
+    if (re4.test(password)) {
+        document.getElementById("i5").style.display = "none";
+    } else {
+        document.getElementById("i5").style.display = "block";
+    }
+
+    if (password.length < 8 || password.length > 100) {
+        document.getElementById("i1").style.display = "block";
+    } else {
+        document.getElementById("i1").style.display = "none";
+    }
+
     if (validetePassword(password)) {
-        document.getElementById("error-alertStr").style.display= "block";
-    }else {
-        document.getElementById("error-alertStr").style.display= "none";
+        document.getElementById("error-alertStr").style.display = "block";
+    } else {
+        document.getElementById("error-alertStr").style.display = "none";
+    }
+    var password = document.getElementById('pwscr').value;
+    if (password.localeCompare(document.getElementById('pwsc').value) != 0) {
+        $('#error-alert6').show();
+    } else {
+        $('#error-alert6').hide();
     }
 
 }
 
 function pass_confirm() {
     var password = document.getElementById('pwscr').value;
-    // if (password.length < 6 || password.length > 20) {
-    //     $('#error-alert5').show();
-    // } else {
-    //     $('#error-alert5').hide();
-    //
-    // }
     if (password.localeCompare(document.getElementById('pwsc').value) != 0) {
         $('#error-alert6').show();
     } else {

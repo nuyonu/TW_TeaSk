@@ -1,12 +1,7 @@
 function usernameExist() {
     var username = document.getElementById('namec').value;
-    if (username.length < 6 || username.length > 20) {
-        // document.getElementById(id).style.color = "red";
-        // document.getElementById(id).style.border = "2px solid #2196F3";
+    if (username.length > 7 || username.length <100) {
 
-        $('#error-alert2').show();
-    } else {
-        $('#error-alert2').hide();
         // console.log(JSON.stringify({'user' : document.getElementById('namec').value}));
         $.ajax({
             type: "POST",

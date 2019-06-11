@@ -12,15 +12,7 @@
     <link rel="stylesheet" type="text/css" href="../webroot/styles/footer.css">
 </head>
 <body>
-<?php
-
-if (strcmp(Parameters::getData("show"), "hidden") == 0) {
-    require_once(TEMPLATES . 'navbar_without_login.php');
-} else {
-    include TEMPLATES . 'navbar.php';
-}
-
-?>
+<?php Render::navbar(); ?>
 <div class="suport-body">
 
     <div id="suport-title">
@@ -30,7 +22,7 @@ if (strcmp(Parameters::getData("show"), "hidden") == 0) {
     <div id="suport-help">
         <p>
             În această pagină veți găsi întrebări frecvente primite de la utilizatorii <a href="/home">Skill
-            Enhancer</a>! Dacă ai o
+                Enhancer</a>! Dacă ai o
             intrebare căreia nu-i găsești
             răspunsul mai jos, ne poți contacta <a href="/contact">aici</a> și îți vom răspunde în cel mai scurt
             timp posibil!
@@ -133,7 +125,7 @@ if (strcmp(Parameters::getData("show"), "hidden") == 0) {
         <p>
             Pentru a adăuga un eveniment este nevoie ca contul dumneavoastră să primească UPDATE la gradul de
             "Manager". Dacă contul are gradul de manager este suficient să accesați <a href="/events">pagina de
-            evenimente</a> și să apăsați butonul "Adaugă eveniment".
+                evenimente</a> și să apăsați butonul "Adaugă eveniment".
         </p>
     </div>
 
@@ -167,32 +159,7 @@ if (strcmp(Parameters::getData("show"), "hidden") == 0) {
     </div>
     <hr class="customHr"/>
 </div>
-<footer class="page-footer">
-
-    <small id="copyright"><i class="fas fa-copyright"></i>Copyright 2019. All rights reserved.</small>
-    <ul>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-facebook-f" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank" style="color: #888888">
-                <i class="fab fa-twitter"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-linkedin" style="color: #888888"></i>
-            </a>
-        </li>
-        <li>
-            <a href="" target="_blank">
-                <i class="fab fa-github" style="color: #888888"></i>
-            </a>
-        </li>
-    </ul>
-</footer>
+<?php Render::footer(); ?>
 </body>
 <script type="text/javascript" src="../webroot/scripts/suport.js" async></script>
 </html>
