@@ -10,6 +10,12 @@ class TrainingsController extends Controller
 
         $trainings = $this->model->getTrainings();
 
+        $total = 2;
+        $cheap_trainings = $this->model->getCheapTrainings($trainings, $total);
+        $favorable_trainings = $this->model->getFavorableTrainings($trainings, $total);
+        $close_trainings = $this->model->getCloseTrainings($trainings, $total);
+        $recent_trainings = $this->model->getRecentTrainings($trainings, $total);
+
         require_once(VIEW . 'trainings.php');
     }
 

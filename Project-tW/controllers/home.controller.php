@@ -73,9 +73,10 @@ class HomeController extends Controller
             $register->setName($reg['name']);
             $register->setConfirm($reg['confirm']);
             $register->setLastName($reg['lastname']);
+            echo $register->getUsername();
 
             $UserRepository = new UserModel($this->database);
-            if ($register->validate() && !$UserRepository->existUsername($register->getUsername())) {
+            if (!$UserRepository->existUsername($register->getUsername())) {
                 $UserRepository->saveUser($register);
                 Response::redirect(Constants::HOME);
             } else {

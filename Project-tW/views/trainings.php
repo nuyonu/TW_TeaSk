@@ -21,40 +21,73 @@
         <div class="container-details">
             <h2>Filtrează training-urile</h2>
             <form action="trainingsfilter" class="filter-form" method="get">
-                Nume:<br><input type="text" name="title"><br>
-                Locație:<br><input type="text" name="location"><br>
-                Are loc după:<br><input type="date" name="dateStart"><br>
-                Are loc înainte de:<br><input type="date" name="dateEnd"><br>
-                Domeniu:<br><input type="text" name="domain"><br>
-                Specificații:<br><input type="text" name="specs"><br>
-                Stele:<br>
-                Minim: <select name="minStars">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-                Maxim: <select name="maxStars">
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5" selected>5</option>
-                </select><br>
-                Dificultate:<br>
-                <label>
-                    <input type="checkbox" name="diffs[]" value="0" checked>Ușoară
-                </label>
-                <label>
-                    <input type="checkbox" name="diffs[]" value="1" checked>Medie
-                </label>
-                <label>
-                    <input type="checkbox" name="diffs[]" value="2" checked>Grea<br>
-                </label>
-                Preț:<br>
-                <input type="text" name="minPrice"> -
-                <input type="text" name="maxPrice"><br>
+
+                <div class="container-flex-center-row">
+                    <div>
+                        <p>Titlu:</p>
+                        <input type="text" name="title">
+                        <p>Domeniu:</p>
+                        <input type="text" name="domain">
+                        <p>Are loc după:</p>
+                        <input type="date" name="dateStart">
+                    </div>
+                    <div>
+                        <p>Locație:</p>
+                        <input type="text" name="location">
+                        <p>Specificații:</p>
+                        <input type="text" name="specs">
+                        <p>Are loc înainte de:</p>
+                        <input type="date" name="dateEnd">
+                    </div>
+                </div>
+
+                <div class="container-flex-center-row">
+                    <div>
+                        <p>Preț minim:</p>
+                        <input type="text" name="minPrice">
+                    </div>
+                    <div>
+                        <p>Preț maxim:</p>
+                        <input type="text" name="maxPrice">
+                    </div>
+                </div>
+
+                <div class="container-flex-center-row">
+                    <div class="flex-baseline">
+                        <p>Stele minim:</p>
+                        <select name="minStars">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="flex-baseline">
+                        <p>Stele maxim:</p>
+                        <select name="maxStars">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5" selected>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="container-flex-center-row">
+                    <p>Dificultate:</p>
+                    <label>
+                        <input type="checkbox" name="diffs[]" value="0" checked>Ușoară
+                    </label>
+                    <label>
+                        <input type="checkbox" name="diffs[]" value="1" checked>Medie
+                    </label>
+                    <label>
+                        <input type="checkbox" name="diffs[]" value="2" checked>Grea<br>
+                    </label>
+                </div>
+
                 <div class="filter-buttons">
                     <input type="submit" value="Filtrează">
                 </div>
@@ -127,117 +160,117 @@
             <div class="container-col-flex trainings-recent ">
                 <h2>Recente</h2>
                 <div class="container-row-flex">
-                    <div class="training container-col-flex">
-                        <p class="training-name">Super Training</p>
-                        <p class="training-location">Iași</p>
-                        <p class="training-date">16 Aprilie 2019</p>
-                        <p class="training-domain">Dezvoltator Web</p>
-                        <p class="training-specifications">C++, C#, Java</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-3.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Medie</p>
-                        <p class="training-price">Preț: 20 de lei</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
-                    <div class="training container-col-flex">
-                        <p class="training-name">Super Training</p>
-                        <p class="training-location">Iași</p>
-                        <p class="training-date">16 Aprilie 2019</p>
-                        <p class="training-domain">Dezvoltator Web</p>
-                        <p class="training-specifications">C++, C#, Java</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-3.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Medie</p>
-                        <p class="training-price">Preț: 20 de lei</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
+                    <?php foreach($recent_trainings as $recent): ?>
+                        <div class="training container-col-flex">
+                            <p class="training-name"><?= $recent->getTitle() ?></p>
+                            <p class="training-location"><?= $recent->getLocation() ?></p>
+                            <p class="training-date"><?= $recent->getDatetime() ?></p>
+                            <p class="training-domain"><?= $recent->getDomain() ?></p>
+                            <p class="training-specifications"><?= $recent->getSpecifications() ?></p>
+                            <div>
+                                <?php for ($index = 0; $index < $recent->getStars(); $index++) { ?>
+                                    <img class="training-star" src="../webroot/images/star-icon.png" alt="Stele"/>
+                                <?php } ?>
+                            </div>
+                            <p class="training-difficulty">Dificultate: <?= $recent->getDifficulty() ?></p>
+                            <p class="training-price">Preț:
+                                <?php
+                                    if ($recent->getPrice() <= 0) echo "Gratuit";
+                                    elseif ($recent->getPrice() == 1) echo "1 leu";
+                                    else echo $recent->getPrice() . " lei";
+                                ?>
+                            </p>
+                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="container-col-flex trainings-near">
-                <h2>Din apropiere</h2>
+                <h2>Cu recenzii bune</h2>
                 <div class="container-row-flex">
-                    <div class="training container-col-flex">
-                        <p class="training-name">Mega Training</p>
-                        <p class="training-location">Suceava</p>
-                        <p class="training-date">18 Mai 2019</p>
-                        <p class="training-domain">Tester</p>
-                        <p class="training-specifications">Haskell</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-4.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Ușoară</p>
-                        <p class="training-price">Preț: 50 de lei</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
-                    <div class="training container-col-flex">
-                        <p class="training-name">Mega Training</p>
-                        <p class="training-location">Suceava</p>
-                        <p class="training-date">18 Mai 2019</p>
-                        <p class="training-domain">Tester</p>
-                        <p class="training-specifications">Haskell</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-4.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Ușoară</p>
-                        <p class="training-price">Preț: 50 de lei</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
+                    <?php foreach($favorable_trainings as $favorable): ?>
+                        <div class="training container-col-flex">
+                            <p class="training-name"><?= $favorable->getTitle() ?></p>
+                            <p class="training-location"><?= $favorable->getLocation() ?></p>
+                            <p class="training-date"><?= $favorable->getDatetime() ?></p>
+                            <p class="training-domain"><?= $favorable->getDomain() ?></p>
+                            <p class="training-specifications"><?= $favorable->getSpecifications() ?></p>
+                            <div>
+                                <?php for ($index = 0; $index < $favorable->getStars(); $index++) { ?>
+                                    <img class="training-star" src="../webroot/images/star-icon.png" alt="Stele"/>
+                                <?php } ?>
+                            </div>
+                            <p class="training-difficulty">Dificultate: <?= $favorable->getDifficulty() ?></p>
+                            <p class="training-price">Preț:
+                                <?php
+                                    if ($favorable->getPrice() <= 0) echo "Gratuit";
+                                    elseif ($favorable->getPrice() == 1) echo "1 leu";
+                                    else echo $favorable->getPrice() . " lei";
+                                ?>
+                            </p>
+                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="container-col-flex trainings-ratings">
-                <h2>Cu recenzii bune</h2>
+                <h2>Ieftine</h2>
                 <div class="container-row-flex">
-                    <div class="training container-col-flex">
-                        <p class="training-name">Hyper Training</p>
-                        <p class="training-location">Timișoara</p>
-                        <p class="training-date">22 Iunie 2019</p>
-                        <p class="training-domain">Manager</p>
-                        <p class="training-specifications">Team Leader Skills</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-5.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Grea</p>
-                        <p class="training-price">Preț: 150 de lei</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
-                    <div class="training container-col-flex">
-                        <p class="training-name">Hyper Training</p>
-                        <p class="training-location">Timișoara</p>
-                        <p class="training-date">22 Iunie 2019</p>
-                        <p class="training-domain">Manager</p>
-                        <p class="training-specifications">Team Leader Skills</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-5.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Grea</p>
-                        <p class="training-price">Preț: 150 de lei</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
+                    <?php foreach($cheap_trainings as $cheap): ?>
+                        <div class="training container-col-flex">
+                            <p class="training-name"><?= $cheap->getTitle() ?></p>
+                            <p class="training-location"><?= $cheap->getLocation() ?></p>
+                            <p class="training-date"><?= $cheap->getDatetime() ?></p>
+                            <p class="training-domain"><?= $cheap->getDomain() ?></p>
+                            <p class="training-specifications"><?= $cheap->getSpecifications() ?></p>
+                            <div>
+                                <?php for ($index = 0; $index < $cheap->getStars(); $index++) { ?>
+                                    <img class="training-star" src="../webroot/images/star-icon.png" alt="Stele"/>
+                                <?php } ?>
+                            </div>
+                            <p class="training-difficulty">Dificultate: <?= $cheap->getDifficulty() ?></p>
+                            <p class="training-price">Preț:
+                                <?php
+                                    if ($cheap->getPrice() <= 0) echo "Gratuit";
+                                    elseif ($cheap->getPrice() == 1) echo "1 leu";
+                                    else echo $cheap->getPrice() . " lei";
+                                ?>
+                            </p>
+                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
             <div class="container-col-flex trainings-price">
-                <h2>Ieftine</h2>
+                <h2>Din apropiere</h2>
                 <div class="container-row-flex">
-                    <div class="training container-col-flex">
-                        <p class="training-name">Extreme Training</p>
-                        <p class="training-location">Botoșani a.k.a. Vaslui</p>
-                        <p class="training-date">30 Martie 2019</p>
-                        <p class="training-domain">Dezvoltator Desktop</p>
-                        <p class="training-specifications">C++, ASM</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-3.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Medie</p>
-                        <p class="training-price">Preț: Gratuit</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
-                    <div class="training container-col-flex">
-                        <p class="training-name">Extreme Training</p>
-                        <p class="training-location">Botoșani a.k.a. Vaslui</p>
-                        <p class="training-date">30 Martie 2019</p>
-                        <p class="training-domain">Dezvoltator Desktop</p>
-                        <p class="training-specifications">C++, ASM</p>
-                        <img class="training-ratings-picture" src="../webroot/images/stars-3.png" alt="5 Stele"/>
-                        <p class="training-difficulty">Dificultate: Medie</p>
-                        <p class="training-price">Preț: Gratuit</p>
-                        <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                             alt="Mai multe detalii"/>
-                    </div>
+                    <?php foreach($close_trainings as $close): ?>
+                        <div class="training container-col-flex">
+                            <p class="training-name"><?= $close->getTitle() ?></p>
+                            <p class="training-location"><?= $close->getLocation() ?></p>
+                            <p class="training-date"><?= $close->getDatetime() ?></p>
+                            <p class="training-domain"><?= $close->getDomain() ?></p>
+                            <p class="training-specifications"><?= $close->getSpecifications() ?></p>
+                            <div>
+                                <?php for ($index = 0; $index < $close->getStars(); $index++) { ?>
+                                    <img class="training-star" src="../webroot/images/star-icon.png" alt="Stele"/>
+                                <?php } ?>
+                            </div>
+                            <p class="training-difficulty">Dificultate: <?= $close->getDifficulty() ?></p>
+                            <p class="training-price">Preț:
+                                <?php
+                                    if ($close->getPrice() <= 0) echo "Gratuit";
+                                    elseif ($close->getPrice() == 1) echo "1 leu";
+                                    else echo $close->getPrice() . " lei";
+                                ?>
+                            </p>
+                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>

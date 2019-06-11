@@ -5,6 +5,7 @@ class EventEntity {
     private $organizer;
     private $type;
     private $location;
+    private $username;
     private $price;
     private $seats;
     private $difficulty;
@@ -37,6 +38,22 @@ class EventEntity {
     public function setId($id): void
     {
         $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
     }
 
     /**

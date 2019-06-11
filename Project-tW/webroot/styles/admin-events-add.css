@@ -1,0 +1,109 @@
+.inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+#add-form {
+
+}
+
+#add-form textarea {
+    resize: none;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    float: left;
+}
+
+.left label {
+    text-align: center;
+}
+
+.left input {
+    margin: 0 0 5px 0;
+}
+
+.left input[type=number] {
+    width: 50px;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 64%;
+    float: right;
+}
+
+.right label {
+    text-align: center;
+}
+
+.right .row {
+    margin-bottom: 5px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.button-add-event-submit {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.information {
+    text-align: center;
+}
+
+.information p {
+    color: red;
+    margin: 0;
+}
+
+@media only screen and (max-width: 1050px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.button-add-event-submit button {
+    font-size: 21px;
+    background-color: #5AA8FB;
+    border: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    margin: 10px 0 0 0;
+}
+
+.alert-danger {
+    background-color: #ff3f4f;
+    color: white;
+    /*display: none;*/
+    text-align: left;
+    padding: 5px 0 5px 15px;
+    margin: 0 0 15px 0;
+    border-radius: 5px;
+}
+
+.back-button {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.back-button button {
+    font-size: 21px;
+    background-color: #5AA8FB;
+    border: none;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    margin: 10px 0 0 0;
+}
+
