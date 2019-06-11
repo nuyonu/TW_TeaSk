@@ -4,60 +4,87 @@ use LinkedIn\AccessToken;
 
 class UserModel
 {
-    private $db;
+
+    public function testPopulate()
+    {
+        $stmt = $this->db->prepare("INSERT INTO users(username) values('dasda')");
+        for ($i = 1; $i < 1000; $i++) {
+            $stmt->execute();
+        }
+    }
 
     /**
-     * UserModel constructor.
-     * @param $db
+     * @return int calculeaza in cate paginii se pot incadra toate inregistrarile din tabela fara cautare
      */
-    public function __construct(PDO $db)
+    public function getMaxPage(): int
     {
-        $this->db = $db;
+        $stmt = $this->db->prepare("SELECT count(id) from users where  id!=1");
+        $stmt->execute();
+        $lines = $stmt->fetch(PDO::FETCH_ASSOC)['count(id)'];
+        return $lines % Constants::MAX_PAGE > 0 ? ($lines / Constants::MAX_PAGE) + 1 : $lines / Constants::MAX_PAGE;
     }
 
-    public function getUsers()
+    /**
+     * @param $search cuvantul dupa care se cauta
+     * @return int   calculeaza in cate paginii se pot incadra toate inregistrarile din tabela cu cautare
+     */
+    public function getMaxPageSearch($search): int
     {
-        $stmt = $this->db->query("SELECT id,username,e_mail,last_name,first_name,linkedln_token ,github_token  FROM users");
-        $result = $stmt->fetchAll(PDO::FETCH_CLASS, "UserAdmin");
-        return $result;
+        $stmt = $this->db->prepare("SELECT count(id) from users where (username like ? or e_mail like ? or last_name like ? or first_name like ?) and id!=1");
+        $stmt->execute([$search, $search, $search, $search]);
+        $lines = $stmt->fetch(PDO::FETCH_ASSOC)['count(id)'];
+        return $lines % Constants::MAX_PAGE > 0 ? ($lines / Constants::MAX_PAGE) + 1 : $lines / Constants::MAX_PAGE;
     }
 
-//    todo   search users
-    public function getUsersSearch(string $search)
+    /**
+     * @param string $user numele utilizatorului care se doreste sa se afle gradul
+     * @return mixed gradul userului
+     */
+    public function getUserGrade(string $user)
     {
+        $stmt = $this->db->prepare("SELECT grade from users where username=?");
+        $stmt->execute([$user]);
+        return $stmt->fetch();
+    }
+
+    public function getUsers(int $page)
+    {
+        $page = ($page - 1) * Constants::MAX_PAGE;
+        $stmt = $this->db->prepare("SELECT id,username,e_mail,last_name,first_name,linkedln_token ,github_token  FROM users where id!=1 LIMIT ?,30");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "UserAdmin");
+        $stmt->execute([$page]);
+        return $stmt->fetchAll();
+    }
+
+    public function getUsersSearch(string $search, $page)
+    {
+        $search = '%' . $search . '%';
+
+        $page = ($page - 1) * Constants::MAX_PAGE;
         $stmt = $this->db->prepare("SELECT id,username,e_mail,last_name,first_name,linkedln_token ,github_token
-                                                FROM users where username like :usern");
-        $stmt->bindParam(":usern", $search);
-//        $stmt->bindParam(":email", $search);
-//        $stmt->bindParam(":lastn", $search);
-//        $stmt->bindParam(":firstn", $search);
-        $result = $stmt->fetch();
-        var_dump($result);
-//        if (!$result) {
-//            return array();
-//        }
-        return $result;
+                                                FROM users where (username like ? or e_mail like ? or last_name like ? or first_name like ?) and id!=1 limit ?,30");
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "UserAdmin");
+        $stmt->execute([$search, $search, $search, $search, $page]);
+        $result = $stmt->fetchAll();
+        return $result ? $result : array();
     }
 
     public function deleteById($id)
     {
-        $stmt = $this->db->prepare("DELETE FROM users where id=:id");
-        $stmt->bindValue(":id", $id);
-        $stmt->execute();
+        if ($id != 1) {
+            $stmt = $this->db->prepare("DELETE FROM users where id=:id");
+            $stmt->bindValue(":id", $id);
+            $stmt->execute();
+        }
     }
-
 
     public function getTokenGithub(string $user)
     {
-
         $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:user");
         $stmt->bindValue(":user", $user);
         $stmt->setFetchMode(PDO::FETCH_CLASS, "UserEntity");
         $result = $stmt->fetch();
-        if ($result == FALSE) {
-            return NULL;
-        }
-        return $result->getGithubToken();
+        return $result ? $result->getGithubToken() : NULL;
     }
 
     public function updateContact(ContactSettings $settings)
@@ -93,10 +120,7 @@ class UserModel
         $stmt->setFetchMode(PDO::FETCH_NUM);
         $stmt->execute();
         $result = $stmt->fetch();
-        if ($result != NULL) {
-            return FALSE;
-        }
-        return TRUE;
+        return $result[0] != NULL;
     }
 
     public function isConnectedWithLinkedln(string $user): bool
@@ -106,10 +130,7 @@ class UserModel
         $stmt->setFetchMode(PDO::FETCH_NUM);
         $stmt->execute();
         $result = $stmt->fetch();
-        if (!$result != NULL) {
-            return FALSE;
-        }
-        return TRUE;
+        return $result[0] != NULL;
     }
 
     public function getLinkedlnToken(string $user): TokenLinkedln
@@ -158,10 +179,7 @@ class UserModel
         $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, "UserEntity");
         $result = $stmt->fetch();
-        if ($result == FALSE) {
-            return FALSE;
-        }
-        return password_verify($user->getPassword(), $result->getPassword());
+        return $result && password_verify($user->getPassword(), $result->getPassword());
     }
 
     public function getUserDb(string $username): UserEntity
@@ -175,7 +193,6 @@ class UserModel
             return UserEntity::default();
         }
         return $result;
-
     }
 
     public function saveUser(Register $user)
@@ -183,7 +200,7 @@ class UserModel
         $stmt = $this->db->prepare("INSERT INTO users(username, e_mail, password, first_name, last_name ) VALUES(?,?,?,?,?)");
         $stmt->bindValue(1, $user->getUsername());
         $stmt->bindValue(2, $user->getEmail());
-        $stmt->bindValue(3, password_hash($user->getPassword(),PASSWORD_DEFAULT));
+        $stmt->bindValue(3, password_hash($user->getPassword(), PASSWORD_DEFAULT));
         $stmt->bindValue(4, $user->getName());
         $stmt->bindValue(5, $user->getLastName());
         $stmt->execute();
@@ -196,5 +213,35 @@ class UserModel
         $stmt->execute();
         return $stmt->fetch() != FALSE;
     }
+
+    public function deleteByUsername($username)
+    {
+        if (strcmp($username, Config::get("adminUser")) != 0) {
+            $stmt = $this->db->prepare("DELETE FROM users where username=:usern");
+            $stmt->bindValue(":usern", $username);
+            $stmt->execute();
+        }
+    }
+
+    /**
+     * UserModel constructor.
+     * @param $db
+     */
+    public function __construct(PDO $db)
+    {
+        $this->db = $db;
+    }
+
+    private $db;
+
+    public function switchRole($username)
+    {
+        $grade = $this->getUserGrade($username)['grade'];
+        $grade = $grade == 3 ? 2 : 3;
+        $stmt = $this->db->prepare("UPDATE USERS set grade=? where username=?");
+        $stmt->execute([$grade, $username]);
+        return $grade;
+    }
+
 
 }

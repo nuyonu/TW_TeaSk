@@ -2,8 +2,6 @@
 
 class Router
 {
-
-
     public function __construct($uri)
     {
         $this->uri = urldecode(trim($uri, '/'));
@@ -18,6 +16,11 @@ class Router
 
         $uri_parts = explode('?', $this->uri);
         $path = $uri_parts[0];
+        $query = "";
+        if (isset($uri_parts[1])) {
+            $query = $uri_parts[1];
+        }
+
         $path_parts = explode('/', $path);
 
         if (count($path_parts)) {
@@ -41,8 +44,25 @@ class Router
             }
 
 //            get params
-            $this->params = $path_parts;
+
+            $this->params = $this->processQuery($query);
         }
+    }
+
+    private function processQuery($query)
+    {
+
+        $result = array();
+        if (strcmp($query, "") != 0) {
+            $values = explode('&', $query);
+            foreach ($values as $param) {
+                $pair = explode('=', $param);
+                if (isset($pair[1])) {
+                    $result[$pair[0]] = $pair[1];
+                }
+            }
+        }
+        return $result;
     }
 
     /**

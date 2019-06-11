@@ -2,14 +2,21 @@
 define("RESULT_PER_PAGE", 25);
 use duncan3dc\Sessions\SessionInstance;
 
+use duncan3dc\Sessions\SessionInstance;
+
 class AdmineventsController extends Controller
 {
     private $session;
 
     public function __construct()
     {
-        parent::__construct();
-        $this->session = new SessionInstance(Constants::NAME_APP);
+
+        $model = new EventsModel($this->database);
+        $events = $model->getAllEvents();
+        echo $this->session->get(Constants::USER);
+        foreach ($events as $event)
+        require_once(VIEW . 'admin-events.php');
+
     }
 
     public function show()
@@ -42,4 +49,13 @@ class AdmineventsController extends Controller
 
         echo "<script>window.location.replace('/adminEvents')</script>";
     }
+    public function __construct()
+    {
+        parent::__construct();
+        $this->session = new SessionInstance(Constants::NAME_APP);
+    }
+
+    private
+        $session;
+
 }

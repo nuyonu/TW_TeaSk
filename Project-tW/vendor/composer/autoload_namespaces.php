@@ -6,4 +6,5 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AsyncTask\\' => array($vendorDir . '/dmamontov/asynctask-7/src'),
 );

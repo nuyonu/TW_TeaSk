@@ -33,9 +33,9 @@ class ResetDB
         }
         echo "<br>\n";
 
-        $sql_Events = "DROP TABLE going_to_trainings, going_to_events, contacting, events_tags";
+        $sql_Events = "DROP TABLE going_to_trainings, going_to_events, contacting, events_tags,users,user_github,user_location,contact,contact_messages";
 
-        if ($conn->query($sql_Events) == TRUE) {
+        if ($conn->query($sql_Events)) {
             echo "Table going_to_trainings, going_to_events, contacting, events_tags deleted";
         } else {
             echo "Error to delete table: " . $conn->error;
@@ -92,6 +92,7 @@ class ResetDB
                     github_token    VARCHAR(100),
                     linkedln_token  VARCHAR(100),
                     linkedln_exp    INT,
+                    grade           INT DEFAULT 3,
                     PRIMARY KEY (ID) 
 )";
 
@@ -215,6 +216,20 @@ class ResetDB
             echo "Table user_location created successfully";
         } else {
             echo "Error creating table : " . $conn->error;
+        }
+        echo "<br>\n";
+
+
+        $stmt = $conn->prepare("INSERT INTO users(username, password,grade) values (?,?,1)");
+        $stmt->bind_param("ss", $user, $pass);
+        $user = Config::get("user_admin");
+        $pass = password_hash(Config::get("admin_pass"), PASSWORD_DEFAULT);
+        $result = $stmt->execute();
+
+        if ($result) {
+            echo "Admin user created successfully";
+        } else {
+            echo "Error creating admin";
         }
         echo "<br>\n";
 

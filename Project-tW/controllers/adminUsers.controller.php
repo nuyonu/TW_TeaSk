@@ -13,14 +13,16 @@ class AdminusersController extends Controller
     public function show()
     {
         $db = new UserModel($this->database);
-        $result = 0;
-        if (isset($_POST[Constants::SEARCH])) {
-            $result = $db->getUsersSearch($_POST[Constants::SEARCH]);
-        } else {
-            $result = $db->getUsers();
-        }
+        $search = UtilsAdminUsers::getSearch($this->params);
+        $maxPage = $search == NULL ? $db->getMaxPage() : $db->getMaxPageSearch($search);
+        $page = UtilsAdminUsers::getPage($maxPage,$this->params);
+        $result = $search != NULL ? $db->getUsersSearch($search, $page) : $db->getUsers($page);
+
+        Parameters::setData("max_page", $maxPage);
+        Parameters::setData("current_page", $page);
         Parameters::setData("users", $result);
-//        require_once(Constants::VIEW_ADMIN_USERS);
+        Parameters::setData("search", $search);
+        require_once(Constants::VIEW_ADMIN_USERS);
     }
 
     public function delete()
@@ -28,7 +30,7 @@ class AdminusersController extends Controller
         if (isset($_GET[Constants::ALL_DELETE])) {
             $userForRemove = $_GET[Constants::ALL_DELETE];
             $model = new UserModel($this->database);
-            foreach ($userForRemove as $id) {K
+            foreach ($userForRemove as $id) {
                 $model->deleteById($id);
             }
         }

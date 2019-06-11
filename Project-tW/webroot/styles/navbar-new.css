@@ -425,6 +425,42 @@ body
     /*opacity: 0.5%;*/
     font-size: 23px;
     border: none;
+    color: white;
     outline: none;
     /*color: white;*/
+}
+input
+{
+    background-color: transparent;
+}
+#name{
+    background-color: transparent;
+}
+.inputcontainer:hover{
+    border-color:#2196F3 ;
+    color: #2196F3;
+}
+#name:hover{
+    border-color:#2196F3 ;
+    color: #2196F3;
+}
+
+input:hover{
+    border-color:#2196F3 ;
+    color: #2196F3;
+}
+#namec:hover,#nameuser:hover,#prenumeuser:hover{
+    border-color:#2196F3 ;
+    color: #2196F3;
+}
+.buttonmodal:hover{
+    border-color:#2196F3 ;
+    color: #2196F3;
+}
+#nameuser:focus,#prenumeuser:focus{
+    border-color:#2196F3 ;
+    color: #2196F3;
+}
+.inputcontainer{
+    color: gray;
 }

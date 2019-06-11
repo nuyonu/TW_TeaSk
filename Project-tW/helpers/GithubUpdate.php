@@ -3,7 +3,7 @@
 use AsyncTask\AsyncTask;
 use AsyncTask\Collection;
 
-class GithubUpdate extends AsyncTask
+    class GithubUpdate extends AsyncTask
 {
 
     /**
@@ -13,6 +13,7 @@ class GithubUpdate extends AsyncTask
      *
      * @return mixed
      */
+
     protected function doInBackground(Collection $collection)
     {
         $github = new GithubClient();
@@ -20,6 +21,8 @@ class GithubUpdate extends AsyncTask
         $result = $github->getInfoRepos();
         $db = new GithubModel($collection->get("db"));
         $db->save($result, $collection->get("user"));
+        echo "doneadsa";
         return "Done";
+
     }
 }

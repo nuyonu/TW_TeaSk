@@ -2,6 +2,7 @@
 include(ROOT . DS . 'models' . DS . 'DAO' . DS . 'Register.DAO.php');
 include(ROOT . DS . 'models' . DS . 'user.model.php');
 
+use AsyncTask\Collection;
 use duncan3dc\Sessions\SessionInstance;
 
 class HomeController extends Controller
@@ -28,26 +29,42 @@ class HomeController extends Controller
 
     public function login()
     {
-        if (isset($_POST[Constants::DATA]) && isset($_POST[Constants::DATA][Constants::USER]) && isset($_POST[Constants::DATA][Constants::PASSWORD])) {
-            $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PASSWORD]);
-            if (true) {
+        if (ValidatorPost::validateLogin()) {
+            $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PSW]);
+            if ($user->valid()) {
                 $database = new UserModel($this->database);
                 if ($database->getUser($user)) {
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
-                    Response::redirect(Constants::HOME);
+                    $this->session->set(Constants::GRADE, $database->getUserGrade($user->getUsername()));
+                    $token = $database->getTokenGithub($this->session->get(Constants::USER));
+                    if ($token != NULL) {
+                        $sett = new Collection();
+                        $sett->set("token", $token);
+                        $sett->set("db", $this->database);
+                        $sett->set("user", $this->session->get(Constants::USER));
+                        $task = new GithubUpdate();
+                        $task->setTitle('TestTask')
+                                ->execute($sett);
+                    }
+                    echo 'sS';
+//                    Response::redirect(Constants::HOME);
                 } else {
-                    Response::redirect_with_fail(Constants::HOME,"Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
+                    Response::redirect(Constants::HOME);
                 }
             } else {
-                Response::redirect_with_fail(Constants::HOME ,"Datele trimise sunt fie goale,fie invalide. Apasati ok pentru a fii trimis pe acasa.");
+                Response::redirect_with_fail(Constants::HOME,
+                    "Date trimise sunt invalide. Apasati ok pentru a fii trimis pe acasa.");
             }
+        } else {
+            Response::redirect_with_fail(Constants::HOME,
+                "Datele trimise sunt fie goale,fie invalide. Apasati ok pentru a fii trimis pe acasa.");
         }
     }
 
 
     public function register()
     {
-        if (isset($_POST['reg']) && $this->validateReg() ) {
+        if (isset($_POST['reg']) && $this->validateReg()) {
             $reg = $_POST['reg'];
             $register = new Register();
             $register->setUsername($reg['username']);
@@ -63,11 +80,12 @@ class HomeController extends Controller
                 $UserRepository->saveUser($register);
                 Response::redirect(Constants::HOME);
             } else {
-                Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt invalide.");
+                Response::redirect_with_fail(Constants::HOME, "Datele trimise sunt invalide.");
             }
         } else {
-            Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt fie goale ,fie invalide.");
+            Response::redirect_with_fail(Constants::HOME, "Datele trimise sunt fie goale ,fie invalide.");
         }
+
     }
 
     public function redirect()
@@ -126,7 +144,8 @@ class HomeController extends Controller
 
     }
 
-    public function __construct()
+    public
+    function __construct()
     {
         parent::__construct();
         $this->session = new SessionInstance(Constants::NAME_APP);

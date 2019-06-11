@@ -5,20 +5,16 @@ use duncan3dc\Sessions\SessionInstance;
 class SupportController extends Controller
 {
     private $session;
+
     public function __construct()
     {
         parent::__construct();
-        $this->session = new SessionInstance("my-app");
+        $this->session = new SessionInstance(Constants::NAME_APP);
     }
 
     public function show()
     {
-        $user = $this->session->get("user");
-        if ($user != NULL) {
-            Parameters::setData("show", "hidden");
-        } else {
-            Parameters::setData("show", "");
-        }
+        Parameters::setData("show", "");
         require_once(VIEW . 'support.php');
     }
 
