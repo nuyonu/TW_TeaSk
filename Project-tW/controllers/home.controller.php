@@ -30,7 +30,7 @@ class HomeController extends Controller
     {
         if (isset($_POST[Constants::DATA]) && isset($_POST[Constants::DATA][Constants::USER]) && isset($_POST[Constants::DATA][Constants::PASSWORD])) {
             $user = new UserDAO($_POST[Constants::DATA][Constants::USER], $_POST[Constants::DATA][Constants::PASSWORD]);
-            if ($user->valid()) {
+            if (true) {
                 $database = new UserModel($this->database);
                 if ($database->getUser($user)) {
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
@@ -56,13 +56,13 @@ class HomeController extends Controller
             $register->setName($reg['name']);
             $register->setConfirm($reg['confirm']);
             $register->setLastName($reg['lastname']);
+            echo $register->getUsername();
 
             $UserRepository = new UserModel($this->database);
-            if ($register->validate() && !$UserRepository->existUsername($register->getUsername())) {
+            if (!$UserRepository->existUsername($register->getUsername())) {
                 $UserRepository->saveUser($register);
                 Response::redirect(Constants::HOME);
             } else {
-
                 Response::redirect_with_fail(Constants::HOME,"Datele trimise sunt invalide.");
             }
         } else {

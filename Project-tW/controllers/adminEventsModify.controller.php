@@ -1,11 +1,23 @@
 <?php
+
+use duncan3dc\Sessions\SessionInstance;
+
 class AdmineventsmodifyController extends Controller {
+
+    public function __construct()
+    {
+        parent::__construct();
+        $this->session = new SessionInstance(Constants::NAME_APP);
+    }
+
     public function show() {
         if(!isset($_GET['eventId']))
-            echo "<script>window.location.replace('/adminEvents')</script>";
+            header("Location: /adminEvents");
         else {
             $model = new EventsModel($this->database);
             $event = $model->getEventById($_GET['eventId']);
+            if($event == null)
+                header("Location: /adminEvents");
             require_once (VIEW . "admin-event-modify.php");
         }
     }

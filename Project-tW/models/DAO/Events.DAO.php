@@ -3,11 +3,13 @@
 use Respect\Validation\Validator as v;
 use Respect\Validation\Exceptions\NestedValidationException;
 
-class EventsDAO {
+class EventsDAO
+{
     private $title;
     private $organizer;
     private $type;
     private $location;
+    private $username;
     private $price;
     private $seats;
     private $difficulty;
@@ -24,6 +26,7 @@ class EventsDAO {
      * @param $organizer
      * @param $type
      * @param $location
+     * @param $username
      * @param $price
      * @param $seats
      * @param $difficulty
@@ -34,12 +37,13 @@ class EventsDAO {
      * @param $description
      * @param $tags
      */
-    public function __construct($title, $organizer, $type, $location, $price, $seats, $difficulty, $beginDate, $endDate, $beginTime, $endTime, $description, $tags)
+    public function __construct($title, $organizer, $type, $location, $username, $price, $seats, $difficulty, $beginDate, $endDate, $beginTime, $endTime, $description, $tags)
     {
         $this->title = $title;
         $this->organizer = $organizer;
         $this->type = $type;
         $this->location = $location;
+        $this->username = $username;
         $this->price = $price;
         $this->seats = $seats;
         $this->difficulty = $difficulty;
@@ -73,6 +77,22 @@ class EventsDAO {
     public function getType()
     {
         return $this->type;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
+
+    /**
+     * @param mixed $username
+     */
+    public function setUsername($username): void
+    {
+        $this->username = $username;
     }
 
     /**
@@ -155,51 +175,84 @@ class EventsDAO {
         return $this->description;
     }
 
-    public function validateTitle($title) {
-        return v::length(1,50)>validate($title);
+    public function validateTitle($title)
+    {
+        return v::length(1, 50)->validate($title);
     }
 
-    public function validateOrganizer($organizer) {
-        return v::length(1,50)->validate($organizer);
+    public function validateOrganizer($organizer)
+    {
+        return v::length(1, 50)->validate($organizer);
     }
 
-    public function validateType($type) {
-        return v::length(1,50)->validate($type);
+    public function validateType($type)
+    {
+        return v::length(1, 50)->validate($type);
     }
 
-    public function validateLocation($type) {
-        return v::length(1,50)->validate($type);
+    public function validateLocation($type)
+    {
+        return v::length(1, 50)->validate($type);
     }
 
-    public function validatePrice($type) {
+    public function validatePrice($type)
+    {
         return v::not(v::negative())->validate($type) && v::numeric()->validate($type);
     }
 
-    public function validateSeats($seats) {
+    public function validateSeats($seats)
+    {
         return v::not(v::negative())->validate($seats) && v::numeric()->validate($seats);
     }
 
-    public function validateDifficulty($difficulty) {
-        return v::between(1,3)->validate($difficulty);
+    public function validateDifficulty($difficulty)
+    {
+        return v::between(1, 3)->validate($difficulty);
     }
 
-    public function validateBeginDate($beginDate) {
+    public function validateBeginDate($beginDate)
+    {
         return v::date()->validate($beginDate);
     }
 
-    public function validateEndDate($endDate) {
+    public function validateEndDate($endDate)
+    {
         return v::date()->validate($endDate);
     }
 
-    public function validateBeginTime($beginTime) {
+    public function validateBeginTime($beginTime)
+    {
         return v::noWhitespace()->validate($beginTime);
     }
 
-    public function validateEndTime($endTime) {
+    public function validateEndTime($endTime)
+    {
         return v::noWhitespace()->validate($endTime);
     }
 
-    public function validateDescription($description) {
-        return v::length(50,1000);
+    public function validateDescription($description)
+    {
+        return v::length(50, 1000)->validate($description);
+    }
+
+    public function validateUsername($username) {
+        return v::noWhitespace()->notEmpty()->validate($username);
+    }
+
+    public function validateAllInternAttributes()
+    {
+        return $this->validateTitle($this->title) &&
+            $this->validateLocation($this->location) &&
+            $this->validateType($this->type) &&
+            $this->validateOrganizer($this->organizer) &&
+            $this->validateBeginDate($this->beginDate) &&
+            $this->validateBeginTime($this->beginTime) &&
+            $this->validateDescription($this->description) &&
+            $this->validateDifficulty($this->difficulty) &&
+            $this->validateEndDate($this->endDate) &&
+            $this->validateEndTime($this->endTime) &&
+            $this->validatePrice($this->price) &&
+            $this->validateUsername($this->username) &&
+            $this->validateSeats($this->seats);
     }
 }
