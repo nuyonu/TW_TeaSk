@@ -1,8 +1,19 @@
 <?php
+
+use duncan3dc\Sessions\SessionInstance;
+
 class AdmintrainingsController extends Controller
 {
-    public function show ()
+    private $session;
+
+    public function __construct()
     {
-        require_once (VIEW . 'admin-trainings.php');
+        parent::__construct();
+        $this->session = new SessionInstance("my-app");
+    }
+
+    public function show()
+    {
+        require_once(VIEW . 'admin-trainings.php');
     }
 }
