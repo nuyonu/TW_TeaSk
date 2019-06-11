@@ -4,7 +4,7 @@ class EventsModel
 {
     private $db;
 
-    public function __construct( $db)
+    public function __construct($db)
     {
         $this->db = $db;
     }
@@ -12,13 +12,14 @@ class EventsModel
     public function saveEvent(EventsDAO $event)
     {
         // prepare sql and bind parameters
-        $stmt = $this->db->prepare("INSERT INTO events (title, type, location, description, price, seats, organizer, beginDate, 
-                    endDate, beginTime, endTime, difficulty) VALUES (:title, :type, :location, :description, :price, :seats, 
+        $stmt = $this->db->prepare("INSERT INTO events (title, type, location, description, username, price, seats, organizer, beginDate, 
+                    endDate, beginTime, endTime, difficulty) VALUES (:title, :type, :location, :description, :username, :price, :seats, 
                     :organizer, :beginDate, :endDate, :beginTime, :endTime, :difficulty)");
         $stmt->bindValue(":title", $event->getTitle());
         $stmt->bindValue(":type", $event->getType());
         $stmt->bindValue(":location", $event->getLocation());
         $stmt->bindValue(":description", $event->getDescription());
+        $stmt->bindValue(":username", $event->getUsername());
         $stmt->bindValue(":price", $event->getPrice());
         $stmt->bindValue(":seats", $event->getSeats());
         $stmt->bindValue(":organizer", $event->getOrganizer());
@@ -45,16 +46,42 @@ class EventsModel
     public function getAllEvents()
     {
         $sql = "SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events "
-            . "ON events_tags.id_event = events.id";
+            . "ON events_tags.id_event = events.id GROUP BY events.id";
         $statement = $this->db->query($sql);
         return $statement->fetchAll(PDO::FETCH_CLASS, "EventEntity");
     }
 
+    public function getAllEventsOrderByDateASC () {
+        $sql = "SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events ".
+            " ON events_tags.id_event = events.id GROUP BY events.id ORDER BY beginDate ASC";
+        $statement = $this->db->query($sql);
+        return $statement->fetchAll(PDO::FETCH_CLASS, "EventEntity");
+    }
+
+    public function getAllEventsByUsernameOrderByDateASC ($username, $left, $right) {
+        $sql = "SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events ".
+            " ON events_tags.id_event = events.id WHERE events.username = :username GROUP BY events.id ORDER BY beginDate LIMIT :left, :right";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->bindValue(":left", $left);
+        $statement->bindValue(":right", $right);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, "EventEntity");
+    }
+
+    public function getCountEventsByUsername($username) {
+        $sql = "SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events ".
+            " ON events_tags.id_event = events.id WHERE events.username = :username GROUP BY events.id";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+        return $number_of_results = $statement->rowCount();
+    }
+
     public function getEventById($id)
     {
-
         $statement = $this->db->prepare("SELECT events.*, GROUP_CONCAT(events_tags.tag SEPARATOR ', ') AS tags FROM events_tags RIGHT JOIN events "
-            . "ON events_tags.id_event = events.id WHERE events.id = :id LIMIT 1");
+            . "ON events_tags.id_event = events.id WHERE events.id = :id GROUP BY events.id LIMIT 1");
         $statement->bindValue(":id", $id);
         $statement->execute();
         return $statement->fetchObject("EventEntity");
@@ -66,7 +93,8 @@ class EventsModel
             . "ON events_tags.id_event = events.id WHERE events.title = :title LIMIT 1");
         $statement->bindValue(":title", $title);
         $statement->execute();
-        return $statement->fetchObject("EventEntity");
+        $object = $statement->fetchObject("EventEntity");
+        return ($object->getId() == null ? false : $object);
     }
 
     public function deleteEventById($id)
