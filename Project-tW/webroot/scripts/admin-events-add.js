@@ -27,7 +27,7 @@ document.getElementById('start-time').value = new Date().getHours() + ":" + new 
 document.getElementById('end-time').value = new Date(new Date().setHours(new Date().getHours() + 2)).getHours() + ":"
     + new Date().getMinutes();
 document.getElementById("price").value = 0;
-document.getElementById("seats").value = 0;
+/*document.getElementById("seats").value = 0;*/
 
 function checkNotNull(input) {
     if (input.value < 0)
@@ -144,7 +144,7 @@ function priceCheck(price) {
     return true;
 }
 
-function seatsCheck(seats) {
+/*function seatsCheck(seats) {
     if (isNaN(seats.value)) {
         createDangerAlert("Nu ai voie sa introduci text in locul numărului de locuri");
         alertOut();
@@ -161,7 +161,7 @@ function seatsCheck(seats) {
         return false;
     }
     return true;
-}
+}*/
 
 function difficultyCheck(difficulty) {
     console.log(difficulty.value);
@@ -247,7 +247,7 @@ function checkAllFields() {
     let tags = document.getElementById("tags");
     let description = document.getElementById("description");
     let price = document.getElementById("price");
-    let seats = document.getElementById("seats");
+/*    let seats = document.getElementById("seats");*/
     let difficulty = document.getElementById("difficulty");
     let beginDate = document.getElementById("start-date");
     let endDate = document.getElementById("end-date");
@@ -261,7 +261,7 @@ function checkAllFields() {
         tagsCheck(tags) &&
         descriptionCheck(description) &&
         priceCheck(price) &&
-        seatsCheck(seats) &&
+/*        seatsCheck(seats) &&*/
         difficultyCheck(difficulty) &&
         beginDateCheck(beginDate) &&
         endDateCheck(endDate) &&

@@ -44,10 +44,9 @@ class HomeController extends Controller
                         $sett->set("user", $this->session->get(Constants::USER));
                         $task = new GithubUpdate();
                         $task->setTitle('TestTask')
-                                ->execute($sett);
+                            ->execute($sett);
                     }
-                    echo 'sS';
-//                    Response::redirect(Constants::HOME);
+                    Response::redirect(Constants::HOME);
                 } else {
                     Response::redirect(Constants::HOME);
                 }

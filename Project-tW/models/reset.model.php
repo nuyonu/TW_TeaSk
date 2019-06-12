@@ -51,7 +51,6 @@ class ResetDB
                     description VARCHAR(1000),
                     username VARCHAR(50),
                     price       DOUBLE,
-                    seats       INTEGER,
                     organizer VARCHAR(50),
                     beginDate   DATE ,
                     beginTime   TIME,
@@ -89,8 +88,8 @@ class ResetDB
                     password        VARCHAR(100),
                     first_name      VARCHAR(100),
                     last_name       VARCHAR(100),
-                    github_token    VARCHAR(100),
-                    linkedln_token  VARCHAR(100),
+                    github_token    VARCHAR(600),
+                    linkedln_token  VARCHAR(600),
                     linkedln_exp    INT,
                     grade           INT DEFAULT 3,
                     PRIMARY KEY (ID) 
@@ -108,15 +107,18 @@ class ResetDB
         $sql_Trainings = "CREATE OR REPLACE TABLE trainings(
                     id              INTEGER NOT NULL AUTO_INCREMENT,
                     title           VARCHAR(100),
-                    date_training   DATE,
+                    organizer       VARCHAR(100),
+                    username        VARCHAR(100),
+                    location        VARCHAR(100),
+                    datetime        DATETIME,
                     domain          VARCHAR(100),
                     specifications  VARCHAR(100), 
                     stars           INTEGER,
                     difficulty      INTEGER,
                     price           INTEGER,
                     image           VARCHAR(100),
+                    description     VARCHAR(1000),
                     PRIMARY KEY(id) 
-                    
 )";
         if ($conn->query($sql_Trainings) === TRUE) {
             echo "Table trainings created successfully";
@@ -140,14 +142,14 @@ class ResetDB
         echo "<br>\n";
 
 
-        $sql_contacting = "CREATE OR REPLACE TABLE contacting(
+        $sql_contacting = "CREATE OR REPLACE TABLE contact(
                     id                  INTEGER NOT NULL AUTO_INCREMENT,
-                    id_user             INTEGER,
-                    id_contact_message  INTEGER,
-                    PRIMARY KEY(id) ,
-                    CONSTRAINT fk_id_user_contacting FOREIGN KEY(id_user) REFERENCES  users(id),
-                    CONSTRAINT fk_id_contact_message_contacting FOREIGN KEY(id_contact_message) REFERENCES  contact_messages(id)
-)";
+                    name                VARCHAR(40),
+                    email               VARCHAR(40),
+                    type                VARCHAR(40),
+                    problem             VARCHAR(100),
+                    PRIMARY KEY(id) 
+                 )";
         if ($conn->query($sql_contacting) === TRUE) {
             echo "Table sql_contacting created successfully";
         } else {
@@ -165,6 +167,22 @@ class ResetDB
 )";
         if ($conn->query($sql_Going_To_Trainings) === TRUE) {
             echo "Table sql_Going_To_Trainings created successfully";
+        } else {
+            echo "Error creating table : " . $conn->error;
+        }
+        echo "<br>\n";
+
+        $sql_Going_To_Trainings = "CREATE OR REPLACE TABLE identification_code(
+                            id          INTEGER NOT NULL AUTO_INCREMENT,
+                            id_training     INTEGER,
+                            id_event INTEGER,
+                            code VARCHAR(15) NOT NULL UNIQUE,
+                            PRIMARY KEY(id),
+                            CONSTRAINT fk_id_training_identification_code FOREIGN KEY(id_training) REFERENCES trainings(id) ON DELETE CASCADE,
+                            CONSTRAINT fk_id_event_identification_code FOREIGN KEY(id_event) REFERENCES events(id) ON DELETE CASCADE
+        )";
+        if ($conn->query($sql_Going_To_Trainings) === TRUE) {
+            echo "Table identification_code created successfully";
         } else {
             echo "Error creating table : " . $conn->error;
         }

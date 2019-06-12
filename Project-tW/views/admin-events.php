@@ -20,7 +20,7 @@ include '../webroot/templates/admin-common.php'; ?>
     <div class="body-admin">
         <div class="utils">
             <div class="search-event">
-                <form action="#">
+                <form action="/adminEvents">
                     <input id="search-event-input" type="text" placeholder="Caută după titlu..." name="title">
                 </form>
             </div>
@@ -28,10 +28,10 @@ include '../webroot/templates/admin-common.php'; ?>
                 <button class="button-common" type="button" onclick="location.href='adminEventsAdd'">Adaugă un
                     eveniment
                 </button>
-                <button class="button-common show-older-events" type="submit">Evenimente vechi</button>
-                <button class="button-common" type="submit" id="delete-button"
-                        onclick="document.getElementById('delete-events').submit()">Elimină evenimente
-                </button>
+                <?php if ($grade == 1)
+                    echo '<button class="button-common" type = "submit" id = "delete-button"
+                        onclick = "document.getElementById(\'delete-events\').submit()" > Elimină evenimente
+                </button >'?>
             </div>
         </div>
         <div class="data">
@@ -43,8 +43,8 @@ include '../webroot/templates/admin-common.php'; ?>
                         <th>Organizator</th>
                         <th>Adaugat de</th>
                         <th>Mai multe</th>
-                        <th>Șterge</th>
-                        <th>Modifică</th>
+                        <?php if ($grade == 1)
+                            echo "<th>Șterge</th>" ?>
                     </tr>
                     <?php if ($events != null && strcmp(array_values($events)[0]->getId(), '')) {
                         foreach ($events as $event) {
@@ -56,10 +56,9 @@ include '../webroot/templates/admin-common.php'; ?>
                                 <td><?php echo $event->getUsername() ?></td>
                                 <td><a href="<?= '/adminEventsView?eventId=' . $event->getId() ?>"><i
                                                 class="fa fa-list"></i></a></td>
-                                <td><input type="checkbox" class="check-for-delete" name="check_list_for_delete[]"
-                                           value="<?= $event->getId() ?>" onclick="renameButton()"></td>
-                                <td><a href="<?= 'adminEventsModify?eventId=' . $event->getId() ?>"><i
-                                                class='fa fa-edit'></i></a></td>
+                                <?php if ($grade == 1)
+                                    echo '<td><input type="checkbox" class="check-for-delete" name="check_list_for_delete[]"
+                                           value="'. $event->getId() .'" onclick="renameButton()"></td>' ?>
                             </tr>
                         <?php }
                     } ?>
@@ -76,18 +75,22 @@ include '../webroot/templates/admin-common.php'; ?>
                     $current_page = 1;
             } else
                 $current_page = 1;
+            if (isset($_GET['title']))
+                $title = $_GET['title'];
+            else
+                $title = "";
             if (!($number_of_pages <= 1)) {
-                echo '<a href="adminEvents?page=' . 1 . '">' . '&laquo;' . '</a> ';
+                echo '<a href="adminEvents?page=' . 1 . '&title=' . $title . '">' . '&laquo;' . '</a> ';
                 if ($current_page - 2 > 0)
-                    echo '<a href="adminEvents?page=' . ($current_page - 2) . '">' . ($current_page - 2) . '</a> ';
+                    echo '<a href="adminEvents?page=' . ($current_page - 2) . '&title=' . $title . '">' . ($current_page - 2) . '</a> ';
                 if ($current_page - 1 > 0)
-                    echo '<a href="adminEvents?page=' . ($current_page - 1) . '">' . ($current_page - 1) . '</a> ';
+                    echo '<a href="adminEvents?page=' . ($current_page - 1) . '&title=' . $title . '">' . ($current_page - 1) . '</a> ';
                 echo '<a class="active" href="adminEvents?page=' . $current_page . '">' . $current_page . '</a> ';
                 if ($current_page + 1 <= $number_of_pages)
-                    echo '<a href="adminEvents?page=' . ($current_page + 1) . '">' . ($current_page + 1) . '</a> ';
+                    echo '<a href="adminEvents?page=' . ($current_page + 1) . '&title=' . $title . '">' . ($current_page + 1) . '</a> ';
                 if ($current_page + 2 <= $number_of_pages)
-                    echo '<a href="adminEvents?page=' . ($current_page + 2) . '">' . ($current_page + 2) . '</a> ';
-                echo '<a href="adminEvents?page=' . $number_of_pages . '">' . '&raquo;' . '</a> ';
+                    echo '<a href="adminEvents?page=' . ($current_page + 2) . '&title=' . $title . '">' . ($current_page + 2) . '</a> ';
+                echo '<a href="adminEvents?page=' . $number_of_pages . '&title=' . $title . '">' . '&raquo;' . '</a> ';
             }
             ?>
         </div>
