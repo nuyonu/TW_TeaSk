@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
           integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="../webroot/styles/setting.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 
 </head>
 <body>
@@ -25,8 +26,7 @@ include TEMPLATES . 'navbar_without_login.php';
         <span class="buttoncontact">Setari Cont</span>
         <button class="buttonMenu" onclick="opentab(event, 'datepersonale')">Date personale</button>
         <button class="buttonMenu" onclick="opentab(event, 'datecontact')"> Conectare</button>
-        <button class="buttonMenu" onclick="opentab(event, 'preferinte')"> Preferinte</button>
-        <button class="buttonMenu" onclick="opentab(event, 'teste')"> Teste</button>
+        <button class="buttonMenu" onclick="opentab(event, 'evolution')"> Evoluție</button>
     </div>
     <div class="page1" id="datepersonale">
         <div class="setting">
@@ -135,7 +135,7 @@ include TEMPLATES . 'navbar_without_login.php';
                             <img src="../webroot/uploads/<?php echo Parameters::getData("image") ?>"
                                  class="imageaccount"
                                  alt="user">
-                            <p>Numde de utilizator: <?php echo Parameters::getData("user") ?></p>
+                            <p>Nume de utilizator: <?php echo Parameters::getData("user") ?></p>
                          </div>
                          <form action="/settings/upload" method="post" enctype="multipart/form-data" class="photo">
 
@@ -143,7 +143,7 @@ include TEMPLATES . 'navbar_without_login.php';
                                                                                          name="fileToUpload"
                                                                                          id="fileToUpload"
                                                                                          required></label>
-                            <input type="submit" class="savebutton upload" value="Save Image" name="submit">
+                            <input type="submit" class="savebutton upload" value="Salvează imaginea" name="submit">
                          </form>
                     </span>
                 </div>
@@ -218,7 +218,7 @@ include TEMPLATES . 'navbar_without_login.php';
                             <img src="../webroot/uploads/<?php echo Parameters::getData("image") ?>"
                                  class="imageaccount"
                                  alt="user">
-                            <p>Numde de utilizator: <?php echo Parameters::getData("user") ?></p>
+                            <p>Nume de utilizator: <?php echo Parameters::getData("user") ?></p>
                          </div>
                     </span>
                 </div>
@@ -226,114 +226,61 @@ include TEMPLATES . 'navbar_without_login.php';
             </div>
         </div>
     </div>
-    <div class="page1" id="preferinte">
-        <div class="setting new-setting">
-            <div class="ContulM">
-                <h2>Preferinte</h2>
-            </div>
-            <div class="container mod">
-                <div class="line">
-                    <label for="newemail" class="labels"><b>Tipuri de evenimente</b></label>
-                </div>
-                <div class="line line2">
-                <span>
-                    <label class="containercheck">Conferinte
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                </span>
-                    <span>
-                    <label class="containercheck">Seminare
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
-                    <span>
-                    <label class="containercheck">Intalniri
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
 
+    <div class="page1" id="evolution">
+        <div class="body-evolution">
+            <div class="body-body-evolution">
+                <div class="insert-code" id="insert-code">
+                    <div class="column-evolution">
+                        <p id="info-code">În cazul în care ai primit un cod la evenimentul sau training-ul la care ai fost, te rog să-l
+                            introduci jos pentru a ne ajuta să îți urmărim evoluția mai bine.</p>
+                        <div class="row-evolution">
+                            <input id="code" type="text" placeholder="Introdu codul...">
+                            <button id="evolution-button" type="button" onclick="sendCode()">Trimite codul</button>
+                        </div>
+                    </div>
                 </div>
-                <div class="line">
-                    <label for="newemail" class="labels"><b>Tipuri de tarining-uri</b></label>
-                </div>
-
-                <div class="line line2">
-
-            <span>
-                    <label class="containercheck">Technical Skills Development Training
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
-                    <span>
-                    <label class="containercheck">Onboarding Training
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
-                    <span>
-                    <label class="containercheck">Orientation
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
-                    <span>
-                    <label class="containercheck">Soft skills development training
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
+                <div class="last-events-trainings">
+                    <?php
+                    if ($lastEventsTrainings != null) {
+                        echo '<table class="table-show">
+                        <tr>
+                        <th>Tip</th>
+                        <th>Titlu</th>
+                        <th>Data</th>
+                        <th>Organizator</th>
+                        <th>Locatie</th>
+                        <th>Pret</th>
+                        </tr>';
+                        foreach ($lastEventsTrainings as $eventsTraining) {
+                            echo '<tr>';
+                            echo '<td>' . ($eventsTraining->getType() == "1" ? "Training" : "Eveniment") . '</td>';
+                            echo '<td>' . $eventsTraining->getTitle() . '</td>';
+                            echo '<td>' . $eventsTraining->getDate() . '</td>';
+                            echo '<td>' . $eventsTraining->getOrganizer() . '</td>';
+                            echo '<td>' . $eventsTraining->getLocation() . '</td>';
+                            echo '<td>' . ($eventsTraining->getPrice() == 0 ? "Gratis" : $eventsTraining->getPrice()) . '</td>';
+                        }
+                        echo '</table>';
+                    } ?>
 
                 </div>
+                <div class="statistics">
+                    <?php $this->getStatistics();
+                        ?>
+                </div>
             </div>
-        </div>
-
-    </div>
-
-    <div class="page1" id="teste" style="margin-top: 0;">
-        <div class="setting">
-            <div class="ContulM">
-                <h2>Teste</h2>
-            </div>
-            <div class="line">
-                <label for="newemail" class="labels"><b>Preferite teste</b></label>
-            </div>
-            <div class="line">
-                <span>
-                    <label class="containercheck">Doriti teste
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-                </span>
-                <span>
-                    <label class="containercheck">Aleatoare
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
-                <span>
-                    <label class="containercheck">Pauza 7 zile
-                        <input type="checkbox" checked="checked">
-                        <span class="checkmark"></span>
-                    </label>
-            </span>
-
-            </div>
-
-
         </div>
     </div>
 </div>
 
 
-<?php require_once(TEMPLATES . 'footer.php'); ?>
+<?php //require_once(TEMPLATES . 'footer.php'); ?>
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.0.min.js"></script>
 <script type="text/javascript" src="../webroot/scripts/settingp.js"></script>
 <script type="text/javascript" src="../webroot/scripts/location.js"></script>
 <script type="text/javascript" src="../webroot/scripts/newPass.js"></script>
 <script type="text/javascript" src="../webroot/scripts/personal-data.js"></script>
+<script type="text/javascript" src="../webroot/scripts/settingsEvolution.js"></script>
 </body>
 </html>

@@ -165,15 +165,61 @@ class TrainingModel
         return $statement->rowCount();
     }
 
-    public function getTrainingsByUsernameOrderByDateASC($username, $total, $starting_offset)
+    public function getTrainingsByUsernameOrderByDateASC($username, $left, $right)
     {
-        $sql = "SELECT * FROM trainings WHERE username = :username ORDER BY datetime LIMIT :starting_offset, :total";
+        $sql = "SELECT * FROM trainings WHERE username = :username ORDER BY datetime LIMIT :left, :right";
         $statement = $this->db->prepare($sql);
         $statement->bindValue(":username", $username);
-        $statement->bindValue(":total", $total);
-        $statement->bindValue(":starting_offset", $starting_offset);
+        $statement->bindValue(":left", $left);
+        $statement->bindValue(":right", $right);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, "Training");
+    }
+
+    public function getAllTrainingsByUsernameAndTitleOrderByDateASC($username, $title, int $left, int $right) {
+        $sql = "SELECT * FROM trainings " .
+            " WHERE username = :username AND title LIKE :title ORDER BY datetime LIMIT :left, :right";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->bindValue(":title", $title);
+        $statement->bindValue(":left", $left);
+        $statement->bindValue(":right", $right);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, "Training");
+    }
+
+    public function getCountTrainingsByUsernameAndTitle($username, $title)
+    {
+        $title = "%" . $title . "%";
+        $sql = "SELECT * FROM trainings" .
+            " WHERE trainings.username = :username AND title LIKE :title GROUP BY trainings.id";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->bindValue(":title", $title);
+        $statement->execute();
+        return $number_of_results = $statement->rowCount();
+    }
+
+    public function getCountTrainingsByTitle($title) {
+        $title = "%" . $title . "%";
+        $sql = "SELECT * from trainings " .
+            "WHERE title LIKE :title GROUP BY trainings.id";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":title", $title);
+        $statement->execute();
+        return $number_of_results = $statement->rowCount();
+    }
+
+    public function getAllTrainingsByTitle($title, $left, $right) {
+        $title = "%" . $title . "%";
+        $sql = "SELECT * FROM trainings " .
+            " WHERE trainings.title LIKE :title GROUP BY trainings.id ORDER BY datetime LIMIT :left, :right";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":title", $title);
+        $statement->bindValue(":left", $left);
+        $statement->bindValue(":right", $right);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, "EventEntity");
     }
 
     public function deleteTrainingById($id)
@@ -196,7 +242,6 @@ class TrainingModel
                     :price, :description
                 )";
 
-
         $statement = $this->db->prepare($sql);
 
         $props = $this->dismount($training);
@@ -205,6 +250,14 @@ class TrainingModel
         unset($props[':image']);
 
         $statement->execute($props);
+
+        $lastId = $this->db->lastInsertId();
+        $sql = "INSERT INTO identification_code (id_training, code) VALUES (:id_training,:code)";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":id_training", $lastId);
+        $statement->bindValue(":code", CommonFunctions::generateCode());
+        $statement->execute();
+
     }
 
     function dismount($object)
