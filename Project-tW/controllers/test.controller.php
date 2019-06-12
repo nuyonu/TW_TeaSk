@@ -1,7 +1,8 @@
 <?php
 
-use LinkedIn\Client as ClientLinkedln;
-use LinkedIn\Scope;
+use duncan3dc\Sessions\SessionInstance;
+use GuzzleHttp\Client as HttpClient;
+use LinkedIn\AccessToken;
 
 class TestController extends Controller
 {
@@ -9,39 +10,33 @@ class TestController extends Controller
     private $secret = 'AhO9z1daHL7uy6W8';
 
 
-
     public function show()
     {
 
-
-        $user=new UserModel($this->database);
-        var_dump($user->getUsers());
-
-//        $client = new ClientLinkedln($this->id, $this->secret);
-//        $scopes = [
-//            Scope::READ_BASIC_PROFILE,
-//            Scope::READ_EMAIL_ADDRESS,
-//            Scope::MANAGE_COMPANY,
-//            Scope::SHARING,
-//        ];
-//        $client->setRedirectUrl('http://localhost/testing/code');
-//        $loginUrl = $client->getLoginUrl($scopes);
-//        var_dump($loginUrl);
-
-
-    }
-    public function code(){
-        $client = new ClientLinkedln($this->id, $this->secret);
-        $code=$_GET['code'];
-        $client->setRedirectUrl('http://localhost/testing/code');
-
-        $accessToken = $client->getAccessToken($code);
-        $dv=new UserModel($this->database);
-//        var_dump($accessToken);
     }
 
-    public
-    function reset()
+    public function code()
+    {
+        $client = new HttpClient();
+        $db = new UserModel($this->database);
+        $session = new SessionInstance(Constants::NAME_APP);
+        $token = $db->getLinkedlnToken($session->get(Constants::USER));
+//        $accessToken = new AccessToken($token->getToken(), $token->getExp());
+        var_dump($token->getToken());
+        $response = $client->request('GET', 'https://api.linkedin.com/v2/me', [
+            'headers' => [
+                'Host' => 'api.linkedin.com',
+                'Connection' => 'Keep-Alive',
+                'Authorization' => 'Bearer  ' . $token->getToken()
+            ]
+        ]);
+
+        header('Content-Type: application/json');
+
+//        var_dump($response->);
+    }
+
+    public function reset()
     {
         ResetDB::reset();
     }
