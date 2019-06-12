@@ -21,6 +21,7 @@ class ConfigurationSettings
             new Arrayy(array('home', 'contact', 'support', 'about', 'test', 'rest')));
         Config::set("user_route",
             new Arrayy(array(
+                'statistics',
                 'home',
                 'trainings',
                 'contact',
