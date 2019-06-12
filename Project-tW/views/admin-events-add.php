@@ -38,9 +38,9 @@ include '../webroot/templates/admin-common.php'; ?>
                         <label>Preț</label>
                         <input name="eventParams[price]" id="price" type="number"
                                onchange="checkNotNull(this)">
-                        <label>Locuri</label>
+<!--                        <label>Locuri</label>
                         <input name="eventParams[seats]" id="seats" type="number"
-                               onchange="checkNotNull(this)">
+                               onchange="checkNotNull(this)">-->
                         <label>Dificultate</label>
                         <select id="difficulty" name="eventParams[difficulty]">
                             <option value="1">Ușor</option>
@@ -72,8 +72,9 @@ include '../webroot/templates/admin-common.php'; ?>
                 </div>
             </form>
             <div class="information">
-                <p>ATENȚE! Nu poți schimba tag-urile odată ce au fost setate.</p>
-                <p>Tag-urile sunt foarte importante deoarece ne ajută pe noi să găsim publicul țintă.</p>
+                <p>ATENȚE! Nu poți schimba datele odată ce au fost setate.</p>
+                <p>Tag-urile sunt foarte importante deoarece ne ajută printre alte criterii pe noi să găsim publicul țintă.</p>
+                <p>Codul unic ce trebuie distribuit celor ce participă la eveniment este generat automat. Mai multe <a href="/support">aici</a></p>
             </div>
             <div class="button-add-event-submit">
                 <button type="submit" onclick="checkAllFields()" id="add-event-button">Adaugă evenimentul</button>

@@ -51,7 +51,6 @@ class ResetDB
                     description VARCHAR(1000),
                     username VARCHAR(50),
                     price       DOUBLE,
-                    seats       INTEGER,
                     organizer VARCHAR(50),
                     beginDate   DATE ,
                     beginTime   TIME,
@@ -109,15 +108,18 @@ class ResetDB
         $sql_Trainings = "CREATE OR REPLACE TABLE trainings(
                     id              INTEGER NOT NULL AUTO_INCREMENT,
                     title           VARCHAR(100),
-                    date_training   DATE,
+                    organizer       VARCHAR(100),
+                    username        VARCHAR(100),
+                    location        VARCHAR(100),
+                    datetime        DATETIME,
                     domain          VARCHAR(100),
                     specifications  VARCHAR(100), 
                     stars           INTEGER,
                     difficulty      INTEGER,
                     price           INTEGER,
                     image           VARCHAR(100),
+                    description     VARCHAR(1000),
                     PRIMARY KEY(id) 
-                    
 )";
         if ($conn->query($sql_Trainings) === TRUE) {
             echo "Table trainings created successfully";
@@ -166,6 +168,22 @@ class ResetDB
 )";
         if ($conn->query($sql_Going_To_Trainings) === TRUE) {
             echo "Table sql_Going_To_Trainings created successfully";
+        } else {
+            echo "Error creating table : " . $conn->error;
+        }
+        echo "<br>\n";
+
+        $sql_Going_To_Trainings = "CREATE OR REPLACE TABLE identification_code(
+                            id          INTEGER NOT NULL AUTO_INCREMENT,
+                            id_training     INTEGER,
+                            id_event INTEGER,
+                            code VARCHAR(15) NOT NULL UNIQUE,
+                            PRIMARY KEY(id),
+                            CONSTRAINT fk_id_training_identification_code FOREIGN KEY(id_training) REFERENCES trainings(id) ON DELETE CASCADE,
+                            CONSTRAINT fk_id_event_identification_code FOREIGN KEY(id_event) REFERENCES events(id) ON DELETE CASCADE
+        )";
+        if ($conn->query($sql_Going_To_Trainings) === TRUE) {
+            echo "Table identification_code created successfully";
         } else {
             echo "Error creating table : " . $conn->error;
         }

@@ -7,7 +7,7 @@ class EventEntity {
     private $location;
     private $username;
     private $price;
-    private $seats;
+/*    private $seats;*/
     private $difficulty;
     private $beginDate;
     private $endDate;
@@ -15,6 +15,23 @@ class EventEntity {
     private $endTime;
     private $description;
     private $tags;
+    private $code;
+
+    /**
+     * @return mixed
+     */
+    public function getCode()
+    {
+        return $this->code;
+    }
+
+    /**
+     * @param mixed $code
+     */
+    public function setCode($code): void
+    {
+        $this->code = $code;
+    }
 
     /**
      * @return mixed
@@ -99,10 +116,10 @@ class EventEntity {
     /**
      * @param mixed $seats
      */
-    public function setSeats($seats): void
+/*    public function setSeats($seats): void
     {
         $this->seats = $seats;
-    }
+    }*/
 
     /**
      * @param mixed $difficulty
@@ -203,10 +220,10 @@ class EventEntity {
     /**
      * @return mixed
      */
-    public function getSeats()
+/*    public function getSeats()
     {
         return $this->seats;
-    }
+    }*/
 
     /**
      * @return mixed

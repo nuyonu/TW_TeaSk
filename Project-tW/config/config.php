@@ -32,6 +32,7 @@ class ConfigurationSettings
                 'trainingsfilter',
                 'github',
                 'linkedln',
+                'trainingdetails',
                 'test'
             )));
         Config::set("moderator_route", new Arrayy(array('adminUsers')));

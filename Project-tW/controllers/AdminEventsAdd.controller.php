@@ -22,7 +22,7 @@ class AdmineventsaddController extends Controller
         $eventParams = $_POST['eventParams'];
         $username = $this->session->get("user");
         $event = new EventsDAO($eventParams['title'], $eventParams['organizer'], $eventParams['type'], $eventParams['location'],
-            $username, $eventParams['price'], $eventParams['seats'], $eventParams['difficulty'], $eventParams['begin-date'],
+            $username, $eventParams['price']/*, $eventParams['seats']*/, $eventParams['difficulty'], $eventParams['begin-date'],
             $eventParams['end-date'], $eventParams['begin-time'], $eventParams['end-time'], $eventParams['description'],
             $eventParams['tags']);
 
@@ -55,5 +55,9 @@ class AdmineventsaddController extends Controller
         } else {
             return false;
         }
+    }
+
+    private function identificationCodeIsUnique() {
+
     }
 }

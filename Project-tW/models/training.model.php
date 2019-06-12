@@ -15,6 +15,14 @@ class TrainingModel
         return $statement->fetchAll(PDO::FETCH_CLASS, "Training");
     }
 
+    public function getTrainingById($id)
+    {
+        $statement = $this->db->prepare("SELECT * FROM trainings WHERE id = :id");
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+        return $statement->fetchObject("Training");
+    }
+
     public function getTrainingsByFilter($params)
     {
         $conditions = array();
@@ -148,31 +156,66 @@ class TrainingModel
         return array_slice($trainings, 0, $total);
     }
 
+    public function getCountTrainingsByUsername($username)
+    {
+        $sql = "SELECT * FROM trainings WHERE username = :username";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->execute();
+        return $statement->rowCount();
+    }
+
+    public function getTrainingsByUsernameOrderByDateASC($username, $total, $starting_offset)
+    {
+        $sql = "SELECT * FROM trainings WHERE username = :username ORDER BY datetime LIMIT :starting_offset, :total";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":username", $username);
+        $statement->bindValue(":total", $total);
+        $statement->bindValue(":starting_offset", $starting_offset);
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, "Training");
+    }
+
+    public function deleteTrainingById($id)
+    {
+        $statement = $this->db->prepare("DELETE FROM trainings WHERE id = :id");
+        $statement->bindValue(":id", $id);
+        $statement->execute();
+    }
+
     public function save(Training $training)
     {
-        $statement_save = "INSERT INTO trainings VALUES(DEFAULT, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        $connection = $this->db->connect();
+        $sql = "INSERT INTO trainings 
+                (
+                    title, organizer, username, location, datetime, domain, specifications, stars, difficulty, price,
+                    description
+                ) 
+                VALUES 
+                ( 
+                    :title, :organizer, :username, :location, :datetime, :domain, :specifications, :stars, :difficulty, 
+                    :price, :description
+                )";
 
-        $statement = $connection->prepare($statement_save);
 
-        print_r($connection->error_list);
+        $statement = $this->db->prepare($sql);
 
-        $statement->bind_param("sssssiiis",
-            $training->getTitle(),
-            $training->getLocation(),
-            $training->getDatetime(),
-            $training->getDomain(),
-            $training->getSpecifications(),
-            $training->getStars(),
-            $training->getDifficulty(),
-            $training->getPrice(),
-            $training->getImage());
+        $props = $this->dismount($training);
 
-        $statement->execute();
+        unset($props[':id']);
+        unset($props[':image']);
 
-        printf("%d Row inserted.\n", $statement->affected_rows);
+        $statement->execute($props);
+    }
 
-        $statement->close();
-        $connection->close();
+    function dismount($object)
+    {
+        $reflectionClass = new ReflectionClass(get_class($object));
+        $array = array();
+        foreach ($reflectionClass->getProperties() as $property) {
+            $property->setAccessible(true);
+            $array[':' . $property->getName()] = $property->getValue($object);
+            $property->setAccessible(false);
+        }
+        return $array;
     }
 }

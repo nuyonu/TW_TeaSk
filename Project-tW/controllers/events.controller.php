@@ -15,7 +15,10 @@ class EventsController extends Controller
     public function show()
     {
         $model = new EventsModel($this->database);
-        $events = $model->getAllEvents();
+        if (count($_GET) > 0)
+            $events = $model->getEventsByFilter($_GET);
+        else
+            $events = $model->getAllEvents();
         require_once(VIEW . 'events.php');
     }
 

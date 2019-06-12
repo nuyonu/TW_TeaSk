@@ -27,7 +27,7 @@ document.getElementById('start-time').value = new Date().getHours() + ":" + new 
 document.getElementById('end-time').value = new Date(new Date().setHours(new Date().getHours() + 2)).getHours() + ":"
     + new Date().getMinutes();
 document.getElementById("price").value = 0;
-/*document.getElementById("seats").value = 0;*/
+document.getElementById("seats").value = 0;
 
 function checkNotNull(input) {
     if (input.value < 0)
@@ -50,47 +50,18 @@ function createDangerAlert(text) {
 
 //Pentru ca titlul sa nu fie null sau sa nu fie unul existent
 function titleCheck(title) {
-    if (lengthBetween(title.value, 3, 50)) {
-        //titlu are lungimea intre [3,50]
-        titleIsUnique(title.value);
+    if (lengthBetween(title.value, 6, 100)) {
         return true;
     } else {
-        //titlu nu are lungimea intre [3,50]
-        createDangerAlert("Titlul trebuie sa fie cuprins intre 3 si 50 de caractere.");
+        createDangerAlert("Titlul trebuie sa fie cuprins intre 6 si 100 de caractere.");
         alertOut();
         return false;
     }
-}
-
-function titleIsUnique(title) {
-    let myRequest = new XMLHttpRequest();
-    myRequest.onreadystatechange = function () {
-        if (myRequest.readyState === 4) {
-            let serverResponse = JSON.parse(myRequest.response);
-            if (serverResponse.success === 0) {
-                createDangerAlert("Titlul deja exista pentru un alt eveniment. Incearca unul nou.");
-                alertOut();
-            }
-        }
-    };
-
-    myRequest.open("POST", "/adminEventsAdd/titleIsUnique", true);
-    myRequest.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-    myRequest.send("title=" + title);
 }
 
 function organizerCheck(element) {
-    if (!lengthBetween(element.value, 3, 100)) {
-        createDangerAlert("Numele organizatorului de eveniment trebuie sa fie cuprins intre 3 si 50 de caractere.");
-        alertOut();
-        return false;
-    }
-    return true;
-}
-
-function typeCheck(element) {
-    if (!lengthBetween(element.value, 3, 100)) {
-        createDangerAlert("Tipul evenimentului trebuie sa fie cuprins intre 3 si 50 de caractere.");
+    if (!lengthBetween(element.value, 2, 100)) {
+        createDangerAlert("Numele organizatorului de eveniment trebuie sa fie cuprins intre 2 si 100 de caractere.");
         alertOut();
         return false;
     }
@@ -98,17 +69,26 @@ function typeCheck(element) {
 }
 
 function locationCheck(element) {
-    if (!lengthBetween(element.value, 3, 100)) {
-        createDangerAlert("Locatia evenimentului trebuie sa fie cuprins intre 3 si 100 de caractere.");
+    if (!lengthBetween(element.value, 2, 100)) {
+        createDangerAlert("Locatia training-ului trebuie sa fie cuprinsa intre 2 si 100 de caractere.");
         alertOut();
         return false;
     }
     return true;
 }
 
-function tagsCheck(element) {
-    if (!lengthBetween(element.value, 1, 1000)) {
-        createDangerAlert("Campul pentru tag-uri nu poate fi gol.");
+function domainCheck(element) {
+    if (!lengthBetween(element.value, 2, 100)) {
+        createDangerAlert("Domeniul trebuie sa fie cuprins intre 2 si 100 de caractere.");
+        alertOut();
+        return false;
+    }
+    return true;
+}
+
+function specificationsCheck(element) {
+    if (!lengthBetween(element.value, 2, 100)) {
+        createDangerAlert("Specificatiile trebuie sa fie cuprinse intre 2 si 100 de caractere.");
         alertOut();
         return false;
     }
@@ -144,25 +124,6 @@ function priceCheck(price) {
     return true;
 }
 
-/*function seatsCheck(seats) {
-    if (isNaN(seats.value)) {
-        createDangerAlert("Nu ai voie sa introduci text in locul numărului de locuri");
-        alertOut();
-        return false;
-    }
-    if (seats.value < 0) {
-        createDangerAlert("Nu ai voie sa introduci mai puțin de 0 locuri. 0 înseamnă gratis");
-        alertOut();
-        return false;
-    }
-    if (seats.value > 1000000) {
-        createDangerAlert("Nu ai voie sa introduci mai mult de 1.000.000 de locuri");
-        alertOut();
-        return false;
-    }
-    return true;
-}*/
-
 function difficultyCheck(difficulty) {
     console.log(difficulty.value);
     if (isNaN(difficulty.value)) {
@@ -170,7 +131,7 @@ function difficultyCheck(difficulty) {
         alertOut();
         return false;
     }
-    return (difficulty.value === "1" || difficulty.value === "2" || difficulty.value === "3");
+    return (difficulty.value === "0" || difficulty.value === "1" || difficulty.value === "2");
 }
 
 function beginDateCheck(beginDate) {
@@ -193,23 +154,6 @@ function beginDateCheck(beginDate) {
     return true;
 }
 
-function endDateCheck(endDate) {
-    let inputFromUser = Date.parse(endDate.value);
-    if (isNaN(inputFromUser)) {
-        createDangerAlert("Data de sfârșit nu este validă.");
-        alertOut();
-        return false;
-    }
-    let oldDate = new Date();
-    oldDate.setDate(oldDate.getDate() - 1);
-    if (new Date(inputFromUser).getTime() <= oldDate.getTime()) {
-        createDangerAlert("Data de sfârșit nu este validă. Este mai veche decât data curentă.");
-        alertOut();
-        return false;
-    }
-    return true;
-}
-
 function beginTimeCheck(beginTime) {
     console.log(beginTime.value);
     if (beginTime.value === '' || beginTime.value === null) {
@@ -225,47 +169,29 @@ function beginTimeCheck(beginTime) {
     return true;
 }
 
-function endTimeCheck(endTime) {
-    if (endTime.value === '' || endTime.value === null) {
-        createDangerAlert("Ora de sfârșit nu este validă.");
-        alertOut();
-        return false;
-    }
-    if (endTime.value.match(/^([01]?[0-9]|2[0-3]):[0-5][0-9]$/) == null) {
-        createDangerAlert("Ora de început nu este validă.");
-        alertOut();
-        return false;
-    }
-    return true;
-}
-
 function checkAllFields() {
     let title = document.getElementById("title");
     let organizer = document.getElementById("organizer");
-    let type = document.getElementById("type");
+    let domain = document.getElementById("domain");
+    let specs = document.getElementById("specifications");
     let location = document.getElementById("location");
-    let tags = document.getElementById("tags");
     let description = document.getElementById("description");
     let price = document.getElementById("price");
-/*    let seats = document.getElementById("seats");*/
     let difficulty = document.getElementById("difficulty");
     let beginDate = document.getElementById("start-date");
-    let endDate = document.getElementById("end-date");
     let beginTime = document.getElementById("start-time");
-    let endTime = document.getElementById("end-time");
 
     if (titleCheck(title) &&
         organizerCheck(organizer) &&
-        typeCheck(type) &&
+        domainCheck(domain) &&
         locationCheck(location) &&
-        tagsCheck(tags) &&
+        specificationsCheck(specs) &&
         descriptionCheck(description) &&
         priceCheck(price) &&
-/*        seatsCheck(seats) &&*/
         difficultyCheck(difficulty) &&
         beginDateCheck(beginDate) &&
-        endDateCheck(endDate) &&
-        beginTimeCheck(beginTime) &&
-        endTimeCheck(endTime))
+        beginTimeCheck(beginTime))
+    {
         addFormSubmit();
+    }
 }
