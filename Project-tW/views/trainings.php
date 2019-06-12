@@ -99,7 +99,7 @@
                 <?php foreach($trainings as $training): ?>
                     <div>
                         <div class="training-header">
-                            <img class="training-header-image" src= <?= $training->getImage() ?> alt= <?= $training->getTitle() ?> />
+                            <div class="training-header-image" style="background: #<?php echo dechex(rand(0, 20000000)) ?>" ></div>
                             <a class="training-header-title" href="<?= '/trainingdetails?id=' . $training->getId() ?>"> <?= $training->getTitle() ?> </a>
                             <!-- <input type="image" src="../webroot/images/heart2.png" alt="Added to preferences" width="24"
                                    height="24"/> -->
