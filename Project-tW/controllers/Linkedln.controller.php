@@ -1,34 +1,37 @@
 <?php
 
 use duncan3dc\Sessions\SessionInstance;
+use LinkedIn\AccessToken;
 use LinkedIn\Client as ClientLinkedln;
 use LinkedIn\Scope;
 
 class LinkedlnController extends Controller
 {
-    private $id = '77fdnuwkav2mba';
-    private $secret = 'AhO9z1daHL7uy6W8';
+    private $id;
+    private $secret;
     private $session;
 
     public function __construct()
     {
 
         parent::__construct();
-        $this->session = new SessionInstance("my-app");
+        $this->id = Config::get("ID_LINKEDLN");
+        $this->secret = Config::get("KEY_LINKEDLN");
+        $this->session = new SessionInstance(Constants::NAME_APP);
     }
 
     public function show()
     {
         $client = new ClientLinkedln($this->id, $this->secret);
         $scopes = [
-            'r_fullprofile',
-            Scope::READ_BASIC_PROFILE,
+            'r_liteprofile',
             Scope::READ_EMAIL_ADDRESS,
             Scope::MANAGE_COMPANY,
             Scope::SHARING,
+
         ];
         $client->setRedirectUrl('http://localhost/linkedln/accept');
-        header('Location: '.$client->getLoginUrl(),TRUE,303);
+        header('Location: ' . $client->getLoginUrl($scopes), TRUE, 303);
         die();
 
 
@@ -43,10 +46,7 @@ class LinkedlnController extends Controller
         if ($accessToken != NULL) {
             $db = new UserModel($this->database);
             $db->addTokenLinkedln($this->session->get("user"), $accessToken);
-            $db->addTokenLinkedln($this->session->get("user"),$accessToken);
-
         }
-
         header('Location: http://localhost/settings', TRUE, 303);
         die();
     }
