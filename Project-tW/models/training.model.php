@@ -242,7 +242,6 @@ class TrainingModel
                     :price, :description
                 )";
 
-
         $statement = $this->db->prepare($sql);
 
         $props = $this->dismount($training);
@@ -251,6 +250,14 @@ class TrainingModel
         unset($props[':image']);
 
         $statement->execute($props);
+
+        $lastId = $this->db->lastInsertId();
+        $sql = "INSERT INTO identification_code (id_training, code) VALUES (:id_training,:code)";
+        $statement = $this->db->prepare($sql);
+        $statement->bindValue(":id_training", $lastId);
+        $statement->bindValue(":code", CommonFunctions::generateCode());
+        $statement->execute();
+
     }
 
     function dismount($object)
