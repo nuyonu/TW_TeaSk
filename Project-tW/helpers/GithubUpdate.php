@@ -1,9 +1,9 @@
 <?php
 
-use AsyncTask\AsyncTask;
+
 use AsyncTask\Collection;
 
-    class GithubUpdate extends AsyncTask
+class GithubUpdate
 {
 
     /**
@@ -14,15 +14,23 @@ use AsyncTask\Collection;
      * @return mixed
      */
 
-    protected function doInBackground(Collection $collection)
+    public static function doInBackground($db_con, $user)
     {
-        $github = new GithubClient();
-        $github->authToken($collection->get('token'));
-        $result = $github->getInfoRepos();
-        $db = new GithubModel($collection->get("db"));
-        $db->save($result, $collection->get("user"));
-        echo "doneadsa";
-        return "Done";
-
+        $database = new UserModel($db_con);
+        if ($user != NULL) {
+            $token = $database->getTokenGithub($user);
+            if ($token != NULL) {
+                $last = strtotime($database->lastUpdate($user));
+                $current = strtotime(date("Y-m-d"));
+                $diff = abs($current - $last);
+                if ($diff > Constants::INTERVAL_UPDATE) {
+                    $github = new GithubClient();
+                    $github->authToken($token);
+                    $result = $github->getInfoRepos();
+                    $db = new GithubModel($db_con);
+                    $db->save($result, $user);
+                }
+            }
+        }
     }
 }

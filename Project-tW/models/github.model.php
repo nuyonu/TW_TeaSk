@@ -31,18 +31,22 @@ class GithubModel
             $stmt->bindValue(":pushed_at", $info->getPushedAt());
             $stmt->execute();
         }
+        $stmt = $this->db->prepare("UPDATE users set last_update=SYSDATE() where username=:user");
+        $stmt->execute([$user]);
     }
 
-    public  function update(Arrayy $data,string $user){
+    public function update(Arrayy $data, string $user)
+    {
         $stmt = $this->db->prepare("DELETE FROM user_github where id_user=(select  id from users where username=:user)");
-        $stmt->bindValue(":user",$user);
+        $stmt->bindValue(":user", $user);
         $stmt->execute();
-        $this->save($data,$user);
+        $this->save($data, $user);
     }
 
-    public function delete(string $user){
-        $stmt=$this->db->prepare("DELETE FROM user_github where (select id from users WHERE username=:user)");
-        $stmt->bindValue(":user",$user);
+    public function delete(string $user)
+    {
+        $stmt = $this->db->prepare("DELETE FROM user_github where (select id from users WHERE username=:user)");
+        $stmt->bindValue(":user", $user);
         $stmt->execute();
     }
 

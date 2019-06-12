@@ -34,4 +34,10 @@ class Response
         header('Location: http://localhost/linkedln', TRUE, 303);
         die();
     }
+
+    public static function redirect_no_die(string $uri)
+    {
+        header('Location: ' . $uri, TRUE, 303);
+
+    }
 }

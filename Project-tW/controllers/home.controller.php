@@ -4,11 +4,10 @@ include(ROOT . DS . 'models' . DS . 'user.model.php');
 
 use AsyncTask\Collection;
 use duncan3dc\Sessions\SessionInstance;
+use Spatie\Async\Process;
 
 class HomeController extends Controller
 {
-
-
     public function show()
     {
         $user = $this->session->get(Constants::USER);
@@ -17,9 +16,10 @@ class HomeController extends Controller
         } else {
             Parameters::setData("show", Constants::EMPTY);
         }
-
         require_once(Constants::VIEW_INDEX);
+        GithubUpdate::doInBackground($this->database, $user);
     }
+
 
     public function disconnect()
     {
