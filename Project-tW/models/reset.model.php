@@ -88,10 +88,11 @@ class ResetDB
                     password        VARCHAR(100),
                     first_name      VARCHAR(100),
                     last_name       VARCHAR(100),
-                    github_token    VARCHAR(100),
-                    linkedln_token  VARCHAR(100),
+                    github_token    VARCHAR(600),
+                    linkedln_token  VARCHAR(600),
                     linkedln_exp    INT,
                     grade           INT DEFAULT 3,
+                    last_update     DATE,
                     PRIMARY KEY (ID) 
 )";
 
@@ -139,14 +140,14 @@ class ResetDB
         echo "<br>\n";
 
 
-        $sql_contacting = "CREATE OR REPLACE TABLE contacting(
+        $sql_contacting = "CREATE OR REPLACE TABLE contact(
                     id                  INTEGER NOT NULL AUTO_INCREMENT,
-                    id_user             INTEGER,
-                    id_contact_message  INTEGER,
-                    PRIMARY KEY(id) ,
-                    CONSTRAINT fk_id_user_contacting FOREIGN KEY(id_user) REFERENCES  users(id),
-                    CONSTRAINT fk_id_contact_message_contacting FOREIGN KEY(id_contact_message) REFERENCES  contact_messages(id)
-)";
+                    name                VARCHAR(40),
+                    email               VARCHAR(40),
+                    type                VARCHAR(40),
+                    problem             VARCHAR(100),
+                    PRIMARY KEY(id) 
+                 )";
         if ($conn->query($sql_contacting) === TRUE) {
             echo "Table sql_contacting created successfully";
         } else {
