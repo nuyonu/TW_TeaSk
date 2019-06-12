@@ -18,9 +18,10 @@ class ConfigurationSettings
         ]);
 
         Config::set("unknown_route",
-            new Arrayy(array('home', 'contact', 'support', 'about', 'test')));
+            new Arrayy(array('home', 'contact', 'support', 'about', 'test', 'rest')));
         Config::set("user_route",
             new Arrayy(array(
+                'statistics',
                 'home',
                 'trainings',
                 'contact',
@@ -32,8 +33,9 @@ class ConfigurationSettings
                 'github',
                 'linkedln',
                 'trainingdetails'
+                'test'
             )));
-        Config::set("moderator_route",  new Arrayy(array('adminUsers')));
+        Config::set("moderator_route", new Arrayy(array('adminUsers')));
         Config::set("admin_pass", 'Aa1!asdf');
         Config::set('user_admin', '_admin');
         Config::set('site_name', 'site');
@@ -49,8 +51,16 @@ class ConfigurationSettings
         Config::set('pass', '');
         Config::set('charset', 'utf8mb4');
         Config::set('dsn',
-            "mysql:host=" . Config::get('host') . ";dbname=" . Config::get('dbname') . ";charset=" . Config::get('charset'));
+            "mysql:host=" . Config::get('host') . ";dbname=" . Config::get('dbname') . ";charset=" . Config::get('charset'));;
 
+        Config::set("KEY",
+            "GwZetTD0wic5Fg8XkrrB-8xb9XQ4eP9T1ExatIFY_DKNh3Z_9uocXxupaxdAGDF3GGv3OarItJSKXG-4m4KYPA_wb7ndJotDQ0dUqCt-uvQyV7jnXIHC-TcZAqmAAkfPnJZY5cpCpmpMWwaUO7EdX5sZVDJlg0FbpdjrJ3NW-o9OXcZaauueKIOQA6h7_MZ10SteBFkO9gJQYuRhmwM_cP21NZFu6ivwC20jnVtou3Eiu-_MscMnZvClVuoCeEIgfyOJOhvaqqrAStagMTdCI3RHvOKDYczah_lrCm8UMY5A54BBQI7abBXl3nFQWW4vnp3GlasOrO_EglthYFnomQ");
+        Config::set("ISS", "https://localhost/");
+        Config::set("AUD", "https://localhost/");
+        Config::set("IAT", 1356999524);
+        Config::set("NBF", 1357000000);
+        Config::set("ID_LINKEDLN",'77fdnuwkav2mba');
+        Config::set("KEY_LINKEDLN",'AhO9z1daHL7uy6W8');
 
     }
 }
