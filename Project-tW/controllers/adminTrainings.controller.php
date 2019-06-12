@@ -16,23 +16,12 @@ class AdmintrainingsController extends Controller
 
     public function show()
     {
-        $model = new TrainingModel($this->database);
+        $this->model = new TrainingModel($this->database);
 
-        $username = $this->session->get("user");
-
-        $number_of_pages = ceil($model->getCountTrainingsByUsername($username) / RESULT_PER_PAGE);
-
-        $page = (!isset($_GET['page']) || !is_numeric($_GET['page'])) ? 1 : $_GET['page'];
-        $page = min(max($page, 1), $number_of_pages);
-
-        $this_page_first_result = ($page - 1) * RESULT_PER_PAGE;
-
-        $trainings = $model->getTrainingsByUsernameOrderByDateASC($username,
-            RESULT_PER_PAGE,
-            $this_page_first_result
-        );
-
-        require_once(VIEW . 'admin-trainings.php');
+        if ($this->session->get(Constants::GRADE)['grade'] == 1)
+            $this->showAdministrator();
+        else
+            $this->showModerator();
     }
 
     public function deleteTrainings()
@@ -45,6 +34,60 @@ class AdmintrainingsController extends Controller
                 $model->deleteTrainingById($id);
         }
 
-        echo "<script>window.location.replace('/adminTrainings')</script>";
+        Response::redirect("/adminEvents");
+    }
+
+    private function showModerator() {
+        $username = $this->session->get("user");
+        $number_of_pages = ceil($this->model->getCountTrainingsByUsername($username) / RESULT_PER_PAGE);
+        if (!isset($_GET['page']))
+            $page = 1;
+        else
+            $page = $_GET['page'];
+
+        if (isset($_GET['title'])) {
+            $title = $_GET['title'];
+            $number_of_pages = ceil($this->model->getCountTrainingsByUsernameAndTitle($username, $title) / RESULT_PER_PAGE);
+        }
+
+        if (!is_numeric($page))
+            $page = 1;
+        if ($page < 1 || $page > $number_of_pages)
+            $page = 1;
+
+        $this_page_first_result = ($page - 1) * RESULT_PER_PAGE;
+
+        if (isset($title)) {
+            $title = "%" . $title . "%";
+            $trainings = $this->model->getAllTrainingsByUsernameAndTitleOrderByDateASC($username, $title, $this_page_first_result, RESULT_PER_PAGE);
+        } else {
+            $trainings = $this->model->getTrainingsByUsernameOrderByDateASC($username, $this_page_first_result, RESULT_PER_PAGE);
+        }
+        $grade = 2;
+        require_once(VIEW . 'admin-trainings.php');
+    }
+
+    private function showAdministrator() {
+        if (!isset($_GET['page']))
+            $page = 1;
+        else
+            $page = $_GET['page'];
+
+        if (isset($_GET['title']))
+            $title = $_GET['title'];
+        else
+            $title = "";
+        $number_of_pages = ceil($this->model->getCountTrainingsByTitle($title) / RESULT_PER_PAGE);
+
+        if (!is_numeric($page))
+            $page = 1;
+        if ($page < 1 || $page > $number_of_pages)
+            $page = 1;
+
+        $this_page_first_result = ($page - 1) * RESULT_PER_PAGE;
+
+        $grade = 1;
+        $trainings = $this->model->getAllTrainingsByTitle($title, $this_page_first_result, RESULT_PER_PAGE);
+        require_once(VIEW . 'admin-trainings.php');
     }
 }
