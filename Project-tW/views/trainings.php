@@ -56,6 +56,7 @@
                     <div class="flex-baseline">
                         <p>Stele minim:</p>
                         <select name="minStars">
+                            <option value="0">Fără</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -66,6 +67,7 @@
                     <div class="flex-baseline">
                         <p>Stele maxim:</p>
                         <select name="maxStars">
+                            <option value="0">Fără</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -98,9 +100,9 @@
                     <div>
                         <div class="training-header">
                             <img class="training-header-image" src= <?= $training->getImage() ?> alt= <?= $training->getTitle() ?> />
-                            <a class="training-header-title" href="#"> <?= $training->getTitle() ?> </a>
-                            <input type="image" src="../webroot/images/heart2.png" alt="Added to preferences" width="24"
-                                   height="24"/>
+                            <a class="training-header-title" href="<?= '/trainingdetails?id=' . $training->getId() ?>"> <?= $training->getTitle() ?> </a>
+                            <!-- <input type="image" src="../webroot/images/heart2.png" alt="Added to preferences" width="24"
+                                   height="24"/> -->
                         </div>
                         <div class="training-table-container">
                             <table class="training-table">
@@ -119,6 +121,7 @@
                                     <td><?= $training->getDomain() ?></td>
                                     <td><?= $training->getSpecifications() ?></td>
                                     <td>
+                                        <?php if ($training->getStars() == 0) echo "-"; ?>
                                         <?php for ($index = 0; $index < $training->getStars(); $index++) { ?>
                                             <img class="training-star" src="../webroot/images/star-icon.png" alt="Stele"/>
                                         <?php } ?>
@@ -148,7 +151,7 @@
                                     mb_substr($training->getDescription(), 0, 300) .
                                     ((strlen($training->getDescription()) >= 300) ? "..." : "")
                                 ?>
-                                <a href="#" class="training-find-out-more"> ...află mai multe despre '<?= $training->getTitle() ?>' </a>
+                                <a href="<?= '/trainingdetails?id=' . $training->getId() ?>" class="training-find-out-more"> ...află mai multe despre '<?= $training->getTitle() ?>' </a>
                             </div>
                         </div>
                     </div>
@@ -180,8 +183,8 @@
                                     else echo $recent->getPrice() . " lei";
                                 ?>
                             </p>
-                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                                 alt="Mai multe detalii"/>
+                            <a href="<?= '/trainingdetails?id=' . $recent->getId() ?>"><img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                                                                                  alt="Mai multe detalii"/></a>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -209,8 +212,8 @@
                                     else echo $favorable->getPrice() . " lei";
                                 ?>
                             </p>
-                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                                 alt="Mai multe detalii"/>
+                            <a href="<?= '/trainingdetails?id=' . $favorable->getId() ?>"><img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/></a>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -238,8 +241,8 @@
                                     else echo $cheap->getPrice() . " lei";
                                 ?>
                             </p>
-                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                                 alt="Mai multe detalii"/>
+                            <a href="<?= '/trainingdetails?id=' . $cheap->getId() ?>"><img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/></a>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -267,8 +270,8 @@
                                     else echo $close->getPrice() . " lei";
                                 ?>
                             </p>
-                            <img class="training-more-picture" src="../webroot/images/click-for-more.png"
-                                 alt="Mai multe detalii"/>
+                            <a href="<?= '/trainingdetails?id=' . $close->getId() ?>"><img class="training-more-picture" src="../webroot/images/click-for-more.png"
+                                 alt="Mai multe detalii"/></a>
                         </div>
                     <?php endforeach; ?>
                 </div>

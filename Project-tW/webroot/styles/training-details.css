@@ -1,0 +1,22 @@
+.button-submit-code
+{
+    width: 120px;
+    height: 40px;
+    font-size: 24px;
+    background-color: #5aa8fb;
+    border: 0;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    font-family: 'Didact Gothic', sans-serif;
+    margin: 15px;
+}
+
+.form-submit-code
+{
+    margin: 15px;
+    padding: 5px;
+    list-style-type: none;
+    text-align: center;
+    box-shadow: 0 4px 4px 0 rgba(0, 0, 0.5, 0.2), 0 6px 6px 0 rgba(0, 0, 0.5, 0.19);
+    border: 3px dotted #5aa8fb;
+    background-color: #fcfdff;
+}
