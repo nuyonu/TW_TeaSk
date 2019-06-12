@@ -1,10 +1,244 @@
 <?php
+define("RESULT_PER_PAGE", 25);
 
 
 use Firebase\JWT\JWT;
 
 class RestController extends Controller
 {
+
+
+    public function trainings()
+    {
+        if (Method::isGet()) {
+            $this->getTrainings();
+        } elseif (Method::isDelete()) {
+            $this->deleteTraining();
+        }
+    }
+
+    public function events()
+    {
+        if (Method::isGet()) {
+            $this->getEvents();
+        } elseif (Method::isDelete()) {
+            $this->deleteEvent();
+        }
+    }
+
+    public function addEvents()
+    {
+        if (Method::isPost()) {
+            if ($this->getAuth() != NULL) {
+                $token = $this->getAuth();
+                if ($token) {
+                    try {
+                        $decoded = JWT::decode($token, Config::get("KEY"), array('HS256'));
+                        $data = $decoded->data;
+                        $user = new UserDAO($data->username, $data->pass);
+                        if ($user->valid()) {
+                            $data_file = json_decode(file_get_contents("php://input"));
+                            if ($this->verAddEvents($data_file)) {
+                                $event = new EventsDAO($data_file->title, $data_file->organizer,
+                                    $data_file->type, $data_file->location,
+                                    $data->username, $data_file->price/*, $eventParams['seats']*/,
+                                    $data_file->difficulty,
+                                    $data_file->begin_date,
+                                    $data_file->end_date, $data_file->begin_time, $data_file->end_time,
+                                    $data_file->description,
+                                    $data_file->tags);
+
+
+                                $model = new EventsModel($this->database);
+                                $model->saveEvent($event);
+                                header('Content-Type: application/json');
+                                http_response_code(200);
+                                echo json_encode(
+                                    array(
+                                        "title" => "Technical Skill Enhancer",
+                                        "message" => "Added successfully",
+                                        "response" => 200,
+                                    )
+                                );
+                            } else {
+                                Headers::badFormat();
+                            }
+                        }
+
+                    } catch (Exception $e) {
+                        http_response_code(401);
+                        echo json_encode(array(
+                            "message" => "Access denied.",
+                            "error" => $e->getMessage()
+                        ));
+                    }
+
+                } else {
+                    Headers::unauthorized();
+                }
+            }
+        } else {
+            Headers::acceptedMethod("POST");
+        }
+    }
+
+    private function deleteEvent()
+    {
+        if ($this->getAuth() != NULL) {
+            $token = $this->getAuth();
+            if ($token) {
+                try {
+                    $decoded = JWT::decode($token, Config::get("KEY"), array('HS256'));
+                    $data = $decoded->data;
+                    $user = new UserDAO($data->username, $data->pass);
+                    if ($user->valid()) {
+                        $data_file = json_decode(file_get_contents("php://input"));
+                        $model = new EventsModel($this->database);
+                        $number_of_pages = ceil($model->getCountEventsByUsername($data->username) / RESULT_PER_PAGE);
+
+                        if (!isset($data_file->id)) {
+                            Headers::badFormat();
+                        } else {
+                            $model = new EventsModel($this->database);
+                            $model->deleteEventById(intval($data_file->id));
+                            header('Content-Type: application/json');
+                            http_response_code(200);
+                            echo json_encode(
+                                array(
+                                    "title" => "Technical Skill Enhancer",
+                                    "message" => "Deleted successfully",
+                                    "response" => 200,
+                                )
+                            );
+
+                        }
+                    }
+
+                } catch (Exception $e) {
+                    http_response_code(401);
+                    echo json_encode(array(
+                        "message" => "Access denied.",
+                        "error" => $e->getMessage()
+                    ));
+                }
+
+            } else {
+                Headers::unauthorized();
+            }
+        }
+    }
+
+    private function deleteTraining()
+    {
+        if ($this->getAuth() != NULL) {
+            $token = $this->getAuth();
+            if ($token) {
+                try {
+                    $decoded = JWT::decode($token, Config::get("KEY"), array('HS256'));
+                    $data = $decoded->data;
+                    $user = new UserDAO($data->username, $data->pass);
+                    if ($user->valid()) {
+                        $data_file = json_decode(file_get_contents("php://input"));
+                        if (!isset($data_file->id)) {
+                            Headers::badFormat();
+                        } else {
+                            $model = new TrainingModel($this->database);
+                            $model->deleteTrainingById(intval($data_file->id));
+                            header('Content-Type: application/json');
+                            http_response_code(200);
+                            echo json_encode(
+                                array(
+                                    "title" => "Technical Skill Enhancer",
+                                    "message" => "Deleted successfully",
+                                    "response" => 200,
+                                )
+                            );
+
+                        }
+                    }
+
+                } catch (Exception $e) {
+                    http_response_code(401);
+                    echo json_encode(array(
+                        "message" => "Access denied.",
+                        "error" => $e->getMessage()
+                    ));
+                }
+
+            } else {
+                Headers::unauthorized();
+            }
+        }
+    }
+
+    private function getEvents()
+    {
+        if ($this->getAuth() != NULL) {
+            $token = $this->getAuth();
+            if ($token) {
+                try {
+                    $decoded = JWT::decode($token, Config::get("KEY"), array('HS256'));
+                    $data = $decoded->data;
+                    $user = new UserDAO($data->username, $data->pass);
+                    if ($user->valid()) {
+                        $data_file = json_decode(file_get_contents("php://input"));
+                        $model = new EventsModel($this->database);
+                        $number_of_pages = ceil($model->getCountEventsByUsername($data->username) / RESULT_PER_PAGE);
+
+                        if (!isset($data_file->page)) {
+                            $page = 1;
+                        } else {
+                            $page = $data_file->page;
+                        }
+
+                        if (isset($data_file->title)) {
+                            $title = $data_file->title;
+                            $number_of_pages = ceil($model->getCountEventsByUsernameAndTitle($data->username,
+                                    $title) / RESULT_PER_PAGE);
+                        }
+                        if (!is_numeric($page)) {
+                            $page = 1;
+                        }
+                        if ($page < 1 || $page > $number_of_pages) {
+                            $page = 1;
+                        }
+                        $this_page_first_result = ($page - 1) * RESULT_PER_PAGE;
+                        if (isset($title)) {
+                            $title = "%" . $title . "%";
+                            $events = $model->getAllEventsByUsernameAndTitleOrderByDateASC($data->username, $title,
+                                $this_page_first_result, RESULT_PER_PAGE);
+                        } else {
+                            $events = $model->getAllEventsByUsernameOrderByDateASC($data->username,
+                                $this_page_first_result,
+                                RESULT_PER_PAGE);
+                        }
+//
+                        header('Content-Type: application/json');
+                        http_response_code(200);
+                        echo json_encode(
+                            array(
+                                "title" => "Technical Skill Enhancer",
+                                "message" => "Updated successfully",
+                                "response" => 200,
+                                "data" => Transform::toArrayEvents($events)
+                            )
+                        );
+
+                    }
+                } catch (Exception $e) {
+                    http_response_code(401);
+                    echo json_encode(array(
+                        "message" => "Access denied.",
+                        "error" => $e->getMessage()
+                    ));
+                }
+            } else {
+                Headers::unauthorized();
+            }
+        }
+    }
+
+
     public function show()
     {
         header('Status: 200 OK');
@@ -221,7 +455,10 @@ class RestController extends Controller
                 } else {
                     http_response_code(401);
                     header('Content-Type: application/json');
-                    echo json_encode(array("title" => "Technical Skill Enhancer", "message" => "Registration failed."));
+                    echo json_encode(array(
+                        "title" => "Technical Skill Enhancer",
+                        "message" => "Registration failed."
+                    ));
                 }
             }
         } else {
@@ -308,5 +545,67 @@ class RestController extends Controller
         }
         return NULL;
     }
+
+
+    private function verAddEvents($data_file)
+    {
+        return isset($data_file->title) && isset($data_file->organizer) && isset(
+                $data_file->type) && isset($data_file->location) && isset($data_file->price) && isset($data_file->difficulty) && isset(
+                $data_file->begin_date) && isset(
+                $data_file->end_date) && isset($data_file->begin_time, $data_file->end_time) && isset(
+                $data_file->description) && isset(
+                $data_file->tags);
+    }
+
+    private function getTrainings()
+    {
+        if ($this->getAuth() != NULL) {
+            $token = $this->getAuth();
+            if ($token) {
+                try {
+                    $decoded = JWT::decode($token, Config::get("KEY"), array('HS256'));
+                    $data = $decoded->data;
+                    $user = new UserDAO($data->username, $data->pass);
+                    if ($user->valid()) {
+                        $data_file = json_decode(file_get_contents("php://input"));
+                        $model = new TrainingModel($this->database);
+                        $number_of_pages = ceil($model->getCountTrainingsByUsername($data->username) / RESULT_PER_PAGE);
+
+                        $page = (!isset($data_file->page) || !is_numeric($data_file->page)) ? 1 : $data_file->page;
+                        $page = min(max($page, 1), $number_of_pages);
+
+                        $this_page_first_result = ($page - 1) * RESULT_PER_PAGE;
+
+                        $trainings = $model->getTrainingsByUsernameOrderByDateASC($data->username,
+                            RESULT_PER_PAGE,
+                            $this_page_first_result
+                        );
+//                        var_dump($trainings);
+                        header('Content-Type: application/json');
+                        http_response_code(200);
+                        echo json_encode(
+                            array(
+                                "title" => "Technical Skill Enhancer",
+                                "message" => "Updated successfully",
+                                "response" => 200,
+                                "data" => Transform::toArrayTraings($trainings)
+                            )
+                        );
+
+                    }
+                } catch (Exception $e) {
+                    http_response_code(401);
+                    echo json_encode(array(
+                        "message" => "Access denied.",
+                        "error" => $e->getMessage()
+                    ));
+                }
+            } else {
+                Headers::unauthorized();
+            }
+        }
+    }
+
+
 }
 

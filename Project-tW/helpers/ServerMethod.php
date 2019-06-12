@@ -11,4 +11,9 @@ class Method
     {
         return $_SERVER['REQUEST_METHOD'] == 'GET';
     }
+
+    public static function isDelete()
+    {
+        return $_SERVER['REQUEST_METHOD'] == 'DELETE';
+    }
 }

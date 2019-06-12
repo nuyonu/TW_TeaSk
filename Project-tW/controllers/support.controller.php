@@ -14,6 +14,7 @@ class SupportController extends Controller
 
     public function show()
     {
+
         Parameters::setData("show", "");
         require_once(VIEW . 'support.php');
     }

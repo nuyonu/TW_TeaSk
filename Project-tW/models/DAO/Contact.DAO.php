@@ -3,11 +3,27 @@
 class ContactDao
 {
 
-
+    private $id;
     private $name;
     private $email;
     private $type;
     private $problem;
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
 
     /**
      * ContactDao constructor.
@@ -21,7 +37,7 @@ class ContactDao
         $this->name = $name;
         $this->email = $email;
         $this->type = $type;
-        $this->problem=$problem;
+        $this->problem = $problem;
     }
 
     /**
