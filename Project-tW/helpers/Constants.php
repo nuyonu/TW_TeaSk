@@ -33,5 +33,6 @@ class Constants
     const MAX_SIZE = 500000;
     const FAUL_MESSAGE = 'Datele trimise fie nu sunt valabile ,fie nu au fost completate corect';
     const CONTACT = '/contact';
+    const INTERVAL_UPDATE = 80000;
 
 }

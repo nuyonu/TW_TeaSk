@@ -80,11 +80,22 @@ class UserModel
 
     public function getTokenGithub(string $user)
     {
-        $stmt = $this->db->prepare("SELECT * FROM users WHERE username=:user");
+        $stmt = $this->db->prepare("SELECT github_token FROM users WHERE username=:user");
         $stmt->bindValue(":user", $user);
+        $stmt->execute();
         $stmt->setFetchMode(PDO::FETCH_CLASS, "UserEntity");
         $result = $stmt->fetch();
         return $result ? $result->getGithubToken() : NULL;
+    }
+
+    public function lastUpdate(string $user){
+        $stmt = $this->db->prepare("SELECT last_update FROM users WHERE username=:user");
+        $stmt->bindValue(":user", $user);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, "UserEntity");
+        $result = $stmt->fetch();
+        return $result ? $result->getLastUpdate() : NULL;
+
     }
 
     public function updateContact(ContactSettings $settings)
@@ -140,8 +151,8 @@ class UserModel
         $stmt->setFetchMode(PDO::FETCH_CLASS, "UserEntity");
         $stmt->execute();
         $result = $stmt->fetch();
-        if (strlen($result->getLinkedinToken()) != 0) {
-            return new TokenLinkedln($result->getLinkedinToken(), $result->getLinkedlnExp);
+        if (strlen($result->getLinkedlnToken()) != 0) {
+            return new TokenLinkedln($result->getLinkedlnToken(), $result->getLinkedlnExp());
         }
         return new TokenLinkedln(NULL, NULL);
     }

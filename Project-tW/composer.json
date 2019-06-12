@@ -8,7 +8,10 @@
     "dmamontov/asynctask-7": "~2.0.13",
     "voku/arrayy": "^5.9",
     "zoonman/linkedin-api-php-client": "^0.0.14",
-    "ext-json": "*"
+    "ext-json": "*",
+    "spatie/async": "^1.0",
+    "firebase/php-jwt": "^5.0"
+
   },
   "autoload": {
     "classmap": [
@@ -20,7 +23,8 @@
       "models/",
       "lib/",
       "config/",
-      "helpers"
+      "helpers",
+      "REST"
     ]
   }
 }

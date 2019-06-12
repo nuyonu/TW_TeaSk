@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+use Respect\Validation\Validator as v;
+
 class UserEntity
 {
     private $id;
@@ -10,8 +12,26 @@ class UserEntity
     private $first_name;
     private $last_name;
     private $github_token;
-    private $linkedin_token;
+    private $linkedln_token;
     private $linkedln_exp;
+    private $last_update;
+
+
+    /**
+     * @return mixed
+     */
+    public function getLastUpdate()
+    {
+        return $this->last_update;
+    }
+
+    /**
+     * @param mixed $last_update
+     */
+    public function setLastUpdate($last_update): void
+    {
+        $this->last_update = $last_update;
+    }
 
 
     /**
@@ -130,7 +150,7 @@ class UserEntity
     /**
      * @return string
      */
-    public function getGithubToken():string
+    public function getGithubToken()
     {
         return $this->github_token;
     }
@@ -146,9 +166,9 @@ class UserEntity
     /**
      * @return string
      */
-    public function getLinkedlnToken():string
+    public function getLinkedlnToken()
     {
-        return $this->linkedin_token;
+        return $this->linkedln_token;
     }
 
     /**
@@ -164,7 +184,24 @@ class UserEntity
         return new UserEntity();
     }
 
+    public function valid()
+    {
+        $usernameValidator = v::alnum()->noWhitespace()->length(5, 20);
+        $emailValidator = v::email()->noWhitespace();
+        $nameValidator = v::alpha('- ');
+        if (!$usernameValidator->validate($this->username) || !$this->validatePassword($this->password) || !$emailValidator->validate($this->e_mail)) {
+            return FALSE;
+        }
+        return $nameValidator->validate($this->first_name) && $nameValidator->validate($this->last_name) && strlen($this->password) < 100;
 
+    }
+
+    private function validatePassword(string $password)
+    {
+        $regex = '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})^';
+        preg_match($regex, $password, $matches, PREG_OFFSET_CAPTURE);
+        return count($matches) != 0;
+    }
 
 
 }
