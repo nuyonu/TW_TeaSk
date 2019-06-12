@@ -162,6 +162,7 @@ class ResetDB
                             id          INTEGER NOT NULL AUTO_INCREMENT,
                             id_user     INTEGER,
                             id_identification_code INTEGER,
+                            added_date DATETIME DEFAULT CURRENT_TIMESTAMP,
                             PRIMARY KEY(id),
                             CONSTRAINT fk_id_user_participations FOREIGN KEY(id_user) REFERENCES users(id) ON DELETE CASCADE,
                             CONSTRAINT fk_id_identification_code_participations FOREIGN KEY(id_identification_code) REFERENCES identification_code(id) ON DELETE CASCADE
