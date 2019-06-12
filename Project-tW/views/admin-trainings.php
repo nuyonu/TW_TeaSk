@@ -28,9 +28,10 @@
                 <button class="button-common" type="button" onclick="location.href='adminTrainingsAdd'">Adaugă un
                     training
                 </button>
-                <button class="button-common" type="submit" id="delete-button"
-                        onclick="document.getElementById('delete-trainings').submit()">Elimină training-uri
-                </button>
+                <?php if ($grade == 1)
+                    echo '<button class="button-common" type = "submit" id = "delete-button"
+                        onclick = "document.getElementById(\'delete-trainings\').submit()" > Elimină training-uri
+                </button >'?>
             </div>
         </div>
         <div class="data">
@@ -42,7 +43,8 @@
                         <th>Organizator</th>
                         <th>Adăugat de</th>
                         <th>Mai multe</th>
-                        <th>Șterge</th>
+                        <?php if ($grade == 1)
+                            echo "<th>Șterge</th>" ?>
                     </tr>
                     <?php if ($trainings != null && strcmp(array_values($trainings)[0]->getId(), '')) {
                         foreach ($trainings as $training) { ?>
@@ -53,8 +55,9 @@
                                 <td><?php echo $training->getUsername() ?></td>
                                 <td><a href="<?= '/adminTrainingsView?trainingId=' . $training->getId() ?>">
                                         <i class="fa fa-list"></i></a></td>
-                                <td><input type="checkbox" class="check-for-delete" name="check_list_for_delete[]"
-                                           value="<?= $training->getId() ?>" onclick="renameButton()"></td>
+                                <?php if ($grade == 1)
+                                    echo '<td><input type="checkbox" class="check-for-delete" name="check_list_for_delete[]"
+                                           value="'. $training->getId() .'" onclick="renameButton()"></td>' ?>
                             </tr>
                         <?php }
                     } ?>

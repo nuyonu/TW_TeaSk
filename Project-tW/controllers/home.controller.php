@@ -4,10 +4,11 @@ include(ROOT . DS . 'models' . DS . 'user.model.php');
 
 use AsyncTask\Collection;
 use duncan3dc\Sessions\SessionInstance;
-use Spatie\Async\Process;
 
 class HomeController extends Controller
 {
+
+
     public function show()
     {
         $user = $this->session->get(Constants::USER);
@@ -16,10 +17,9 @@ class HomeController extends Controller
         } else {
             Parameters::setData("show", Constants::EMPTY);
         }
-        require_once(Constants::VIEW_INDEX);
-        GithubUpdate::doInBackground($this->database, $user);
-    }
 
+        require_once(Constants::VIEW_INDEX);
+    }
 
     public function disconnect()
     {
@@ -36,16 +36,6 @@ class HomeController extends Controller
                 if ($database->getUser($user)) {
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
                     $this->session->set(Constants::GRADE, $database->getUserGrade($user->getUsername()));
-                    $token = $database->getTokenGithub($this->session->get(Constants::USER));
-                    if ($token != NULL) {
-                        $sett = new Collection();
-                        $sett->set("token", $token);
-                        $sett->set("db", $this->database);
-                        $sett->set("user", $this->session->get(Constants::USER));
-                        $task = new GithubUpdate();
-                        $task->setTitle('TestTask')
-                            ->execute($sett);
-                    }
                     Response::redirect(Constants::HOME);
                 } else {
                     Response::redirect(Constants::HOME);
