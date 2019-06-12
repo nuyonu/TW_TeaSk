@@ -42,7 +42,7 @@ class GithubClient
     {
         $this->token = $token;
         try {
-            $this->client->authenticate($token, '', Github\Client::AUTH_URL_TOKEN);
+            $this->client->authenticate($token, '', Github\Client::AUTH_HTTP_TOKEN); //Github\Client::AUTH_URL_TOKEN);
             return TRUE;
         } catch (Github\Exception\RuntimeException $ex) {
             return FALSE;
@@ -66,6 +66,12 @@ class GithubClient
 
         }
         return $vector;
+    }
+
+    // ADAUGAT DE PAUL
+    public function getClient()
+    {
+        return $this->client;
     }
 
     private $token;

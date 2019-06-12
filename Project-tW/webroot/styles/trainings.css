@@ -68,6 +68,7 @@
 
 .filter-form input[type=text]
 {
+    background-color: white;
     margin: 0; /*auto 5px 12px 6px; */
     /* width: 50%; */
     font-family: 'Didact Gothic', sans-serif;
@@ -114,6 +115,11 @@
 {
     margin-top: 15px;
     text-align: center;
+}
+
+.trainings-list
+{
+    word-wrap: break-word;
 }
 
 .trainings-list ul
@@ -298,13 +304,6 @@
 
     margin: 25px;
     height: 87%;
-
-    transition: all 0.5s;
-}
-
-.training:hover
-{
-    height: 92%;
 }
 
 .training-location

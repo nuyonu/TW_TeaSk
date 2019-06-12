@@ -92,6 +92,7 @@ class ResetDB
                     linkedln_token  VARCHAR(600),
                     linkedln_exp    INT,
                     grade           INT DEFAULT 3,
+                    last_update     DATE,
                     PRIMARY KEY (ID) 
 )";
 
