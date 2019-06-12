@@ -36,9 +36,17 @@ class HomeController extends Controller
                 if ($database->getUser($user)) {
                     $this->session->set(Constants::USER, $_POST[Constants::DATA][Constants::USER]);
                     $this->session->set(Constants::GRADE, $database->getUserGrade($user->getUsername()));
-
+                    $token = $database->getTokenGithub($this->session->get(Constants::USER));
+                    if ($token != NULL) {
+                        $sett = new Collection();
+                        $sett->set("token", $token);
+                        $sett->set("db", $this->database);
+                        $sett->set("user", $this->session->get(Constants::USER));
+                        $task = new GithubUpdate();
+                        $task->setTitle('TestTask')
+                            ->execute($sett);
+                    }
                     Response::redirect(Constants::HOME);
-
                 } else {
                     Response::redirect(Constants::HOME);
                 }

@@ -1,7 +1,6 @@
 <?php
 
 use Respect\Validation\Validator as v;
-use Respect\Validation\Exceptions\NestedValidationException;
 
 class EventsDAO
 {
@@ -11,7 +10,7 @@ class EventsDAO
     private $location;
     private $username;
     private $price;
-    private $seats;
+/*    private $seats;*/
     private $difficulty;
     private $beginDate;
     private $endDate;
@@ -19,6 +18,7 @@ class EventsDAO
     private $endTime;
     private $description;
     private $tags;
+    private $code;
 
     /**
      * EventsDAO constructor.
@@ -28,7 +28,6 @@ class EventsDAO
      * @param $location
      * @param $username
      * @param $price
-     * @param $seats
      * @param $difficulty
      * @param $beginDate
      * @param $endDate
@@ -37,7 +36,7 @@ class EventsDAO
      * @param $description
      * @param $tags
      */
-    public function __construct($title, $organizer, $type, $location, $username, $price, $seats, $difficulty, $beginDate, $endDate, $beginTime, $endTime, $description, $tags)
+    public function __construct($title, $organizer, $type, $location, $username, $price/*, $seats*/, $difficulty, $beginDate, $endDate, $beginTime, $endTime, $description, $tags)
     {
         $this->title = $title;
         $this->organizer = $organizer;
@@ -45,7 +44,7 @@ class EventsDAO
         $this->location = $location;
         $this->username = $username;
         $this->price = $price;
-        $this->seats = $seats;
+/*        $this->seats = $seats;*/
         $this->difficulty = $difficulty;
         $this->beginDate = $beginDate;
         $this->endDate = $endDate;
@@ -53,6 +52,15 @@ class EventsDAO
         $this->endTime = $endTime;
         $this->description = $description;
         $this->tags = $tags;
+        $this->code = CommonFunctions::generateCode();
+    }
+
+    /**
+     * @return string
+     */
+    public function getCode(): string
+    {
+        return $this->code;
     }
 
     /**
@@ -111,13 +119,10 @@ class EventsDAO
         return $this->price;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getSeats()
+/*    public function getSeats()
     {
         return $this->seats;
-    }
+    }*/
 
     /**
      * @return mixed
@@ -200,10 +205,10 @@ class EventsDAO
         return v::not(v::negative())->validate($type) && v::numeric()->validate($type);
     }
 
-    public function validateSeats($seats)
+/*    public function validateSeats($seats)
     {
         return v::not(v::negative())->validate($seats) && v::numeric()->validate($seats);
-    }
+    }*/
 
     public function validateDifficulty($difficulty)
     {
@@ -252,7 +257,7 @@ class EventsDAO
             $this->validateEndDate($this->endDate) &&
             $this->validateEndTime($this->endTime) &&
             $this->validatePrice($this->price) &&
-            $this->validateUsername($this->username) &&
-            $this->validateSeats($this->seats);
+            $this->validateUsername($this->username);
+/*            $this->validateSeats($this->seats);*/
     }
 }

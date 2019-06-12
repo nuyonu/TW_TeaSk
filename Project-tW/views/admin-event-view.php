@@ -36,11 +36,14 @@ include '../webroot/templates/admin-common.php'; ?>
                 <div class="row">
                     <div class="column">
                         <h2>Pret</h2>
-                        <p><?php echo $event->getPrice() ?></p>
+                        <p><?php if ($event->getPrice() == 0)
+                                echo "Gratis";
+                            else
+                                echo $event->getPrice() ?></p>
                     </div>
                     <div class="column">
-                        <h2>Locuri</h2>
-                        <p><?php echo $event->getSeats() ?></p>
+                        <h2>Cod unic</h2>
+                        <p><?php echo $event->getCode() ?></p>
                     </div>
                     <div class="column">
                         <h2>Data de start</h2>
