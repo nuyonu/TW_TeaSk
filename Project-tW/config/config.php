@@ -30,7 +30,8 @@ class ConfigurationSettings
                 'settings',
                 'trainingsfilter',
                 'github',
-                'linkedln'
+                'linkedln',
+                'trainingdetails'
             )));
         Config::set("moderator_route",  new Arrayy(array('adminUsers')));
         Config::set("admin_pass", 'Aa1!asdf');
