@@ -25,10 +25,12 @@ include '../webroot/templates/admin-common.php'; ?>
                 </form>
             </div>
             <div class="buttons">
-                <button class="button-common" id="add-button" type="button">Adaugă un eveniment</button>
+                <button class="button-common" type="button" onclick="location.href='adminEventsAdd'">Adaugă un
+                    eveniment
+                </button>
                 <button class="button-common show-older-events" type="submit">Evenimente vechi</button>
-                <button class="button-common remove-events" type="submit"
-                        onclick="document.getElementById('delete-events').submit()">Elimină evenimentele
+                <button class="button-common" type="submit" id="delete-button"
+                        onclick="document.getElementById('delete-events').submit()">Elimină evenimente
                 </button>
             </div>
         </div>
@@ -51,11 +53,11 @@ include '../webroot/templates/admin-common.php'; ?>
                                 <td><?php echo $event->getId() ?></td>
                                 <td><?php echo $event->getTitle() ?></td>
                                 <td><?php echo $event->getOrganizer() ?></td>
-                                <td><?php echo $event->getTitle() ?></td>
+                                <td><?php echo $event->getUsername() ?></td>
                                 <td><a href="<?= '/adminEventsView?eventId=' . $event->getId() ?>"><i
                                                 class="fa fa-list"></i></a></td>
-                                <td><input type="checkbox" name="check_list_for_delete[]"
-                                           value="<?= $event->getId() ?>"></td>
+                                <td><input type="checkbox" class="check-for-delete" name="check_list_for_delete[]"
+                                           value="<?= $event->getId() ?>" onclick="renameButton()"></td>
                                 <td><a href="<?= 'adminEventsModify?eventId=' . $event->getId() ?>"><i
                                                 class='fa fa-edit'></i></a></td>
                             </tr>
@@ -63,73 +65,31 @@ include '../webroot/templates/admin-common.php'; ?>
                     } ?>
                 </table>
             </form>
-            <div id="Add-Modal" class="modal">
-
-                <!-- Modal content -->
-                <div class="modal-content">
-                    <div class="close-modal-div">
-                        <span class="close">&times;</span>
-                    </div>
-                    <div class="modal-inside-content">
-                        <h2>Adaugă un eveniment</h2>
-                        <form action="adminEvents/addEvent" id="add-form" method="post" name="eventsParams">
-                            <div class="left">
-                                <label>Titlul evenimentului</label>
-                                <input name="eventParams[title]" type="text">
-                                <label>Organizator</label>
-                                <input name="eventParams[organizer]" type="text">
-                                <label>Tipul evenimentului</label>
-                                <input name="eventParams[type]" type="text">
-                                <label>Locația</label>
-                                <input name="eventParams[location]" type="text">
-                                <div class="row">
-                                    <label>Preț</label>
-                                    <input name="eventParams[price]" id="price" type="number"
-                                           onchange="checkNotNull(this)">
-                                    <label>Locuri</label>
-                                    <input name="eventParams[seats]" id="seats" type="number"
-                                           onchange="checkNotNull(this)">
-                                    <label>Dificultate</label>
-                                    <select name="eventParams[difficulty]">
-                                        <option value="1">Ușor</option>
-                                        <option value="2">Mediu</option>
-                                        <option value="3">Greu</option>
-                                    </select>
-                                </div>
-                                <label>Tag-uri</label>
-                                <input type="text" name="eventParams[tags]">
-                            </div>
-                            <div class="right">
-                                <div class="row">
-                                    <label>Data de inceput</label>
-                                    <input name="eventParams[begin-date]" id="start-date" type="date"
-                                           onchange="checkDate(this)">
-                                    <label>Ora de inceput</label>
-                                    <input name="eventParams[begin-time]" id="start-time" type="time">
-                                </div>
-                                <div class="row">
-                                    <!--&nbsp; pentru a fi aranjate exact la acelasi nivel cu cele de sus-->
-                                    <label>Data de sfarsit&nbsp;&nbsp;&nbsp;</label>
-                                    <input name="eventParams[end-date]" id="end-date" type="date"
-                                           onchange="checkDate(this)">
-                                    <label>Ora de sfarsit&nbsp;&nbsp;&nbsp;</label>
-                                    <input name="eventParams[end-time]" id="end-time" type="time">
-                                </div>
-                                <label>Descriere</label>
-                                <textarea name="eventParams[description]" rows="11" form="add-form"></textarea>
-                            </div>
-                        </form>
-                        <div class="informations">
-                            <p>ATENȚE! Nu poți schimba tag-urile odată ce au fost setate.</p>
-                            <p>Tag-urile sunt foarte importante deoarece ne ajută pe noi să găsim publicul țintă.</p>
-                        </div>
-                        <div class="button-add-event-submit">
-                            <button type="submit" onclick="addFormSubmit()">Adaugă evenimentul</button>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
+        </div>
+        <div class="pagination">
+            <?php
+            if (isset($_GET['page'])) {
+                $current_page = $_GET['page'];
+                if (!is_numeric($current_page))
+                    $current_page = 1;
+                if ($current_page < 1 || $current_page > $number_of_pages)
+                    $current_page = 1;
+            } else
+                $current_page = 1;
+            if (!($number_of_pages <= 1)) {
+                echo '<a href="adminEvents?page=' . 1 . '">' . '&laquo;' . '</a> ';
+                if ($current_page - 2 > 0)
+                    echo '<a href="adminEvents?page=' . ($current_page - 2) . '">' . ($current_page - 2) . '</a> ';
+                if ($current_page - 1 > 0)
+                    echo '<a href="adminEvents?page=' . ($current_page - 1) . '">' . ($current_page - 1) . '</a> ';
+                echo '<a class="active" href="adminEvents?page=' . $current_page . '">' . $current_page . '</a> ';
+                if ($current_page + 1 <= $number_of_pages)
+                    echo '<a href="adminEvents?page=' . ($current_page + 1) . '">' . ($current_page + 1) . '</a> ';
+                if ($current_page + 2 <= $number_of_pages)
+                    echo '<a href="adminEvents?page=' . ($current_page + 2) . '">' . ($current_page + 2) . '</a> ';
+                echo '<a href="adminEvents?page=' . $number_of_pages . '">' . '&raquo;' . '</a> ';
+            }
+            ?>
         </div>
     </div>
 </div>

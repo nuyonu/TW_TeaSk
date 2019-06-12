@@ -49,6 +49,7 @@ class ResetDB
                     type        VARCHAR(50),
                     location    VARCHAR(100),
                     description VARCHAR(1000),
+                    username VARCHAR(50),
                     price       DOUBLE,
                     seats       INTEGER,
                     organizer VARCHAR(50),
