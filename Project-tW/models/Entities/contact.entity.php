@@ -97,14 +97,6 @@ class ContactEntity
      * @param string $problem
      */
 
-    public function __construct(int $id,string $name,string $email,string $type,string $problem)
-    {
-        $this->id = $id;
-        $this->name = $name;
-        $this->email = $email;
-        $this->type = $type;
-        $this->problem = $problem;
-    }
 
 
 }
