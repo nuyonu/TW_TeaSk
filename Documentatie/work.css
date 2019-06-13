@@ -1,0 +1,103 @@
+.main-work {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 10px;
+    margin: 10px 40px;
+}
+
+.title h1 {
+    text-align: center;
+    padding: 10px;
+    font-size: 30px;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0.5, 0.2), 0 6px 20px 0 rgba(0, 0, 0.5, 0.19);
+    background-color: #99ccff;
+}
+
+.contents {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    padding: 0 10%;
+}
+
+.contents a{
+    text-decoration: none;
+    font-size: 18px;
+    margin: 0;
+}
+
+.contents a.sub-head {
+    padding: 0 0 0 30px;
+}
+
+.contents a.sub-sub-head {
+    padding: 0 0 0 60px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.column-50 {
+    width: 48%;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    padding: 0 1% 0 1%;
+}
+
+.content {
+    padding: 0 20px 0 20px;
+}
+
+.sub-content {
+    padding: 0 0 0 20px;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.auto-resize {
+    width: 100%;
+    height: auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.video {
+    width: calc(80% - 50px);
+    height: 400px;
+}
+
+.red {
+    color: red;
+}
+
+@media only screen and (max-width: 600px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .video {
+        width: 100%;
+        height: 200px;
+    }
+
+    .auto-resize {
+        width: 250px;
+        height: 250px;
+    }
+}

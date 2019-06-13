@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="project, infoiasi, web">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="work.css">
+    <title>Documentație Skill Enhancer</title>
+</head>
+<body>
+<div class="main-work">
+    <div class="title">
+        <h1>(Progresul aplicației) & (Cum o utilizăm)</h1>
+    </div>
+    <div class="contents">
+        <a class="head" href="#about">1. Despre proiect</a>
+        <div class="column">
+            <a class="sub-head" href="#about-1">1.1 Ce s-a vrut de la acest proiect?</a>
+            <a class="sub-head" href="#authors">1.2 Cine sunt autorii proiectului?</a>
+        </div>
+        <a class="head" href="#structure">2. Structura proiectului</a>
+        <div class="column">
+            <a class="sub-head" href="#structure-user">2.1 Partea clientului</a>
+            <a class="sub-head" href="#structure-moderator">2.2 Partea moderatorului</a>
+            <a class="sub-head" href="#structure-administrator">2.3 Partea administratorului</a>
+        </div>
+        <a class="head" href="#progress">3. Progresul proiectului</a>
+        <div class="column">
+            <a class="sub-head" href="#experience-at-begin">3.1 Experienta autorilor la inceput</a>
+            <a class="sub-head" href="#first-start">3.2 Cu ce am inceput?</a>
+            <a class="sub-head" href="#code-management">3.3 Sistemul de management al codului</a>
+            <div class="column">
+                <a class="sub-sub-head" href="#how-we-use-github">3.3.1 Cum folosim GitHub?</a>
+                <a class="sub-sub-head" href="#helpful-github">3.3.2 Cât de folositor a fost GitHub?</a>
+                <a class="sub-sub-head" href="#help-us">3.3.3 Cum ne poate ajuta lumea la acest proiect?</a>
+            </div>
+            <a class="sub-head" href="#demo">3.4 Demo (videoclip)</a>
+        </div>
+        <a class="head" href="#how-to-use">4. Cum poate fi folosit?</a>
+        <div class="column">
+            <a class="sub-head" href="#how-to-use-user">4.1 De către utilizator</a>
+        </div>
+        <a class="head" href="#references">5. Referințe</a>
+    </div>
+    <div class="content">
+        <h2 id="about">1. Despre proiect</h2>
+        <div class="sub-content">
+            <h3 id="about-1">1.1 Ce s-a vrut de la acest proiect?</h3>
+            <div class="sub-content">
+                S-a dorit o aplicație Web capabilă să ofere într-o formă atractivă o listă a celor mai reprezentative
+                evenimente (conferințe, ateliere de lucru, concursuri, stagii de practică) și proiecte software la care
+                un
+                utilizator ar putea participa pentru a-și îmbunătăți aptitudinile tehnice dintr-un domeniu de interes.
+                Sugestiile expuse se vor baza pe un profil tehnic al persoanei, construit utilizând informații de
+                interes
+                colectate din situri specializate – e.g., rețele sociale profesionale (de exemplu, LinkedIn), sisteme de
+                stocare și gestiune a codului sursă (minimal, GitHub), situri ce propun rezolvarea unor probleme de
+                algoritmica sau concursuri tematice, situri propunând stagii de pregătire (e.g., Stagii pe bune, Junio,
+                Intern Suply), sisteme de tip întrebare-răspuns (de pildă, StackExchange, Reddit ori Quora), blog-uri
+                axate
+                pe aspecte tehnologice găzduite pe platforme ca Medium sau WordPress etc. Aceste surse vor putea fi
+                ajustate
+                de utilizator. De asemenea, sistemul trebuie să urmărească evoluția utilizatorilor (de exemplu,
+                actualizarea
+                profilului în funcție de sugestiile oferite).<br><br>
+
+                Mai pe scurt spus, proiectul are ca scop dezvoltarea utilizatorului oferind evenimente bazate pe
+                profilul
+                său, profil structurat din mai multe părți (limbaje de programare folosite pe GitHub, la ce evenimente a
+                mai
+                participat, la ce training-uri a mai luat parte). Se ține cont și de locația acestuia, locație ce poate
+                fi
+                setată din profil cu ajutorul unui buton (aceasta este luată cu ajutorul unui API).
+            </div>
+            <h3 id="authors">2.1 Ce sunt autorii proiectului?</h3>
+            <div class="sub-content">
+                Autorii acestui proiect sunt:
+                <ul>
+                    <li><a href="https://github.com/nuyonu" target="_blank">Grigoraș Alexandru Ionel</a></li>
+                    <li><a href="https://github.com/pmaxim98" target="_blank">Maxim Paul</a></li>
+                    <li><a href="https://github.com/FilosGabriel" target="_blank">Filoș Gabriel</a></li>
+                </ul>
+            </div>
+        </div>
+        <h2 id="structure">2. Structura proiectului</h2>
+        <div class="sub-content">
+            Proiectul a fost împărțit în trei părți, fiecare parte dispune de o anumită funcționalitate. Noi am
+            structurat proiectul pentru un utilizator, pentru un moderator și pentru un administrator. În funcție de
+            rank, avem anumite drepturi sau nu.
+            <h3 id="structure-user">2.1 Partea clientului</h3>
+            <div class="sub-content">
+                Cum am gândit noi partea clientului și ce are voie acesta să facă?<br>
+                Ne-am gândit că cine accesează site-uri de genul îl interesează să vadă o evoluție a sa, deci noi
+                trebuie să venim cu recomandări pe baza profilului său. Aceste recomandări sunt făcute pe anumite
+                criteriii. Utilizatorul are următoarele drepturi:
+                <ul>
+                    <li>Să se logheze/înregistreze</li>
+                    <li>Să se vadă evenimentele/training-urile dacă este logat</li>
+                    <li>Să își modifice profilul de utilizator</li>
+                    <li>Să adauge un cod ce îl primește la evenimentele/training-urile la care a participat</li>
+                    <li>Să se logheze cu GitHub/LikedIn</li>
+                    <li>Să ne contacteze (să ia legătura cu noi) folosind o adresă de email</li>
+                    <li>Să urmărească pagina de Suport unde găsește informații referitoare la site</li>
+                </ul>
+            </div>
+            <h3 id="structure-moderator">2.2 Partea moderatorului</h3>
+            <div class="sub-content">
+                Moderatorul a apărut după anumite discuții și întrebări de forma: "Toți vor fi administratori?", "De
+                unde știm cine e administratorul administratorilor?". Astfel gradul de Moderator a apărut ca o rezolvare
+                la anumite probleme. El avre voie urmărtoarele drepturi
+                <ul>
+                    <li>Aceleași drepturi ca și utilizatorul</li>
+                    <li>Să poată accesa pagina adminului</li>
+                    <li>Să poată adăuga evenimente fără a le putea șterge</li>
+                    <li>Să poată adăuga training-uri fără a le putea șterge</li>
+                    <li>Să poată răspunde la problemele venite în pagina Suport din pagina Contact</li>
+                </ul>
+            </div>
+            <h3 id="structure-administrator">2.3 Partea administratorului</h3>
+            <div class="sub-content">
+                Administratorul reprezintă cel mai mare grad. Un cont de administrator este creat când se rulează pentru
+                prima oară serverul. Acesta are următoarele drepturi:
+                <ul>
+                    <li>Aceleași drepturi ca și utilizatorul</li>
+                    <li>Are aceleași drepturi ca și moderatorul</li>
+                    <li>Poate șterge evenimente adăugate de el/alte persoane</li>
+                    <li>Poate vedea evenimente adăugate de el/alte persoane</li>
+                    <li>Poate șterge training-uri adăugate de el/alte persoane</li>
+                    <li>Poate vedea training-uri adăugate de el/alte persoane</li>
+                    <li>Poate vedea o listă cu toți utilizatorii înregistrați și câteva detalii despre aceștia. (dacă
+                        sunt logați cu GitHub, nume utilizator etc)
+                    </li>
+                </ul>
+            </div>
+            În ceea ce privește structura proiectului pe partea de organizare a fișierelor, cum sunt trimise datele
+            către server și ce pattern folosim mai multe detalii se găsesc pe <a
+                href="https://github.com/nuyonu/TW_TeaSk">GitHub</a>, inclusiv codul pentru aplicatie.
+        </div>
+        <h2 id="progress">3. Progresul proiectului</h2>
+        <div class="sub-content">
+            <h3 id="experience-at-begin">3.1 Experienta autorilor la început</h3>
+            <div class="sub-content">
+                În cadrul echipei noastre nu a existat cineva care să fi lucrat în ceea ce privește tehnologiile web
+                nici măcar în alt limbaj, ceea ce a făcut munca noastră la acest proiect mai complicată deoarece am
+                pornit cu zero experiență în ceea ce privește HTML/CSS/JAVASCRIPT (partea de front) și zero experiență
+                pe partea de back-end (PHP). Multă teorie ce am învățat pentru acest proiect a fost nouă pentru noi, dar
+                în același timp a fost o experiență plăcută și am reușit să realizăm lucruri foarte rapid în limbajul
+                ales.
+            </div>
+            <h3 id="first-start">3.2 Cu ce am început?</h3>
+            <div class="sub-content">
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/mockup-paint.png">
+                    </div>
+                    <div class="column-50">
+                        După ce am primit sarcinile, am început să învățăm HTML/CSS/JAVASCRIPT deoarece, cum am spus și
+                        mai sus,
+                        experiența
+                        noastră la început a fost 0. După ce ne-am acomodat cu ce înseamnă HTML/CSS/JAVASCRIPT am
+                        încercat să
+                        creăm machete/modele cam cum ne dorim să arate aplicația noastră. Aceste modele nu erau ceva
+                        foarte wow
+                        (doar un desen în paint pentru a vedea unde poziționăm bara, cum vor fi poziționate butoanele și
+                        multe
+                        altele, pentru a ne fi ușor să aranjăm pagina). După ce fiecare a făcut anumite modele pentru o
+                        pagină anume, am început să împărțim sarcinile în mod egal (nu ia nimeni paginile cele mai
+                        ușoare, nu ia nimeni paginile cele mai grele). Într-un final fiecare a avut un număr de pagini
+                        ușoare (ușoare din punctul nostru de vedere).
+                    </div>
+                </div>
+                <br>
+                Implementarea a fost destul de ușoară după ce ne-am acomodat cu ce ne oferă HTML-ul, CSS-ul și
+                javascript-ul. Fiind toată echipa la început, am încercat doar să facem într-un mod cât mai vizual și să
+                fie Responsive pe toate dispozitivele (ne-am folosit de Flexbox pentru a face acest lucru). Nu am pus
+                accent foarte mare pe funcționalitatea oferită de javascript, ceea ce ne-a îngreunat munca în partea a
+                doua a aplicației unde a fost nevoie de validare a datelor și din client dar și din server.
+            </div>
+            <h3 id="code-management">3.3 Sistemul de management al codului</h3>
+            <div class="sub-content">
+                <div class="sub-content">
+                    <h4 id="how-we-use-github">3.3.1 Cum folosim GitHub?</h4>
+                    <div class="sub-content">
+                        GitHub este un serviciu de hosting al proiectelor git (un proiect git este numit repository).
+                        Acesta permite păstrarea unei copii a proiectului online și vizualizarea tuturor fișierelor și a
+                        modificărilor aduse acestora.<br><br>
+                        Utilizăm GitHub pentru a stoca codul în diverse versiuni, versiuni care sunt cât
+                        mai stabile. Avem versiuni de la codul HTML/CSS/JAVASCRIPT (simlu) până la versiuni ce conțin
+                        inclusiv funcționalitate pentru server, funcționalitate ce a fost făcută cu ajutorul limbajului
+                        de programare PHP. O versiune pentru noi a reprezentat un stagiu in care se afla proiectul.
+                    </div>
+                    <h4 id="helpful-github">3.3.2 Cât de folositor a fost GitHub?</h4>
+                    <div class="sub-content">
+                        Pe o scară de la unu la zece, GitHub ar primi nota zece. A fost foarte folositor în
+                        proiectul nostru deoarece acesta oferă multe avantaje precum:
+                        <ul>
+                            <li>este salvat istoricul tuturor modificărilor, astfel că se poate reveni oricând la o
+                                versiune mai veche dacă se descoperă introducerea unor defecte în ultima versiune
+                            </li>
+                            <li>
+                                prin folosirea unui serviciu de hosting, codul sursă are mereu o copie de siguranță
+                                online
+                            </li>
+                            <li>
+                                cea mai recentă versiune a codului sursă este mereu disponibilă tuturor dezvoltatorilor,
+                                făcând astfel colaborarea și sincronizarea mult mai ușoară decât în cazul trimiterii de
+                                fișiere conținând cod sursă dezvoltatorilor interesați de proiect.
+                            </li>
+                        </ul>
+                        Pe noi ne-a ajutat să avem un sistem de versionare a codului. Am avut un management al
+                        fișierelor care permite păstrarea istoricului tuturor modificărilor aduse fișierelor urmărite.
+                        Am avut mereu o versiune de rezervă, o versiune ce știm sigur că rulează
+                        indiferent de modificările aduse ulterior.
+                    </div>
+                    <h4 id="help-us">3.3.3 Cum ne poate ajuta lumea la acest proiect?</h4>
+                    <div class="sub-content">
+                        Toți cei care doresc să ne ajute la acest proiect pot accesa depozitul (repository-ul)
+                        proiectului de pe GitHub dând click <a href="https://github.com/nuyonu/TW_TeaSk"
+                                                               target="_blank">aici</a>. În repository se află un fișier
+                        numit "<a href="https://github.com/nuyonu/TW_TeaSk/blob/master/CONTRIBUTING.md"
+                                  target="_blank">CONTRIBUTING.md</a>". Acolo se găsesc informațiile necesare pentru a
+                        ne putea ajuta la
+                        proiect, oricând există loc de îmbunătățiri.
+                    </div>
+                </div>
+            </div>
+            <h3 id="demo">3.4 Demo (videoclip)</h3>
+            <div class="sub-content">
+                Pentru a vedea cum funcționează aplicația din punctul de vedere al utilizatorului și al celor care ajută
+                la întreținerea aplicației (moderatorul sau administratorul) am creat un demo foarte scurt.
+                <div class="center">
+                    <div class="video">
+                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dAHC4IEGh68"
+                                frameborder="0"
+                                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 id="how-to-use">4. Cum poate fi folosit</h2>
+        <div class="sub-content">
+            Aceste scenarii sunt făcute pentru a arăta cum funcționeaza în mare parte aplicația. Am încercat să acoperim
+            cam ce ar face un utilizator/moderator/administrator pe site-ul nostru. Bineînțeles site-ul are și o
+            secțiune numită Suport ce are întrebari și răspunsuri. În cazul în care nu se găsește aici o rezolvare,
+            atunci se va găsi acolo. În cel mai rău caz se poate contacta administratorul din pagina de Contact.
+            <h3 id=how-to-use-user>4.1 De către utilizator</h3>
+            <div class="sub-content">
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/click-on-register.png">
+                    </div>
+                    <div class="column-50">
+                        Vom lua un scenariu. Să presupunem că dorim să vedem ce ne oferă acest site.
+                        Cum un utilizator nelogat nu are acces decât la paginile Acasă/Contact/Suport/Despre v-a trebuii
+                        sa ne
+                        facem un cont. Cum facem acest lucru? În bara de sus avem un buton "Înregistrare". Apăsând acel
+                        buton ne
+                        va apărea un modal în care trebuie să completăm cu informații valide și să apăsăm pe "Crează
+                        cont".<br>
+                        După ce ne-am creat contul, putem accesa pagina pentru evenimente și pagina pentru
+                        training-uri. Pentru a primii evenimente pe baza profilului nostru este recomandat să completăm
+                        profilul, să ne logăm cu GitHub deoarece acesta are o importanță în recomandările făcute. Este
+                        important să știm ce limbaje de programare îți plac și în ce dorești să te dezvolți.<br>
+                        Noi oferim doar informații despre evenimente și obligăm pe cei care le organizează să ofere cât
+                        mai multe detalii. Prezența la evenimente/training-uri se face pe baza unui cod ce va puate fi
+                        introdus din profilul de utilizator. Acest cod va fi comunicat de cei care se ocupă cu
+                        organizarea. Mai multe detalii pot fi citite în pagina de suport.
+                    </div>
+                </div>
+                <br>
+                Voi incerca să explic cât mai detaliat începând de acum toate funcționalitățile sub forma unei liste de
+                numere, ce vor fi arătate cu săgeți pentru a fi ușor de urmărit:
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/date-personale.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Dacă dăm click pe "Settings" <span class="red">(1)</span> din orice pagină ne-am afla, o
+                                să ne apară setările
+                                contului, cu un mic meniu ce conține "Datele personale" (ce se deschide prima data),
+                                "Conectare" și nu în ultimul rând Evoluția
+                            </li>
+                            <li>
+                                Cu ajutorul butonului <span class="red">(2)</span> ne putem alege o poză de profil și
+                                dacă apăsăm pe butonul <span class="red">(3)</span> aceasta se v-a încărca la noi pe
+                                server și îți v-a ramâne salvată. Momentan nu este folosită decât de tine dar pe viitor
+                                poate vor apărea update-uri.
+                            </li>
+                            <li>
+                                Ne putem schimba datele completând câmpurile pe care dorim să le schimbăm și apăsăm pe
+                                butonul <span class="red">(4)</span>.
+                            </li>
+                            <li>
+                                Dacă dorim să setăm locația fără a introduce noi, este suficient doar să apăsăm pe
+                                butonul "Actualizeaza locatia" <span class="red">(5)</span>.
+                            </li>
+                            <li>
+                                Butoanele rosii reprezintă un pericol pentru cont. Cu ajutorul butonului "Sterge cont"
+                                <span class="red">(6)</span> poți
+                                șterge contul, iar accesând butonul "Moderator?"<span class="red">(7)</span> vei primi
+                                gradul de Moderator. Am ales să lăsăm acest lucru deoarece aplicația încă nu este într-o
+                                formă finală.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/conectare.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                În pagina de conectare putem ajunge dacă dăm click pe "Conectare"<span
+                                    class="red">(1)</span> din meniul din stânga.
+                            </li>
+                            <li>
+                                În această pagină ne putem schimba parola completând câmpurile necesare <span
+                                    class="red">(2)</span> și apăsând
+                                butonul "Salveaza" <span class="red">(3)</span> ce trimite datele noastre către server.
+                            </li>
+                            <li>
+                                Avem posibilitatea de a ne conecta la GitHub <span class="red">(4)</span> și LikedIn
+                                <span class="red">(5)</span> pentru ca recomandările pentru evenimente
+                                și pentru trainig-uri să fie cât mai bune pentru profilul utilizatorului. Ar fi foarte
+                                ciudat să îți recomandăm C++ când toate codurile scrise de tine sunt in JAVA.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/evolutia.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Pentru a accesa pagina de Evoluție este suficient să dăm click pe "Evoluție"<span
+                                    class="red">(1)</span> din meniul
+                                din stanga
+                            </li>
+                            <li>
+                                În această pagină vom găsi un câmp <span class="red">(2)</span> ce poate fi completat cu
+                                codul de participare la un
+                                evenimente. Ce este acest cod? Ne asigurăm că nu facem recomandări degeaba. Noi îți
+                                oferim posibilitatea de ați alege evenimentele la care să mergi, iar cei care postează
+                                evenimentele îți vor da un cod pe care noi îl salvăm să știm la ce evenimente ai fost
+                                prezent. Pentru a trimite codul apăsăm butonul "Trimite codul" <span
+                                    class="red">(3)</span>.
+                            </li>
+                            <li>
+                                Avem și o statistică care ne spune dacă am evoluat în ultima vreme, statistica arată și
+                                câteva date <span class="red">(4)</span> despre ce am făcut noi referitor la depozitele
+                                de cod pe care le avem pe
+                                GitHub. Acestea vor apărea doar în cazul în care suntem conectați la GitHub.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/evenimente.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Pagina de evenimente o putem accesa din meniul aflat sus apăsând pe "Evenimente" <span
+                                    class="red">(1)</span>.
+                            </li>
+                            <li>
+                                În această pagină se pot găsi evenimentele <span class="red">(3)</span> ce se află la
+                                noi pe site publicate de cei
+                                care au dreptul. Aceste evenimente sunt recomandate de noi în cazul în care aveți un
+                                profil completat sau sunt random în cazul în care nu aveți un profil disponibil.
+                            </li>
+                            <li>
+                                Avem posibilitatea de a căuta evenimente <span class="red">(2)</span> după bunul nostru
+                                plac. În cazul în care
+                                introducem noi criteriile de căutare, atunci criteriile impuse de noi vor fi
+                                suprascrise.
+                            </li>
+                            <li>
+                                Apăsând butonul "Mai multe detalii" <span class="red">(4)</span> vom putea vedea ce
+                                tag-uri are un evenimente, o
+                                descriere, locatia si alte informatii care la o primă vedere sunt ascunse.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/traininguri.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Pagina de training-uri o putem accesa din meniul aflat sus apăsând pe "Training-uri"
+                                <span
+                                        class="red">(1)</span>.
+                            </li>
+                            <li>
+                                În această pagină se pot găsi training-urile <span class="red">(3)</span> ce se află la
+                                noi pe site publicate de cei
+                                care au dreptul. Aceste training-uri sunt recomandate de noi în cazul în care aveți un
+                                profil completat sau sunt random în cazul în care nu aveți un profil disponibil.
+                                Recomandările noastre se găsesc în partea stângă sub căsuța destinată filtrării.
+                            </li>
+                            <li>
+                                Avem posibilitatea de a căuta evenimente <span class="red">(2)</span> după bunul nostru
+                                plac. În cazul în care filtrăm training-urile, atunci criteriile prin care noi sugerăm
+                                training-urile vor fi suprascrise.
+                            </li>
+                            <li>
+                                Avem posibilitatea de a vedea și training-uri după un anumit criteriu <span class="red">(4)</span>
+                                cum ar fi:
+                                "Training-uri Recente" (cele mai recente training-uri adăugate), "Training-uri cu
+                                recenzii bune" (cele mai apreciate training-uri), "Training-uri ieftine" (în general
+                                aici vor fi cele gratuite sau cu un pret destul de mic) și "Training-uri din apropiere"
+                                (training-uri ce sunt recomandate pe baza locației
+                                coming >coming soon<).
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/contact.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Pagina pentru contact reprezintă pagina de unde utilizatorii ne pot trimite mesaje cu
+                                problemele lor, aceste probleme sunt văzute și rezolvate, sau în cazul în care
+                                utilizatorul are o problemă și acesta specifică email-ul, echipa îi va răspunde în cel
+                                mai scurt timp.
+                            </li>
+                            <li>
+                                Pentru a ne putea contacta este suficient să completăm câmpurile <span
+                                    class="red">(1)</span> cu date valide deoarece email-ul
+                                este folosit de către echipă pentru a răspunde. Este necesar să specificăm problema și
+                                un titlu cât mai intuitiv. După care putem apăsa pe butonul "Trimite"<span class="red">(2)</span>
+                                și să așteptăm
+                                răspuns.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/suport.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Pagina pentru suport <span class="red">(1)</span> reprezintă pagina de unde utilizatorii
+                                își pot lua răspunsuri la
+                                întrebări referitoare la utilizarea site-ului, la ce oferim noi și multe altele. Aceasta
+                                conține o serie de întrebări care credem noi că ar ajuta publicul să își rezolve mai
+                                repede problemele decât dacă ar apela echipa, posibil să vină multe întrebări iar echipa
+                                să nu răspundă în cel mai scurt timp la toate.
+                            </li>
+                            <li>
+                                Fiecare întrebare are un titlu <span class="red">(2)</span> cât mai sugestiv și un
+                                răspuns cât mai detaliat la întrebare. Răspunsul poate fi aflat dacă apăsăm pe butoanele
+                                din dreapta întrebării <span class="red">(3)</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="column-50">
+                        <img class="auto-resize" src="imagesWork/despre.png">
+                    </div>
+                    <div class="column-50">
+                        <ul>
+                            <li>
+                                Aici vor fi publicate o serie de informații referitoare la ce este acest site, cu ce se
+                                ocupa, echipa de dezvoltare și multe altele. Până în prezent expunem doar ce dorește
+                                acest site să facă și echipa de dezvoltatori.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h2 id="references">5. Referințe</h2>
+        <div class="sub-content">
+            Aici se află toate referințele care ne-au ajutat în realizarea proiectului, în a înțelege anumite principii
+            și în a crea cod cât mai modular și cât mai ușor de modificat pe viitor.
+            <ul>
+                <li>
+                    <a href="https://teaching.alexcoman.com/laboratoare/web/">Coman Alexandru - profesor coordonator</a>
+                </li>
+                <li>
+                    <a href="https://profs.info.uaic.ro/~busaco/teach/courses/web/">Sabin-Corneliu Buraga - profesor
+                        curs</a>
+                </li>
+                <li><a href="https://www.w3schools.com/">W3School</a> Mare parte din tutoriale, foarte bune pentr
+                    începători
+                </li>
+                <li>
+                    <a href="http://www.tonymarston.co.uk/php-mysql/model-view-controller.html">MVC Design PHP</a> O
+                    înțelegere în amănunt a pattern-ului folosit (Model View Controller)
+                </li>
+                <li>
+                    <a href="https://www.php.net/manual/ro/">Manual PHP</a> Documentația PHP, cu tot ce este nevoie să
+                    știi
+                </li>
+                <li>
+                    <a href="https://www.php.net/manual/ro/language.oop5.php">PHP POO</a> Clase și obiecte în PHP
+                </li>
+                <li>
+                    <a href="https://www.codeofaninja.com/2018/09/rest-api-authentication-example-php-jwt-tutorial.html?fbclid=IwAR0fKgxMzKsFp_RmeyA65TtR_Mm0AhBVx3lu67Zv1DCQMUUlocIBmfXH46w">REST
+                        API</a>
+                </li>
+                <li>
+                    <a href="https://www.restapitutorial.com/httpstatuscodes.html?fbclid=IwAR2MfCYuf8CAh6iXdKzOf97vM_NIhvESFQV47jKUx4YE9qZwSit0hqPXGaw">Markup
+                        HTTP Status Codes</a> Coduri de stare HTTP
+                </li>
+                <li>
+                    <a href="https://validator.w3.org/">Markup Validation Service</a> Validarea fișierelor
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+</body>
+</html>
